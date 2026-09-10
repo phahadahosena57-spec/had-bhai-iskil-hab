@@ -1,0 +1,14 @@
+AHAD BHAI ISKIL HAB — SECURE ADMIN SETUP
+
+This version does NOT contain a real admin password.
+
+To make the login truly secure on GitHub Pages, create a free Supabase project and use Supabase Auth. The password stays in Supabase Auth; never put it in HTML or JavaScript.
+
+Required:
+1. Create a Supabase project.
+2. Create an admin user under Authentication > Users.
+3. Copy the Project URL and anon/public key into admin.html placeholders.
+4. Create a database table for editable website content and enable Row Level Security so only the admin user can update it.
+5. Deploy the site to GitHub Pages.
+
+Do not publish a password in this file or in any public repository.
