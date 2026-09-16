@@ -1,13 +1,47 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>𝐀𝐇𝐀𝐃 𝐁𝐇𝐀𝐈 𝐒𝐊𝐈𝐋𝐋 𝐋𝐀𝐁</title><link rel="stylesheet" href="style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head><body>
-<div id="welcome" class="gate"><div class="gate-card"><img src="profile.jpg" class="gate-photo"><h1>Welcome to 𝐀𝐇𝐀𝐃 𝐁𝐇𝐀𝐈 𝐒𝐊𝐈𝐋𝐋 𝐋𝐀𝐁</h1><p>Learn AI, video creation, social media skills and more.</p><div class="gate-actions"><button class="btn primary" onclick="openAuth('signup')">Please Sign Up</button><button class="btn ghost" onclick="openAuth('login')">Login</button></div></div></div>
-<header><div class="brand"><img src="logo.jpg"><span>𝐀𝐇𝐀𝐃 𝐁𝐇𝐀𝐈 𝐒𝐊𝐈𝐋𝐋 𝐋𝐀𝐁</span></div><button class="btn small" onclick="openAuth('login')" id="topLogin">Login</button></header>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>𝐀𝐇𝐀𝐃 𝐁𝐇𝐀𝐈 𝐒𝐊𝐈𝐋𝐋 𝐋𝐀𝐁</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#home" onclick="showPage('home')"><img id="siteLogo" src="logo.jpg" alt="Site logo"><span id="siteName">𝐀𝐇𝐀𝐃 𝐁𝐇𝐀𝐈 𝐒𝐊𝐈𝐋𝐋 𝐋𝐀𝐁</span></a>
+  <div class="top-actions">
+    <button class="theme-btn light" onclick="setTheme('light')">☀ Light</button>
+    <button class="theme-btn dark" onclick="setTheme('dark')">◐ Dark</button>
+    <button class="theme-btn night" onclick="setTheme('night')">☾ Night</button>
+    <a class="admin-btn" href="admin.html">🔐 Admin Panel</a>
+  </div>
+</header>
 <main>
-<section id="home" class="page active"><div class="hero"><div><span class="pill">LEARN • CREATE • GROW</span><h2>Build your skills with <b>ABDUL AHEAD</b></h2><p>Simple, practical tutorials to help you create better content with AI and social media.</p><div class="hero-actions"><button class="btn primary" onclick="go('tutorial')">Start Learning →</button><button class="btn outline" onclick="go('social')">Explore Social</button></div></div><img src="banner.jpg" class="banner"></div><div class="stats"><div><b>9+</b><span>Learning Topics</span></div><div><b>100%</b><span>Online Learning</span></div><div><b>Free</b><span>To Start</span></div></div><div class="section-title"><span>About Me</span></div><div class="card about"><img src="profile.jpg"><div><h3>ABDUL AHEAD</h3><p>I teach everything online. Learn step-by-step and connect with me through the official channels.</p><button class="btn gold" onclick="go('contact')">Contact Me →</button></div></div></section>
-<section id="messages" class="page"><div class="section-head"><h2>Messages</h2><p>Send a direct message through Telegram.</p></div><div class="card center"><div class="big-icon">✈️</div><h3>Message ABDUL AHEAD</h3><p>Tap the button below to open my personal Telegram.</p><a class="btn primary" href="https://t.me/Aheadvia1298" target="_blank" onclick="track('social_click',{name:'personal_telegram'})">Message Me →</a></div></section>
-<section id="tutorial" class="page"><div class="section-head"><h2>Tutorials</h2><p>Choose a topic and open the direct tutorial channel.</p></div><div class="search"><input id="search" placeholder="Search tutorials..." oninput="filterTutorials()"></div><div id="tutorialGrid" class="grid"></div></section>
-<section id="social" class="page"><div class="section-head"><h2>Social</h2><p>Follow the official pages and channels.</p></div><div class="grid social-grid" id="socialGrid"></div></section>
-<section id="contact" class="page"><div class="section-head"><h2>Contact</h2><p>Use a button to contact me directly.</p></div><div class="grid"><div class="card contact-card"><h3>📞 Contact Me</h3><p>Open your phone contact app.</p><a class="btn gold" href="tel:01335611366" onclick="track('contact_click',{type:'phone'})">Contact Me →</a></div><div class="card contact-card"><h3>💬 WhatsApp Message</h3><p>Start a private WhatsApp chat.</p><a class="btn green" href="https://wa.me/8801400524877" target="_blank" onclick="track('contact_click',{type:'whatsapp'})">WhatsApp Message →</a></div><div class="card contact-card"><h3>✈️ Telegram Channel</h3><p>Join the official learning channel.</p><a class="btn blue" href="https://t.me/+VeysP6zpQI9kZTJl" target="_blank">Join Channel →</a></div><div class="card contact-card"><h3>👥 Telegram Group</h3><p>Join the community group.</p><a class="btn purple" href="https://t.me/+po7cNT2DyokwMzQ1" target="_blank">Join Group →</a></div></div></section>
-<section id="settings" class="page"><div class="section-head"><h2>Settings</h2><p>Manage your account profile.</p></div><div class="card settings"><div class="avatar-wrap"><img id="avatarPreview" src="profile.jpg"><label class="btn outline file-btn">Change Photo<input type="file" accept="image/*" onchange="previewAvatar(event)"></label></div><div class="form"><label>Name<input id="setName"></label><label>Username<input id="setUsername"></label><label>Bio<textarea id="setBio" rows="3"></textarea></label><label>New Password<input id="setPassword" type="password" placeholder="Leave blank to keep current password"></label><button class="btn primary" onclick="saveSettings()">Save Settings →</button><button class="btn danger" onclick="logout()">Logout</button><div id="userIdBox" class="user-id"></div></div></div></section>
-</main><nav><button data-page="home" onclick="go('home')">⌂<span>Home</span></button><button data-page="messages" onclick="go('messages')">✉<span>Messages</span></button><button data-page="tutorial" onclick="go('tutorial')">▶<span>Tutorial</span></button><button data-page="social" onclick="go('social')">◎<span>Social</span></button><button data-page="contact" onclick="go('contact')">☎<span>Contact</span></button><button data-page="settings" onclick="go('settings')">⚙<span>Settings</span></button></nav>
-<div id="auth" class="modal"><div class="modal-card"><button class="close" onclick="closeAuth()">×</button><div id="authTitle"></div><div id="signupFields"><label>Name<input id="authName"></label></div><label>Username<input id="authUsername" autocomplete="username"></label><label>Password<input id="authPassword" type="password" autocomplete="current-password"></label><button class="btn primary full" onclick="submitAuth()" id="authBtn">Create Account</button><p id="authSwitch"></p><div id="authMsg"></div></div></div>
-<script src="app.js"></script></body></html>
+<section id="home" class="page active">
+  <div class="hero shell">
+    <div class="hero-copy">
+      <span class="eyebrow">LEARN • CREATE • GROW</span>
+      <h1 id="heroTitle">Learn. Create. Grow Online.</h1>
+      <p id="heroText">I am ABDUL AHEAD. I teach AI video creation, social media skills, captions, hashtags, video creation and promotion — all online.</p>
+      <div class="button-row"><button class="btn primary" onclick="showPage('tutorials')">Start Learning →</button><button class="btn secondary" onclick="showPage('about')">About Me →</button></div>
+      <div class="mini-points"><span>✓ Practical lessons</span><span>✓ Online learning</span><span>✓ Easy to follow</span></div>
+    </div>
+    <div class="hero-media"><img id="heroBanner" src="banner.jpg" alt="ABDUL AHEAD banner"></div>
+  </div>
+  <div class="shell stats"><div><strong id="topicCount">9+</strong><span>Learning Topics</span></div><div><strong>100%</strong><span>Online Learning</span></div><div><strong>24/7</strong><span>Access</span></div><div><strong>FREE</strong><span>To Explore</span></div></div>
+  <div class="shell section-head"><div><span class="eyebrow">EXPLORE</span><h2>What I Teach</h2><p>Open any topic and go directly to the learning resource.</p></div><button class="btn outline" onclick="showPage('tutorials')">View All Tutorials →</button></div>
+  <div class="shell grid" id="homeTutorialGrid"></div>
+  <div class="shell about-panel" id="about">
+    <div><span class="eyebrow">ABOUT ME</span><h2 id="aboutTitle">ABDUL AHEAD</h2><p id="aboutText">I teach everything online and share practical skills for AI, video creation and social media.</p><button class="btn primary" onclick="showPage('contact')">Contact Me →</button></div>
+    <img id="aboutPhoto" src="profile.jpg" alt="ABDUL AHEAD">
+  </div>
+</section>
+<section id="tutorials" class="page"><div class="shell section-head"><div><span class="eyebrow">LEARNING HUB</span><h2>Tutorials</h2><p>Search a topic and open its direct learning link.</p></div></div><div class="shell searchbar"><span>⌕</span><input id="search" placeholder="Search tutorials..." oninput="filterTutorials()"></div><div class="shell grid" id="tutorialGrid"></div></section>
+<section id="aboutPage" class="page"><div class="shell section-head"><div><span class="eyebrow">ABOUT</span><h2>About ABDUL AHEAD</h2></div></div><div class="shell about-page-card"><img src="profile.jpg" alt="ABDUL AHEAD"><div><h3 id="aboutPageName">ABDUL AHEAD</h3><p id="aboutPageText">I teach everything online.</p><button class="btn primary" onclick="showPage('contact')">Contact Me →</button></div></div></section>
+<section id="social" class="page"><div class="shell section-head"><div><span class="eyebrow">CONNECT</span><h2>Social Media</h2><p>Every important link is a working button.</p></div></div><div class="shell grid" id="socialGrid"></div></section>
+<section id="contact" class="page"><div class="shell section-head"><div><span class="eyebrow">CONTACT</span><h2>Contact Me</h2><p>Your phone number stays hidden; use the buttons below.</p></div></div><div class="shell grid contact-grid" id="contactGrid"></div></section>
+</main>
+<nav class="bottom-nav"><button data-page="home" onclick="showPage('home')">⌂<span>Home</span></button><button data-page="tutorials" onclick="showPage('tutorials')">▶<span>Tutorial</span></button><button data-page="social" onclick="showPage('social')">◎<span>Social</span></button><button data-page="contact" onclick="showPage('contact')">✉<span>Contact</span></button></nav>
+<footer><div class="shell footer-inner"><div><b id="footerName">𝐀𝐇𝐀𝐃 𝐁𝐇𝐀𝐈 𝐒𝐊𝐈𝐋𝐋 𝐋𝐀𝐁</b><span>LEARN • CREATE • GROW</span></div><div class="footer-actions"><button class="btn small outline" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to Top</button><a class="btn small ghost" href="admin.html">🔐 Admin Panel</a></div></div></footer>
+<script src="app.js"></script>
+</body></html>
