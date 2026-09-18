@@ -2,687 +2,1654 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#111827">
-<title>AHEAD VIA</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#0f172a">
+<title>AHEAD VIA SKILL HUB</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#f4f7fb;
-  color:#172033;
-  padding-bottom:82px;
+  color:#e5e7eb;
+  background:
+    radial-gradient(circle at 20% 10%,rgba(37,99,235,.25),transparent 30%),
+    radial-gradient(circle at 90% 30%,rgba(124,58,237,.22),transparent 30%),
+    linear-gradient(135deg,#020617,#0f172a 45%,#111827);
+  min-height:100vh;
+  padding-bottom:82px
 }
 button,input,textarea,select{font:inherit}
 button{cursor:pointer;border:0}
 a{text-decoration:none;color:inherit}
 
-header{
-  background:linear-gradient(135deg,#111827,#2563eb);
+.hidden{display:none!important}
+
+/* AUTH */
+#authPage{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  background:
+    radial-gradient(circle at top left,rgba(37,99,235,.35),transparent 35%),
+    radial-gradient(circle at bottom right,rgba(168,85,247,.3),transparent 35%);
+}
+
+.auth-box{
+  width:min(440px,100%);
+  padding:30px 22px;
+  border:1px solid rgba(255,255,255,.13);
+  background:rgba(15,23,42,.78);
+  backdrop-filter:blur(20px);
+  border-radius:28px;
+  box-shadow:0 25px 70px rgba(0,0,0,.45);
+}
+
+.auth-logo{
+  width:82px;
+  height:82px;
+  display:block;
+  margin:0 auto 15px;
+  object-fit:contain;
+  border-radius:22px;
+}
+
+.auth-title{
+  text-align:center;
+  font-size:25px;
+  margin-bottom:6px;
+}
+
+.auth-sub{
+  text-align:center;
+  color:#94a3b8;
+  font-size:13px;
+  margin-bottom:24px;
+}
+
+.auth-tabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:20px;
+}
+
+.auth-tab{
+  flex:1;
+  padding:11px;
+  border-radius:12px;
+  background:#1e293b;
+  color:#94a3b8;
+  font-weight:bold;
+}
+
+.auth-tab.active{
+  background:#2563eb;
   color:white;
-  padding:28px 18px 35px;
-  border-radius:0 0 28px 28px;
-}
-.top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-.profile{
-  display:flex;
-  align-items:center;
-  gap:13px;
-}
-.profile img{
-  width:62px;height:62px;border-radius:50%;
-  object-fit:cover;border:3px solid white;
-}
-.profile h1{font-size:22px}
-.profile p{font-size:13px;opacity:.85;margin-top:4px}
-
-.lang{
-  background:white;color:#111827;
-  padding:9px 12px;border-radius:20px;
-  font-weight:bold;font-size:12px;
 }
 
-.about{
-  margin-top:22px;
+.auth-form{display:none}
+.auth-form.active{display:block}
+
+.form-group{margin-bottom:14px}
+.form-group label{
+  display:block;
+  margin-bottom:7px;
+  font-size:13px;
+  font-weight:bold;
+  color:#cbd5e1;
 }
-.about h2{font-size:25px;margin-bottom:8px}
-.about p{font-size:14px;line-height:1.6;opacity:.94}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid #334155;
+  border-radius:13px;
+  outline:none;
+  color:white;
+  background:#0f172a;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+  border-color:#3b82f6;
+}
+
+.auth-btn{
+  width:100%;
+  padding:14px;
+  border-radius:13px;
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  color:white;
+  font-weight:bold;
+  margin-top:5px;
+}
+
+.auth-link{
+  display:block;
+  text-align:center;
+  color:#60a5fa;
+  font-size:13px;
+  margin-top:15px;
+  cursor:pointer;
+}
+
+.auth-message{
+  padding:10px 12px;
+  border-radius:10px;
+  margin-bottom:13px;
+  font-size:13px;
+  display:none;
+}
+
+.auth-message.show{display:block}
+.auth-message.error{background:#451a1a;color:#fecaca}
+.auth-message.success{background:#064e3b;color:#a7f3d0}
+
+/* APP */
+#app{display:none}
 
 .container{
-  width:min(1100px,94%);
+  width:min(1120px,94%);
   margin:auto;
 }
-.section{padding:25px 0}
+
+header{
+  padding:20px 0 30px;
+  background:
+    linear-gradient(135deg,rgba(15,23,42,.96),rgba(30,64,175,.82)),
+    radial-gradient(circle at top right,#7c3aed,transparent 40%);
+  border-radius:0 0 35px 35px;
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.brand-logo{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+  border-radius:14px;
+  background:white;
+  padding:3px;
+}
+
+.brand-name{
+  font-size:18px;
+  font-weight:800;
+}
+
+.brand-small{
+  color:#94a3b8;
+  font-size:11px;
+  margin-top:3px;
+}
+
+.lang{
+  background:white;
+  color:#111827;
+  padding:9px 13px;
+  border-radius:20px;
+  font-weight:bold;
+  font-size:12px;
+}
+
+.logout{
+  background:#ef4444;
+  color:white;
+  padding:9px 12px;
+  border-radius:20px;
+  font-weight:bold;
+  font-size:12px;
+}
+
+.about-card{
+  margin-top:25px;
+  padding:22px;
+  border-radius:23px;
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(15px);
+}
+
+.about-profile{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:15px;
+}
+
+.about-profile img{
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid white;
+}
+
+.about-profile h2{
+  font-size:18px;
+}
+
+.about-profile p{
+  color:#93c5fd;
+  font-size:12px;
+  margin-top:3px;
+}
+
+.about-title{
+  font-size:18px;
+  margin-bottom:7px;
+}
+
+.about-text{
+  color:#cbd5e1;
+  line-height:1.65;
+  font-size:13px;
+}
+
+.hero-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:17px;
+}
+
+.btn{
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:11px;
+  color:white;
+  background:#2563eb;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.btn.green{background:#059669}
+.btn.purple{background:#7c3aed}
+.btn.red{background:#dc2626}
+.btn.light{
+  background:#dbeafe;
+  color:#1d4ed8;
+}
+.btn.dark{background:#1e293b}
+
+.section{
+  padding:28px 0;
+}
+
 .section-title{
   display:flex;
   justify-content:space-between;
   align-items:center;
   margin-bottom:15px;
 }
-.section-title h2{font-size:22px}
+
+.section-title h2{
+  font-size:21px;
+}
+
+.section-title p{
+  color:#94a3b8;
+  font-size:12px;
+}
+
 .search{
   width:100%;
   padding:14px 16px;
-  border:1px solid #dbe2ea;
   border-radius:15px;
+  border:1px solid #334155;
   outline:none;
-  background:white;
-  margin-bottom:18px;
+  background:#0f172a;
+  color:white;
+  margin-bottom:17px;
 }
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(205px,1fr));
   gap:14px;
 }
+
 .card{
-  background:white;
-  border:1px solid #e4e9f0;
-  border-radius:18px;
-  padding:18px;
-  box-shadow:0 6px 18px rgba(0,0,0,.05);
-}
-.icon{font-size:30px;margin-bottom:10px}
-.card h3{font-size:16px;margin-bottom:7px}
-.card p{
-  font-size:13px;
-  color:#657084;
-  line-height:1.5;
-  min-height:38px;
-}
-.btn{
-  display:inline-block;
-  background:#2563eb;
-  color:white;
-  padding:10px 14px;
-  border-radius:11px;
-  margin-top:13px;
-  font-size:13px;
-  font-weight:bold;
-}
-.btn.secondary{background:#111827}
-.btn.green{background:#059669}
-.btn.red{background:#dc2626}
-.btn.light{
-  background:#eef4ff;
-  color:#2563eb;
-}
-
-.community{
-  background:#111827;
-  color:white;
-  border-radius:22px;
-  padding:22px;
-}
-.community .card{
-  color:#172033;
-}
-.contact-box{
-  background:white;
-  padding:20px;
+  background:rgba(15,23,42,.8);
+  border:1px solid rgba(148,163,184,.13);
   border-radius:20px;
-  border:1px solid #e4e9f0;
+  padding:18px;
+  box-shadow:0 12px 30px rgba(0,0,0,.16);
+  transition:.2s;
 }
-.contact-row{
-  padding:13px 0;
-  border-bottom:1px solid #edf0f4;
-}
-.contact-row:last-child{border:0}
-.contact-row strong{display:block;margin-bottom:5px}
-.contact-row span{color:#667085;font-size:14px}
 
-.bottom{
-  position:fixed;
-  bottom:0;left:0;right:0;
-  background:white;
-  border-top:1px solid #e5e7eb;
-  display:flex;
-  justify-content:space-around;
-  padding:8px 3px;
-  z-index:50;
+.card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(96,165,250,.4);
 }
-.bottom button{
-  background:none;
-  color:#687386;
-  font-size:10px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:3px;
-}
-.bottom button span{font-size:20px}
-.bottom button.active{color:#2563eb;font-weight:bold}
 
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  display:none;
-  align-items:flex-end;
-  justify-content:center;
-  z-index:100;
-}
-.modal.show{display:flex}
-.modal-box{
-  background:white;
-  width:min(650px,100%);
-  max-height:90vh;
-  overflow:auto;
-  border-radius:25px 25px 0 0;
-  padding:22px;
-}
-.modal-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:18px;
-}
-.close{
-  background:#eef2f7;
-  width:36px;height:36px;
-  border-radius:50%;
-  font-size:20px;
-}
-.form-group{margin-bottom:14px}
-.form-group label{
-  display:block;
-  font-size:13px;
-  font-weight:bold;
-  margin-bottom:7px;
-}
-.form-group input,
-.form-group textarea,
-.form-group select{
-  width:100%;
-  padding:12px;
-  border:1px solid #d9e0e8;
-  border-radius:12px;
-  outline:none;
-  background:#fafbfd;
-}
-.form-group textarea{min-height:120px;resize:vertical}
-.result{
-  margin-top:15px;
-  background:#f1f5f9;
-  padding:15px;
-  border-radius:13px;
-  white-space:pre-wrap;
-  line-height:1.6;
-  font-size:14px;
-}
-.hidden{display:none}
-
-.hero-tools{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:18px;
+.icon{
+  font-size:29px;
+  margin-bottom:10px;
 }
 
 .badge{
   display:inline-block;
-  background:#eaf1ff;
-  color:#2563eb;
-  padding:5px 9px;
+  font-size:10px;
+  padding:5px 8px;
   border-radius:20px;
-  font-size:11px;
+  background:#1e3a8a;
+  color:#bfdbfe;
   margin-bottom:8px;
+}
+
+.card h3{
+  font-size:15px;
+  margin-bottom:7px;
+}
+
+.card p{
+  color:#94a3b8;
+  font-size:12px;
+  line-height:1.55;
+  min-height:38px;
+}
+
+.community{
+  padding:22px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#111827,#172554);
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.contact-box{
+  background:rgba(15,23,42,.82);
+  border:1px solid rgba(148,163,184,.13);
+  border-radius:22px;
+  padding:20px;
+}
+
+.contact-row{
+  padding:15px 0;
+  border-bottom:1px solid #1e293b;
+}
+
+.contact-row:last-child{border-bottom:0}
+
+.contact-row strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.contact-row span{
+  color:#94a3b8;
+  font-size:12px;
+}
+
+.bottom{
+  position:fixed;
+  z-index:50;
+  left:0;
+  right:0;
+  bottom:0;
+  display:flex;
+  justify-content:space-around;
+  gap:2px;
+  padding:8px 2px;
+  background:rgba(2,6,23,.95);
+  backdrop-filter:blur(15px);
+  border-top:1px solid #1e293b;
+}
+
+.bottom button{
+  background:none;
+  color:#64748b;
+  font-size:9px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+  padding:2px;
+}
+
+.bottom button span{
+  font-size:19px;
+}
+
+.bottom button.active{
+  color:#60a5fa;
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  z-index:100;
+  inset:0;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  background:rgba(0,0,0,.7);
+}
+
+.modal.show{display:flex}
+
+.modal-box{
+  width:min(680px,100%);
+  max-height:91vh;
+  overflow:auto;
+  padding:22px;
+  background:#0f172a;
+  border:1px solid #334155;
+  border-radius:26px 26px 0 0;
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:18px;
+}
+
+.modal-head h2{font-size:20px}
+.modal-head p{
+  color:#94a3b8;
+  font-size:12px;
+  margin-top:5px;
+}
+
+.close{
+  width:37px;
+  height:37px;
+  border-radius:50%;
+  background:#1e293b;
+  color:white;
+  font-size:20px;
+}
+
+.result{
+  margin-top:15px;
+  padding:15px;
+  border-radius:14px;
+  background:#020617;
+  border:1px solid #1e293b;
+  white-space:pre-wrap;
+  line-height:1.6;
+  font-size:13px;
+}
+
+.lesson-content{
+  color:#cbd5e1;
+  line-height:1.7;
+  font-size:13px;
+}
+
+.lesson-content h3{
+  color:white;
+  margin:15px 0 7px;
 }
 
 footer{
   text-align:center;
-  padding:25px 15px;
-  color:#7b8494;
-  font-size:12px;
+  color:#64748b;
+  padding:25px 10px;
+  font-size:11px;
+}
+
+@media(max-width:500px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .card{padding:14px}
+  .card h3{font-size:13px}
+  .card p{font-size:11px}
+  .brand-name{font-size:15px}
+}
+
+@media(max-width:370px){
+  .grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
-<header id="home">
-  <div class="container">
-    <div class="top">
-      <div class="profile">
-        <img src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg" alt="ABDUL AHAD">
-        <div>
-          <h1>ABDUL AHAD</h1>
-          <p>AHEAD VIA</p>
-        </div>
-      </div>
+<!-- ================= AUTH ================= -->
 
-      <button class="lang" onclick="toggleLanguage()" id="langBtn">
-        বাংলা
+<div id="authPage">
+
+  <div class="auth-box">
+
+    <img class="auth-logo"
+      src="https://i.ibb.co.com/xd1bjsh/1788349715746.png">
+
+    <div class="auth-title">AHEAD VIA SKILL HUB</div>
+    <div class="auth-sub">
+      Digital Tools • Skills • Resources
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="loginTab"
+        onclick="showAuth('login')">
+        Login
+      </button>
+
+      <button class="auth-tab" id="registerTab"
+        onclick="showAuth('register')">
+        Register
       </button>
     </div>
 
-    <div class="about">
-      <h2 data-en="About Me" data-bn="আমার সম্পর্কে">About Me</h2>
-      <p id="aboutText">
-        Hi, I’m ABDUL AHAD. 👋<br>
-        Welcome to AHEAD VIA — a simple platform for useful digital tools,
-        content creation and online resources. 🚀
-      </p>
+    <div id="authMessage" class="auth-message"></div>
 
-      <div class="hero-tools">
-        <a class="btn green" href="https://t.me/Aheadvia1298" target="_blank">
-          ✈️ Telegram
-        </a>
-        <a class="btn light" href="#tools">
-          🤖 Explore Tools
-        </a>
+    <!-- LOGIN -->
+    <form id="loginForm" class="auth-form active"
+      onsubmit="loginUser(event)">
+
+      <div class="form-group">
+        <label>👤 Username</label>
+        <input id="loginUsername"
+          type="text"
+          placeholder="Enter username"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label>🔒 Password</label>
+        <input id="loginPassword"
+          type="password"
+          placeholder="Enter password"
+          required>
+      </div>
+
+      <button class="auth-btn" type="submit">
+        🔵 Login
+      </button>
+
+      <span class="auth-link" onclick="forgotPassword()">
+        🔑 Forgot Password?
+      </span>
+
+      <span class="auth-link"
+        onclick="showAuth('register')">
+        📝 Don't have an account? Register
+      </span>
+
+    </form>
+
+    <!-- REGISTER -->
+    <form id="registerForm" class="auth-form"
+      onsubmit="registerUser(event)">
+
+      <div class="form-group">
+        <label>👤 Username</label>
+        <input id="regUsername"
+          type="text"
+          minlength="3"
+          maxlength="30"
+          placeholder="Create username"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label>🔒 Password</label>
+        <input id="regPassword"
+          type="password"
+          minlength="6"
+          placeholder="Create password"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label>🔒 Confirm Password</label>
+        <input id="regConfirm"
+          type="password"
+          minlength="6"
+          placeholder="Confirm password"
+          required>
+      </div>
+
+      <button class="auth-btn" type="submit">
+        🔵 Register
+      </button>
+
+      <span class="auth-link"
+        onclick="showAuth('login')">
+        ↩️ Already have an account? Login
+      </span>
+
+    </form>
+
+  </div>
+</div>
+
+
+<!-- ================= APP ================= -->
+
+<div id="app">
+
+<header id="home">
+<div class="container">
+
+  <div class="top">
+
+    <div class="brand">
+      <img class="brand-logo"
+        src="https://i.ibb.co.com/xd1bjsh/1788349715746.png">
+
+      <div>
+        <div class="brand-name">
+          AHEAD VIA SKILL HUB
+        </div>
+        <div class="brand-small">
+          Digital Skills & Creator Tools
+        </div>
       </div>
     </div>
+
+    <div style="display:flex;gap:6px">
+      <button class="lang"
+        onclick="toggleLanguage()"
+        id="langBtn">
+        বাংলা
+      </button>
+
+      <button class="logout"
+        onclick="logoutUser()">
+        Logout
+      </button>
+    </div>
+
   </div>
+
+
+  <div class="about-card">
+
+    <div class="about-profile">
+      <img src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg">
+
+      <div>
+        <h2>ABDUL AHAD</h2>
+        <p>AHEAD VIA SKILL HUB</p>
+      </div>
+    </div>
+
+    <div class="about-title"
+      data-en="About Me"
+      data-bn="আমার সম্পর্কে">
+      About Me
+    </div>
+
+<div class="about-text" id="aboutText">
+      Hi, I’m ABDUL AHAD. 👋 I work on different types of
+      websites, digital projects, and online income systems.
+      I also explore various income skills, free earning
+      opportunities, investment-based work, AI tools,
+      video creation, thumbnails, content creation, and
+      many other digital topics. 🚀 Through AHEAD VIA SKILL HUB,
+      I aim to bring useful information, tools, and resources
+      together in one place.
+    </div>
+
+    <div class="hero-buttons">
+
+      <a class="btn green"
+        href="https://t.me/Aheadvia1298"
+        target="_blank">
+        ✈️ Telegram
+      </a>
+
+      <a class="btn purple"
+        href="#tools">
+        🤖 Explore Tools
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
 </header>
 
 
 <main class="container">
 
-<!-- HOME -->
+<!-- FEATURED -->
 <section class="section">
+
   <div class="section-title">
-    <h2 data-en="Featured Tools" data-bn="গুরুত্বপূর্ণ টুলস">Featured Tools</h2>
+    <h2 data-en="⭐ Featured Tools"
+      data-bn="⭐ গুরুত্বপূর্ণ টুলস">
+      ⭐ Featured Tools
+    </h2>
   </div>
 
   <div class="grid" id="featured"></div>
+
 </section>
 
 
 <!-- TOOLS -->
 <section class="section" id="tools">
+
   <div class="section-title">
-    <h2>🤖 <span data-en="All Tools" data-bn="সব টুলস">All Tools</span></h2>
+    <h2>🤖
+      <span data-en="All Tools"
+        data-bn="সব টুলস">
+        All Tools
+      </span>
+    </h2>
   </div>
 
-  <input
-    class="search"
+  <input class="search"
     id="search"
     placeholder="Search tools..."
-    oninput="searchTools()"
-  >
+    oninput="searchTools()">
 
   <div class="grid" id="toolGrid"></div>
+
 </section>
 
 
 <!-- LEARN -->
 <section class="section" id="learn">
+
   <div class="section-title">
-    <h2>📚 <span data-en="Learn Digital Skills" data-bn="ডিজিটাল স্কিল শিখুন">Learn Digital Skills</span></h2>
+    <h2>📚
+      <span data-en="Learn Digital Skills"
+        data-bn="ডিজিটাল স্কিল শিখুন">
+        Learn Digital Skills
+      </span>
+    </h2>
   </div>
+
   <div class="grid" id="learnGrid"></div>
+
 </section>
 
 
 <!-- TRENDING -->
 <section class="section" id="trending">
+
   <div class="section-title">
-    <h2>🔥 <span data-en="Trending" data-bn="ট্রেন্ডিং">Trending</span></h2>
+    <h2>🔥
+      <span data-en="Trending"
+        data-bn="ট্রেন্ডিং">
+        Trending
+      </span>
+    </h2>
   </div>
+
   <div class="grid" id="trendGrid"></div>
+
 </section>
 
 
 <!-- COMMUNITY -->
 <section class="section" id="community">
-  <div class="community">
-    <div class="section-title">
-      <h2>📢 <span data-en="Community" data-bn="কমিউনিটি">Community</span></h2>
-    </div>
 
-    <div class="grid">
+<div class="community">
 
-      <div class="card">
-        <div class="icon">📣</div>
-        <h3>AHEAD VIA FREE ONLINE INCOME SARVICE</h3>
-        <p>Telegram Channel</p>
-        <a class="btn" href="https://t.me/Aheadvia1298gf" target="_blank">Join Channel</a>
-      </div>
+  <div class="section-title">
+    <h2>📢
+      <span data-en="Community"
+        data-bn="কমিউনিটি">
+        Community
+      </span>
+    </h2>
+  </div>
 
-      <div class="card">
-        <div class="icon">📣</div>
-        <h3>AHEAD SKILL HUB | OFFICIAL</h3>
-        <p>Telegram Channel</p>
-        <a class="btn" href="https://t.me/aheadskillhub120" target="_blank">Join Channel</a>
-      </div>
+  <div class="grid">
 
-      <div class="card">
-        <div class="icon">👥</div>
-        <h3>NEW MEMBER GROUP meta pro space</h3>
-        <p>Telegram Group</p>
-        <a class="btn" href="https://t.me/Aheadviaiskill_hab" target="_blank">Join Group</a>
-      </div>
-
-      <div class="card">
-        <div class="icon">👥</div>
-        <h3>AHEAD SKILL HUB | OFFICIAL GROUP</h3>
-        <p>Telegram Group</p>
-        <a class="btn" href="https://t.me/aheadskillhub12" target="_blank">Join Group</a>
-      </div>
-
-    </div>
-
-    <div style="margin-top:20px">
-      <a class="btn green" href="https://t.me/Aheadvia1298" target="_blank">
-        👤 @Aheadvia1298
+    <div class="card">
+      <div class="icon">📣</div>
+      <h3>AHEAD VIA FREE ONLINE INCOME SARVICE</h3>
+      <p>Telegram Channel</p>
+      <a class="btn" href="https://t.me/Aheadvia1298gf"
+        target="_blank">
+        Join Channel
       </a>
     </div>
+
+    <div class="card">
+      <div class="icon">📣</div>
+      <h3>AHEAD SKILL HUB | OFFICIAL</h3>
+      <p>Telegram Channel</p>
+      <a class="btn" href="https://t.me/aheadskillhub120"
+        target="_blank">
+        Join Channel
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="icon">👥</div>
+      <h3>NEW MEMBER GROUP meta pro space</h3>
+      <p>Telegram Group</p>
+      <a class="btn" href="https://t.me/Aheadviaiskill_hab"
+        target="_blank">
+        Join Group
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="icon">👥</div>
+      <h3>AHEAD SKILL HUB | OFFICIAL GROUP</h3>
+      <p>Telegram Group</p>
+      <a class="btn" href="https://t.me/aheadskillhub12"
+        target="_blank">
+        Join Group
+      </a>
+    </div>
+
   </div>
+
+  <div style="margin-top:18px">
+    <a class="btn green"
+      href="https://t.me/Aheadvia1298"
+      target="_blank">
+      👤 @Aheadvia1298
+    </a>
+  </div>
+
+</div>
 </section>
 
 
 <!-- PROFILE -->
 <section class="section" id="profile">
+
   <div class="section-title">
-    <h2>👤 <span data-en="Profile" data-bn="প্রোফাইল">Profile</span></h2>
+    <h2>👤
+      <span data-en="Profile"
+        data-bn="প্রোফাইল">
+        Profile
+      </span>
+    </h2>
   </div>
 
-  <div class="contact-box">
-    <div style="text-align:center">
-      <img
-        src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg"
-        style="width:120px;height:120px;border-radius:50%;object-fit:cover"
-      >
-      <h2 style="margin-top:12px">ABDUL AHAD</h2>
-      <p style="margin-top:8px;color:#687386">
-        AHEAD VIA
-      </p>
+  <div class="contact-box"
+    style="text-align:center">
 
-      <a class="btn" href="https://t.me/Aheadvia1298" target="_blank">
-        ✈️ Message on Telegram
-      </a>
-    </div>
+    <img
+      src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg"
+      style="width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid #3b82f6">
+
+    <h2 style="margin-top:12px">
+      ABDUL AHAD
+    </h2>
+
+    <p style="color:#94a3b8;margin-top:6px">
+      AHEAD VIA SKILL HUB
+    </p>
+
+<a class="btn"
+      href="https://t.me/Aheadvia1298"
+      target="_blank"
+      style="margin-top:15px">
+      ✈️ Message on Telegram
+    </a>
+
   </div>
+
 </section>
 
 
 <!-- CONTACT -->
 <section class="section" id="contact">
+
   <div class="section-title">
-    <h2>📞 <span data-en="Contact" data-bn="যোগাযোগ">Contact</span></h2>
+    <h2>📞
+      <span data-en="Contact"
+        data-bn="যোগাযোগ">
+        Contact
+      </span>
+    </h2>
   </div>
 
   <div class="contact-box">
 
     <div class="contact-row">
       <strong>💬 WhatsApp</strong>
-      <span>01400524877</span><br>
-      <a class="btn green" href="https://wa.me/8801400524877" target="_blank">
+      <span>Chat directly on WhatsApp</span>
+      <br>
+      <a class="btn green"
+        href="https://wa.me/8801400524877"
+        target="_blank">
         Chat on WhatsApp
       </a>
     </div>
 
     <div class="contact-row">
-      <strong>📱 Contact Number</strong>
-      <span>01335611366</span><br>
-      <a class="btn" href="tel:01335611366">
+      <strong>📱 Contact</strong>
+      <span>Call directly</span>
+      <br>
+      <a class="btn"
+        href="tel:01335611366">
         Call Now
       </a>
     </div>
 
     <div class="contact-row">
       <strong>📧 Email</strong>
-      <span>msssaimaislam6@gmail.com</span><br>
-      <a class="btn secondary" href="mailto:msssaimaislam6@gmail.com">
+      <span>Send an email message</span>
+      <br>
+      <a class="btn dark"
+        href="mailto:msssaimaislam6@gmail.com">
         Send Email
       </a>
     </div>
 
     <div class="contact-row">
       <strong>✈️ Telegram</strong>
-      <span>@Aheadvia1298</span><br>
-      <a class="btn" href="https://t.me/Aheadvia1298" target="_blank">
-        Message
+      <span>Message ABDUL AHAD</span>
+      <br>
+      <a class="btn"
+        href="https://t.me/Aheadvia1298"
+        target="_blank">
+        Message on Telegram
       </a>
     </div>
 
     <div class="contact-row">
+
       <strong>🌐 Social Media</strong>
-      <div style="margin-top:10px">
-        <a class="btn light" href="https://www.facebook.com/share/19YtirSEwS/" target="_blank">Facebook</a>
-        <a class="btn light" href="https://www.youtube.com/@KittySnipsStories" target="_blank">YouTube</a>
-        <a class="btn light" href="https://www.instagram.com/kittysnipsofficial" target="_blank">Instagram</a>
-        <a class="btn light" href="https://x.com/Abdulaheadrllm" target="_blank">X</a>
+
+      <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:7px">
+
+        <a class="btn light"
+          href="https://www.facebook.com/share/19YtirSEwS/"
+          target="_blank">Facebook</a>
+
+        <a class="btn light"
+          href="https://www.youtube.com/@KittySnipsStories"
+          target="_blank">YouTube</a>
+
+        <a class="btn light"
+          href="https://www.instagram.com/kittysnipsofficial"
+          target="_blank">Instagram</a>
+
+        <a class="btn light"
+          href="https://x.com/Abdulaheadrllm"
+          target="_blank">X</a>
+
       </div>
+
     </div>
 
   </div>
+
 </section>
 
 </main>
 
 
 <footer>
-  © 2026 AHEAD VIA • ABDUL AHAD
+© 2026 AHEAD VIA SKILL HUB • ABDUL AHAD
 </footer>
 
 
 <!-- BOTTOM NAV -->
 <nav class="bottom">
-  <button class="active" onclick="goTo('home',this)">
-    <span>🏠</span>Home
-  </button>
 
-  <button onclick="goTo('tools',this)">
-    <span>🤖</span>Tools
-  </button>
+<button class="active"
+ onclick="goTo('home',this)">
+<span>🏠</span>
+Home
+</button>
 
-  <button onclick="goTo('learn',this)">
-    <span>📚</span>Learn
-  </button>
+<button onclick="goTo('tools',this)">
+<span>🤖</span>
+Tools
+</button>
 
-  <button onclick="goTo('trending',this)">
-    <span>🔥</span>Trending
-  </button>
+<button onclick="goTo('learn',this)">
+<span>📚</span>
+Learn
+</button>
 
-  <button onclick="goTo('community',this)">
-    <span>📢</span>Community
-  </button>
+<button onclick="goTo('trending',this)">
+<span>🔥</span>
+Trending
+</button>
 
-  <button onclick="goTo('profile',this)">
-    <span>👤</span>Profile
-  </button>
+<button onclick="goTo('community',this)">
+<span>📢</span>
+Community
+</button>
 
-  <button onclick="goTo('contact',this)">
-    <span>📞</span>Contact
-  </button>
+<button onclick="goTo('profile',this)">
+<span>👤</span>
+Profile
+</button>
+
+<button onclick="goTo('contact',this)">
+<span>📞</span>
+Contact
+</button>
+
 </nav>
 
+</div>
 
-<!-- TOOL MODAL -->
+
+<!-- ================= TOOL MODAL ================= -->
+
 <div class="modal" id="toolModal">
-  <div class="modal-box">
 
-    <div class="modal-head">
-      <div>
-        <h2 id="modalTitle">Tool</h2>
-        <p id="modalDescription" style="color:#667085;margin-top:5px;font-size:13px"></p>
-      </div>
-      <button class="close" onclick="closeTool()">×</button>
+<div class="modal-box">
+
+  <div class="modal-head">
+
+    <div>
+      <h2 id="modalTitle">Tool</h2>
+      <p id="modalDescription"></p>
     </div>
 
-    <div id="toolForm"></div>
-
-    <button class="btn" style="width:100%;margin-top:8px" onclick="generateTool()">
-      ✨ Generate
-    </button>
-
-    <div id="toolResult" class="result hidden"></div>
-
-    <div id="resultButtons" class="hidden" style="margin-top:10px">
-      <button class="btn green" onclick="copyResult()">📋 Copy</button>
-      <button class="btn secondary" onclick="generateTool()">🔄 Generate Again</button>
-    </div>
+    <button class="close"
+      onclick="closeTool()">×</button>
 
   </div>
+
+  <div id="toolForm"></div>
+
+  <button class="btn"
+    style="width:100%;margin-top:5px"
+    onclick="generateTool()">
+    ✨ Generate
+  </button>
+
+  <div id="toolResult"
+    class="result hidden"></div>
+
+  <div id="resultButtons"
+    class="hidden"
+    style="margin-top:10px">
+
+    <button class="btn green"
+      onclick="copyResult()">
+      📋 Copy
+    </button>
+
+    <button class="btn dark"
+      onclick="generateTool()">
+      🔄 Generate Again
+    </button>
+
+  </div>
+
+</div>
+</div>
+
+
+<!-- LESSON MODAL -->
+
+<div class="modal" id="lessonModal">
+
+<div class="modal-box">
+
+  <div class="modal-head">
+    <div>
+      <h2 id="lessonTitle">Lesson</h2>
+    </div>
+
+    <button class="close"
+      onclick="closeLesson()">×</button>
+  </div>
+
+  <div id="lessonContent"
+    class="lesson-content"></div>
+
+</div>
 </div>
 
 
 <script>
 
-/* =========================
+/* =====================================================
+   SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+"https://xyevktphpcecqaeapafe.supabase.co";
+
+/* এখানে আপনার Publishable Key বসাবেন */
+const SUPABASE_KEY =sb_publishable_v9KFnlmn-BJsZrs2CDLrsw_NUCAkVZy
+
+const supabaseClient =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
+/* =====================================================
+   AUTH
+===================================================== */
+
+function usernameEmail(username){
+  return username.toLowerCase().trim()
+    .replace(/[^a-z0-9._-]/g,"")
+    + "@aheadvia.local";
+}
+
+
+function showAuth(type){
+
+  document.getElementById("loginForm")
+    .classList.toggle("active",type==="login");
+
+  document.getElementById("registerForm")
+    .classList.toggle("active",type==="register");
+
+  document.getElementById("loginTab")
+    .classList.toggle("active",type==="login");
+
+  document.getElementById("registerTab")
+    .classList.toggle("active",type==="register");
+
+  clearMessage();
+}
+
+
+function showMessage(message,type="error"){
+
+  const box=document.getElementById("authMessage");
+
+  box.textContent=message;
+  box.className="auth-message show "+type;
+}
+
+
+function clearMessage(){
+
+  const box=document.getElementById("authMessage");
+
+  box.textContent="";
+  box.className="auth-message";
+}
+
+
+async function registerUser(e){
+
+  e.preventDefault();
+
+  clearMessage();
+
+  const username=
+    document.getElementById("regUsername")
+    .value.trim();
+
+  const password=
+    document.getElementById("regPassword")
+    .value;
+
+  const confirm=
+    document.getElementById("regConfirm")
+    .value;
+
+  if(password!==confirm){
+
+    showMessage(
+      "Password and Confirm Password do not match."
+    );
+
+    return;
+  }
+
+  if(username.length<3){
+
+    showMessage(
+      "Username must contain at least 3 characters."
+    );
+
+    return;
+  }
+
+  try{
+
+    const email=usernameEmail(username);
+
+    const {data,error}=
+      await supabaseClient.auth.signUp({
+        email:email,
+        password:password,
+        options:{
+          data:{
+            username:username
+          }
+        }
+      });
+
+    if(error) throw error;
+
+    showMessage(
+      "Registration successful. You can now Login.",
+      "success"
+    );
+
+    document.getElementById("regPassword").value="";
+    document.getElementById("regConfirm").value="";
+
+    setTimeout(()=>{
+      showAuth("login");
+      document.getElementById("loginUsername").value=username;
+    },1000);
+
+  }catch(error){
+
+    showMessage(error.message);
+
+  }
+
+}
+
+
+async function loginUser(e){
+
+  e.preventDefault();
+
+  clearMessage();
+
+  const username=
+    document.getElementById("loginUsername")
+    .value.trim();
+
+  const password=
+    document.getElementById("loginPassword")
+    .value;
+
+  try{
+
+    const email=usernameEmail(username);
+
+    const {data,error}=
+      await supabaseClient.auth.signInWithPassword({
+        email:email,
+        password:password
+      });
+
+    if(error) throw error;
+
+    openApp();
+
+  }catch(error){
+
+    showMessage(
+      "Login failed: "+error.message
+    );
+
+  }
+
+}
+
+
+async function logoutUser(){
+
+  await supabaseClient.auth.signOut();
+
+  document.getElementById("app").style.display="none";
+  document.getElementById("authPage").style.display="flex";
+
+  showAuth("login");
+}
+
+
+async function forgotPassword(){
+
+  const username=
+    prompt("Enter your username:");
+
+  if(!username) return;
+
+  alert(
+    "For security, password reset requires an actual email-based account. This username-only registration does not have a recovery email configured."
+  );
+
+}
+
+
+async function checkSession(){
+
+  const {data}=
+    await supabaseClient.auth.getSession();
+
+  if(data.session){
+
+    openApp();
+
+  }else{
+
+    document.getElementById("authPage")
+      .style.display="flex";
+
+    document.getElementById("app")
+      .style.display="none";
+
+  }
+
+}
+
+
+function openApp(){
+
+  document.getElementById("authPage")
+    .style.display="none";
+
+  document.getElementById("app")
+    .style.display="block";
+
+  window.scrollTo(0,0);
+
+}
+
+
+/* =====================================================
    LANGUAGE
-========================= */
+===================================================== */
 
 let lang="en";
 
 function toggleLanguage(){
-  lang=lang==="en"?"bn":"en";
-  document.getElementById("langBtn").textContent=lang==="en"?"বাংলা":"English";
 
-  document.querySelectorAll("[data-en]").forEach(el=>{
-    el.textContent=el.getAttribute(lang==="en"?"data-en":"data-bn");
-  });
+  lang=lang==="en"?"bn":"en";
+
+document.getElementById("langBtn")
+    .textContent=lang==="en"?"বাংলা":"English";
+
+  document.querySelectorAll("[data-en]")
+    .forEach(el=>{
+
+      el.textContent=
+        el.getAttribute(
+          lang==="en"?"data-en":"data-bn"
+        );
+
+    });
+
 }
 
 
-/* =========================
+/* =====================================================
    TOOLS
-========================= */
+===================================================== */
 
 const tools=[
 
 ["✍️","Caption Generator","Create captions for social media posts.","content"],
+
 ["#️⃣","Hashtag Generator","Generate hashtags from your topic.","content"],
+
 ["💡","Content Ideas","Get ideas for your next post or video.","content"],
+
 ["📝","Title Generator","Create titles for videos and posts.","content"],
+
 ["👤","Bio Generator","Create short social media bios.","content"],
+
 ["🎬","Video Script Maker","Create a simple script from your topic.","content"],
+
 ["📄","Description Generator","Create descriptions for your content.","content"],
+
 ["📢","Social Media Post Generator","Create a complete social media post.","content"],
+
 ["🎯","Hook Generator","Create strong hooks for your videos.","content"],
+
 ["📣","Call-to-Action Generator","Create CTA lines for your audience.","content"],
+
 ["🛍️","Product Description Generator","Create product descriptions.","content"],
+
 ["📢","Advertisement Copy Generator","Create promotional copy.","content"],
+
 ["📅","Content Calendar Generator","Create a simple content plan.","content"],
+
 ["🔄","Rewrite / Improve Text","Improve and rewrite your text.","content"],
+
 ["🌐","Translator","Translate between Bangla and English.","content"],
 
 ["🔢","Word Counter","Count words, characters and lines.","basic"],
+
 ["🔤","Text Formatter","Change and clean text.","basic"],
-["🖼️","Thumbnail Maker","Create a simple thumbnail.","image"],
+
+["🖼️","Thumbnail Maker","Create a simple thumbnail concept.","image"],
+
 ["📐","Image Resizer","Resize an image in your browser.","image"],
+
 ["🗜️","Image Compressor","Reduce image file size.","image"],
+
 ["🔄","Image Format Converter","Convert image format.","image"],
+
 ["📱","Video Ratio Tool","Calculate common video ratios.","basic"],
+
 ["🔳","QR Code Generator","Create a QR code from a link.","qr"],
 
 ["📢","Channel Caption Maker","Create captions for Telegram channels.","telegram"],
+
 ["👥","Group Caption Maker","Create captions for Telegram groups.","telegram"],
+
 ["📣","Announcement Caption Maker","Create Telegram announcements.","telegram"],
+
 ["🎉","Promotion Caption Maker","Create promotional Telegram posts.","telegram"],
+
 ["📰","Channel Post Maker","Create channel posts.","telegram"],
+
 ["👥","Group Post Maker","Create group posts.","telegram"],
+
 ["✍️","Telegram Post Formatter","Format Telegram posts.","telegram"],
+
 ["👤","Telegram Bio Maker","Create a Telegram bio.","telegram"],
+
 ["#️⃣","Telegram Hashtag Generator","Create Telegram hashtags.","telegram"],
+
 ["🔗","Telegram Share Link Generator","Create a Telegram share link.","telegram"],
+
 ["🔳","Telegram QR Generator","Create QR from Telegram link.","qr"],
+
 ["📊","Poll Question Maker","Create poll questions.","telegram"],
-["📌","Pinned Message Maker","Create pinned messages.","telegram"]
+
+["📌","Pinned Message Maker","Create pinned messages.","telegram"],
+
+["🎬","AI Video Generator","Prepare prompts for AI video generation.","ai"],
+
+["🖼️","AI Image Generator","Prepare prompts for AI image generation.","ai"],
+
+["🎨","AI Thumbnail Maker","Prepare professional thumbnail prompts.","ai"]
 
 ];
 
 
 const learn=[
 
-["🎬","How to Make a Video","Learn the basic workflow from idea to upload."],
-["✂️","Video Editing","Learn cuts, transitions, text, music and timing."],
-["📘","Facebook Reels","Learn the basics of making better short videos."],
-["▶️","YouTube Shorts","Learn Shorts planning, title and upload basics."],
-["📸","Instagram Reels","Learn simple Reel creation and publishing."],
-["📢","Content Promotion","Learn practical ways to distribute your content."],
-["#️⃣","Hashtag Basics","Understand how hashtags can organize content."],
-["📈","Social Media Growth","Build consistency, useful content and community."]
+["🎬","How to Make a Video",
+"Learn the basic workflow from idea to upload.",
+"Start with an idea. Write a short script, record your video, edit unnecessary parts, add text/music where appropriate, then export and upload."],
+
+["✂️","Video Editing",
+"Learn cuts, transitions, text, music and timing.",
+"Keep your cuts clean. Remove unnecessary pauses, use readable text, keep music lower than speech and avoid too many transitions."],
+
+["📘","Facebook Reels",
+"Learn the basics of making better short videos.",
+"Use vertical 9:16 video, start with a strong hook, keep the message clear and add a simple call-to-action."],
+
+["▶️","YouTube Shorts",
+"Learn Shorts planning, title and upload basics.",
+"Start quickly, focus on one topic and use a clear title. Keep the opening seconds useful and avoid unnecessary introductions."],
+
+["📸","Instagram Reels",
+"Learn simple Reel creation and publishing.",
+"Use vertical video, clear visuals and concise captions. Make the first few seconds interesting and keep the video focused."],
+
+["📢","Content Promotion",
+"Learn practical ways to distribute your content.",
+"Share useful content consistently across relevant platforms. Use suitable captions, thumbnails and links."],
+
+["#️⃣","Hashtag Basics",
+"Understand how hashtags can organize content.",
+"Use hashtags that are relevant to your topic. Avoid filling a post with unrelated tags."],
+
+["📈","Social Media Growth",
+"Build consistency, useful content and community.",
+"Choose a clear topic, publish consistently, study which content gets useful engagement and interact with your audience."]
 
 ];
 
 
 const trending=[
-["🔥","Popular Creator Tools","Useful tools for creators."],
-["🆕","New Tools","Discover recently added tools."],
-["⭐","Featured Tools","Selected tools from AHEAD VIA."],
-["📢","Latest Updates","Stay connected with AHEAD VIA."]
+
+["🔥","Popular Creator Tools",
+"Useful tools for creators."],
+
+["🆕","New Tools",
+"Discover recently added tools."],
+
+["⭐","Featured Tools",
+"Selected tools from AHEAD VIA."],
+
+["📢","Latest Updates",
+"Stay connected with AHEAD VIA."]
+
 ];
 
 
-/* =========================
+/* =====================================================
    RENDER
-========================= */
+===================================================== */
 
 function renderTools(list=tools){
 
-  const grid=document.getElementById("toolGrid");
+  document.getElementById("toolGrid")
+    .innerHTML=list.map((t,i)=>
 
-  grid.innerHTML=list.map((t,i)=>`
-    <div class="card">
-      <div class="icon">${t[0]}</div>
-      <span class="badge">${t[3]}</span>
-      <h3>${t[1]}</h3>
-      <p>${t[2]}</p>
-      <button class="btn" onclick="openTool(${i})">Open Tool</button>
-    </div>
-  `).join("");
+      <div class="card">
+
+        <div class="icon">${t[0]}</div>
+
+        <span class="badge">${t[3]}</span>
+
+        <h3>${t[1]}</h3>
+
+        <p>${t[2]}</p>
+
+        <button class="btn"
+          onclick="openToolByName('${escapeAttr(t[1])}')">
+          Open Tool
+        </button>
+
+      </div>
+
+    ).join("");
+
 }
 
 
 function renderFeatured(){
 
-  document.getElementById("featured").innerHTML=tools.slice(0,6).map((t,i)=>`
-    <div class="card">
-      <div class="icon">${t[0]}</div>
-      <h3>${t[1]}</h3>
-      <p>${t[2]}</p>
-      <button class="btn" onclick="openTool(${i})">Open Tool</button>
-    </div>
-  `).join("");
+  document.getElementById("featured")
+    .innerHTML=tools.slice(0,6)
+    .map(t=>
+
+      <div class="card">
+
+        <div class="icon">${t[0]}</div>
+
+        <h3>${t[1]}</h3>
+
+        <p>${t[2]}</p>
+
+        <button class="btn"
+          onclick="openToolByName('${escapeAttr(t[1])}')">
+          Open Tool
+        </button>
+
+      </div>
+
+    ).join("");
+
 }
 
 
 function renderLearn(){
 
-  document.getElementById("learnGrid").innerHTML=learn.map((l,i)=>`
-    <div class="card">
-      <div class="icon">${l[0]}</div>
-      <h3>${l[1]}</h3>
-      <p>${l[2]}</p>
-      <button class="btn light" onclick="showLesson(${i})">Read Lesson</button>
-    </div>
-  `).join("");
+  document.getElementById("learnGrid")
+    .innerHTML=learn.map((l,i)=>
+
+      <div class="card">
+
+        <div class="icon">${l[0]}</div>
+
+        <h3>${l[1]}</h3>
+
+        <p>${l[2]}</p>
+
+        <button class="btn light"
+          onclick="showLesson(${i})">
+          Read Lesson
+        </button>
+
+      </div>
+
+    ).join("");
+
 }
 
 
 function renderTrending(){
 
-  document.getElementById("trendGrid").innerHTML=trending.map(t=>`
-    <div class="card">
-      <div class="icon">${t[0]}</div>
-      <h3>${t[1]}</h3>
-      <p>${t[2]}</p>
-      <a class="btn" href="#tools">Explore</a>
-    </div>
-  `).join("");
+  document.getElementById("trendGrid")
+    .innerHTML=trending.map(t=>
+
+      <div class="card">
+
+        <div class="icon">${t[0]}</div>
+
+        <h3>${t[1]}</h3>
+
+        <p>${t[2]}</p>
+
+        <button class="btn"
+          onclick="exploreTrending('${escapeAttr(t[1])}')">
+          Explore
+        </button>
+
+      </div>
+
+    ).join("");
+
 }
 
 
-/* =========================
+function escapeAttr(text){
+
+  return text.replace(/'/g,"\\'");
+
+}
+
+
+/* =====================================================
    SEARCH
-========================= */
+===================================================== */
 
 function searchTools(){
 
-  const q=document.getElementById("search").value.toLowerCase().trim();
+  const q=document.getElementById("search")
+    .value.toLowerCase().trim();
 
   if(!q){
+
     renderTools();
+
     return;
+
   }
 
   const result=tools.filter(t=>
@@ -692,14 +1659,27 @@ function searchTools(){
   );
 
   renderTools(result);
+
 }
 
 
-/* =========================
+/* =====================================================
    TOOL MODAL
-========================= */
+===================================================== */
 
 let currentTool=0;
+
+
+function openToolByName(name){
+
+  const index=tools.findIndex(t=>t[1]===name);
+
+  if(index<0)return;
+
+  openTool(index);
+
+}
+
 
 function openTool(index){
 
@@ -707,313 +1687,1017 @@ function openTool(index){
 
   const t=tools[index];
 
-  document.getElementById("modalTitle").textContent=t[0]+" "+t[1];
-  document.getElementById("modalDescription").textContent=t[2];
+  document.getElementById("modalTitle")
+    .textContent=t[0]+" "+t[1];
 
-  document.getElementById("toolResult").classList.add("hidden");
-  document.getElementById("resultButtons").classList.add("hidden");
+  document.getElementById("modalDescription")
+    .textContent=t[2];
 
-  let html="";
+  document.getElementById("toolResult")
+    .classList.add("hidden");
 
-  if(t[1].toLowerCase().includes("caption")){
-    html+=`
+  document.getElementById("resultButtons")
+    .classList.add("hidden");
+
+let html="";
+
+  if(t[1]==="AI Video Generator" ||
+     t[1]==="AI Image Generator" ||
+     t[1]==="AI Thumbnail Maker"){
+
+    html+=
+
       <div class="form-group">
-        <label>Caption Type</label>
+
+        <label>🎯 Prompt / Topic</label>
+
+        <textarea id="topic"
+          placeholder="Describe what you want to create..."></textarea>
+
+      </div>
+
+      <div class="form-group">
+
+        <label>🎨 Style</label>
+
         <select id="type">
-          <option>Motivational</option>
-          <option>Funny</option>
+
           <option>Professional</option>
-          <option>Business</option>
-          <option>Promotion</option>
-          <option>Travel</option>
-          <option>Birthday</option>
-          <option>Personal</option>
-          <option>Short</option>
-          <option>Long</option>
-        </select>
-      </div>`;
-  }
+          <option>Cinematic</option>
+          <option>Modern</option>
+          <option>Minimal</option>
+          <option>Social Media</option>
+          <option>Realistic</option>
 
-  if(t[1].toLowerCase().includes("hashtag")){
-    html+=`
+        </select>
+
+      </div>
+
       <div class="form-group">
-        <label>Platform</label>
-        <select id="type">
-          <option>Facebook</option>
-          <option>Instagram</option>
-          <option>TikTok</option>
-          <option>YouTube</option>
-          <option>Telegram</option>
-        </select>
-      </div>`;
-  }
 
-  if(t[1].toLowerCase().includes("title")){
-    html+=`
+        <label>🌐 Language</label>
+
+        <select id="language">
+
+          <option>English</option>
+          <option>বাংলা</option>
+
+        </select>
+
+      </div>
+
+    ;
+
+  }else{
+
+    if(t[1].toLowerCase().includes("caption")){
+
+      html+=
+
+        <div class="form-group">
+
+          <label>Caption Type</label>
+
+          <select id="type">
+
+            <option>Facebook</option>
+            <option>Instagram</option>
+            <option>TikTok</option>
+            <option>YouTube</option>
+            <option>Telegram</option>
+            <option>Business</option>
+            <option>Marketing</option>
+            <option>Motivational</option>
+            <option>Funny</option>
+            <option>Professional</option>
+            <option>Promotion</option>
+            <option>Travel</option>
+            <option>Birthday</option>
+            <option>Personal</option>
+            <option>Short</option>
+            <option>Long</option>
+
+          </select>
+
+        </div>
+
+      ;
+
+    }
+
+    if(t[1].toLowerCase().includes("hashtag")){
+
+      html+=
+
+        <div class="form-group">
+
+          <label>Platform</label>
+
+          <select id="type">
+
+            <option>Facebook</option>
+            <option>Instagram</option>
+            <option>TikTok</option>
+            <option>YouTube</option>
+            <option>Telegram</option>
+
+          </select>
+
+        </div>
+
+      ;
+
+    }
+
+    if(t[1].toLowerCase().includes("title")){
+
+      html+=
+
+        <div class="form-group">
+
+          <label>Title Type</label>
+
+          <select id="type">
+
+            <option>YouTube Video</option>
+            <option>YouTube Shorts</option>
+            <option>Facebook Video</option>
+            <option>Instagram Reel</option>
+            <option>TikTok</option>
+            <option>Telegram Post</option>
+            <option>Blog</option>
+            <option>Educational</option>
+            <option>Promotional</option>
+            <option>Professional</option>
+
+          </select>
+
+        </div>
+
+      ;
+
+    }
+
+    if(t[1].toLowerCase().includes("bio")){
+
+      html+=
+
+        <div class="form-group">
+
+          <label>Bio Type</label>
+
+          <select id="type">
+
+            <option>Facebook</option>
+            <option>Instagram</option>
+            <option>TikTok</option>
+            <option>YouTube</option>
+            <option>Telegram</option>
+            <option>Business</option>
+            <option>Creator</option>
+            <option>Professional</option>
+            <option>Personal</option>
+
+          </select>
+
+        </div>
+
+      ;
+
+    }
+
+    if(t[1].toLowerCase().includes("script")){
+
+      html+=
+
+        <div class="form-group">
+
+          <label>Video Type</label>
+
+          <select id="type">
+
+            <option>YouTube</option>
+            <option>YouTube Shorts</option>
+            <option>Facebook Reels</option>
+            <option>Instagram Reels</option>
+            <option>TikTok</option>
+            <option>Advertisement</option>
+            <option>Product Review</option>
+            <option>Tutorial</option>
+            <option>Storytelling</option>
+            <option>Motivational</option>
+            <option>Educational</option>
+
+          </select>
+
+        </div>
+
+      ;
+
+    }
+
+    if(t[3]==="telegram"){
+
+      html+=`
+
+        <div class="form-group">
+
+<label>Telegram Content Type</label>
+
+          <select id="type">
+
+            <option>General Post</option>
+            <option>Announcement</option>
+            <option>Promotion</option>
+            <option>Channel Post</option>
+            <option>Group Post</option>
+
+          </select>
+
+        </div>
+
+      ;
+
+    }
+
+    html+=
+
       <div class="form-group">
-        <label>Title Type</label>
-        <select id="type">
-          <option>YouTube Video</option>
-          <option>YouTube Shorts</option>
-          <option>Facebook Video</option>
-          <option>Instagram Reel</option>
-          <option>TikTok</option>
-          <option>Telegram Post</option>
-          <option>Professional</option>
-          <option>Promotional</option>
-        </select>
-      </div>`;
-  }
 
-  if(t[1].toLowerCase().includes("bio")){
-    html+=`
+        <label>Topic / Your Text</label>
+
+        <textarea id="topic"
+          placeholder="Write your topic or text here..."></textarea>
+
+      </div>
+
       <div class="form-group">
-        <label>Bio Type</label>
-        <select id="type">
-          <option>Creator</option>
-          <option>Business</option>
-          <option>Professional</option>
-          <option>Personal</option>
-          <option>Telegram</option>
-          <option>Instagram</option>
-          <option>YouTube</option>
+
+        <label>Language</label>
+
+        <select id="language">
+
+          <option>English</option>
+          <option>বাংলা</option>
+
         </select>
-      </div>`;
+
+      </div>
+
+    ;
+
   }
 
-  if(t[1].toLowerCase().includes("script")){
-    html+=`
-      <div class="form-group">
-        <label>Video Type</label>
-        <select id="type">
-          <option>YouTube</option>
-          <option>YouTube Shorts</option>
-          <option>Facebook Reel</option>
-          <option>Instagram Reel</option>
-          <option>TikTok</option>
-          <option>Tutorial</option>
-          <option>Advertisement</option>
-        </select>
-      </div>`;
-  }
+  document.getElementById("toolForm")
+    .innerHTML=html;
 
-  if(t[1].toLowerCase().includes("telegram") || t[3]==="telegram"){
-    html+=`
-      <div class="form-group">
-        <label>Telegram Content Type</label>
-        <select id="type">
-          <option>General Post</option>
-          <option>Announcement</option>
-          <option>Promotion</option>
-          <option>Channel Post</option>
-          <option>Group Post</option>
-        </select>
-      </div>`;
-  }
+  document.getElementById("toolModal")
+    .classList.add("show");
 
-  html+=`
-    <div class="form-group">
-      <label>Topic / Your Text</label>
-      <textarea id="topic" placeholder="Write your topic or text here..."></textarea>
-    </div>
-
-    <div class="form-group">
-      <label>Language</label>
-      <select id="language">
-        <option>English</option>
-        <option>বাংলা</option>
-      </select>
-    </div>
-  `;
-
-  document.getElementById("toolForm").innerHTML=html;
-  document.getElementById("toolModal").classList.add("show");
 }
 
 
 function closeTool(){
-  document.getElementById("toolModal").classList.remove("show");
+
+  document.getElementById("toolModal")
+    .classList.remove("show");
+
 }
 
 
-/* =========================
+/* =====================================================
    GENERATOR
-========================= */
+===================================================== */
 
 function generateTool(){
 
   const t=tools[currentTool];
+
   const name=t[1];
-  const topic=document.getElementById("topic")?.value.trim() || "your topic";
-  const type=document.getElementById("type")?.value || "General";
-  const language=document.getElementById("language")?.value || "English";
+
+  const topic=
+    document.getElementById("topic")?.value.trim()
+    ||"your topic";
+
+  const type=
+    document.getElementById("type")?.value
+    ||"General";
+
+  const language=
+    document.getElementById("language")?.value
+    ||"English";
 
   let result="";
 
-  if(name==="Caption Generator" || name.includes("Caption Maker")){
-    if(language==="বাংলা"){
-      result=`${topic} নিয়ে ${type} ক্যাপশন:\n\nআজকের এই মুহূর্তটি মনে রাখার মতো। ❤️\nনিজের লক্ষ্য নিয়ে এগিয়ে চলুন এবং নিয়মিত ভালো Content তৈরি করুন। 🚀\n\n#AHEADVIA #ContentCreator`;
-    }else{
-      result=`${type} Caption for ${topic}:\n\nMake every moment count. ❤️\nKeep creating, keep learning and keep moving forward. 🚀\n\n#AHEADVIA #ContentCreator`;
-    }
+
+  if(name==="AI Video Generator"){
+
+    result=
+🎬 AI VIDEO PROMPT
+
+Topic: ${topic}
+Style: ${type}
+
+Create a professional video about ${topic}.
+Use clear visuals, smooth camera movement,
+good lighting, engaging scenes and clean composition.
+
+Recommended format:
+9:16 for Shorts/Reels/TikTok
+16:9 for YouTube videos
+
+Note: This tool prepares the prompt. Actual AI video generation requires an AI video API/service.;
+
   }
 
-  else if(name==="Hashtag Generator" || name.includes("Hashtag Generator")){
-    result=`#${clean(topic)} #AHEADVIA #ContentCreator #DigitalSkills #SocialMedia #Trending #Creator #Online`;
+
+  else if(name==="AI Image Generator"){
+
+    result=
+🖼️ AI IMAGE PROMPT
+
+Create a ${type} image about:
+
+${topic}
+
+Use high-quality details, balanced composition,
+professional lighting and a clean background.
+
+Recommended:
+1:1 for square posts
+16:9 for banners
+9:16 for stories/reels
+
+Note: Actual image generation requires an AI image API/service.;
+
   }
+
+
+  else if(name==="AI Thumbnail Maker"){
+
+    result=
+🎨 AI THUMBNAIL PROMPT
+
+Create a professional YouTube/social media thumbnail.
+
+Topic:
+${topic}
+
+Style:
+${type}
+
+Use a strong visual focus, large readable title area,
+high contrast, clean composition and a professional creator style.
+
+Recommended size:
+1280 × 720 px
+
+Note: Actual AI image generation requires an AI image API/service.;
+
+  }
+
+
+  else if(name==="Caption Generator" ||
+          name.includes("Caption Maker")){
+
+    if(language==="বাংলা"){
+
+      result=
+${type} ক্যাপশন — ${topic}
+
+🔥 ${topic} নিয়ে আজকের পোস্ট!
+
+ভালো কিছু শিখুন, কাজে লাগান এবং নিয়মিত
+নিজের Content তৈরি করুন। 🚀
+
+আপনার মতামত কমেন্টে জানান।
+
+#AHEADVIA #ContentCreator;
+
+    }else{
+
+      result=
+${type} Caption — ${topic}
+
+🔥 Here's something useful about ${topic}.
+
+Keep learning, keep creating and keep moving forward. 🚀
+
+Share your thoughts in the comments.
+
+#AHEADVIA #ContentCreator;
+
+    }
+
+  }
+
+
+  else if(name==="Hashtag Generator" ||
+          name==="Telegram Hashtag Generator"){
+
+    result=
+Hashtags for ${topic}
+
+#${clean(topic)}
+#AHEADVIA
+#ContentCreator
+#DigitalSkills
+#SocialMedia
+#Creator
+#Online
+#Trending;
+
+  }
+
 
   else if(name==="Content Ideas"){
-    result=`Content Ideas for: ${topic}\n\n1. Beginner's guide to ${topic}\n2. 5 useful tips about ${topic}\n3. Common mistakes about ${topic}\n4. Step-by-step tutorial\n5. Before vs After\n6. Top tools for ${topic}\n7. Frequently asked questions`;
+
+    result=
+Content Ideas — ${topic}
+
+1. Beginner's guide to ${topic}
+2. 5 useful tips about ${topic}
+3. Common mistakes about ${topic}
+4. Step-by-step tutorial
+5. Before vs After
+6. Useful tools for ${topic}
+7. Frequently asked questions
+8. Myths vs Facts
+9. Beginner checklist
+10. Quick tips video;
+
   }
+
 
   else if(name==="Title Generator"){
-    result=`Title Ideas for ${topic}\n\n1. The Complete Guide to ${topic}\n2. 5 Things You Should Know About ${topic}\n3. How to Get Better Results with ${topic}\n4. Beginner's Guide to ${topic}\n5. Easy ${topic} Tips You Can Use Today`;
+
+    result=
+Title Ideas — ${topic}
+
+1. The Complete Guide to ${topic}
+2. 5 Things You Should Know About ${topic}
+3. How to Get Better Results with ${topic}
+4. Beginner's Guide to ${topic}
+5. Easy ${topic} Tips You Can Use Today
+6. ${topic}: What Beginners Need to Know`;
+
   }
 
-  else if(name==="Bio Generator" || name==="Telegram Bio Maker"){
-    result=`${type} Bio:\n\n🚀 Digital Creator\n💡 Creating useful content & tools\n📱 Social Media & Technology\n✈️ AHEAD VIA\n\nConnect & grow with me.`;
+else if(name==="Bio Generator" ||
+          name==="Telegram Bio Maker"){
+
+    result=
+${type} Bio
+
+🚀 Digital Creator
+💡 Digital Skills & Tools
+🎬 Content Creation
+🤖 AI & Technology
+✈️ AHEAD VIA
+
+Connect • Learn • Create;
+
   }
+
 
   else if(name==="Video Script Maker"){
-    result=`${type} Video Script — ${topic}\n\nHOOK:\n“Want to know something useful about ${topic}?”\n\nINTRO:\n“Welcome to AHEAD VIA. Today we are talking about ${topic}.”\n\nMAIN:\nExplain the key points clearly and give useful examples.\n\nCTA:\n“Follow, share and stay connected with AHEAD VIA.”`;
+
+    result=
+${type} Video Script
+
+TOPIC:
+${topic}
+
+HOOK:
+“Want to learn something useful about ${topic}?”
+
+INTRO:
+“Welcome to AHEAD VIA SKILL HUB.”
+
+MAIN:
+Explain the main point of ${topic}
+clearly with simple examples.
+
+VALUE:
+Give viewers practical information
+they can use.
+
+CTA:
+“Follow AHEAD VIA for more useful content.”;
+
   }
+
 
   else if(name==="Description Generator"){
-    result=`Description for ${topic}:\n\nIn this content, we explore ${topic} and share useful information, practical tips and simple ideas that you can use.\n\nFollow AHEAD VIA for more useful content.`;
+
+    result=
+Description — ${topic}
+
+In this content, we explore ${topic}
+and share useful information, practical tips
+and simple ideas that you can use.
+
+Follow AHEAD VIA SKILL HUB for more
+digital skills and useful resources.;
+
   }
 
-  else if(name==="Social Media Post Generator" || name==="Post Generator"){
-    result=`📢 ${topic}\n\nHere are some useful ideas and information about ${topic}.\n\nSave this post and share it with someone who may find it useful. 🚀\n\n#AHEADVIA #DigitalSkills`;
+
+  else if(name==="Social Media Post Generator"){
+
+    result=
+📢 ${topic}
+
+Here are some useful ideas and information
+about ${topic}.
+
+Save this post and share it with someone
+who may find it useful. 🚀
+
+#AHEADVIA #DigitalSkills;
+
   }
+
 
   else if(name==="Hook Generator"){
-    result=`Hooks for ${topic}:\n\n🔥 “Stop scrolling if you want to learn about ${topic}.”\n🔥 “Here is something most people don't know about ${topic}.”\n🔥 “Before you start ${topic}, watch this.”\n🔥 “3 things you should know about ${topic}.”`;
+
+    result=
+Hooks — ${topic}
+
+🔥 Stop scrolling if you want to learn about ${topic}.
+
+🔥 Here is something most people don't know about ${topic}.
+
+🔥 Before you start ${topic}, watch this.
+
+🔥 3 things you should know about ${topic}.
+
+🔥 Don't make this mistake with ${topic}.;
+
   }
+
 
   else if(name==="Call-to-Action Generator"){
-    result=`CTA Ideas:\n\n👉 Follow for more\n👉 Save this post\n👉 Share with your friends\n👉 Comment your opinion\n👉 Join our community\n👉 Subscribe for more useful content`;
+
+    result=
+CTA Ideas
+
+👉 Follow for more
+👉 Save this post
+👉 Share with your friends
+👉 Comment your opinion
+👉 Join our community
+👉 Subscribe for more
+👉 Learn more today;
+
   }
+
 
   else if(name==="Product Description Generator"){
-    result=`Product Description:\n\nDiscover ${topic} — designed to provide useful features, simple use and a better experience.\n\nPerfect for people looking for quality and convenience.`;
+
+    result=
+Product Description
+
+${topic}
+
+Discover ${topic} — designed to provide
+useful features, simple use and a better experience.
+
+Perfect for people looking for quality,
+convenience and useful features.;
+
   }
+
 
   else if(name==="Advertisement Copy Generator"){
-    result=`📢 SPECIAL ANNOUNCEMENT\n\nLooking for ${topic}?\n\nDiscover useful features, simple solutions and a better experience.\n\n👉 Learn more today!`;
+
+    result=
+📢 SPECIAL ANNOUNCEMENT
+
+Looking for ${topic}?
+
+Discover useful features, simple solutions
+and a better experience.
+
+👉 Learn more today!;
+
   }
+
 
   else if(name==="Content Calendar Generator"){
-    result=`7-Day Content Calendar for ${topic}\n\nDay 1 — Introduction\nDay 2 — Helpful Tips\nDay 3 — Common Mistakes\nDay 4 — Tutorial\nDay 5 — FAQ\nDay 6 — Behind the Scenes\nDay 7 — Community / Promotion`;
+
+    result=
+7-Day Content Calendar — ${topic}
+
+Day 1 — Introduction
+Day 2 — Helpful Tips
+Day 3 — Common Mistakes
+Day 4 — Tutorial
+Day 5 — FAQ
+Day 6 — Behind the Scenes
+Day 7 — Community / Promotion;
+
   }
+
 
   else if(name==="Rewrite / Improve Text"){
-    result=`Improved Version:\n\n${topic}\n\nThis text can be made clearer, more professional and easier to understand while keeping the original meaning.`;
+
+    result=
+Improved Version:
+
+${topic}
+
+A clearer and more professional version
+can keep the original meaning while making
+the text easier to understand.;
+
   }
+
 
   else if(name==="Translator"){
-    result=`Translation Tool\n\nYour text:\n${topic}\n\nFor accurate translation, choose your target language and connect an appropriate translation API in the production version.`;
+
+    result=
+Translation Input:
+
+${topic}
+
+Language selected:
+${language}
+
+For production-quality automatic translation,
+a translation API should be connected.;
+
   }
+
 
   else if(name==="Word Counter"){
-    const words=topic.trim()?topic.trim().split(/\s+/).length:0;
+
+    const words=topic.trim()
+      ?topic.trim().split(/\s+/).length:0;
+
     const chars=topic.length;
-    const lines=topic?topic.split(/\n/).length:0;
-    result=`Words: ${words}\nCharacters: ${chars}\nLines: ${lines}`;
+
+    const lines=topic
+      ?topic.split(/\n/).length:0;
+
+    result=
+Words: ${words}
+Characters: ${chars}
+Lines: ${lines};
+
   }
+
 
   else if(name==="Text Formatter"){
-    result=`UPPERCASE:\n${topic.toUpperCase()}\n\nlowercase:\n${topic.toLowerCase()}\n\nClean Text:\n${topic.replace(/\s+/g," ").trim()}`;
+
+    result=
+UPPERCASE:
+
+${topic.toUpperCase()}
+
+
+lowercase:
+
+${topic.toLowerCase()}
+
+
+Clean Text:
+
+${topic.replace(/\s+/g," ").trim()};
+
   }
+
 
   else if(name==="Video Ratio Tool"){
-    result=`Common Video Ratios:\n\nYouTube: 16:9\nShorts/Reels/TikTok: 9:16\nSquare Post: 1:1\nInstagram Landscape: 16:9\n\nFor ${topic}: choose the platform first, then use its recommended ratio.`;
+
+    result=
+Common Video Ratios
+
+YouTube:
+16:9
+
+YouTube Shorts:
+9:16
+
+Instagram Reels:
+9:16
+
+TikTok:
+9:16
+
+Square Post:
+1:1
+
+For ${topic}, choose the ratio based
+on the platform you are creating for.;
+
   }
 
-  else if(name.includes("QR Generator")){
-    result=`QR Generator\n\nLink/Text:\n${topic}\n\nA QR code can be generated from this value using a QR library/API in the production version.`;
+
+  else if(name==="QR Code Generator" ||
+          name==="Telegram QR Generator"){
+
+    result=
+QR Code Value:
+
+${topic}
+
+You can use this value to create a QR code.
+
+Actual QR image generation can be connected
+to a QR library/API in the production version.;
+
   }
 
-  else if(name.includes("Share Link")){
-    result=`Telegram Share Link:\nhttps://t.me/share/url?url=${encodeURIComponent(topic)}&text=${encodeURIComponent("Shared via AHEAD VIA")}`;
+
+  else if(name==="Telegram Share Link Generator"){
+
+    result=
+Telegram Share Link:
+
+https://t.me/share/url?url=${encodeURIComponent(topic)}&text=${encodeURIComponent("Shared via AHEAD VIA SKILL HUB")};
+
   }
+
 
   else if(name==="Poll Question Maker"){
-    result=`Poll Question:\n\nWhat do you think about ${topic}?\n\nOption 1: Very Good\nOption 2: Good\nOption 3: Average\nOption 4: Need Improvement`;
+
+result=
+📊 Poll Question
+
+What do you think about ${topic}?
+
+Option 1: Very Good
+Option 2: Good
+Option 3: Average
+Option 4: Need Improvement;
+
   }
+
 
   else if(name==="Pinned Message Maker"){
-    result=`📌 PINNED MESSAGE\n\n${topic}\n\nPlease read this message carefully and stay updated with the latest information.`;
+
+    result=
+📌 PINNED MESSAGE
+
+${topic}
+
+Please read this message carefully
+and stay updated with the latest information.;
+
   }
+
 
   else if(name==="Thumbnail Maker"){
-    result=`Thumbnail idea for: ${topic}\n\nUse a short bold title, one main image, strong contrast and a clear visual focus.\n\nRecommended: 1280 × 720 px`;
+
+    result=
+🎨 Thumbnail Plan
+
+Topic:
+${topic}
+
+Use:
+• Short bold title
+• One main image
+• Strong visual focus
+• Clean background
+• Clear contrast
+
+Recommended:
+1280 × 720 px;
+
   }
+
 
   else if(name==="Image Resizer"){
-    result=`Image Resizer\n\nFor social media:\nInstagram Post: 1080 × 1080\nStory/Reel: 1080 × 1920\nYouTube Thumbnail: 1280 × 720\nFacebook Post: 1200 × 630`;
+
+    result=
+Image Size Guide
+
+Instagram Post:
+1080 × 1080
+
+Story/Reel:
+1080 × 1920
+
+YouTube Thumbnail:
+1280 × 720
+
+Facebook Post:
+1200 × 630;
+
   }
+
 
   else if(name==="Image Compressor"){
-    result=`Image Compressor\n\nChoose your image file and use browser-based compression before uploading.\n\nRecommended quality: 70–85%`;
+
+    result=
+Image Compression Guide
+
+Recommended quality:
+70–85%
+
+Use compression before uploading
+large images to reduce file size.;
+
   }
+
 
   else if(name==="Image Format Converter"){
-    result=`Supported common formats:\n\nJPG\nPNG\nWEBP\nGIF\n\nChoose your desired output format in the production version.`;
+
+    result=
+Common Image Formats
+
+JPG
+PNG
+WEBP
+GIF
+
+Choose the output format based
+on where you will use the image.;
+
   }
+
 
   else{
-    result=`${name}\n\nTopic: ${topic}\nType: ${type}\nLanguage: ${language}\n\nYour tool request has been prepared.`;
+
+    result=
+${name}
+
+Topic:
+${topic}
+
+Type:
+${type}
+
+Language:
+${language};
+
   }
 
-  const box=document.getElementById("toolResult");
-  box.textContent=result;
-  box.classList.remove("hidden");
-  document.getElementById("resultButtons").classList.remove("hidden");
+
+  document.getElementById("toolResult")
+    .textContent=result;
+
+  document.getElementById("toolResult")
+    .classList.remove("hidden");
+
+  document.getElementById("resultButtons")
+    .classList.remove("hidden");
+
 }
 
 
 function clean(text){
+
   return text
     .replace(/[^a-zA-Z0-9\u0980-\u09FF ]/g,"")
     .trim()
     .replace(/\s+/g,"_");
+
 }
 
 
 function copyResult(){
-  const text=document.getElementById("toolResult").textContent;
-  navigator.clipboard.writeText(text);
-  alert(lang==="bn"?"কপি হয়েছে!":"Copied!");
+
+  const text=
+    document.getElementById("toolResult")
+    .textContent;
+
+  navigator.clipboard.writeText(text)
+    .then(()=>{
+      alert("Copied!");
+    });
+
 }
 
 
-/* =========================
+/* =====================================================
    LESSON
-========================= */
+===================================================== */
 
 function showLesson(index){
 
   const l=learn[index];
 
-  alert(
-`${l[1]}
+  document.getElementById("lessonTitle")
+    .textContent=l[0]+" "+l[1];
 
-${l[2]}
+  document.getElementById("lessonContent")
+    .innerHTML=
 
-AHEAD VIA Learning Section
+      <p>${l[2]}</p>
 
-এই Lesson-এর বিস্তারিত content পরে Admin Panel থেকে যোগ/পরিবর্তন করা যাবে।`
-  );
+      <h3>📖 Lesson</h3>
+
+      <p>${l[3]}</p>
+
+      <h3>💡 Quick Tip</h3>
+
+      <p>
+      Practice regularly, keep your content simple,
+      and improve based on what you learn.
+      </p>
+
+      <h3>🚀 AHEAD VIA</h3>
+
+      <p>
+      Keep learning and creating with
+      AHEAD VIA SKILL HUB.
+      </p>
+
+    ;
+
+  document.getElementById("lessonModal")
+    .classList.add("show");
+
 }
 
 
-/* =========================
+function closeLesson(){
+
+  document.getElementById("lessonModal")
+    .classList.remove("show");
+
+}
+
+
+/* =====================================================
+   TRENDING
+===================================================== */
+
+function exploreTrending(title){
+
+  let message="";
+
+  if(title==="Popular Creator Tools"){
+
+    message=
+🔥 Popular Creator Tools
+
+Explore:
+• Caption Generator
+• Hashtag Generator
+• Content Ideas
+• Video Script Maker
+• Thumbnail Maker
+• AI Video Generator
+• AI Image Generator;
+
+  }
+
+  else if(title==="New Tools"){
+
+    message=
+🆕 New Tools
+
+Recently added:
+• AI Video Generator
+• AI Image Generator
+• AI Thumbnail Maker;
+
+  }
+
+  else if(title==="Featured Tools"){
+
+    message=
+⭐ Featured Tools
+
+Try:
+• Content Ideas
+• Title Generator
+• Video Script Maker
+• AI Thumbnail Maker;
+
+  }
+
+  else{
+
+    message=
+📢 Latest Updates
+
+AHEAD VIA SKILL HUB is being developed
+with new tools, learning resources and
+digital features.;
+
+  }
+
+  alert(message);
+
+}
+
+
+/* =====================================================
    NAVIGATION
-========================= */
+===================================================== */
 
 function goTo(id,button){
 
-  document.getElementById(id).scrollIntoView({
+  const el=document.getElementById(id);
+
+  if(!el)return;
+
+  el.scrollIntoView({
     behavior:"smooth",
     block:"start"
   });
@@ -1022,26 +2706,42 @@ function goTo(id,button){
     .forEach(b=>b.classList.remove("active"));
 
   button.classList.add("active");
+
 }
 
 
-/* =========================
-   CLOSE MODAL
-========================= */
+/* =====================================================
+   MODAL CLOSE
+===================================================== */
 
-document.getElementById("toolModal").addEventListener("click",function(e){
-  if(e.target===this) closeTool();
-});
+document.getElementById("toolModal")
+  .addEventListener("click",function(e){
+
+if(e.target===this)
+      closeTool();
+
+  });
 
 
-/* =========================
+document.getElementById("lessonModal")
+  .addEventListener("click",function(e){
+
+    if(e.target===this)
+      closeLesson();
+
+  });
+
+
+/* =====================================================
    START
-========================= */
+===================================================== */
 
 renderTools();
 renderFeatured();
 renderLearn();
 renderTrending();
+
+checkSession();
 
 </script>
 
