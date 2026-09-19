@@ -1,24 +1,26 @@
-ml>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#081426">
+<meta name="theme-color" content="#050816">
 <meta name="description" content="AHEAD VIA SKILL HUB - Digital Skills, AI Tools and Resources">
 <title>AHEAD VIA SKILL HUB</title>
 
 <style>
 :root{
-  --bg:#eef8f7;
-  --card:rgba(255,255,255,.92);
-  --card2:#ffffff;
-  --text:#101828;
-  --muted:#667085;
-  --primary:#42e8c5;
-  --primary2:#16c9aa;
-  --dark:#081426;
-  --border:rgba(16,24,40,.08);
-  --shadow:0 18px 45px rgba(12,31,52,.10);
+  --bg:#050816;
+  --bg2:#081226;
+  --card:rgba(10,18,38,.78);
+  --card2:#0b1630;
+  --text:#f7fbff;
+  --muted:#9eabc2;
+  --primary:#39f5c7;
+  --primary2:#6d5cff;
+  --cyan:#24d9ff;
+  --pink:#ff4fd8;
+  --border:rgba(255,255,255,.10);
+  --shadow:0 25px 80px rgba(0,0,0,.38);
   --radius:28px;
 }
 
@@ -34,27 +36,59 @@ html{
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:
-    radial-gradient(circle at 10% 5%,rgba(66,232,197,.28),transparent 28%),
-    radial-gradient(circle at 90% 18%,rgba(119,108,255,.18),transparent 25%),
-    linear-gradient(145deg,#edfafa,#eaf4ff 50%,#f7f4ff);
   color:var(--text);
   min-height:100vh;
   overflow-x:hidden;
+  background:
+    radial-gradient(circle at 8% 8%,rgba(57,245,199,.16),transparent 25%),
+    radial-gradient(circle at 92% 10%,rgba(109,92,255,.22),transparent 27%),
+    radial-gradient(circle at 50% 65%,rgba(36,217,255,.08),transparent 30%),
+    linear-gradient(135deg,#030510 0%,#071126 48%,#050816 100%);
+  position:relative;
 }
 
-body.dark{
-  --bg:#07111f;
-  --card:rgba(12,27,46,.94);
-  --card2:#0d1b2e;
-  --text:#f4f7fb;
-  --muted:#a9b4c3;
-  --border:rgba(255,255,255,.08);
-  --shadow:0 20px 55px rgba(0,0,0,.35);
+/* PREMIUM DIGITAL GRID */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-3;
+  opacity:.20;
+  background-image:
+    linear-gradient(rgba(57,245,199,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(57,245,199,.07) 1px,transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:500px;
+  height:500px;
+  right:-180px;
+  top:220px;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:-2;
+  background:radial-gradient(circle,rgba(109,92,255,.18),transparent 68%);
+  filter:blur(20px);
+}
+
+body.light{
+  --bg:#eef6ff;
+  --bg2:#f8fbff;
+  --card:rgba(255,255,255,.82);
+  --card2:#ffffff;
+  --text:#101828;
+  --muted:#667085;
+  --border:rgba(16,24,40,.09);
+  --shadow:0 20px 60px rgba(12,31,52,.12);
   background:
-    radial-gradient(circle at 5% 5%,rgba(66,232,197,.10),transparent 25%),
-    radial-gradient(circle at 95% 15%,rgba(119,108,255,.12),transparent 25%),
-    #07111f;
+    radial-gradient(circle at 8% 8%,rgba(57,245,199,.24),transparent 26%),
+    radial-gradient(circle at 92% 10%,rgba(109,92,255,.16),transparent 27%),
+    linear-gradient(135deg,#edfaff,#f5f2ff);
 }
 
 button,
@@ -69,12 +103,12 @@ button{
 }
 
 a{
-  text-decoration:none;
   color:inherit;
+  text-decoration:none;
 }
 
 .container{
-  width:min(1120px,calc(100% - 28px));
+  width:min(1160px,calc(100% - 28px));
   margin:auto;
 }
 
@@ -83,13 +117,13 @@ a{
   position:sticky;
   top:0;
   z-index:100;
-  backdrop-filter:blur(18px);
-  background:rgba(255,255,255,.82);
+  background:rgba(4,8,22,.72);
+  backdrop-filter:blur(22px);
   border-bottom:1px solid var(--border);
 }
 
-.dark .header{
-  background:rgba(7,17,31,.88);
+.light .header{
+  background:rgba(255,255,255,.78);
 }
 
 .header-inner{
@@ -112,14 +146,16 @@ a{
   height:58px;
   border-radius:18px;
   object-fit:cover;
-  border:1px solid var(--border);
-  box-shadow:0 8px 25px rgba(0,0,0,.10);
+  border:1px solid rgba(57,245,199,.28);
+  box-shadow:
+    0 0 0 1px rgba(109,92,255,.15),
+    0 10px 30px rgba(0,0,0,.25);
 }
 
 .brand-title{
   font-size:20px;
   font-weight:900;
-  letter-spacing:-.5px;
+  letter-spacing:-.6px;
 }
 
 .brand-sub{
@@ -131,96 +167,133 @@ a{
 .header-actions{
   display:flex;
   gap:9px;
-  align-items:center;
 }
 
 .icon-btn{
-  width:52px;
-  height:52px;
+  width:50px;
+  height:50px;
   border:1px solid var(--border);
-  border-radius:17px;
+  border-radius:16px;
   background:var(--card);
   color:var(--text);
-  font-size:22px;
-  box-shadow:0 8px 20px rgba(0,0,0,.05);
+  box-shadow:0 10px 30px rgba(0,0,0,.14);
+  font-size:21px;
+  transition:.2s;
 }
 
-/* TOP CONTROLS */
+.icon-btn:hover{
+  transform:translateY(-2px);
+  border-color:rgba(57,245,199,.45);
+}
+
+/* CONTROLS */
 .controls{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:18px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:20px;
 }
 
 .control{
+  width:100%;
   border:1px solid var(--border);
   background:var(--card);
   color:var(--text);
-  border-radius:14px;
-  padding:10px 13px;
+  border-radius:17px;
+  padding:14px 16px;
   outline:none;
+  backdrop-filter:blur(15px);
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
 }
 
 /* HERO */
 .hero{
-  margin-top:22px;
   position:relative;
   overflow:hidden;
-  border-radius:34px;
-  padding:42px 34px;
+  margin-top:20px;
+  border-radius:36px;
+  padding:48px 38px;
   background:
-    radial-gradient(circle at 92% 10%,rgba(66,232,197,.34),transparent 30%),
-    radial-gradient(circle at 0% 100%,rgba(124,92,255,.18),transparent 28%),
-    rgba(255,255,255,.82);
-  border:1px solid rgba(255,255,255,.75);
-  box-shadow:var(--shadow);
+    linear-gradient(135deg,rgba(10,22,48,.88),rgba(8,16,36,.70)),
+    radial-gradient(circle at 85% 5%,rgba(57,245,199,.25),transparent 28%);
+  border:1px solid rgba(57,245,199,.18);
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 rgba(255,255,255,.07);
 }
 
-.dark .hero{
+.light .hero{
   background:
-    radial-gradient(circle at 92% 10%,rgba(66,232,197,.13),transparent 30%),
-    radial-gradient(circle at 0% 100%,rgba(124,92,255,.12),transparent 28%),
-    rgba(12,27,46,.94);
+    linear-gradient(135deg,rgba(255,255,255,.90),rgba(242,247,255,.82)),
+    radial-gradient(circle at 85% 5%,rgba(57,245,199,.30),transparent 28%);
+}
+
+.hero::before{
+  content:"AI";
+  position:absolute;
+  right:35px;
+  top:5px;
+  font-size:170px;
+  font-weight:900;
+  color:rgba(57,245,199,.035);
+  pointer-events:none;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  right:-90px;
+  bottom:-120px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(109,92,255,.25),transparent 68%);
+  filter:blur(8px);
 }
 
 .badge{
+  position:relative;
+  z-index:2;
   display:inline-flex;
   align-items:center;
   gap:7px;
-  padding:9px 14px;
+  padding:10px 15px;
+  border:1px solid rgba(57,245,199,.18);
   border-radius:50px;
-  background:rgba(66,232,197,.13);
-  color:#12a98e;
+  background:rgba(57,245,199,.08);
+  color:var(--primary);
   font-weight:800;
   font-size:13px;
 }
 
-.dark .badge{
-  color:#5ff1d5;
-}
-
 .hero h1{
-  margin-top:20px;
-  font-size:clamp(38px,7vw,70px);
-  line-height:.98;
-  letter-spacing:-3px;
-  max-width:760px;
+  position:relative;
+  z-index:2;
+  margin-top:22px;
+  max-width:800px;
+  font-size:clamp(40px,7vw,76px);
+  line-height:.96;
+  letter-spacing:-4px;
 }
 
 .hero h1 span{
-  color:#21d8b7;
+  color:var(--primary);
+  text-shadow:0 0 35px rgba(57,245,199,.14);
 }
 
 .hero p{
+  position:relative;
+  z-index:2;
   max-width:760px;
   color:var(--muted);
   font-size:18px;
-  line-height:1.7;
-  margin-top:20px;
+  line-height:1.75;
+  margin-top:22px;
 }
 
 .hero-actions{
+  position:relative;
+  z-index:2;
   display:flex;
   flex-wrap:wrap;
   gap:12px;
@@ -229,31 +302,32 @@ a{
 
 .btn{
   border:0;
-  border-radius:17px;
+  border-radius:16px;
   padding:14px 19px;
   font-weight:800;
   transition:.2s;
 }
 
 .btn:hover{
-  transform:translateY(-2px);
+  transform:translateY(-3px);
 }
 
 .btn-primary{
-  background:linear-gradient(135deg,#5bf0d1,#25d4b6);
-  color:#05201a;
-  box-shadow:0 12px 28px rgba(37,212,182,.24);
+  color:#031711;
+  background:linear-gradient(135deg,var(--primary),#23dcb9);
+  box-shadow:0 12px 35px rgba(57,245,199,.18);
 }
 
 .btn-secondary{
-  background:var(--card);
   color:var(--text);
+  background:rgba(255,255,255,.055);
   border:1px solid var(--border);
 }
 
-/* SECTIONS */
+/* SECTION */
 section{
-  margin-top:55px;
+  margin-top:58px;
+  scroll-margin-top:100px;
 }
 
 .section-head{
@@ -278,60 +352,77 @@ section{
 }
 
 .tool-card{
-  position:relative;
-  min-height:155px;
+  min-height:175px;
   padding:21px;
-  background:var(--card);
   border:1px solid var(--border);
   border-radius:24px;
-  box-shadow:0 10px 28px rgba(12,31,52,.07);
-  transition:.2s;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+  box-shadow:0 12px 35px rgba(0,0,0,.16);
   display:flex;
   flex-direction:column;
   justify-content:space-between;
+  transition:.25s;
+  position:relative;
+  overflow:hidden;
+}
+
+.tool-card::before{
+  content:"";
+  position:absolute;
+  width:120px;
+  height:120px;
+  right:-60px;
+  top:-60px;
+  border-radius:50%;
+  background:rgba(57,245,199,.08);
+}
+
+.light .tool-card{
+  background:rgba(255,255,255,.78);
+  box-shadow:0 12px 35px rgba(12,31,52,.08);
 }
 
 .tool-card:hover{
-  transform:translateY(-4px);
-  box-shadow:var(--shadow);
+  transform:translateY(-5px);
+  border-color:rgba(57,245,199,.28);
+  box-shadow:0 20px 50px rgba(0,0,0,.24);
 }
 
 .tool-icon{
-  width:48px;
-  height:48px;
+  width:50px;
+  height:50px;
   display:grid;
   place-items:center;
-  background:rgba(66,232,197,.13);
   border-radius:16px;
+  background:linear-gradient(145deg,rgba(57,245,199,.14),rgba(109,92,255,.10));
+  border:1px solid rgba(57,245,199,.10);
   font-size:25px;
 }
 
 .tool-card h3{
+  position:relative;
+  z-index:1;
   font-size:17px;
-  margin-top:15px;
+  margin-top:14px;
 }
 
 .tool-card p{
-  font-size:12px;
   color:var(--muted);
-  margin-top:5px;
+  font-size:12px;
   line-height:1.45;
+  margin-top:5px;
 }
 
 .tool-open{
-  margin-top:15px;
-  border:0;
-  background:#f0f3f5;
-  color:#17202d;
-  border-radius:12px;
-  padding:9px 12px;
-  font-weight:700;
   align-self:flex-start;
-}
-
-.dark .tool-open{
-  background:#17283d;
-  color:#f4f7fb;
+  margin-top:15px;
+  padding:9px 13px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:rgba(255,255,255,.06);
+  color:var(--text);
+  font-weight:700;
 }
 
 /* LEARN */
@@ -344,22 +435,23 @@ section{
   display:flex;
   align-items:center;
   gap:18px;
-  background:var(--card);
+  padding:18px;
   border:1px solid var(--border);
   border-radius:25px;
-  padding:18px;
-  box-shadow:0 8px 25px rgba(12,31,52,.05);
+  background:var(--card);
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
 }
 
 .learn-number{
   width:64px;
   height:64px;
   flex:none;
-  border-radius:19px;
   display:grid;
   place-items:center;
-  background:rgba(66,232,197,.11);
-  color:#20cfae;
+  border-radius:19px;
+  color:var(--primary);
+  background:rgba(57,245,199,.08);
+  border:1px solid rgba(57,245,199,.14);
   font-weight:900;
 }
 
@@ -378,17 +470,12 @@ section{
 }
 
 .view-btn{
-  border:0;
+  border:1px solid var(--border);
   padding:11px 17px;
   border-radius:14px;
-  background:#f0f2f4;
-  color:#1d2733;
+  background:rgba(255,255,255,.06);
+  color:var(--text);
   font-weight:700;
-}
-
-.dark .view-btn{
-  background:#17283d;
-  color:white;
 }
 
 /* TRENDING */
@@ -399,14 +486,16 @@ section{
 }
 
 .trend-card{
-  background:var(--card);
+  position:relative;
+  overflow:hidden;
+  padding:24px;
   border:1px solid var(--border);
-  border-radius:23px;
-  padding:22px;
+  border-radius:24px;
+  background:var(--card);
 }
 
 .trend-card .emoji{
-  font-size:30px;
+  font-size:31px;
 }
 
 .trend-card h3{
@@ -415,35 +504,36 @@ section{
 
 .trend-card p{
   color:var(--muted);
-  line-height:1.5;
+  line-height:1.55;
   margin-top:7px;
 }
 
 /* COMMUNITY */
-.community-grid{
+.community-grid,
+.contact-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:13px;
 }
 
-.community-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:22px;
+.community-card,
+.contact-card{
   padding:20px;
   text-align:center;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:var(--card);
+  box-shadow:0 10px 30px rgba(0,0,0,.10);
 }
 
-.community-card .big{
+.community-card .big,
+.contact-card .big{
   font-size:32px;
 }
 
-.community-card h3{
-  margin:9px 0;
-}
-
-.community-card button{
-  width:100%;
+.community-card h3,
+.contact-card h3{
+  margin:10px 0 13px;
 }
 
 /* PROFILE */
@@ -452,10 +542,10 @@ section{
   grid-template-columns:180px 1fr;
   gap:28px;
   align-items:center;
-  background:var(--card);
+  padding:28px;
   border:1px solid var(--border);
   border-radius:30px;
-  padding:28px;
+  background:var(--card);
   box-shadow:var(--shadow);
 }
 
@@ -464,41 +554,19 @@ section{
   height:180px;
   object-fit:cover;
   border-radius:30px;
+  border:1px solid rgba(57,245,199,.18);
 }
 
 .profile p{
   color:var(--muted);
-  line-height:1.8;
+  line-height:1.85;
   margin-top:14px;
-}
-
-/* CONTACT */
-.contact-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:13px;
-}
-
-.contact-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:20px;
-  text-align:center;
-}
-
-.contact-card .big{
-  font-size:30px;
-}
-
-.contact-card h3{
-  margin:9px 0 13px;
 }
 
 /* FOOTER */
 footer{
-  margin-top:60px;
-  padding:35px 0 55px;
+  margin-top:65px;
+  padding:38px 0 55px;
   text-align:center;
   color:var(--muted);
 }
@@ -516,8 +584,8 @@ footer strong{
   align-items:center;
   justify-content:center;
   padding:18px;
-  background:rgba(2,9,18,.68);
-  backdrop-filter:blur(10px);
+  background:rgba(0,0,0,.76);
+  backdrop-filter:blur(12px);
 }
 
 .modal.show{
@@ -525,14 +593,15 @@ footer strong{
 }
 
 .modal-box{
-  width:min(650px,100%);
+  width:min(680px,100%);
   max-height:90vh;
   overflow:auto;
+  padding:24px;
+  border:1px solid var(--border);
+  border-radius:30px;
   background:var(--card2);
   color:var(--text);
-  border-radius:30px;
-  padding:23px;
-  box-shadow:0 30px 80px rgba(0,0,0,.35);
+  box-shadow:0 35px 100px rgba(0,0,0,.55);
 }
 
 .modal-head{
@@ -544,18 +613,13 @@ footer strong{
 }
 
 .close{
-  width:45px;
-  height:45px;
-  border:0;
-  border-radius:15px;
-  background:#edf1f4;
-  color:#111;
-  font-size:25px;
-}
-
-.dark .close{
-  background:#182b41;
-  color:white;
+  width:44px;
+  height:44px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:rgba(255,255,255,.06);
+  color:var(--text);
+  font-size:24px;
 }
 
 .field{
@@ -576,9 +640,14 @@ footer strong{
   border:1px solid var(--border);
   border-radius:15px;
   padding:13px;
-  background:var(--card);
+  background:rgba(255,255,255,.05);
   color:var(--text);
   outline:none;
+}
+
+.field select option{
+  background:#0b1630;
+  color:white;
 }
 
 .field textarea{
@@ -588,31 +657,27 @@ footer strong{
 
 .modal-actions{
   display:flex;
-  gap:10px;
   flex-wrap:wrap;
+  gap:10px;
   margin-top:17px;
 }
 
 .result{
   margin-top:18px;
   padding:18px;
+  border:1px solid var(--border);
   border-radius:20px;
-  background:#f3f6f8;
-  color:#17202d;
+  background:rgba(255,255,255,.045);
   line-height:1.7;
   white-space:pre-wrap;
 }
 
-.dark .result{
-  background:#122238;
-  color:#f4f7fb;
-}
-
 .generated-image{
-  width:100%;
-  border-radius:20px;
-  margin-top:18px;
   display:none;
+  width:100%;
+  margin-top:18px;
+  border-radius:20px;
+  border:1px solid var(--border);
 }
 
 /* SEARCH */
@@ -626,11 +691,16 @@ footer strong{
   padding:14px;
   border:1px solid var(--border);
   border-radius:15px;
-  background:var(--card);
+  background:rgba(255,255,255,.04);
+  cursor:pointer;
+}
+
+.search-item:hover{
+  border-color:rgba(57,245,199,.3);
 }
 
 /* MOBILE */
-@media(max-width:850px){
+@media(max-width:900px){
   .tools-grid{
     grid-template-columns:repeat(2,1fr);
   }
@@ -643,22 +713,13 @@ footer strong{
   .trend-grid{
     grid-template-columns:1fr;
   }
-
-  .hero{
-    padding:32px 23px;
-  }
-
-  .profile{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
-
-  .profile img{
-    margin:auto;
-  }
 }
 
-@media(max-width:560px){
+@media(max-width:620px){
+  .container{
+    width:min(100% - 20px,1160px);
+  }
+
   .header-inner{
     min-height:72px;
   }
@@ -670,20 +731,30 @@ footer strong{
   }
 
   .brand-title{
-    font-size:16px;
+    font-size:15px;
   }
 
   .brand-sub{
-    font-size:11px;
+    font-size:10px;
   }
 
   .icon-btn{
-    width:45px;
-    height:45px;
+    width:44px;
+    height:44px;
+  }
+
+  .controls{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:32px 22px;
+    border-radius:29px;
   }
 
   .hero h1{
-    font-size:42px;
+    font-size:43px;
+    letter-spacing:-2.5px;
   }
 
   .hero p{
@@ -691,23 +762,41 @@ footer strong{
   }
 
   .tools-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:1fr 1fr;
     gap:10px;
   }
 
   .tool-card{
-    min-height:150px;
+    min-height:160px;
     padding:16px;
     border-radius:20px;
   }
 
   .tool-card h3{
-    font-size:15px;
+    font-size:14px;
+  }
+
+  .tool-card p{
+    font-size:11px;
+  }
+
+  .community-grid,
+  .contact-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .profile{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .profile img{
+    margin:auto;
   }
 
   .learn-card{
     align-items:flex-start;
-    padding:14px;
+    flex-wrap:wrap;
   }
 
   .learn-number{
@@ -715,21 +804,12 @@ footer strong{
     height:52px;
   }
 
-  .learn-card{
-    flex-wrap:wrap;
-  }
-
   .learn-content{
-    min-width:calc(100% - 75px);
+    min-width:calc(100% - 70px);
   }
 
   .view-btn{
     margin-left:70px;
-  }
-
-  .community-grid,
-  .contact-grid{
-    grid-template-columns:1fr 1fr;
   }
 }
 </style>
@@ -741,17 +821,22 @@ footer strong{
   <div class="container header-inner">
 
     <a class="brand" href="#home">
-      <img class="logo"
-           src="https://i.ibb.co.com/xd1bjsh/1788349715746.png"
-           alt="AHEAD VIA logo">
+      <img
+        class="logo"
+        src="https://i.ibb.co.com/xd1bjsh/1788349715746.png"
+        alt="AHEAD VIA logo"
+      >
+
       <div>
         <div class="brand-title">AHEAD VIA SKILL HUB</div>
-        <div class="brand-sub" data-i18n="brandSub">Digital Skills • Tools • Resources</div>
+        <div class="brand-sub" data-i18n="brandSub">
+          Digital Skills • Tools • Resources
+        </div>
       </div>
     </a>
 
     <div class="header-actions">
-      <button class="icon-btn" id="themeBtn" aria-label="Theme">🌙</button>
+      <button class="icon-btn" id="themeBtn" aria-label="Theme">☀️</button>
       <button class="icon-btn" id="searchBtn" aria-label="Search">🔎</button>
     </div>
 
@@ -760,42 +845,105 @@ footer strong{
 
 <main class="container">
 
-  <!-- LANGUAGE + COUNTRY -->
+  <!-- LANGUAGE / COUNTRY -->
   <div class="controls">
-    <select id="languageSelect" class="control" aria-label="Language">
+
+    <select id="languageSelect" class="control">
       <option value="en">🇬🇧 English</option>
       <option value="bn">🇧🇩 বাংলা</option>
+      <option value="hi">🇮🇳 हिन्दी</option>
+      <option value="ur">🇵🇰 اردو</option>
+      <option value="ar">🇸🇦 العربية</option>
+      <option value="tr">🇹🇷 Türkçe</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="de">🇩🇪 Deutsch</option>
+      <option value="es">🇪🇸 Español</option>
+      <option value="pt">🇵🇹 Português</option>
+      <option value="it">🇮🇹 Italiano</option>
+      <option value="ru">🇷🇺 Русский</option>
+      <option value="zh">🇨🇳 中文</option>
+      <option value="ja">🇯🇵 日本語</option>
+      <option value="ko">🇰🇷 한국어</option>
+      <option value="id">🇮🇩 Bahasa Indonesia</option>
+      <option value="ms">🇲🇾 Bahasa Melayu</option>
+      <option value="th">🇹🇭 ไทย</option>
+      <option value="vi">🇻🇳 Tiếng Việt</option>
+      <option value="fa">🇮🇷 فارسی</option>
+      <option value="ne">🇳🇵 नेपाली</option>
+      <option value="si">🇱🇰 සිංහල</option>
+      <option value="ta">🇮🇳 தமிழ்</option>
+      <option value="te">🇮🇳 తెలుగు</option>
+      <option value="mr">🇮🇳 मराठी</option>
+      <option value="gu">🇮🇳 ગુજરાતી</option>
+      <option value="pa">🇮🇳 ਪੰਜਾਬੀ</option>
+      <option value="nl">🇳🇱 Nederlands</option>
+      <option value="pl">🇵🇱 Polski</option>
+      <option value="sv">🇸🇪 Svenska</option>
     </select>
 
-    <select id="countrySelect" class="control" aria-label="Country">
+    <select id="countrySelect" class="control">
       <option value="international">🌍 International</option>
       <option value="bd">🇧🇩 Bangladesh</option>
       <option value="in">🇮🇳 India</option>
       <option value="pk">🇵🇰 Pakistan</option>
+      <option value="np">🇳🇵 Nepal</option>
+      <option value="lk">🇱🇰 Sri Lanka</option>
+      <option value="mv">🇲🇻 Maldives</option>
+      <option value="bt">🇧🇹 Bhutan</option>
       <option value="sa">🇸🇦 Saudi Arabia</option>
       <option value="ae">🇦🇪 United Arab Emirates</option>
       <option value="qa">🇶🇦 Qatar</option>
       <option value="kw">🇰🇼 Kuwait</option>
       <option value="om">🇴🇲 Oman</option>
+      <option value="bh">🇧🇭 Bahrain</option>
       <option value="my">🇲🇾 Malaysia</option>
+      <option value="sg">🇸🇬 Singapore</option>
+      <option value="id">🇮🇩 Indonesia</option>
+      <option value="th">🇹🇭 Thailand</option>
+      <option value="vn">🇻🇳 Vietnam</option>
+      <option value="ph">🇵🇭 Philippines</option>
+      <option value="cn">🇨🇳 China</option>
+      <option value="jp">🇯🇵 Japan</option>
+      <option value="kr">🇰🇷 South Korea</option>
+      <option value="tr">🇹🇷 Türkiye</option>
       <option value="uk">🇬🇧 United Kingdom</option>
       <option value="us">🇺🇸 United States</option>
       <option value="ca">🇨🇦 Canada</option>
       <option value="au">🇦🇺 Australia</option>
+      <option value="nz">🇳🇿 New Zealand</option>
       <option value="de">🇩🇪 Germany</option>
       <option value="fr">🇫🇷 France</option>
       <option value="it">🇮🇹 Italy</option>
-      <option value="tr">🇹🇷 Türkiye</option>
-      <option value="jp">🇯🇵 Japan</option>
-      <option value="kr">🇰🇷 South Korea</option>
+      <option value="es">🇪🇸 Spain</option>
+      <option value="pt">🇵🇹 Portugal</option>
+      <option value="nl">🇳🇱 Netherlands</option>
+      <option value="be">🇧🇪 Belgium</option>
+      <option value="ch">🇨🇭 Switzerland</option>
+      <option value="se">🇸🇪 Sweden</option>
+      <option value="no">🇳🇴 Norway</option>
+      <option value="dk">🇩🇰 Denmark</option>
+      <option value="fi">🇫🇮 Finland</option>
+      <option value="pl">🇵🇱 Poland</option>
+      <option value="ru">🇷🇺 Russia</option>
+      <option value="ua">🇺🇦 Ukraine</option>
+      <option value="br">🇧🇷 Brazil</option>
+      <option value="mx">🇲🇽 Mexico</option>
+      <option value="ar">🇦🇷 Argentina</option>
+      <option value="za">🇿🇦 South Africa</option>
+      <option value="ng">🇳🇬 Nigeria</option>
+      <option value="eg">🇪🇬 Egypt</option>
+      <option value="ma">🇲🇦 Morocco</option>
       <option value="other">🌎 Other</option>
     </select>
+
   </div>
 
   <!-- HOME -->
   <section id="home" class="hero">
 
-    <span class="badge" data-i18n="welcome">🚀 WELCOME TO AHEAD VIA</span>
+    <span class="badge" data-i18n="welcome">
+      🚀 WELCOME TO AHEAD VIA
+    </span>
 
     <h1>
       <span data-i18n="hero1">Learn.</span>
@@ -809,6 +957,7 @@ footer strong{
     </p>
 
     <div class="hero-actions">
+
       <button class="btn btn-primary" onclick="scrollToSection('tools')">
         🤖 <span data-i18n="exploreTools">Explore Tools</span>
       </button>
@@ -816,6 +965,7 @@ footer strong{
       <button class="btn btn-secondary" onclick="scrollToSection('learn')">
         📚 <span data-i18n="startLearning">Start Learning</span>
       </button>
+
     </div>
 
   </section>
@@ -1070,65 +1220,71 @@ footer strong{
       <div class="community-card">
         <div class="big">✈️</div>
         <h3>Telegram</h3>
-        <button class="btn btn-primary" onclick="openLink('https://t.me/Aheadvia1298')">
-          Open
-        </button>
+        <button class="btn btn-primary"
+          onclick="openLink('https://t.me/Aheadvia1298')">Open</button>
       </div>
 
       <div class="community-card">
         <div class="big">📢</div>
         <h3>Telegram Channel</h3>
-        <button class="btn btn-primary" onclick="openLink('https://t.me/Aheadvia1298gf')">
-          Open
-        </button>
+        <button class="btn btn-primary"
+          onclick="openLink('https://t.me/Aheadvia1298gf')">Open</button>
       </div>
 
       <div class="community-card">
         <div class="big">👥</div>
         <h3>Telegram Group</h3>
-        <button class="btn btn-primary" onclick="openLink('https://t.me/Aheadviaiskill_hab')">
-          Open
-        </button>
+        <button class="btn btn-primary"
+          onclick="openLink('https://t.me/Aheadviaiskill_hab')">Open</button>
+      </div>
+
+      <div class="community-card">
+        <div class="big">📢</div>
+        <h3>Second Channel</h3>
+        <button class="btn btn-primary"
+          onclick="openLink('https://t.me/aheadskillhub120')">Open</button>
+      </div>
+
+      <div class="community-card">
+        <div class="big">👥</div>
+        <h3>Second Group</h3>
+        <button class="btn btn-primary"
+          onclick="openLink('https://t.me/aheadskillhub12')">Open</button>
       </div>
 
       <div class="community-card">
         <div class="big">▶️</div>
         <h3>YouTube</h3>
-        <button class="btn btn-primary" onclick="openLink('https://www.youtube.com/@KittySnipsStories')">
-          Open
-        </button>
+        <button class="btn btn-primary"
+          onclick="openLink('https://www.youtube.com/@KittySnipsStories')">Open</button>
       </div>
 
       <div class="community-card">
         <div class="big">📘</div>
         <h3>Facebook</h3>
-        <button class="btn btn-primary" onclick="openLink('https://www.facebook.com/share/19YtirSEwS/')">
-          Open
-        </button>
+        <button class="btn btn-primary"
+          onclick="openLink('https://www.facebook.com/share/19YtirSEwS/')">Open</button>
       </div>
 
       <div class="community-card">
         <div class="big">𝕏</div>
         <h3>X / Twitter</h3>
-        <button class="btn btn-primary" onclick="openLink('https://x.com/Abdulaheadrllm')">
-          Open
-        </button>
+        <button class="btn btn-primary"
+          onclick="openLink('https://x.com/Abdulaheadrllm')">Open</button>
       </div>
 
       <div class="community-card">
         <div class="big">📸</div>
         <h3>Instagram</h3>
-        <button class="btn btn-primary" onclick="openLink('https://www.instagram.com/kittysnipsofficial')">
-          Open
-        </button>
+        <button class="btn btn-primary"
+          onclick="openLink('https://www.instagram.com/kittysnipsofficial')">Open</button>
       </div>
 
       <div class="community-card">
         <div class="big">🌐</div>
         <h3>AHEAD VIA</h3>
-        <button class="btn btn-primary" onclick="scrollToSection('home')">
-          Home
-        </button>
+        <button class="btn btn-primary"
+          onclick="scrollToSection('home')">Home</button>
       </div>
 
     </div>
@@ -1142,29 +1298,39 @@ footer strong{
     </div>
 
     <div class="profile">
-      <img src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg"
-           alt="ABDUL AHAD">
+
+      <img
+        src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg"
+        alt="ABDUL AHAD"
+      >
 
       <div>
+
         <h2>ABDUL AHAD</h2>
 
         <p data-i18n="about">
           Hi, I’m ABDUL AHAD. 👋 I work on different types of websites,
           digital projects, and online income systems. I also explore
           income skills, AI tools, video creation, thumbnails, content
-          creation and many other digital topics. 🚀
-          Through AHEAD VIA SKILL HUB, I aim to bring useful information,
-          tools and resources together in one place.
+          creation and many other digital topics. 🚀 Through AHEAD VIA
+          SKILL HUB, I aim to bring useful information, tools and resources
+          together in one place.
         </p>
 
         <div class="hero-actions">
-          <button class="btn btn-primary" onclick="scrollToSection('tools')">
+
+          <button class="btn btn-primary"
+            onclick="scrollToSection('tools')">
             🤖 Explore Tools
           </button>
-          <button class="btn btn-secondary" onclick="scrollToSection('community')">
+
+          <button class="btn btn-secondary"
+            onclick="scrollToSection('community')">
             📢 Community
           </button>
+
         </div>
+
       </div>
     </div>
 
@@ -1175,6 +1341,7 @@ footer strong{
 
     <div class="section-head">
       <h2>📞 <span data-i18n="contactTitle">Contact</span></h2>
+
       <p data-i18n="contactSub">
         Contact options are available through secure action buttons.
       </p>
@@ -1232,72 +1399,97 @@ footer strong{
 </main>
 
 
-<!-- GENERAL TOOL MODAL -->
+<!-- TOOL MODAL -->
 <div class="modal" id="toolModal">
+
   <div class="modal-box">
 
     <div class="modal-head">
       <h2 id="toolModalTitle">Tool</h2>
-      <button class="close" onclick="closeModal('toolModal')">×</button>
+      <button class="close"
+        onclick="closeModal('toolModal')">×</button>
     </div>
 
     <div id="toolBody"></div>
 
   </div>
+
 </div>
 
 
 <!-- LESSON MODAL -->
 <div class="modal" id="lessonModal">
+
   <div class="modal-box">
 
     <div class="modal-head">
       <h2 id="lessonTitle">Lesson</h2>
-      <button class="close" onclick="closeModal('lessonModal')">×</button>
+
+      <button class="close"
+        onclick="closeModal('lessonModal')">×</button>
     </div>
 
     <div class="result" id="lessonContent"></div>
 
   </div>
+
 </div>
 
 
 <!-- SEARCH MODAL -->
 <div class="modal" id="searchModal">
+
   <div class="modal-box">
 
     <div class="modal-head">
+
       <h2>🔎 Search</h2>
-      <button class="close" onclick="closeModal('searchModal')">×</button>
+
+      <button class="close"
+        onclick="closeModal('searchModal')">×</button>
+
     </div>
 
     <div class="field">
-      <input id="searchInput"
-             type="search"
-             placeholder="Search tools, lessons, topics...">
+
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Search tools, lessons, topics..."
+      >
+
     </div>
 
     <div class="search-results" id="searchResults"></div>
 
   </div>
+
 </div>
 
 
 <script>
+
 /* =========================================================
    AHEAD VIA SKILL HUB
-   Clean single-file website
+   COMPLETE SINGLE FILE
 ========================================================= */
 
 const state = {
-  lang: localStorage.getItem("ahead_lang") || "en",
-  country: localStorage.getItem("ahead_country") || "international"
+
+  lang:
+    localStorage.getItem("ahead_lang") || "en",
+
+  country:
+    localStorage.getItem("ahead_country") || "international"
+
 };
 
 const $ = id => document.getElementById(id);
 
-const logoURL =
-  "https://i.ibb.co.com/xd1bjsh/1788349715746.png";
+
+/* =========================================================
+   TRANSLATIONS
+========================================================= */
 
 const translations = {
 
@@ -1362,7 +1554,7 @@ en:{
   communityTitle:"Community",
   communitySub:"Connect with AHEAD VIA",
   profileTitle:"Profile",
-  about:"Hi, I’m ABDUL AHAD. 👋 I work on different types of websites, digital projects, and online income systems. I also explore income skills, AI tools, video creation, thumbnails, content creation and many other digital topics. 🚀 Through AHEAD VIA SKILL HUB, I aim to bring useful information, tools and resources together in one place.",
+  about:"Hi, I’m ABDUL AHAD. 👋 I work on different types of websites, digital projects, and online income systems. I also explore different income skills, free earning opportunities, investment-based work, AI tools, video creation, thumbnails, content creation and many other digital topics. 🚀 Through AHEAD VIA SKILL HUB, I aim to bring useful information, tools, and resources together in one place.",
   contactTitle:"Contact",
   contactSub:"Contact options are available through secure action buttons.",
   footer:"Learn • Create • Grow Online"
@@ -1429,7 +1621,7 @@ bn:{
   communityTitle:"কমিউনিটি",
   communitySub:"AHEAD VIA-এর সাথে যুক্ত থাকুন",
   profileTitle:"প্রোফাইল",
-  about:"আমি ABDUL AHAD। 👋 আমি বিভিন্ন website, digital project এবং online income system নিয়ে কাজ করি। পাশাপাশি income skills, AI tools, video creation, thumbnail, content creation এবং বিভিন্ন digital বিষয় নিয়ে কাজ করি। 🚀 AHEAD VIA SKILL HUB-এর মাধ্যমে প্রয়োজনীয় তথ্য, tools এবং resources এক জায়গায় দেওয়ার চেষ্টা করছি।",
+  about:"আমি ABDUL AHAD। 👋 আমি বিভিন্ন ধরনের ওয়েবসাইট, ডিজিটাল প্রজেক্ট ও অনলাইন ইনকাম সিস্টেম নিয়ে কাজ করি। পাশাপাশি বিভিন্ন ইনকাম স্কিল, ফ্রি ইনকামের সুযোগ, ইনভেস্টমেন্ট-ভিত্তিক কাজ, AI টুলস, ভিডিও তৈরি, থাম্বনেইল, কনটেন্ট তৈরি এবং আরও অনেক ডিজিটাল বিষয় নিয়ে কাজ করি। 🚀 AHEAD VIA SKILL HUB-এ এসব দরকারি তথ্য, টুলস ও রিসোর্স এক জায়গায় তুলে ধরার চেষ্টা করছি।",
   contactTitle:"যোগাযোগ",
   contactSub:"Contact details সরাসরি দেখানো হচ্ছে না; button ব্যবহার করে যোগাযোগ করুন।",
   footer:"শিখুন • তৈরি করুন • অনলাইনে এগিয়ে যান"
@@ -1438,82 +1630,207 @@ bn:{
 };
 
 
-/* LANGUAGE */
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
 function applyLanguage(){
 
-  const lang = state.lang;
-  const t = translations[lang];
+  const lang =
+    translations[state.lang]
+      ? state.lang
+      : "en";
 
-  document.documentElement.lang = lang === "bn" ? "bn" : "en";
+  const t =
+    translations[lang];
 
-  document.querySelectorAll("[data-i18n]").forEach(el=>{
-    const key = el.getAttribute("data-i18n");
-    if(t[key]) el.textContent = t[key];
-  });
+  document.documentElement.lang = lang;
+
+  document
+    .querySelectorAll("[data-i18n]")
+    .forEach(el=>{
+
+      const key =
+        el.getAttribute("data-i18n");
+
+      if(t[key]){
+        el.textContent = t[key];
+      }
+
+    });
 
   $("languageSelect").value = lang;
 
-  localStorage.setItem("ahead_lang",lang);
+  localStorage.setItem(
+    "ahead_lang",
+    lang
+  );
+
 }
 
-$("languageSelect").addEventListener("change",e=>{
-  state.lang = e.target.value;
+
+/* LANGUAGE CHANGE */
+
+$("languageSelect")
+.addEventListener("change",e=>{
+
+  state.lang =
+    e.target.value;
+
+  /*
+    English and Bangla have complete
+    built-in translations.
+    Other language selections remain
+    available for future content.
+  */
+
+  if(
+    state.lang !== "en" &&
+    state.lang !== "bn"
+  ){
+
+    alert(
+      "This language is available in the language list. Full interface translation can be added next."
+    );
+
+    state.lang="en";
+
+  }
+
   applyLanguage();
+
 });
 
 
-/* COUNTRY */
-$("countrySelect").value = state.country;
+/* =========================================================
+   COUNTRY
+========================================================= */
 
-$("countrySelect").addEventListener("change",e=>{
-  state.country = e.target.value;
-  localStorage.setItem("ahead_country",state.country);
+$("countrySelect").value =
+  state.country;
+
+$("countrySelect")
+.addEventListener("change",e=>{
+
+  state.country =
+    e.target.value;
+
+  localStorage.setItem(
+    "ahead_country",
+    state.country
+  );
+
 });
 
 
-/* THEME */
-if(localStorage.getItem("ahead_theme")==="dark"){
-  document.body.classList.add("dark");
+/* =========================================================
+   THEME
+========================================================= */
+
+if(
+  localStorage.getItem("ahead_theme")
+  === "light"
+){
+
+  document.body.classList.add("light");
+
+  $("themeBtn").textContent="🌙";
+
+}else{
+
   $("themeBtn").textContent="☀️";
+
 }
 
-$("themeBtn").addEventListener("click",()=>{
-  document.body.classList.toggle("dark");
 
-  const dark=document.body.classList.contains("dark");
+$("themeBtn")
+.addEventListener("click",()=>{
 
-  $("themeBtn").textContent=dark?"☀️":"🌙";
+  document.body.classList.toggle("light");
 
-  localStorage.setItem("ahead_theme",dark?"dark":"light");
+  const light =
+    document.body.classList.contains("light");
+
+  $("themeBtn").textContent =
+    light ? "🌙" : "☀️";
+
+  localStorage.setItem(
+    "ahead_theme",
+    light ? "light" : "dark"
+  );
+
 });
 
 
-/* SCROLL */
+/* =========================================================
+   SCROLL
+========================================================= */
+
 function scrollToSection(id){
+
   const el=$(id);
-  if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
+
+  if(el){
+
+    el.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  }
+
 }
 
 
-/* LINKS */
+/* =========================================================
+   LINKS
+========================================================= */
+
 function openLink(url){
-  window.open(url,"_blank","noopener,noreferrer");
+
+  window.open(
+    url,
+    "_blank",
+    "noopener,noreferrer"
+  );
+
 }
 
 
-/* MODAL */
+/* =========================================================
+   MODAL
+========================================================= */
+
 function openModal(id){
+
   $(id).classList.add("show");
+
 }
 
 function closeModal(id){
+
   $(id).classList.remove("show");
+
 }
 
-document.querySelectorAll(".modal").forEach(modal=>{
-  modal.addEventListener("click",e=>{
-    if(e.target===modal) modal.classList.remove("show");
-  });
+
+document
+.querySelectorAll(".modal")
+.forEach(modal=>{
+
+  modal.addEventListener(
+    "click",
+    e=>{
+
+      if(e.target===modal){
+
+        modal.classList.remove("show");
+
+      }
+
+    }
+  );
+
 });
 
 
@@ -1524,6 +1841,7 @@ document.querySelectorAll(".modal").forEach(modal=>{
 function openTool(type){
 
   const titleMap={
+
     image:"🖼️ AI Image Generator",
     video:"🎬 Video Prompt Maker",
     thumbnail:"🎨 Thumbnail Maker",
@@ -1536,24 +1854,38 @@ function openTool(type){
     percent:"📊 Percentage Tool",
     profit:"📈 Profit Calculator",
     location:"📍 Location Ideas"
+
   };
 
-  $("toolModalTitle").textContent=titleMap[type] || "Tool";
+  $("toolModalTitle").textContent =
+    titleMap[type] || "Tool";
 
   let html="";
+
+
+  /* IMAGE */
 
   if(type==="image"){
 
     html=`
+
       <div class="field">
+
         <label>Image Prompt</label>
-        <textarea id="imagePrompt"
-          placeholder="Example: A cinematic futuristic city at sunset, ultra detailed, professional photography"></textarea>
+
+        <textarea
+          id="imagePrompt"
+          placeholder="Example: futuristic AI city, neon lights, cinematic, ultra detailed"
+        ></textarea>
+
       </div>
 
       <div class="field">
+
         <label>Image Style</label>
+
         <select id="imageStyle">
+
           <option>Photorealistic</option>
           <option>Cinematic</option>
           <option>3D Render</option>
@@ -1561,298 +1893,558 @@ function openTool(type){
           <option>Digital Art</option>
           <option>Fantasy</option>
           <option>Minimal</option>
+          <option>Cyberpunk</option>
+          <option>Luxury</option>
+
         </select>
+
       </div>
 
       <div class="modal-actions">
-        <button class="btn btn-primary" onclick="generateImage()">
+
+        <button
+          class="btn btn-primary"
+          onclick="generateImage()">
+
           🖼️ Generate Image
+
         </button>
+
       </div>
 
-      <p style="color:var(--muted);margin-top:12px;font-size:13px">
-        Create an image from your text prompt.
-      </p>
+      <img
+        id="generatedImage"
+        class="generated-image"
+        alt="Generated image"
+      >
 
-      <img id="generatedImage" class="generated-image" alt="Generated image">
     `;
 
   }
+
+
+  /* VIDEO */
 
   else if(type==="video"){
 
     html=`
+
       <div class="field">
+
         <label>Video Topic</label>
-        <input id="videoTopic" placeholder="Example: AI tools for beginners">
+
+        <input
+          id="videoTopic"
+          placeholder="Example: AI tools for beginners"
+        >
+
       </div>
 
       <div class="field">
+
         <label>Language</label>
+
         <select id="videoLang">
+
           <option value="en">English</option>
           <option value="bn">বাংলা</option>
+
         </select>
+
       </div>
 
       <div class="modal-actions">
-        <button class="btn btn-primary" onclick="generateVideoPrompt()">
+
+        <button
+          class="btn btn-primary"
+          onclick="generateVideoPrompt()">
+
           🎬 Create Prompt
+
         </button>
+
       </div>
 
-      <div class="result" id="videoResult">Your video prompt will appear here.</div>
+      <div
+        class="result"
+        id="videoResult">
+        Your video prompt will appear here.
+      </div>
+
     `;
 
   }
+
+
+  /* THUMBNAIL */
 
   else if(type==="thumbnail"){
 
     html=`
+
       <div class="field">
+
         <label>Video Topic</label>
-        <input id="thumbTopic" placeholder="Example: Make Money Online">
+
+        <input
+          id="thumbTopic"
+          placeholder="Example: Make Money Online"
+        >
+
       </div>
 
       <div class="field">
+
         <label>Language</label>
+
         <select id="thumbLang">
+
           <option value="en">English</option>
           <option value="bn">বাংলা</option>
+
         </select>
+
       </div>
 
       <div class="modal-actions">
-        <button class="btn btn-primary" onclick="generateThumbnail()">
+
+        <button
+          class="btn btn-primary"
+          onclick="generateThumbnail()">
+
           🎨 Create Thumbnail Idea
+
         </button>
+
       </div>
 
-      <div class="result" id="thumbResult">Your thumbnail concept will appear here.</div>
+      <div
+        class="result"
+        id="thumbResult">
+        Your thumbnail concept will appear here.
+      </div>
+
     `;
 
   }
+
+
+  /* CAPTION */
 
   else if(type==="caption"){
 
     html=`
+
       <div class="field">
+
         <label>Topic</label>
-        <textarea id="captionTopic" placeholder="Write your topic..."></textarea>
+
+        <textarea
+          id="captionTopic"
+          placeholder="Write your topic..."
+        ></textarea>
+
       </div>
 
       <div class="field">
+
         <label>Output Language</label>
+
         <select id="captionLang">
+
           <option value="en">English</option>
           <option value="bn">বাংলা</option>
+
         </select>
+
       </div>
 
       <div class="modal-actions">
-        <button class="btn btn-primary" onclick="generateCaption()">
+
+        <button
+          class="btn btn-primary"
+          onclick="generateCaption()">
+
           ✍️ Generate Caption
+
         </button>
+
       </div>
 
-      <div class="result" id="captionResult">Your caption will appear here.</div>
+      <div
+        class="result"
+        id="captionResult">
+        Your caption will appear here.
+      </div>
+
     `;
 
   }
+
+
+  /* HASHTAG */
 
   else if(type==="hashtag"){
 
     html=`
-      <div class="field">
-        <label>Topic</label>
-        <input id="hashtagTopic" placeholder="Example: AI, YouTube, Business">
-      </div>
 
       <div class="field">
-        <label>Language</label>
-        <select id="hashtagLang">
-          <option value="en">English</option>
-          <option value="bn">বাংলা</option>
-        </select>
+
+        <label>Topic</label>
+
+        <input
+          id="hashtagTopic"
+          placeholder="Example: AI, YouTube, Business"
+        >
+
       </div>
 
       <div class="modal-actions">
-        <button class="btn btn-primary" onclick="generateHashtags()">
+
+        <button
+          class="btn btn-primary"
+          onclick="generateHashtags()">
+
           #️⃣ Generate Hashtags
+
         </button>
+
       </div>
 
-      <div class="result" id="hashtagResult"></div>
+      <div
+        class="result"
+        id="hashtagResult">
+      </div>
+
     `;
 
   }
+
+
+  /* IDEAS */
 
   else if(type==="idea"){
 
     html=`
-      <div class="field">
-        <label>Content Category</label>
-        <input id="ideaTopic" placeholder="Example: Technology">
-      </div>
 
       <div class="field">
-        <label>Language</label>
-        <select id="ideaLang">
-          <option value="en">English</option>
-          <option value="bn">বাংলা</option>
-        </select>
+
+        <label>Content Category</label>
+
+        <input
+          id="ideaTopic"
+          placeholder="Example: Technology"
+        >
+
       </div>
 
       <div class="modal-actions">
-        <button class="btn btn-primary" onclick="generateIdeas()">
+
+        <button
+          class="btn btn-primary"
+          onclick="generateIdeas()">
+
           💡 Generate Ideas
+
         </button>
+
       </div>
 
-      <div class="result" id="ideaResult"></div>
+      <div
+        class="result"
+        id="ideaResult">
+      </div>
+
     `;
 
   }
+
+
+  /* CONTENT */
 
   else if(type==="content"){
 
     html=`
+
       <div class="field">
+
         <label>Topic</label>
-        <input id="contentTopic" placeholder="Example: Digital Skills">
+
+        <input
+          id="contentTopic"
+          placeholder="Example: Digital Skills"
+        >
+
       </div>
 
       <div class="field">
+
         <label>Language</label>
+
         <select id="contentLang">
+
           <option value="en">English</option>
           <option value="bn">বাংলা</option>
+
         </select>
+
       </div>
 
       <div class="modal-actions">
-        <button class="btn btn-primary" onclick="generatePlan()">
+
+        <button
+          class="btn btn-primary"
+          onclick="generatePlan()">
+
           📝 Create Plan
+
         </button>
+
       </div>
 
-      <div class="result" id="contentResult"></div>
+      <div
+        class="result"
+        id="contentResult">
+      </div>
+
     `;
 
   }
+
+
+  /* QR */
 
   else if(type==="qr"){
 
     html=`
+
       <div class="field">
+
         <label>Link or Text</label>
-        <input id="qrText" placeholder="https://example.com">
+
+        <input
+          id="qrText"
+          placeholder="https://example.com"
+        >
+
       </div>
 
       <div class="modal-actions">
-        <button class="btn btn-primary" onclick="generateQR()">
+
+        <button
+          class="btn btn-primary"
+          onclick="generateQR()">
+
           🔳 Generate QR
+
         </button>
+
       </div>
 
       <div style="text-align:center;margin-top:18px">
-        <img id="qrImage"
-             style="max-width:260px;width:100%;border-radius:15px;display:none"
-             alt="QR Code">
+
+        <img
+          id="qrImage"
+          style="
+            max-width:260px;
+            width:100%;
+            border-radius:15px;
+            display:none;
+          "
+          alt="QR Code"
+        >
+
       </div>
+
     `;
 
   }
+
+
+  /* CALCULATOR */
 
   else if(type==="calc"){
 
     html=`
+
       <div class="field">
+
         <label>Expression</label>
-        <input id="calcInput" placeholder="Example: 25 * 4 + 10">
+
+        <input
+          id="calcInput"
+          placeholder="Example: 25 * 4 + 10"
+        >
+
       </div>
 
       <div class="modal-actions">
-        <button class="btn btn-primary" onclick="calculate()">
+
+        <button
+          class="btn btn-primary"
+          onclick="calculate()">
+
           🧮 Calculate
+
         </button>
+
       </div>
 
-      <div class="result" id="calcResult"></div>
+      <div
+        class="result"
+        id="calcResult">
+      </div>
+
     `;
 
   }
+
+
+  /* PERCENTAGE */
 
   else if(type==="percent"){
 
     html=`
+
       <div class="field">
+
         <label>Percentage (%)</label>
-        <input id="percentValue" type="number" placeholder="20">
+
+        <input
+          id="percentValue"
+          type="number"
+          placeholder="20"
+        >
+
       </div>
 
       <div class="field">
+
         <label>Number</label>
-        <input id="percentNumber" type="number" placeholder="500">
+
+        <input
+          id="percentNumber"
+          type="number"
+          placeholder="500"
+        >
+
       </div>
 
       <div class="modal-actions">
-        <button class="btn btn-primary" onclick="calculatePercent()">
+
+        <button
+          class="btn btn-primary"
+          onclick="calculatePercent()">
+
           📊 Calculate
+
         </button>
+
       </div>
 
-      <div class="result" id="percentResult"></div>
+      <div
+        class="result"
+        id="percentResult">
+      </div>
+
     `;
 
   }
+
+
+  /* PROFIT */
 
   else if(type==="profit"){
 
     html=`
+
       <div class="field">
+
         <label>Cost Price</label>
-        <input id="costPrice" type="number">
+
+        <input
+          id="costPrice"
+          type="number"
+        >
+
       </div>
 
       <div class="field">
+
         <label>Selling Price</label>
-        <input id="sellingPrice" type="number">
+
+        <input
+          id="sellingPrice"
+          type="number"
+        >
+
       </div>
 
       <div class="modal-actions">
-        <button class="btn btn-primary" onclick="calculateProfit()">
+
+        <button
+          class="btn btn-primary"
+          onclick="calculateProfit()">
+
           📈 Calculate Profit
+
         </button>
+
       </div>
 
-      <div class="result" id="profitResult"></div>
+      <div
+        class="result"
+        id="profitResult">
+      </div>
+
     `;
 
   }
+
+
+  /* LOCATION */
 
   else if(type==="location"){
 
     html=`
+
       <div class="field">
+
         <label>Content Type</label>
-        <input id="locationTopic" placeholder="Example: Travel video">
+
+        <input
+          id="locationTopic"
+          placeholder="Example: Travel video"
+        >
+
       </div>
 
       <div class="modal-actions">
-        <button class="btn btn-primary" onclick="generateLocations()">
+
+        <button
+          class="btn btn-primary"
+          onclick="generateLocations()">
+
           📍 Generate Ideas
+
         </button>
+
       </div>
 
-      <div class="result" id="locationResult"></div>
+      <div
+        class="result"
+        id="locationResult">
+      </div>
+
     `;
 
   }
 
+
   $("toolBody").innerHTML=html;
 
   openModal("toolModal");
+
 }
 
 
@@ -1862,22 +2454,25 @@ function openTool(type){
 
 function generateImage(){
 
-  const prompt=$("imagePrompt").value.trim();
-  const style=$("imageStyle").value;
-  const img=$("generatedImage");
+  const prompt =
+    $("imagePrompt").value.trim();
+
+  const style =
+    $("imageStyle").value;
+
+  const img =
+    $("generatedImage");
 
   if(!prompt){
+
     alert("Please enter an image prompt.");
+
     return;
+
   }
 
   const finalPrompt =
-    `${prompt}, ${style} style, high quality, detailed, professional`;
-
-  /*
-    External image-generation endpoint.
-    No private API key is stored in this website.
-  */
+    `${prompt}, ${style} style, premium digital art, professional, highly detailed`;
 
   const url =
     "https://image.pollinations.ai/prompt/" +
@@ -1885,41 +2480,57 @@ function generateImage(){
     "?width=768&height=768&nologo=true";
 
   img.src=url;
+
   img.style.display="block";
 
   img.onload=()=>{
+
     img.scrollIntoView({
       behavior:"smooth",
       block:"center"
     });
+
   };
 
   img.onerror=()=>{
+
     alert(
       "The image service did not return an image right now. Please try again."
     );
+
   };
+
 }
 
 
-/* VIDEO PROMPT */
+/* =========================================================
+   VIDEO PROMPT
+========================================================= */
+
 function generateVideoPrompt(){
 
-  const topic=$("videoTopic").value.trim();
-  const lang=$("videoLang").value;
+  const topic =
+    $("videoTopic").value.trim();
+
+  const lang =
+    $("videoLang").value;
 
   if(!topic){
+
     alert("Please enter a video topic.");
+
     return;
+
   }
 
-  let text="";
-
   if(lang==="bn"){
-    text=
-`Video Topic: ${topic}
 
-🎬 Hook:
+    $("videoResult").textContent =
+`🎬 Video Prompt
+
+Topic: ${topic}
+
+🎯 Hook:
 প্রথম 2–3 সেকেন্ডে attention-grabbing hook ব্যবহার করুন।
 
 📝 Script:
@@ -1934,13 +2545,17 @@ Clear voice-over এবং suitable background music ব্যবহার ক�
 📱 Format:
 Vertical 9:16 short-form video.
 
-🎯 Ending:
+🚀 Ending:
 শেষে একটি simple call-to-action দিন।`;
-  }else{
-    text=
-`Video Topic: ${topic}
 
-🎬 Hook:
+  }else{
+
+    $("videoResult").textContent =
+`🎬 Video Prompt
+
+Topic: ${topic}
+
+🎯 Hook:
 Start with a strong attention-grabbing hook in the first 2–3 seconds.
 
 📝 Script:
@@ -1955,27 +2570,37 @@ Use clear voice-over and suitable background music.
 📱 Format:
 Vertical 9:16 short-form video.
 
-🎯 Ending:
+🚀 Ending:
 Finish with a simple call-to-action.`;
+
   }
 
-  $("videoResult").textContent=text;
 }
 
 
-/* THUMBNAIL */
+/* =========================================================
+   THUMBNAIL
+========================================================= */
+
 function generateThumbnail(){
 
-  const topic=$("thumbTopic").value.trim();
-  const lang=$("thumbLang").value;
+  const topic =
+    $("thumbTopic").value.trim();
+
+  const lang =
+    $("thumbLang").value;
 
   if(!topic){
+
     alert("Please enter a topic.");
+
     return;
+
   }
 
   if(lang==="bn"){
-    $("thumbResult").textContent=
+
+    $("thumbResult").textContent =
 `🎨 Thumbnail Concept
 
 Topic: ${topic}
@@ -1986,8 +2611,10 @@ Topic: ${topic}
 • Face/expression থাকলে clear রাখুন
 • 3–6 শব্দের মধ্যে text রাখুন
 • Mobile screen-এ thumbnail পরিষ্কার দেখা যায় কিনা পরীক্ষা করুন`;
+
   }else{
-    $("thumbResult").textContent=
+
+    $("thumbResult").textContent =
 `🎨 Thumbnail Concept
 
 Topic: ${topic}
@@ -1998,62 +2625,87 @@ Topic: ${topic}
 • Keep faces/expressions clear
 • Use 3–6 words maximum
 • Make sure it remains readable on mobile screens`;
+
   }
+
 }
 
 
-/* CAPTION */
+/* =========================================================
+   CAPTION
+========================================================= */
+
 function generateCaption(){
 
-  const topic=$("captionTopic").value.trim();
-  const lang=$("captionLang").value;
+  const topic =
+    $("captionTopic").value.trim();
+
+  const lang =
+    $("captionLang").value;
 
   if(!topic){
+
     alert("Please enter a topic.");
+
     return;
+
   }
 
   if(lang==="bn"){
-    $("captionResult").textContent=
+
+    $("captionResult").textContent =
 `✨ ${topic}
 
 আজকের পোস্টটি আপনার জন্য। 🚀
+
 দরকারি তথ্য, নতুন idea এবং practical tips একসাথে।
 
 আপনার মতামত comment-এ জানান। 👇
 
-#DigitalSkills #AHEADVIA #OnlineSkills`;
+#AHEADVIA #DigitalSkills #OnlineSkills`;
+
   }else{
-    $("captionResult").textContent=
+
+    $("captionResult").textContent =
 `✨ ${topic}
 
 Useful information, fresh ideas and practical tips — all in one place. 🚀
 
 Share your thoughts in the comments. 👇
 
-#DigitalSkills #AHEADVIA #OnlineSkills`;
+#AHEADVIA #DigitalSkills #OnlineSkills`;
+
   }
+
 }
 
 
-/* HASHTAG */
+/* =========================================================
+   HASHTAGS
+========================================================= */
+
 function generateHashtags(){
 
-  const topic=$("hashtagTopic").value.trim();
+  const topic =
+    $("hashtagTopic").value.trim();
 
   if(!topic){
+
     alert("Please enter a topic.");
+
     return;
+
   }
 
-  const clean=topic
+  const clean =
+    topic
     .replace(/[^a-zA-Z0-9\u0980-\u09FF ]/g,"")
     .trim()
     .split(/\s+/)
-    .slice(0,4)
+    .slice(0,5)
     .join("");
 
-  $("hashtagResult").textContent=
+  $("hashtagResult").textContent =
 `#${clean}
 #AHEADVIA
 #DigitalSkills
@@ -2064,17 +2716,21 @@ function generateHashtags(){
 #SocialMedia
 #LearnOnline
 #CreatorTips`;
+
 }
 
 
-/* IDEAS */
+/* =========================================================
+   CONTENT IDEAS
+========================================================= */
+
 function generateIdeas(){
 
-  const topic=$("ideaTopic").value.trim() || "Digital Skills";
-  const lang=$("ideaLang").value;
+  const topic =
+    $("ideaTopic").value.trim()
+    || "Digital Skills";
 
-  if(lang==="bn"){
-    $("ideaResult").textContent=
+  $("ideaResult").textContent =
 `💡 ${topic} Content Ideas
 
 1. Beginner Guide
@@ -2087,37 +2743,34 @@ function generateIdeas(){
 8. Frequently Asked Questions
 9. Beginner Challenge
 10. Expert Tips`;
-  }else{
-    $("ideaResult").textContent=
-`💡 ${topic} Content Ideas
 
-1. Beginner Guide
-2. Top 5 Useful Tips
-3. Common Mistakes
-4. Step-by-Step Tutorial
-5. Tools You Should Know
-6. Before vs After
-7. Quick Tips
-8. Frequently Asked Questions
-9. Beginner Challenge
-10. Expert Tips`;
-  }
+
 }
 
 
-/* CONTENT PLAN */
+/* =========================================================
+   CONTENT PLAN
+========================================================= */
+
 function generatePlan(){
 
-  const topic=$("contentTopic").value.trim();
-  const lang=$("contentLang").value;
+  const topic =
+    $("contentTopic").value.trim();
+
+  const lang =
+    $("contentLang").value;
 
   if(!topic){
+
     alert("Please enter a topic.");
+
     return;
+
   }
 
   if(lang==="bn"){
-    $("contentResult").textContent=
+
+    $("contentResult").textContent =
 `📝 7-Day Content Plan — ${topic}
 
 Day 1: Introduction
@@ -2127,8 +2780,10 @@ Day 4: Tutorial
 Day 5: Useful Tools
 Day 6: FAQ
 Day 7: Summary + Call To Action`;
+
   }else{
-    $("contentResult").textContent=
+
+    $("contentResult").textContent =
 `📝 7-Day Content Plan — ${topic}
 
 Day 1: Introduction
@@ -2138,104 +2793,298 @@ Day 4: Tutorial
 Day 5: Useful Tools
 Day 6: FAQ
 Day 7: Summary + Call To Action`;
+
   }
+
 }
 
 
-/* QR */
+/* =========================================================
+   QR
+========================================================= */
+
 function generateQR(){
 
-  const text=$("qrText").value.trim();
+  const text =
+    $("qrText").value.trim();
 
   if(!text){
+
     alert("Please enter a link or text.");
+
     return;
+
   }
 
-  const img=$("qrImage");
+  const img =
+    $("qrImage");
 
-  img.src=
-    "https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=" +
-    encodeURIComponent(text);
+  img.src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=500x500&data="
+    + encodeURIComponent(text);
 
   img.style.display="inline-block";
+
 }
 
 
-/* CALCULATOR */
+/* =========================================================
+   CALCULATOR
+========================================================= */
+
 function calculate(){
 
-  const value=$("calcInput").value.trim();
+  const value =
+    $("calcInput").value.trim();
 
   if(!value){
+
     alert("Enter a calculation.");
+
     return;
+
+  }
+
+  /*
+    Only basic mathematical characters
+    are allowed.
+  */
+
+  if(
+    !/^[0-9+\-*/().%\s]+$/.test(value)
+  ){
+
+    $("calcResult").textContent =
+      "Invalid calculation.";
+
+    return;
+
   }
 
   try{
 
-    if(!/^[0-9+\-*/().%\s]+$/.test(value)){
-      throw new Error("Invalid");
+    const sanitized =
+      value.replace(
+        /(\d+(?:\.\d+)?)%/g,
+        "($1/100)"
+      );
+
+    /*
+      Basic calculator parser.
+      No external API required.
+    */
+
+    const tokens =
+      sanitized.match(
+        /(?:\d+(?:\.\d+)?)|[()+\-*/]/g
+      );
+
+    if(!tokens){
+
+      throw new Error();
+
     }
 
-    const result=Function(
-      '"use strict"; return ('+value+')'
-    )();
+    let index=0;
 
-    $("calcResult").textContent="Result: "+result;
+    function parseExpression(){
 
-  }catch(e){
-    $("calcResult").textContent="Invalid calculation.";
+      let result =
+        parseTerm();
+
+      while(
+        tokens[index]==="+" ||
+        tokens[index]==="-"
+      ){
+
+        const op =
+          tokens[index++];
+
+        const right =
+          parseTerm();
+
+        result =
+          op==="+" ?
+          result+right :
+          result-right;
+
+      }
+
+      return result;
+
+    }
+
+    function parseTerm(){
+
+      let result =
+        parseFactor();
+
+      while(
+        tokens[index]==="*" ||
+        tokens[index]==="/"
+      ){
+
+        const op =
+          tokens[index++];
+
+        const right =
+          parseFactor();
+
+        result =
+          op==="*" ?
+          result*right :
+          result/right;
+
+      }
+
+      return result;
+
+    }
+
+    function parseFactor(){
+
+      const token =
+        tokens[index++];
+
+      if(token==="("){
+
+        const result =
+          parseExpression();
+
+        if(tokens[index++]!==")"){
+          throw new Error();
+        }
+
+        return result;
+
+      }
+
+      if(token==="-"){
+        return -parseFactor();
+      }
+
+      const number =
+        Number(token);
+
+      if(Number.isNaN(number)){
+        throw new Error();
+      }
+
+      return number;
+
+    }
+
+    const result =
+      parseExpression();
+
+    if(index!==tokens.length){
+      throw new Error();
+    }
+
+    $("calcResult").textContent =
+      "Result: " + result;
+
+  }catch(error){
+
+    $("calcResult").textContent =
+      "Invalid calculation.";
+
   }
+
 }
 
 
-/* PERCENT */
+/* =========================================================
+   PERCENTAGE
+========================================================= */
+
 function calculatePercent(){
 
-  const p=parseFloat($("percentValue").value);
-  const n=parseFloat($("percentNumber").value);
+  const p =
+    parseFloat(
+      $("percentValue").value
+    );
 
-  if(isNaN(p)||isNaN(n)){
+  const n =
+    parseFloat(
+      $("percentNumber").value
+    );
+
+  if(
+    Number.isNaN(p) ||
+    Number.isNaN(n)
+  ){
+
     alert("Enter both values.");
+
     return;
+
   }
 
-  const result=(p*n)/100;
+  const result =
+    (p*n)/100;
 
-  $("percentResult").textContent=
+  $("percentResult").textContent =
     `${p}% of ${n} = ${result}`;
+
 }
 
 
-/* PROFIT */
+/* =========================================================
+   PROFIT
+========================================================= */
+
 function calculateProfit(){
 
-  const cost=parseFloat($("costPrice").value);
-  const sell=parseFloat($("sellingPrice").value);
+  const cost =
+    parseFloat(
+      $("costPrice").value
+    );
 
-  if(isNaN(cost)||isNaN(sell)){
+  const sell =
+    parseFloat(
+      $("sellingPrice").value
+    );
+
+  if(
+    Number.isNaN(cost) ||
+    Number.isNaN(sell)
+  ){
+
     alert("Enter both prices.");
+
     return;
+
   }
 
-  const profit=sell-cost;
-  const margin=cost ? (profit/cost)*100 : 0;
+  const profit =
+    sell-cost;
 
-  $("profitResult").textContent=
+  const percentage =
+    cost ?
+    (profit/cost)*100 :
+    0;
+
+  $("profitResult").textContent =
 `Cost Price: ${cost}
 Selling Price: ${sell}
 Profit/Loss: ${profit}
-Percentage: ${margin.toFixed(2)}%`;
+Percentage: ${percentage.toFixed(2)}%`;
+
 }
 
 
-/* LOCATION */
+/* =========================================================
+   LOCATION
+========================================================= */
+
 function generateLocations(){
 
-  const topic=$("locationTopic").value.trim() || "Content";
+  const topic =
+    $("locationTopic").value.trim()
+    || "Content";
 
-  $("locationResult").textContent=
+  $("locationResult").textContent =
 `📍 Location Ideas for ${topic}
 
 1. Clean indoor setup
@@ -2248,48 +3097,50 @@ function generateLocations(){
 8. Minimal wall background
 9. Desk setup
 10. Local landmark`;
+
 }
 
 
 /* =========================================================
-   LESSON SYSTEM
+   LESSONS
 ========================================================= */
 
 const lessons={
 
 1:{
- en:{
-  title:"🎬 How to Create Videos",
-  text:`Video Creation Basic Steps:
+  en:{
+    title:"🎬 How to Create Videos",
+    text:`Video Creation Basic Steps:
 
 1. Choose one clear topic.
 2. Create a strong hook for the first 2–3 seconds.
 3. Prepare a simple script.
 4. Record clean audio.
 5. Add subtitles when useful.
-6. Keep the thumbnail and title attractive.
+6. Create an attractive thumbnail.
 7. Review the video before publishing.
 8. Add a clear call-to-action.`
- },
- bn:{
-  title:"🎬 কীভাবে Video তৈরি করবেন",
-  text:`Video তৈরির Basic Steps:
+  },
+
+  bn:{
+    title:"🎬 কীভাবে Video তৈরি করবেন",
+    text:`Video তৈরির Basic Steps:
 
 1. একটি clear topic নির্বাচন করুন।
 2. প্রথম 2–3 seconds-এ strong hook দিন।
 3. প্রয়োজন অনুযায়ী simple script তৈরি করুন।
 4. পরিষ্কার audio ব্যবহার করুন।
 5. প্রয়োজন হলে subtitle দিন।
-6. Attractive thumbnail ও title ব্যবহার করুন।
+6. Attractive thumbnail তৈরি করুন।
 7. Publish করার আগে video check করুন।
-8. শেষে একটি clear call-to-action দিন।`
- }
+8. শেষে clear call-to-action দিন।`
+  }
 },
 
 2:{
- en:{
-  title:"🖼️ AI Image Creation",
-  text:`AI Image Prompt Basics:
+  en:{
+    title:"🖼️ AI Image Creation",
+    text:`AI Image Prompt Basics:
 
 1. Clearly describe the subject.
 2. Add environment and background.
@@ -2297,11 +3148,443 @@ const lessons={
 4. Add lighting information.
 5. Specify camera/composition when needed.
 6. Keep the prompt clear and specific.`
- },
- bn:{
-  title:"🖼️ AI দিয়ে ছবি তৈরি",
-  text:`AI Image Prompt-এর Basic নিয়ম:
+  },
+
+  bn:{
+    title:"🖼️ AI দিয়ে ছবি তৈরি",
+    text:`AI Image Prompt-এর Basic নিয়ম:
 
 1. Subject পরিষ্কারভাবে লিখুন।
 2. Environment ও background লিখুন।
-3. Visual style উল্লেখ করুন
+3. Visual style উল্লেখ করুন।
+4. Lighting উল্লেখ করুন।
+5. প্রয়োজন হলে camera/composition লিখুন।
+6. Prompt পরিষ্কার ও নির্দিষ্ট রাখুন।`
+  }
+},
+
+3:{
+  en:{
+    title:"🎨 Thumbnail Design",
+    text:`Thumbnail Basics:
+
+1. Use one main subject.
+2. Keep the headline short.
+3. Use strong contrast.
+4. Avoid too much text.
+5. Make important elements large.
+6. Check how it looks on mobile.`
+  },
+
+  bn:{
+    title:"🎨 Thumbnail Design",
+    text:`Thumbnail তৈরির Basic নিয়ম:
+
+1. একটি main subject রাখুন।
+2. Headline ছোট রাখুন।
+3. Strong contrast ব্যবহার করুন।
+4. বেশি text ব্যবহার করবেন না।
+5. গুরুত্বপূর্ণ বিষয় বড় রাখুন।
+6. Mobile screen-এ দেখে পরীক্ষা করুন।`
+  }
+},
+
+4:{
+  en:{
+    title:"#️⃣ Hashtag Strategy",
+    text:`Hashtag Strategy:
+
+1. Use hashtags related to your topic.
+2. Mix broad and specific hashtags.
+3. Avoid irrelevant hashtags.
+4. Create a small reusable hashtag set.
+5. Test which topics perform better.`
+  },
+
+  bn:{
+    title:"#️⃣ Hashtag Strategy",
+    text:`Hashtag Strategy:
+
+1. Topic-এর সাথে সম্পর্কিত hashtag ব্যবহার করুন।
+2. Broad এবং specific hashtag মিশিয়ে ব্যবহার করুন।
+3. Irrelevant hashtag ব্যবহার করবেন না।
+4. Reusable hashtag list তৈরি করুন।
+5. কোন topic ভালো কাজ করে তা দেখুন।`
+  }
+},
+
+5:{
+  en:{
+    title:"📱 Social Media Content",
+    text:`Social Media Content:
+
+1. Know your audience.
+2. Choose a clear topic.
+3. Create useful or entertaining content.
+4. Use a strong opening.
+5. Keep the message simple.
+6. Encourage comments and discussion.`
+  },
+
+  bn:{
+    title:"📱 Social Media Content",
+    text:`Social Media Content:
+
+1. আপনার audience সম্পর্কে জানুন।
+2. একটি clear topic বেছে নিন।
+3. Useful বা entertaining content তৈরি করুন।
+4. Strong opening ব্যবহার করুন।
+5. Message সহজ রাখুন।
+6. Comment ও discussion-এর সুযোগ রাখুন।`
+  }
+},
+
+6:{
+  en:{
+    title:"📈 Content Promotion",
+    text:`Content Promotion Basics:
+
+1. Publish consistently.
+2. Use relevant titles and descriptions.
+3. Share content across suitable platforms.
+4. Reply to comments.
+5. Study your analytics.
+6. Improve future content based on results.`
+  },
+
+  bn:{
+    title:"📈 Content Promotion",
+    text:`Content Promotion-এর Basic নিয়ম:
+
+1. নিয়মিত content publish করুন।
+2. Relevant title ও description ব্যবহার করুন।
+3. উপযুক্ত platform-এ share করুন।
+4. Comment-এর reply দিন।
+5. Analytics দেখুন।
+6. Result অনুযায়ী পরের content উন্নত করুন।`
+  }
+},
+
+7:{
+  en:{
+    title:"🤖 AI Tools for Creators",
+    text:`AI Creator Workflow:
+
+1. Use AI for brainstorming.
+2. Generate draft scripts.
+3. Create image concepts.
+4. Improve captions.
+5. Organize content ideas.
+6. Always review AI output before publishing.`
+  },
+
+  bn:{
+    title:"🤖 Creators-এর জন্য AI Tools",
+    text:`AI Creator Workflow:
+
+1. Brainstorming-এর জন্য AI ব্যবহার করুন।
+2. Script-এর draft তৈরি করুন।
+3. Image concept তৈরি করুন।
+4. Caption উন্নত করুন।
+5. Content idea organize করুন।
+6. Publish করার আগে AI output অবশ্যই check করুন।`
+  }
+},
+
+8:{
+  en:{
+    title:"💰 Online Skill Building",
+    text:`Build Practical Digital Skills:
+
+1. Start with one skill.
+2. Practice regularly.
+3. Create small projects.
+4. Build a portfolio.
+5. Learn from mistakes.
+6. Gradually add new skills.`
+  },
+
+  bn:{
+    title:"💰 Online Skill Building",
+    text:`Practical Digital Skill তৈরি করুন:
+
+1. একটি skill দিয়ে শুরু করুন।
+2. নিয়মিত practice করুন।
+3. ছোট project তৈরি করুন।
+4. Portfolio তৈরি করুন।
+5. ভুল থেকে শিখুন।
+6. ধীরে ধীরে নতুন skill যোগ করুন।`
+  }
+}
+
+};
+
+
+/* =========================================================
+   VIEW LESSON
+========================================================= */
+
+function viewLesson(number){
+
+  const lesson =
+    lessons[number];
+
+  if(!lesson){
+
+    return;
+
+  }
+
+  const lang =
+    state.lang==="bn"
+    ? "bn"
+    : "en";
+
+  $("lessonTitle").textContent =
+    lesson[lang].title;
+
+  $("lessonContent").textContent =
+    lesson[lang].text;
+
+  openModal("lessonModal");
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+const searchItems=[
+
+  {
+    title:"AI Image Generator",
+    type:"image"
+  },
+
+  {
+    title:"Video Prompt Maker",
+    type:"video"
+  },
+
+  {
+    title:"Thumbnail Maker",
+    type:"thumbnail"
+  },
+
+  {
+    title:"Caption Generator",
+    type:"caption"
+  },
+
+  {
+    title:"Hashtag Generator",
+    type:"hashtag"
+  },
+
+  {
+    title:"Content Ideas",
+    type:"idea"
+  },
+
+  {
+    title:"Content Planner",
+    type:"content"
+  },
+
+  {
+    title:"QR Code Generator",
+    type:"qr"
+  },
+
+  {
+    title:"Calculator",
+    type:"calc"
+  },
+
+  {
+    title:"Percentage Tool",
+    type:"percent"
+  },
+
+  {
+    title:"Profit Calculator",
+    type:"profit"
+  },
+
+  {
+    title:"Location Ideas",
+    type:"location"
+  },
+
+  {
+    title:"How to Create Videos",
+    lesson:1
+  },
+
+  {
+    title:"AI Image Creation",
+    lesson:2
+  },
+
+  {
+    title:"Thumbnail Design",
+    lesson:3
+  },
+
+  {
+    title:"Hashtag Strategy",
+    lesson:4
+  },
+
+  {
+    title:"Social Media Content",
+    lesson:5
+  },
+
+  {
+    title:"Content Promotion",
+    lesson:6
+  },
+
+  {
+    title:"AI Tools for Creators",
+    lesson:7
+  },
+
+  {
+    title:"Online Skill Building",
+    lesson:8
+  }
+
+];
+
+
+function performSearch(){
+
+  const query =
+    $("searchInput")
+    .value
+    .trim()
+    .toLowerCase();
+
+  const box =
+    $("searchResults");
+
+  box.innerHTML="";
+
+  if(!query){
+
+    box.innerHTML =
+      `<div class="search-item">
+        Type something to search.
+      </div>`;
+
+    return;
+
+  }
+
+  const results =
+    searchItems.filter(item=>
+      item.title
+      .toLowerCase()
+      .includes(query)
+    );
+
+  if(!results.length){
+
+    box.innerHTML =
+      `<div class="search-item">
+        No results found.
+      </div>`;
+
+    return;
+
+  }
+
+  results.forEach(item=>{
+
+    const div =
+      document.createElement("div");
+
+    div.className="search-item";
+
+    div.textContent =
+      item.title;
+
+    div.onclick=()=>{
+
+      closeModal("searchModal");
+
+      if(item.type){
+
+        openTool(item.type);
+
+      }
+
+      if(item.lesson){
+
+        viewLesson(item.lesson);
+
+      }
+
+    };
+
+    box.appendChild(div);
+
+  });
+
+}
+
+
+$("searchBtn")
+.addEventListener("click",()=>{
+
+  openModal("searchModal");
+
+  setTimeout(()=>{
+    $("searchInput").focus();
+  },100);
+
+});
+
+
+$("searchInput")
+.addEventListener(
+  "input",
+  performSearch
+);
+
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  e=>{
+
+    if(e.key==="Escape"){
+
+      document
+      .querySelectorAll(".modal")
+      .forEach(modal=>{
+        modal.classList.remove("show");
+      });
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   START
+========================================================= */
+
+applyLanguage();
+
+</script>
+
+</body>
+</html>
