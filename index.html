@@ -1,1346 +1,1006 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0878ff">
-<title>AHAD BHAI SKILL HUB</title>
+<!-- AHEAD VIA SKILL HUB — FINAL UPDATE
+     আপনার বর্তমান index.html-এর </body> ট্যাগের ঠিক আগে এই পুরো ব্লকটি বসান।
+     এতে আগের সবকিছু একই থাকবে; শুধু Referral, Menu, Dark Background ও Help Center আপডেট হবে। -->
 
-<style>
-:root{
---p:#0878ff;--p2:#00a9ff;--bg:#f3f8ff;--card:#fff;
---txt:#132238;--muted:#68788f;--line:#e3edf8;
---shadow:0 12px 32px rgba(22,93,180,.10)
-}
-*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
-html,body{min-height:100%}
-body{
-font-family:Arial,Helvetica,sans-serif;
-background:radial-gradient(circle at 5% 0,#dff2ff 0,transparent 28%),
-linear-gradient(#fafdff,#edf6ff);
-color:var(--txt);padding-bottom:76px
-}
+<style id="AHEAD-VIA-FINAL-UPDATE">
+
+/* =========================
+   PREMIUM DARK BACKGROUND
+   ========================= */
+
 body.dark{
---bg:#071321;--card:#0d1d30;--txt:#eef6ff;--muted:#9cafc4;
---line:#1c334b;--shadow:0 12px 32px rgba(0,0,0,.25);
-background:radial-gradient(circle at 5% 0,#083c70 0,transparent 28%),#071321
-}
-a{color:inherit;text-decoration:none}
-button,select{font:inherit}
-.wrap{width:min(1100px,92%);margin:auto}
-
-header{
-position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)
-}
-.dark header{background:rgba(7,19,33,.92)}
-.head{
-min-height:68px;display:flex;align-items:center;
-justify-content:space-between;gap:10px
-}
-.brand{display:flex;align-items:center;gap:9px}
-.brand img{width:42px;height:42px;border-radius:12px;object-fit:cover}
-.brand b{display:block;font-size:14px}
-.brand small{font-size:9px;color:var(--muted);font-weight:700}
-.headBtns{display:flex;gap:7px}
-.ib{
-width:40px;height:40px;border:1px solid var(--line);
-background:var(--card);color:var(--txt);border-radius:11px;cursor:pointer
-}
-.ib.menu{background:var(--p);color:#fff;border:0}
-
-.notice{
-background:linear-gradient(90deg,#075fe8,#00a8ff);color:#fff
-}
-.noticeIn{
-min-height:39px;display:flex;align-items:center;
-justify-content:center;font-size:11px;font-weight:800
+  background:
+    radial-gradient(circle at 8% 8%,rgba(0,155,255,.32),transparent 30%),
+    radial-gradient(circle at 92% 35%,rgba(124,58,237,.24),transparent 32%),
+    radial-gradient(circle at 48% 100%,rgba(0,220,190,.14),transparent 34%),
+    #050914 !important;
 }
 
-.hero{padding:20px 0 8px}
-.heroBox{
-position:relative;overflow:hidden;color:#fff;border-radius:26px;
-padding:28px 21px;background:linear-gradient(135deg,#075fe8,#00a9ff);
-box-shadow:0 18px 42px #0878ff2b
-}
-.heroBox:after{
-content:"";position:absolute;width:220px;height:220px;
-border:1px solid #ffffff28;border-radius:50%;right:-90px;top:-90px
-}
-.heroIn{position:relative;z-index:1}
-.pill{
-display:inline-block;padding:7px 10px;border-radius:30px;
-background:#ffffff1c;border:1px solid #ffffff2a;font-size:10px;
-font-weight:900;margin-bottom:12px
-}
-.hero h1{font-size:29px;line-height:1.1;margin-bottom:10px}
-.hero p{font-size:12px;line-height:1.7;max-width:720px;opacity:.95}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}
-.btn,.btn2{
-border:0;border-radius:11px;padding:11px 14px;font-size:11px;
-font-weight:900;cursor:pointer;display:inline-block;text-align:center
-}
-.btn{background:#fff;color:#075fe8}
-.btn2{background:#ffffff18;color:#fff;border:1px solid #ffffff44}
-
-.support{
-display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0
-}
-.sup{
-background:var(--card);border:1px solid var(--line);border-radius:16px;
-padding:13px 7px;text-align:center;box-shadow:var(--shadow)
-}
-.sup i{
-display:flex;width:38px;height:38px;align-items:center;
-justify-content:center;background:#e9f4ff;border-radius:12px;
-margin:auto auto 6px;font-style:normal;font-size:19px
-}
-.sup b{font-size:11px;display:block}
-.sup small{font-size:9px;color:var(--muted)}
-
-section{padding:22px 0 2px}
-.title{
-display:flex;justify-content:space-between;align-items:end;
-margin-bottom:12px;gap:10px
-}
-.title h2{font-size:20px}
-.title p{font-size:10px;color:var(--muted);margin-top:4px;line-height:1.5}
-
-.offerGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.card{
-background:var(--card);border:1px solid var(--line);
-border-radius:19px;padding:17px;box-shadow:var(--shadow)
-}
-.offer.featured{border:2px solid #0878ff}
-.tag{
-display:inline-block;padding:6px 8px;border-radius:20px;
-background:#e9f4ff;color:#0768ef;font-size:9px;
-font-weight:900;margin-bottom:9px
-}
-.card h3{font-size:16px;margin-bottom:6px}
-.card p{font-size:11px;color:var(--muted);line-height:1.6}
-.list{list-style:none;margin:11px 0}
-.list li{font-size:10px;margin:7px 0}
-.list li:before{content:'✓';color:#18b96e;font-weight:900;margin-right:6px}
-.full{width:100%;background:linear-gradient(90deg,#0767ee,#00a5ff);color:#fff}
-
-.skills{
-display:grid;grid-template-columns:repeat(4,1fr);gap:10px
-}
-.skill{
-background:var(--card);border:1px solid var(--line);border-radius:16px;
-padding:14px;box-shadow:var(--shadow)
-}
-.skill i{
-display:flex;width:40px;height:40px;align-items:center;
-justify-content:center;background:#eaf4ff;border-radius:12px;
-font-style:normal;font-size:20px;margin-bottom:8px
-}
-.skill h3{font-size:12px;margin-bottom:4px}
-.skill p{font-size:9px;color:var(--muted);line-height:1.5}
-
-.tools{
-display:grid;grid-template-columns:repeat(4,1fr);gap:10px
-}
-.tool{
-background:var(--card);border:1px solid var(--line);
-border-radius:16px;padding:14px;box-shadow:var(--shadow)
-}
-.toolIcon{
-width:42px;height:42px;border-radius:12px;background:#eaf4ff;
-display:flex;align-items:center;justify-content:center;font-size:21px;
-margin-bottom:9px
-}
-.tool h3{font-size:12px;margin-bottom:5px}
-.tool p{font-size:9px;color:var(--muted);line-height:1.5}
-.tool button{
-margin-top:10px;width:100%;border:0;border-radius:9px;
-padding:9px;background:linear-gradient(90deg,#0878ff,#00a5ff);
-color:#fff;font-size:9px;font-weight:900;cursor:pointer
+body.dark:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:
+    linear-gradient(
+      125deg,
+      rgba(0,120,255,.06),
+      transparent 42%,
+      rgba(139,92,246,.07)
+    );
 }
 
-.tuts{
-display:grid;grid-template-columns:repeat(3,1fr);gap:12px
-}
-.tut{overflow:hidden;padding:0}
-.tut img{width:100%;height:145px;object-fit:cover;display:block}
-.tut .inside{padding:13px}
-.tut .tag{margin:0 0 5px}
-.learn{
-display:inline-block;margin-top:10px;padding:8px 10px;
-background:#eaf4ff;color:#0768ef;border-radius:9px;
-font-size:9px;font-weight:900
+
+/* =========================
+   PREMIUM MENU
+   ========================= */
+
+.drawer{
+  background:
+    linear-gradient(
+      180deg,
+      #071526 0%,
+      #0b1324 58%,
+      #101329 100%
+    ) !important;
+
+  border-left:1px solid rgba(255,255,255,.08) !important;
+  padding:14px !important;
 }
 
-.team{
-display:grid;grid-template-columns:repeat(3,1fr);gap:13px
-}
-.member{
-background:var(--card);border:1px solid var(--line);border-radius:23px;
-padding:19px 14px;text-align:center;box-shadow:var(--shadow);
-transition:.2s
-}
-.member:hover{transform:translateY(-3px)}
-.avatar{
-width:112px;height:112px;padding:4px;border-radius:50%;margin:0 auto 11px;
-background:linear-gradient(135deg,#0878ff,#00c7ff)
-}
-.avatar img{
-width:100%;height:100%;object-fit:cover;border-radius:50%;
-border:3px solid var(--card);display:block
-}
-.member h3{font-size:14px;margin-bottom:5px}
-.role{color:#0878ff;font-size:10px;font-weight:900;margin-bottom:7px}
-.status{
-display:inline-block;background:#e9fff4;color:#119b5d;padding:5px 8px;
-border-radius:20px;font-size:8px;font-weight:900;margin-bottom:8px
-}
-.memberBtns{display:flex;gap:7px}
-.memberBtns a{
-flex:1;padding:9px 5px;border-radius:9px;background:#eaf4ff;
-color:#0768ef;font-size:9px;font-weight:900
-}
-.memberBtns a.main{
-background:linear-gradient(90deg,#0878ff,#00a5ff);color:#fff
+.drawerHead{
+  padding:4px 2px 12px !important;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  margin-bottom:12px !important;
 }
 
-.about,.account{
-background:var(--card);border:1px solid var(--line);
-border-radius:20px;padding:18px;box-shadow:var(--shadow)
-}
-.aboutTop,.user{
-display:flex;align-items:center;gap:12px;margin-bottom:12px
-}
-.aboutTop img,.user img{
-width:67px;height:67px;border-radius:50%;object-fit:cover;
-border:3px solid #0878ff
-}
-.about h3,.account h3{font-size:15px}
-.aboutTop span{color:#0878ff;font-size:9px;font-weight:900}
-.about p{font-size:11px;color:var(--muted);line-height:1.75}
-.uid{
-display:inline-block;margin-top:5px;background:#eaf4ff;color:#0768ef;
-padding:5px 8px;border-radius:7px;font-size:9px;font-weight:900
-}
-.accountGrid{
-display:grid;grid-template-columns:repeat(2,1fr);gap:8px
-}
-.info{background:var(--bg);padding:11px;border-radius:11px}
-.info small{display:block;color:var(--muted);font-size:8px}
-.info b{display:block;font-size:10px;margin-top:3px}
-
-.contact{
-background:linear-gradient(135deg,#075fe8,#00a8ff);color:#fff;
-border-radius:21px;padding:20px;box-shadow:0 18px 40px #0878ff2b
-}
-.contact h2{font-size:20px;margin-bottom:6px}
-.contact p{font-size:11px;line-height:1.6;opacity:.94}
-.contactBtns{
-display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:13px
-}
-.contactBtns a{
-background:#fff;color:#075fe8;text-align:center;padding:10px;
-border-radius:10px;font-size:10px;font-weight:900
+.drawerHead h2{
+  font-size:19px !important;
+  font-weight:950 !important;
 }
 
-.socialGrid{
-display:grid;grid-template-columns:repeat(4,1fr);gap:9px
-}
-.socialBox{
-background:var(--card);border:1px solid var(--line);
-border-radius:15px;padding:13px;text-align:center;box-shadow:var(--shadow)
-}
-.socialBox b{display:block;font-size:10px;margin-top:6px}
-.socialBox small{display:block;color:var(--muted);font-size:8px;margin-top:3px}
-.socialBox span{font-size:22px}
+.close{
+  background:linear-gradient(
+    135deg,
+    #0878ff,
+    #7c3aed
+  ) !important;
 
-footer{
-margin-top:28px;background:#061b30;color:#fff;
-padding:28px 0 95px;text-align:center
-}
-footer img{
-width:58px;height:58px;border-radius:17px;object-fit:cover;margin-bottom:9px
-}
-footer h3{font-size:15px}
-footer p{font-size:9px;color:#a9bfd7;margin-top:5px}
-.owner{font-size:11px;font-weight:900;margin:14px 0 9px}
-.waFooter{
-display:inline-block;background:#18b96e;color:#fff;
-padding:10px 14px;border-radius:10px;font-size:10px;font-weight:900
-}
-.socials{
-display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:13px
-}
-.socials a{
-background:#ffffff12;padding:8px 9px;border-radius:8px;font-size:9px
+  color:#fff !important;
+  border:0 !important;
+  box-shadow:0 8px 20px #0878ff33;
 }
 
-.bottom{
-position:fixed;z-index:40;left:0;right:0;bottom:0;
-background:rgba(255,255,255,.96);backdrop-filter:blur(15px);
-border-top:1px solid var(--line);display:grid;
-grid-template-columns:repeat(4,1fr);
-padding:6px max(8px,calc((100% - 700px)/2))
+.menuProfile{
+  background:
+    linear-gradient(
+      135deg,
+      #0878ff22,
+      #7c3aed22
+    ) !important;
+
+  border:1px solid #ffffff12 !important;
+  padding:13px !important;
+  border-radius:18px !important;
 }
-.dark .bottom{background:rgba(7,19,33,.96)}
-.nav{
-border:0;background:transparent;color:var(--muted);
-font-size:9px;font-weight:900;padding:4px;cursor:pointer
+
+.menuProfile img{
+  border:2px solid #28b7ff;
+  box-shadow:0 0 0 4px #0878ff18;
 }
-.nav b{display:block;font-size:18px;margin-bottom:2px}
-.nav.active{color:#0878ff}
+
+.menuProfile small{
+  color:#9fb4cc !important;
+}
+
+.menuGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin:8px 0 10px;
+}
+
+.menuGrid .mLink{
+  margin:0 !important;
+  min-height:54px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.mLink{
+  border:1px solid transparent !important;
+  border-radius:13px !important;
+  margin:4px 0 !important;
+  padding:12px 13px !important;
+
+  background:#ffffff07 !important;
+  color:#fff !important;
+
+  transition:.18s;
+}
+
+.mLink:hover{
+  background:
+    linear-gradient(
+      90deg,
+      #0878ff22,
+      #7c3aed1c
+    ) !important;
+
+  border-color:#ffffff10 !important;
+  transform:translateX(-2px);
+}
+
+.menuGrid .mLink span{
+  margin-left:auto;
+}
+
+.select{
+  background:#ffffff05;
+  border:1px solid #ffffff0b;
+  border-radius:14px;
+  padding:11px 10px !important;
+  margin:8px 0;
+}
+
+.select select{
+  border-radius:10px !important;
+  background:#07111f !important;
+}
+
+
+/* =========================
+   REFERRAL CARD
+   ========================= */
+
+.refCard{
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #071b32,
+      #0c1430 55%,
+      #17204a
+    );
+
+  color:#fff;
+  border:1px solid #ffffff12;
+  border-radius:23px;
+  padding:20px;
+
+  box-shadow:0 18px 45px #0003;
+}
+
+.refCard:before{
+  content:"";
+  position:absolute;
+
+  width:180px;
+  height:180px;
+
+  border-radius:50%;
+
+  right:-65px;
+  top:-75px;
+
+  background:
+    radial-gradient(
+      circle,
+      #0878ff66,
+      transparent 68%
+    );
+}
+
+.refTop{
+  position:relative;
+  z-index:1;
+
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.refIcon{
+  width:50px;
+  height:50px;
+
+  border-radius:15px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0878ff,
+      #7c3aed
+    );
+
+  box-shadow:0 10px 25px #0878ff44;
+}
+
+.refCard h3{
+  font-size:17px;
+}
+
+.refCard p{
+  font-size:10px;
+  line-height:1.6;
+  color:#b7c7da;
+  margin-top:4px;
+}
+
+.refLink{
+  position:relative;
+  z-index:1;
+
+  margin-top:13px;
+
+  display:flex;
+  gap:7px;
+
+  background:#ffffff0d;
+  border:1px solid #ffffff12;
+
+  border-radius:12px;
+  padding:8px;
+}
+
+.refLink input{
+  min-width:0;
+  flex:1;
+
+  background:transparent;
+  border:0;
+  outline:0;
+
+  color:#fff;
+  font-size:9px;
+}
+
+.refActions{
+  position:relative;
+  z-index:1;
+
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+
+  gap:7px;
+
+  margin-top:9px;
+}
+
+.refActions button{
+  border:0;
+  border-radius:10px;
+
+  padding:10px 6px;
+
+  font-size:9px;
+  font-weight:900;
+
+  cursor:pointer;
+
+  background:#fff;
+  color:#075fe8;
+}
+
+.refActions button:last-child{
+  background:#ffffff18;
+  color:#fff;
+
+  border:1px solid #ffffff20;
+}
+
+.refCount{
+  position:relative;
+  z-index:1;
+
+  margin-top:11px;
+
+  font-size:9px;
+  color:#aebed0;
+}
+
+.refCount b{
+  color:#fff;
+  font-size:15px;
+  margin-left:4px;
+}
+
+
+/* =========================
+   BEAUTIFUL HELP CENTER
+   ========================= */
 
 .float{
-position:fixed;z-index:39;right:16px;bottom:88px;width:49px;height:49px;
-border:0;border-radius:50%;
-background:linear-gradient(135deg,#0878ff,#00baff);color:#fff;
-font-size:21px;box-shadow:0 12px 27px #0878ff44;cursor:pointer
+  width:auto !important;
+  min-width:54px !important;
+  height:54px !important;
+
+  padding:0 14px !important;
+
+  border-radius:18px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0878ff,
+      #7c3aed
+    ) !important;
+
+  box-shadow:
+    0 14px 34px #0878ff55 !important;
+
+  font-size:10px !important;
+  font-weight:900 !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:5px !important;
+
+  white-space:nowrap;
 }
 
-.overlay{
-display:none;position:fixed;inset:0;background:#0008;z-index:90
-}
-.overlay.show{display:block}
-.drawer{
-position:fixed;z-index:91;right:-340px;top:0;
-width:min(340px,90%);height:100%;background:var(--card);
-padding:18px;overflow:auto;transition:.28s;
-box-shadow:-15px 0 40px #0003
-}
-.drawer.open{right:0}
-.drawerHead{
-display:flex;align-items:center;justify-content:space-between;margin-bottom:14px
-}
-.close{
-border:0;background:#eaf4ff;color:#0768ef;
-width:38px;height:38px;border-radius:10px;cursor:pointer
-}
-.menuProfile{
-display:flex;gap:10px;align-items:center;background:#eaf4ff;
-padding:12px;border-radius:14px;margin-bottom:10px
-}
-.menuProfile img{width:44px;height:44px;border-radius:50%;object-fit:cover}
-.menuProfile b{display:block;font-size:12px}
-.menuProfile small{font-size:9px;color:#64748b}
-.mLink{
-display:flex;width:100%;justify-content:space-between;
-border:0;border-bottom:1px solid var(--line);background:transparent;
-color:var(--txt);padding:12px 5px;font-size:11px;font-weight:900;
-cursor:pointer;text-align:left
-}
-.select{padding:11px 5px;border-bottom:1px solid var(--line)}
-.select label{
-display:block;font-size:9px;color:var(--muted);margin-bottom:5px
-}
-.select select{
-width:100%;padding:9px;border:1px solid var(--line);
-border-radius:9px;background:var(--bg);color:var(--txt)
+.float span{
+  display:inline;
 }
 
-.modal{
-display:none;position:fixed;inset:0;z-index:110;
-background:#0008;align-items:center;justify-content:center;padding:15px
-}
-.modal.show{display:flex}
-.modalBox{
-width:min(620px,100%);max-height:90vh;overflow:auto;
-background:var(--card);border-radius:20px;padding:18px;
-box-shadow:0 25px 70px #0005
-}
-.modalHead{
-display:flex;align-items:center;justify-content:space-between;
-gap:10px;margin-bottom:14px
-}
-.modalHead h3{font-size:17px}
-.formGrid{
-display:grid;grid-template-columns:repeat(2,1fr);gap:9px
-}
-.field label{
-display:block;font-size:9px;font-weight:900;margin-bottom:5px
-}
-.field input,.field select,.field textarea{
-width:100%;border:1px solid var(--line);background:var(--bg);
-color:var(--txt);border-radius:10px;padding:10px;font-size:10px;outline:none
-}
-.field textarea{min-height:100px;resize:vertical}
-.fullField{grid-column:1/-1}
-.generateBtn{
-width:100%;border:0;border-radius:11px;padding:12px;
-background:linear-gradient(90deg,#0878ff,#00a5ff);
-color:#fff;font-size:11px;font-weight:900;cursor:pointer;margin-top:10px
-}
-.output{
-margin-top:12px;padding:13px;background:var(--bg);
-border:1px solid var(--line);border-radius:12px;
-font-size:11px;line-height:1.7;white-space:pre-wrap;min-height:80px
-}
-.copyBtn{
-margin-top:8px;border:0;background:#18b96e;color:#fff;
-padding:9px 12px;border-radius:9px;font-size:10px;font-weight:900;cursor:pointer
+
+/* =========================
+   CLEAN FOOTER
+   ========================= */
+
+footer{
+  background:
+    linear-gradient(
+      135deg,
+      #040a14,
+      #081b30 52%,
+      #10152d
+    ) !important;
+
+  border-top:1px solid #ffffff0d;
 }
 
-.toast{
-position:fixed;z-index:120;left:50%;bottom:88px;
-transform:translate(-50%,20px);background:#061b30;color:#fff;
-padding:10px 13px;border-radius:10px;font-size:10px;font-weight:900;
-opacity:0;pointer-events:none;transition:.2s
-}
-.toast.show{opacity:1;transform:translate(-50%,0)}
 
-@media(max-width:850px){
-.skills,.tools,.socialGrid{grid-template-columns:repeat(2,1fr)}
-.team{grid-template-columns:repeat(3,1fr)}
-.team .member{width:100%}
+/* =========================
+   MOBILE
+   ========================= */
+
+@media(max-width:520px){
+
+  .menuGrid{
+    grid-template-columns:1fr;
+  }
+
+  .refActions{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .refActions button:last-child{
+    grid-column:1/-1;
+  }
+
 }
-@media(max-width:620px){
-.offerGrid,.tuts{grid-template-columns:1fr}
-.team{grid-template-columns:repeat(3,1fr);gap:6px}
-.member{padding:12px 5px;border-radius:17px}
-.avatar{width:78px;height:78px}
-.member h3{font-size:10px}
-.role{font-size:8px}
-.status{font-size:6px;padding:4px}
-.memberBtns{display:block}
-.memberBtns a{display:block;margin-top:5px;font-size:7px}
-.hero h1{font-size:25px}
-.support{grid-template-columns:repeat(3,1fr)}
-.brand b{font-size:12px}
-.tools{grid-template-columns:repeat(2,1fr)}
-.tool{padding:11px}
-.tool h3{font-size:10px}
-.socialGrid{grid-template-columns:repeat(2,1fr)}
-.formGrid{grid-template-columns:1fr}
-.fullField{grid-column:auto}
-}
+
 </style>
-</head>
 
-<body>
 
-<header>
-<div class="wrap head">
-<a class="brand" href="#home">
-<img src="https://i.ibb.co.com/xd1bjsh/1788349715746.png">
-<span>
-<b>AHAD BHAI SKILL HUB</b>
-<small>Digital Skills • AI • Online Learning</small>
-</span>
-</a>
-<div class="headBtns">
-<button class="ib" id="themeBtn" onclick="toggleTheme()">🌙</button>
-<button class="ib menu" onclick="openMenu()">☰</button>
-</div>
-</div>
-</header>
+<!-- =========================
+     REFERRAL SECTION
+     ========================= -->
 
-<div class="notice">
-<div class="wrap noticeIn">
-<span id="noticeText">📢 Welcome to AHAD BHAI SKILL HUB — Learn Digital Skills Free!</span>
-</div>
-</div>
+<section id="referral">
 
-<main id="home">
+  <div class="wrap">
 
-<section class="hero">
-<div class="wrap">
-<div class="heroBox">
-<div class="heroIn">
-<span class="pill" id="heroPill">🚀 AHAD BHAI DIGITAL COMMUNITY</span>
-<h1 id="heroTitle">Learn Digital Skills.<br>Build Your Online Future.</h1>
-<p id="heroText">
-Learn website creation, AI tools, video creation, thumbnails,
-content creation, social media, online income skills and digital projects in one place.
-</p>
-<div class="actions">
-<button class="btn" onclick="go('offer')">🎁 15 Days Free Learning</button>
-<button class="btn2" onclick="go('tutorial')">📚 View Tutorials</button>
-</div>
-</div>
-</div>
-</div>
+    <div class="title">
+
+      <div>
+
+        <h2>🔗 Referral & Share</h2>
+
+        <p>
+          Share your personal referral link with friends.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="refCard">
+
+      <div class="refTop">
+
+        <div class="refIcon">
+          🔗
+        </div>
+
+        <div>
+
+          <h3>
+            My Referral Link
+          </h3>
+
+          <p>
+            Your personal referral link is connected to your User ID.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="refLink">
+
+        <input
+          id="refLink"
+          readonly
+          value="Generating..."
+        >
+
+        <button
+          class="btn"
+          onclick="copyReferral()"
+        >
+          📋 Copy
+        </button>
+
+      </div>
+
+
+      <div class="refActions">
+
+        <button onclick="shareReferral()">
+          📤 Share
+        </button>
+
+        <button onclick="shareTelegram()">
+          ✈️ Telegram
+        </button>
+
+        <button onclick="shareWhatsApp()">
+          💬 WhatsApp
+        </button>
+
+      </div>
+
+
+      <div class="refCount">
+
+        Referrals detected on this device:
+
+        <b id="refCount">
+          0
+        </b>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
-<div class="wrap">
-<div class="support">
-<a class="sup" href="https://t.me/Aheadvia1298" target="_blank">
-<i>✈️</i><b>Telegram</b><small>Contact Me</small>
-</a>
-<a class="sup" href="https://t.me/Aheadviaiskill_hab" target="_blank">
-<i>👥</i><b>Group</b><small>Join Community</small>
-</a>
-<a class="sup" href="https://wa.me/8801400524877" target="_blank">
-<i>💬</i><b>WhatsApp</b><small>Get Help</small>
-</a>
-</div>
-</div>
-
-<section id="offer">
-<div class="wrap">
-<div class="title">
-<div>
-<h2 id="offerTitle">🎁 15 Days Free Learning</h2>
-<p id="offerDesc">সবকিছু শিখাবো মাত্র পনেরো দিনের জন্য — একদম ফ্রিতে।</p>
-</div>
-</div>
-
-<div class="offerGrid">
-
-<article class="card offer featured">
-<span class="tag">🔥 FREE OFFER</span>
-<h3>15 Days Skill Training</h3>
-<p>Beginner থেকে practical digital skills শেখার free learning program.</p>
-<ul class="list">
-<li>Website Creation</li>
-<li>AI Tools</li>
-<li>Video Creation</li>
-<li>Content Creation</li>
-</ul>
-<a class="btn full" href="https://t.me/Aheadvia1298" target="_blank">Join Free Learning</a>
-</article>
-
-<article class="card offer">
-<span class="tag">🤖 AI</span>
-<h3>AI Tools Learning</h3>
-<p>Useful AI tools কীভাবে ব্যবহার করতে হয় এবং digital কাজ সহজ করতে হয়।</p>
-<ul class="list">
-<li>AI Content</li>
-<li>AI Image Ideas</li>
-<li>AI Productivity</li>
-<li>Smart Tools</li>
-</ul>
-<a class="btn full" href="#tutorial">See Tutorials</a>
-</article>
-
-<article class="card offer">
-<span class="tag">💻 DIGITAL</span>
-<h3>Build Digital Projects</h3>
-<p>Website, online projects এবং বিভিন্ন digital system তৈরি করার practical ধারণা।</p>
-<ul class="list">
-<li>Website Projects</li>
-<li>Free Tools</li>
-<li>Online Systems</li>
-<li>Project Ideas</li>
-</ul>
-<a class="btn full" href="#skills">Explore Skills</a>
-</article>
-
-</div>
-</div>
-</section>
-
-<section id="skills">
-<div class="wrap">
-<div class="title">
-<div>
-<h2>💡 What I Can Teach</h2>
-<p>Practical digital skills and useful online resources.</p>
-</div>
-</div>
-
-<div class="skills">
-
-<div class="skill"><i>🌐</i><h3>Website Creation</h3><p>HTML, CSS, JavaScript and free website projects.</p></div>
-<div class="skill"><i>🤖</i><h3>AI Tools</h3><p>Useful AI tools and practical AI workflows.</p></div>
-<div class="skill"><i>🎬</i><h3>Video Creation</h3><p>Video ideas, scripts, editing and content planning.</p></div>
-<div class="skill"><i>🖼️</i><h3>Thumbnail Design</h3><p>Thumbnail concepts, text and design ideas.</p></div>
-<div class="skill"><i>✍️</i><h3>Content Creation</h3><p>Posts, captions, scripts, stories and reels.</p></div>
-<div class="skill"><i>📱</i><h3>Social Media</h3><p>Facebook, YouTube, TikTok, Instagram and Telegram.</p></div>
-<div class="skill"><i>💰</i><h3>Online Income Skills</h3><p>Digital skills, freelancing ideas and online resources.</p></div>
-<div class="skill"><i>🚀</i><h3>Digital Projects</h3><p>Build and improve practical online projects.</p></div>
-
-</div>
-</div>
-</section>
-
-<section id="tools">
-<div class="wrap">
-<div class="title">
-<div>
-<h2>🧰 Digital Tools & Generators</h2>
-<p>Create captions, scripts, hooks, prompts, bios and more.</p>
-</div>
-</div>
-
-<div class="tools">
-
-<div class="tool"><div class="toolIcon">✍️</div><h3>Caption Generator</h3><p>Create social media captions.</p><button onclick="openGenerator('Caption')">Open</button></div>
-<div class="tool"><div class="toolIcon">#️⃣</div><h3>Hashtag Generator</h3><p>Generate useful hashtags.</p><button onclick="openGenerator('Hashtag')">Open</button></div>
-<div class="tool"><div class="toolIcon">🔥</div><h3>Hook Generator</h3><p>Create attention-grabbing hooks.</p><button onclick="openGenerator('Hook')">Open</button></div>
-<div class="tool"><div class="toolIcon">🎯</div><h3>Headline / Title</h3><p>Create strong titles.</p><button onclick="openGenerator('Title')">Open</button></div>
-<div class="tool"><div class="toolIcon">📝</div><h3>Post Generator</h3><p>Create ready-to-edit posts.</p><button onclick="openGenerator('Post')">Open</button></div>
-<div class="tool"><div class="toolIcon">📖</div><h3>Story Generator</h3><p>Create story content.</p><button onclick="openGenerator('Story')">Open</button></div>
-<div class="tool"><div class="toolIcon">🎬</div><h3>Video Script</h3><p>Create video scripts.</p><button onclick="openGenerator('Video Script')">Open</button></div>
-<div class="tool"><div class="toolIcon">🎞️</div><h3>Reel Script</h3><p>Create short-form scripts.</p><button onclick="openGenerator('Reel Script')">Open</button></div>
-<div class="tool"><div class="toolIcon">👤</div><h3>Bio Generator</h3><p>Create profile bios.</p><button onclick="openGenerator('Bio')">Open</button></div>
-<div class="tool"><div class="toolIcon">📄</div><h3>Description</h3><p>Create descriptions.</p><button onclick="openGenerator('Description')">Open</button></div>
-<div class="tool"><div class="toolIcon">📣</div><h3>CTA Generator</h3><p>Create calls to action.</p><button onclick="openGenerator('CTA')">Open</button></div>
-<div class="tool"><div class="toolIcon">📢</div><h3>Ad Copy</h3><p>Create promotional copy.</p><button onclick="openGenerator('Ad Copy')">Open</button></div>
-<div class="tool"><div class="toolIcon">💡</div><h3>Content Ideas</h3><p>Generate content ideas.</p><button onclick="openGenerator('Content Ideas')">Open</button></div>
-<div class="tool"><div class="toolIcon">🖼️</div><h3>AI Image Prompt</h3><p>Create prompts for AI image tools.</p><button onclick="openGenerator('AI Image Prompt')">Open</button></div>
-<div class="tool"><div class="toolIcon">🎥</div><h3>AI Video Prompt</h3><p>Create prompts for AI video tools.</p><button onclick="openGenerator('AI Video Prompt')">Open</button></div>
-<div class="tool"><div class="toolIcon">💬</div><h3>Comment Reply</h3><p>Create comment replies.</p><button onclick="openGenerator('Comment Reply')">Open</button></div>
-<div class="tool"><div class="toolIcon">📩</div><h3>DM Reply</h3><p>Create professional DM replies.</p><button onclick="openGenerator('DM Reply')">Open</button></div>
-<div class="tool"><div class="toolIcon">📍</div><h3>Location Ideas</h3><p>Generate location ideas.</p><button onclick="openGenerator('Location')">Open</button></div>
-<div class="tool"><div class="toolIcon">🖼️</div><h3>Thumbnail Text</h3><p>Create short thumbnail text.</p><button onclick="openGenerator('Thumbnail Text')">Open</button></div>
-
-</div>
-</div>
-</section>
-
-<section id="tutorial">
-<div class="wrap">
-<div class="title">
-<div>
-<h2>📚 Tutorials</h2>
-<p>Platform-wise digital learning resources.</p>
-</div>
-</div>
-
-<div class="tuts">
-
-<article class="card tut">
-<img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=900&q=80">
-<div class="inside">
-<span class="tag">FACEBOOK</span>
-<h3>Facebook Profile & Page Setup</h3>
-<p>Learn profile, page and content basics.</p>
-<a class="learn" href="https://www.youtube.com/results?search_query=Facebook+profile+page+setup+tutorial" target="_blank">Watch Videos</a>
-</div>
-</article>
-
-<article class="card tut">
-<img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?auto=format&fit=crop&w=900&q=80">
-<div class="inside">
-<span class="tag">YOUTUBE</span>
-<h3>YouTube Channel Setup</h3>
-<p>Create and configure a YouTube channel.</p>
-<a class="learn" href="https://www.youtube.com/results?search_query=YouTube+channel+setup+tutorial" target="_blank">Watch Videos</a>
-</div>
-</article>
-
-<article class="card tut">
-<img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?auto=format&fit=crop&w=900&q=80">
-<div class="inside">
-<span class="tag">INSTAGRAM</span>
-<h3>Instagram Setup & Content</h3>
-<p>Learn profile setup and content basics.</p>
-<a class="learn" href="https://www.youtube.com/results?search_query=Instagram+setup+tutorial" target="_blank">Watch Videos</a>
-</div>
-</article>
-
-<article class="card tut">
-<img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=900&q=80">
-<div class="inside">
-<span class="tag">TIKTOK</span>
-<h3>TikTok Setup & Videos</h3>
-<p>Learn TikTok account and video basics.</p>
-<a class="learn" href="https://www.youtube.com/results?search_query=TikTok+setup+tutorial" target="_blank">Watch Videos</a>
-</div>
-</article>
-
-<article class="card tut">
-<img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=900&q=80">
-<div class="inside">
-<span class="tag">TELEGRAM</span>
-<h3>Telegram Channel & Group</h3>
-<p>Learn basic channel and group management.</p>
-<a class="learn" href="https://www.youtube.com/results?search_query=Telegram+channel+group+tutorial" target="_blank">Watch Videos</a>
-</div>
-</article>
-
-<article class="card tut">
-<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80">
-<div class="inside">
-<span class="tag">WEBSITE</span>
-<h3>Free Website Creation</h3>
-<p>Learn basic website creation with free tools.</p>
-<a class="learn" href="https://www.youtube.com/results?search_query=GitHub+Pages+free+website+tutorial" target="_blank">Watch Videos</a>
-</div>
-</article>
-
-</div>
-</div>
-</section>
-
-<section id="team">
-<div class="wrap">
-<div class="title">
-<div>
-<h2>👥 Our Team</h2>
-<p>Meet the people behind the skill hub.</p>
-</div>
-</div>
-
-<div class="team">
-
-<article class="member">
-<div class="avatar">
-<img src="data:image/jpeg;base64,TEAM_PHOTO_ABDUL">
-</div>
-<h3>ABDUL AHAD</h3>
-<div class="role">Founder & Honorary</div>
-<span class="status">✓ Contact Completed</span>
-<div class="memberBtns">
-<a class="main" href="https://wa.me/8801400524877" target="_blank">WhatsApp</a>
-<a href="https://t.me/Aheadvia1298" target="_blank">Telegram</a>
-</div>
-</article>
-
-<article class="member">
-<div class="avatar">
-<img src="data:image/jpeg;base64,TEAM_PHOTO_SAMIA">
-</div>
-<h3>𝐌𝐈𝐒𝐒 𝐒𝐀𝐌𝐈𝐀 𝐈𝐒𝐋𝐀𝐌</h3>
-<div class="role">Admin</div>
-<span class="status">✓ Contact Completed</span>
-<div class="memberBtns">
-<a class="main" href="https://t.me/Msssiamaislam" target="_blank">Telegram</a>
-<a href="mailto:msssaimaislam6@gmail.com">Email</a>
-</div>
-</article>
-
-<article class="member">
-<div class="avatar">
-<img src="data:image/jpeg;base64,TEAM_PHOTO_JANNAT">
-</div>
-<h3>JANNAT AKHTER</h3>
-<div class="role">Admin</div>
-<span class="status">✓ Contact Completed</span>
-<div class="memberBtns">
-<a class="main" href="https://t.me/Jannat_AkhtarAdmin" target="_blank">Telegram</a>
-<a href="https://t.me/Jannat_AkhtarAdmin" target="_blank">Contact</a>
-</div>
-</article>
-
-</div>
-</div>
-</section>
-
-<section id="about">
-<div class="wrap">
-<div class="title"><div><h2>👤 About Me</h2></div></div>
-<div class="about">
-<div class="aboutTop">
-<img src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg">
-<div>
-<h3>ABDUL AHAD</h3>
-<span>AHEAD VIA SKILL HUB</span>
-</div>
-</div>
-<p>
-Hi, I’m ABDUL AHAD. 👋 I work on different types of websites, digital projects,
-and online income systems. I also explore various income skills, free earning
-opportunities, investment-based work, AI tools, video creation, thumbnails,
-content creation, and many other digital topics. 🚀 Through AHEAD VIA SKILL HUB,
-I aim to bring useful information, tools, and resources together in one place.
-</p>
-</div>
-</div>
-</section>
-
-<section id="account">
-<div class="wrap">
-<div class="title"><div><h2>👤 My Account</h2></div></div>
-<div class="account">
-<div class="user">
-<img src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg">
-<div>
-<h3 id="accountName">ABDUL AHAD</h3>
-<span class="uid" id="userId">AV-000000</span>
-</div>
-</div>
-
-<div class="accountGrid">
-<div class="info"><small>User ID</small><b id="accountId">AV-000000</b></div>
-<div class="info"><small>Country</small><b id="accountCountry">Bangladesh</b></div>
-<div class="info"><small>Language</small><b id="accountLanguage">English</b></div>
-<div class="info"><small>Theme</small><b id="accountTheme">Light</b></div>
-</div>
-</div>
-</div>
-</section>
-
-<section id="contact">
-<div class="wrap">
-<div class="contact">
-<h2>🆘 Need Help?</h2>
-<p>
-Need help with website, digital skills, AI tools, tutorials or community?
-Use any contact option below.
-</p>
-<div class="contactBtns">
-<a href="https://wa.me/8801400524877" target="_blank">💬 WhatsApp</a>
-<a href="https://t.me/Aheadvia1298" target="_blank">✈️ Telegram</a>
-<a href="mailto:msssaimaislam6@gmail.com">✉️ Email</a>
-<a href="tel:01335611366">📞 Call</a>
-</div>
-</div>
-</div>
-</section>
-
-<section id="social">
-<div class="wrap">
-<div class="title">
-<div>
-<h2>🌐 Social & Community</h2>
-<p>Connect through the official social links and communities.</p>
-</div>
-</div>
-
-<div class="socialGrid">
-
-<a class="socialBox" href="https://www.facebook.com/share/19YtirSEwS/" target="_blank">
-<span>📘</span><b>Facebook</b><small>Visit Facebook</small>
-</a>
-
-<a class="socialBox" href="https://www.youtube.com/@KittySnipsStories" target="_blank">
-<span>▶️</span><b>YouTube</b><small>Visit YouTube</small>
-</a>
-
-<a class="socialBox" href="https://x.com/Abdulaheadrllm" target="_blank">
-<span>𝕏</span><b>X / Twitter</b><small>Visit X</small>
-</a>
-
-<a class="socialBox" href="https://www.instagram.com/kittysnipsofficial" target="_blank">
-<span>📸</span><b>Instagram</b><small>Visit Instagram</small>
-</a>
-
-<a class="socialBox" href="https://t.me/Aheadvia1298gf" target="_blank">
-<span>📢</span><b>Telegram Channel 1</b><small>Join Channel</small>
-</a>
-
-<a class="socialBox" href="https://t.me/aheadskillhub120" target="_blank">
-<span>📢</span><b>Telegram Channel 2</b><small>Join Channel</small>
-</a>
-
-<a class="socialBox" href="https://t.me/Aheadviaiskill_hab" target="_blank">
-<span>👥</span><b>Telegram Group 1</b><small>Join Group</small>
-</a>
-
-<a class="socialBox" href="https://t.me/aheadskillhub12" target="_blank">
-<span>👥</span><b>Telegram Group 2</b><small>Join Group</small>
-</a>
-
-</div>
-</div>
-</section>
-
-</main>
-
-<footer>
-<div class="wrap">
-<img src="https://i.ibb.co.com/xd1bjsh/1788349715746.png">
-<h3>AHAD BHAI SKILL HUB</h3>
-<p>Digital Skills • AI • Online Learning • Digital Projects</p>
-<div class="owner">Website Owner: ABDUL AHAD</div>
-<a class="waFooter" href="https://wa.me/8801400524877" target="_blank">
-WhatsApp: 01400524877
-</a>
-
-<div class="socials">
-<a href="https://t.me/Aheadvia1298" target="_blank">Telegram</a>
-<a href="https://t.me/Aheadvia1298gf" target="_blank">Channel</a>
-<a href="https://t.me/Aheadviaiskill_hab" target="_blank">Group</a>
-<a href="https://www.facebook.com/share/19YtirSEwS/" target="_blank">Facebook</a>
-<a href="https://www.youtube.com/@KittySnipsStories" target="_blank">YouTube</a>
-<a href="https://x.com/Abdulaheadrllm" target="_blank">X</a>
-<a href="https://www.instagram.com/kittysnipsofficial" target="_blank">Instagram</a>
-</div>
-
-<p style="margin-top:15px">© 2026 AHAD BHAI SKILL HUB. All rights reserved.</p>
-</div>
-</footer>
-
-<nav class="bottom">
-<button class="nav active" onclick="go('home')"><b>🏠</b>Home</button>
-<button class="nav" onclick="go('tools')"><b>🧰</b>Tools</button>
-<button class="nav" onclick="go('tutorial')"><b>📚</b>Tutorials</button>
-<button class="nav" onclick="openMenu()"><b>☰</b>Menu</button>
-</nav>
-
-<button class="float" onclick="go('contact')" title="Help">🆘</button>
-
-<div class="overlay" id="overlay" onclick="closeMenu()"></div>
-
-<aside class="drawer" id="drawer">
-<div class="drawerHead">
-<h2>⚙️ Menu</h2>
-<button class="close" onclick="closeMenu()">✕</button>
-</div>
-
-<div class="menuProfile">
-<img src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg">
-<div>
-<b>ABDUL AHAD</b>
-<small>AHEAD VIA SKILL HUB</small>
-</div>
-</div>
-
-<div class="select">
-<label id="countryLabel">🌍 Your Country</label>
-<select id="country" onchange="countryChange()">
-<option value="BD">🇧🇩 Bangladesh</option>
-<option value="SA">🇸🇦 Saudi Arabia</option>
-<option value="AE">🇦🇪 United Arab Emirates</option>
-<option value="QA">🇶🇦 Qatar</option>
-<option value="IN">🇮🇳 India</option>
-<option value="PK">🇵🇰 Pakistan</option>
-<option value="MY">🇲🇾 Malaysia</option>
-<option value="ID">🇮🇩 Indonesia</option>
-<option value="TR">🇹🇷 Türkiye</option>
-<option value="JP">🇯🇵 Japan</option>
-<option value="KR">🇰🇷 South Korea</option>
-<option value="CN">🇨🇳 China</option>
-<option value="TH">🇹🇭 Thailand</option>
-<option value="VN">🇻🇳 Vietnam</option>
-<option value="PH">🇵🇭 Philippines</option>
-<option value="FR">🇫🇷 France</option>
-<option value="DE">🇩🇪 Germany</option>
-<option value="IT">🇮🇹 Italy</option>
-<option value="ES">🇪🇸 Spain</option>
-<option value="PT">🇵🇹 Portugal</option>
-<option value="BR">🇧🇷 Brazil</option>
-<option value="US">🇺🇸 United States</option>
-<option value="CA">🇨🇦 Canada</option>
-<option value="GB">🇬🇧 United Kingdom</option>
-<option value="AU">🇦🇺 Australia</option>
-<option value="RU">🇷🇺 Russia</option>
-</select>
-</div>
-
-<div class="select">
-<label id="languageLabel">🌐 Your Language</label>
-<select id="language" onchange="languageChange()">
-<option>English</option>
-<option>Bangla</option>
-<option>Arabic</option>
-<option>Hindi</option>
-<option>Urdu</option>
-<option>Türkçe</option>
-<option>日本語</option>
-<option>한국어</option>
-<option>Chinese</option>
-<option>Thai</option>
-<option>Vietnamese</option>
-<option>Filipino</option>
-<option>German</option>
-<option>French</option>
-<option>Italian</option>
-<option>Spanish</option>
-<option>Portuguese</option>
-<option>Russian</option>
-</select>
-</div>
-
-<button class="mLink" onclick="go('home');closeMenu()">🏠 Home <span>›</span></button>
-<button class="mLink" onclick="go('offer');closeMenu()">🎁 15 Days Offer <span>›</span></button>
-<button class="mLink" onclick="go('tools');closeMenu()">🧰 Tools & Generators <span>›</span></button>
-<button class="mLink" onclick="go('tutorial');closeMenu()">📚 Tutorials <span>›</span></button>
-<button class="mLink" onclick="go('team');closeMenu()">👥 Our Team <span>›</span></button>
-<button class="mLink" onclick="go('account');closeMenu()">👤 My Account <span>›</span></button>
-<button class="mLink" onclick="go('about');closeMenu()">ℹ️ About <span>›</span></button>
-<button class="mLink" onclick="go('contact');closeMenu()">🆘 Help / Contact <span>›</span></button>
-<button class="mLink" onclick="go('social');closeMenu()">🌐 Social & Community <span>›</span></button>
-<button class="mLink" onclick="toggleTheme()">🌙 Dark / Light Mode <span>›</span></button>
-
-</aside>
-
-<div class="modal" id="generatorModal">
-<div class="modalBox">
-
-<div class="modalHead">
-<h3 id="generatorTitle">✨ Generator</h3>
-<button class="close" onclick="closeGenerator()">✕</button>
-</div>
-
-<div class="formGrid">
-
-<div class="field">
-<label>Platform</label>
-<select id="gPlatform">
-<option>Facebook</option>
-<option>YouTube</option>
-<option>TikTok</option>
-<option>Instagram</option>
-<option>Telegram</option>
-<option>Website</option>
-<option>WhatsApp</option>
-<option>X / Twitter</option>
-</select>
-</div>
-
-<div class="field">
-<label>Language</label>
-<select id="gLanguage">
-<option>English</option>
-<option>Bangla</option>
-<option>Arabic</option>
-<option>Hindi</option>
-<option>Urdu</option>
-</select>
-</div>
-
-<div class="field">
-<label>Style</label>
-<select id="gStyle">
-<option>Professional</option>
-<option>Friendly</option>
-<option>Viral</option>
-<option>Simple</option>
-<option>Premium</option>
-<option>Funny</option>
-</select>
-</div>
-
-<div class="field">
-<label>Length</label>
-<select id="gLength">
-<option>Short</option>
-<option>Medium</option>
-<option>Long</option>
-</select>
-</div>
-
-<div class="field fullField">
-<label>Topic / Prompt</label>
-<textarea id="gTopic" placeholder="Write your topic here..."></textarea>
-</div>
-
-</div>
-
-<button class="generateBtn" onclick="generateContent()">✨ Generate</button>
-
-<div class="output" id="gOutput">Your generated result will appear here.</div>
-<button class="copyBtn" onclick="copyOutput()">📋 Copy</button>
-
-</div>
-</div>
-
-<div class="toast" id="toast"></div>
 
 <script>
-const q=s=>document.querySelector(s);
 
-function go(id){
-const el=document.getElementById(id);
-if(el)el.scrollIntoView({behavior:"smooth",block:"start"});
-}
+/* =========================================
+   AHEAD VIA REFERRAL SYSTEM
+   ========================================= */
 
-function openMenu(){
-q("#drawer").classList.add("open");
-q("#overlay").classList.add("show");
-}
-function closeMenu(){
-q("#drawer").classList.remove("open");
-q("#overlay").classList.remove("show");
-}
+function referralUrl(){
 
-function toast(msg){
-const t=q("#toast");
-t.textContent=msg;
-t.classList.add("show");
-clearTimeout(window.toastTimer);
-window.toastTimer=setTimeout(()=>t.classList.remove("show"),1800);
+  const id =
+    localStorage.getItem("avuid")
+    || "AV-000000";
+
+  return (
+    location.origin +
+    location.pathname +
+    "?ref=" +
+    encodeURIComponent(id)
+  );
+
 }
 
-function toggleTheme(){
-document.body.classList.toggle("dark");
-const dark=document.body.classList.contains("dark");
-localStorage.setItem("avtheme",dark?"dark":"light");
-q("#themeBtn").textContent=dark?"☀️":"🌙";
-q("#accountTheme").textContent=dark?"Dark":"Light";
+
+function initReferral(){
+
+  const link = referralUrl();
+
+  const input =
+    document.querySelector("#refLink");
+
+  if(input){
+
+    input.value = link;
+
+  }
+
+
+  /*
+    যদি অন্য কারো Referral Link দিয়ে
+    কেউ ওয়েবসাইটে আসে
+  */
+
+  const ref =
+    new URLSearchParams(
+      location.search
+    ).get("ref");
+
+
+  const myId =
+    localStorage.getItem("avuid")
+    || "";
+
+
+  if(
+    ref &&
+    ref !== myId
+  ){
+
+    const key =
+      "av_ref_seen_" +
+      ref;
+
+
+    if(
+      !localStorage.getItem(key)
+    ){
+
+      localStorage.setItem(
+        key,
+        "1"
+      );
+
+      localStorage.setItem(
+        "av_referrer",
+        ref
+      );
+
+    }
+
+  }
+
+
+  /*
+    এই ব্রাউজারে পাওয়া referral
+  */
+
+  const count =
+    Object.keys(localStorage)
+      .filter(
+        key =>
+          key.startsWith(
+            "av_ref_seen_"
+          )
+      )
+      .length;
+
+
+  const countBox =
+    document.querySelector(
+      "#refCount"
+    );
+
+
+  if(countBox){
+
+    countBox.textContent =
+      count;
+
+  }
+
 }
 
-(function(){
-if(localStorage.getItem("avtheme")==="dark"){
-document.body.classList.add("dark");
-q("#themeBtn").textContent="☀️";
-}
-})();
 
-function makeUserId(){
-let id=localStorage.getItem("avuserid");
-if(!id){
-id="AV-"+Math.random().toString(36).substring(2,8).toUpperCase();
-localStorage.setItem("avuserid",id);
-}
-q("#userId").textContent=id;
-q("#accountId").textContent=id;
-}
-makeUserId();
+/* =========================================
+   COPY REFERRAL LINK
+   ========================================= */
 
-const countryLanguages={
-BD:"Bangla",SA:"Arabic",AE:"Arabic",QA:"Arabic",
-IN:"Hindi",PK:"Urdu",MY:"Bahasa Melayu",ID:"Bahasa Indonesia",
-TR:"Türkçe",JP:"日本語",KR:"한국어",CN:"Chinese",
-TH:"Thai",VN:"Vietnamese",PH:"Filipino",FR:"French",
-DE:"German",IT:"Italian",ES:"Spanish",PT:"Portuguese",
-BR:"Portuguese",US:"English",CA:"English",GB:"English",
-AU:"English",RU:"Russian"
-};
+function copyReferral(){
 
-const translations={
-English:{
-notice:"📢 Welcome to AHAD BHAI SKILL HUB — Learn Digital Skills Free!",
-country:"🌍 Your Country",language:"🌐 Your Language",
-heroPill:"🚀 AHAD BHAI DIGITAL COMMUNITY",
-heroTitle:"Learn Digital Skills.<br>Build Your Online Future.",
-heroText:"Learn website creation, AI tools, video creation, thumbnails, content creation, social media, online income skills and digital projects in one place.",
-offer:"🎁 15 Days Free Learning",offerDesc:"সবকিছু শিখাবো মাত্র পনেরো দিনের জন্য — একদম ফ্রিতে।",
-team:"👥 Our Team",about:"👤 About Me",account:"👤 My Account",
-help:"🆘 Need Help?"
-},
-Bangla:{
-notice:"📢 AHAD BHAI SKILL HUB-এ স্বাগতম — ডিজিটাল স্কিল শিখুন সম্পূর্ণ ফ্রিতে!",
-country:"🌍 আপনার দেশ",language:"🌐 আপনার ভাষা",
-heroPill:"🚀 AHAD BHAI ডিজিটাল কমিউনিটি",
-heroTitle:"ডিজিটাল স্কিল শিখুন।<br>আপনার অনলাইন ভবিষ্যৎ গড়ুন।",
-heroText:"ওয়েবসাইট তৈরি, AI টুলস, ভিডিও তৈরি, থাম্বনেইল, কনটেন্ট, সোশ্যাল মিডিয়া, অনলাইন ইনকাম স্কিল এবং ডিজিটাল প্রজেক্ট এক জায়গায় শিখুন।",
-offer:"🎁 ১৫ দিনের ফ্রি লার্নিং",offerDesc:"সবকিছু শিখাবো মাত্র পনেরো দিনের জন্য — একদম ফ্রিতে।",
-team:"👥 আমাদের টিম",about:"👤 আমার সম্পর্কে",account:"👤 আমার অ্যাকাউন্ট",
-help:"🆘 সাহায্য দরকার?"
-},
-Arabic:{
-notice:"📢 مرحباً بك في AHAD BHAI SKILL HUB — تعلم المهارات الرقمية مجاناً!",
-country:"🌍 بلدك",language:"🌐 لغتك",
-heroPill:"🚀 مجتمع AHAD BHAI الرقمي",
-heroTitle:"تعلم المهارات الرقمية.<br>ابنِ مستقبلك عبر الإنترنت.",
-heroText:"تعلم إنشاء المواقع وأدوات الذكاء الاصطناعي وصناعة الفيديو والصور المصغرة والمحتوى ووسائل التواصل والمهارات الرقمية في مكان واحد.",
-offer:"🎁 تعلم مجاني لمدة 15 يوماً",offerDesc:"سأعلمك كل ذلك لمدة خمسة عشر يوماً — مجاناً تماماً.",
-team:"👥 فريقنا",about:"👤 عني",account:"👤 حسابي",
-help:"🆘 تحتاج إلى مساعدة؟"
-},
-Hindi:{
-notice:"📢 AHAD BHAI SKILL HUB में आपका स्वागत है — डिजिटल स्किल्स मुफ्त सीखें!",
-country:"🌍 आपका देश",language:"🌐 आपकी भाषा",
-heroPill:"🚀 AHAD BHAI डिजिटल कम्युनिटी",
-heroTitle:"डिजिटल स्किल्स सीखें।<br>अपना ऑनलाइन भविष्य बनाएं।",
-heroText:"वेबसाइट, AI टूल्स, वीडियो, थंबनेल, कंटेंट और सोशल मीडिया की उपयोगी स्किल्स एक जगह सीखें।",
-offer:"🎁 15 दिन की मुफ्त लर्निंग",offerDesc:"पंद्रह दिनों तक सब कुछ बिल्कुल मुफ्त सीखें।",
-team:"👥 हमारी टीम",about:"👤 मेरे बारे में",account:"👤 मेरा अकाउंट",
-help:"🆘 मदद चाहिए?"
-},
-Urdu:{
-notice:"📢 AHAD BHAI SKILL HUB میں خوش آمدید — ڈیجیٹل اسکلز مفت سیکھیں!",
-country:"🌍 آپ کا ملک",language:"🌐 آپ کی زبان",
-heroPill:"🚀 AHAD BHAI ڈیجیٹل کمیونٹی",
-heroTitle:"ڈیجیٹل اسکلز سیکھیں۔<br>اپنا آن لائن مستقبل بنائیں۔",
-heroText:"ویب سائٹ، AI ٹولز، ویڈیو، تھمب نیل، مواد اور سوشل میڈیا کی مفید مہارتیں ایک جگہ سیکھیں۔",
-offer:"🎁 15 دن کی مفت لرننگ",offerDesc:"پندرہ دن تک سب کچھ بالکل مفت سیکھیں۔",
-team:"👥 ہماری ٹیم",about:"👤 میرے بارے میں",account:"👤 میرا اکاؤنٹ",
-help:"🆘 مدد چاہیے؟"
-},
-French:{
-notice:"📢 Bienvenue sur AHAD BHAI SKILL HUB — apprenez gratuitement les compétences numériques !",
-country:"🌍 Votre pays",language:"🌐 Votre langue",
-heroPill:"🚀 COMMUNAUTÉ NUMÉRIQUE AHAD BHAI",
-heroTitle:"Apprenez les compétences numériques.<br>Construisez votre avenir en ligne.",
-heroText:"Apprenez la création de sites, les outils IA, la vidéo, les miniatures, le contenu et les réseaux sociaux.",
-offer:"🎁 15 jours d'apprentissage gratuit",offerDesc:"Apprenez gratuitement pendant quinze jours.",
-team:"👥 Notre équipe",about:"👤 À propos de moi",account:"👤 Mon compte",
-help:"🆘 Besoin d'aide ?"
-},
-German:{
-notice:"📢 Willkommen bei AHAD BHAI SKILL HUB — digitale Fähigkeiten kostenlos lernen!",
-country:"🌍 Ihr Land",language:"🌐 Ihre Sprache",
-heroPill:"🚀 AHAD BHAI DIGITALE COMMUNITY",
-heroTitle:"Digitale Fähigkeiten lernen.<br>Ihre Online-Zukunft aufbauen.",
-heroText:"Lernen Sie Website-Erstellung, KI-Tools, Videos, Thumbnails, Inhalte und Social Media.",
-offer:"🎁 15 Tage kostenloses Lernen",offerDesc:"Fünfzehn Tage kostenlos lernen.",
-team:"👥 Unser Team",about:"👤 Über mich",account:"👤 Mein Konto",
-help:"🆘 Hilfe benötigt?"
-},
-Spanish:{
-notice:"📢 ¡Bienvenido a AHAD BHAI SKILL HUB — aprende habilidades digitales gratis!",
-country:"🌍 Tu país",language:"🌐 Tu idioma",
-heroPill:"🚀 COMUNIDAD DIGITAL AHAD BHAI",
-heroTitle:"Aprende habilidades digitales.<br>Construye tu futuro online.",
-heroText:"Aprende creación de sitios web, herramientas de IA, vídeo, miniaturas, contenido y redes sociales.",
-offer:"🎁 15 días de aprendizaje gratis",offerDesc:"Aprende gratis durante quince días.",
-team:"👥 Nuestro equipo",about:"👤 Sobre mí",account:"👤 Mi cuenta",
-help:"🆘 ¿Necesitas ayuda?"
-}
-};
+  const input =
+    document.querySelector(
+      "#refLink"
+    );
 
-const rtlLanguages=["Arabic","Urdu"];
 
-function applyLanguage(lang){
-if(!translations[lang])lang="English";
+  const value =
+    input?.value ||
+    referralUrl();
 
-const t=translations[lang];
 
-document.documentElement.lang=lang;
-document.documentElement.dir=rtlLanguages.includes(lang)?"rtl":"ltr";
-document.body.dir=document.documentElement.dir;
+  if(
+    navigator.clipboard &&
+    navigator.clipboard.writeText
+  ){
 
-q("#noticeText").textContent=t.notice;
-q("#countryLabel").textContent=t.country;
-q("#languageLabel").textContent=t.language;
+    navigator.clipboard
+      .writeText(value)
+      .then(() => {
 
-q("#heroPill").textContent=t.heroPill;
-q("#heroTitle").innerHTML=t.heroTitle;
-q("#heroText").textContent=t.heroText;
+        if(typeof toast === "function"){
 
-q("#offerTitle").textContent=t.offer;
-q("#offerDesc").textContent=t.offerDesc;
+          toast(
+            "Referral link copied!"
+          );
 
-document.querySelector("#team h2").textContent=t.team;
-document.querySelector("#about h2").textContent=t.about;
-document.querySelector("#account h2").textContent=t.account;
-document.querySelector("#contact h2").textContent=t.help;
+        }
 
-localStorage.setItem("avlang",lang);
-q("#accountLanguage").textContent=lang;
+      });
+
+  }else{
+
+    if(input){
+
+      input.select();
+
+      document.execCommand(
+        "copy"
+      );
+
+    }
+
+    if(typeof toast === "function"){
+
+      toast(
+        "Referral link copied!"
+      );
+
+    }
+
+  }
+
 }
 
-function countryChange(){
-const c=q("#country").value;
-localStorage.setItem("avcountry",c);
 
-const lang=countryLanguages[c]||"English";
+/* =========================================
+   SHARE
+   ========================================= */
 
-if([...q("#language").options].some(o=>o.value===lang)){
-q("#language").value=lang;
-applyLanguage(lang);
-}else{
-q("#language").value="English";
-applyLanguage("English");
-}
+function shareReferral(){
 
-q("#accountCountry").textContent=q("#country").selectedOptions[0].textContent;
-toast("Language changed");
-}
+  const url =
+    referralUrl();
 
-function languageChange(){
-const lang=q("#language").value;
-applyLanguage(lang);
-toast("Language: "+lang);
-}
 
-(function(){
-const savedCountry=localStorage.getItem("avcountry")||"BD";
-const savedLanguage=localStorage.getItem("avlang")||"Bangla";
+  if(
+    navigator.share
+  ){
 
-q("#country").value=savedCountry;
-q("#language").value=savedLanguage;
+    navigator.share({
 
-q("#accountCountry").textContent=q("#country").selectedOptions[0].textContent;
-applyLanguage(savedLanguage);
-})();
+      title:
+        "AHEAD VIA SKILL HUB",
 
-let currentGenerator="Caption";
+      text:
+        "Join AHEAD VIA SKILL HUB 🚀",
 
-function openGenerator(type){
-currentGenerator=type;
-q("#generatorTitle").textContent="✨ "+type+" Generator";
-q("#generatorModal").classList.add("show");
-q("#gTopic").value="";
-q("#gOutput").textContent="Your generated result will appear here.";
+      url:url
+
+    });
+
+  }else{
+
+    copyReferral();
+
+  }
+
 }
 
-function closeGenerator(){
-q("#generatorModal").classList.remove("show");
+
+/* =========================================
+   TELEGRAM SHARE
+   ========================================= */
+
+function shareTelegram(){
+
+  const url =
+    encodeURIComponent(
+      referralUrl()
+    );
+
+
+  const text =
+    encodeURIComponent(
+      "Join AHEAD VIA SKILL HUB 🚀"
+    );
+
+
+  window.open(
+    "https://t.me/share/url?url=" +
+    url +
+    "&text=" +
+    text,
+
+    "_blank"
+  );
+
 }
 
-function generateContent(){
 
-const type=currentGenerator;
-const platform=q("#gPlatform").value;
-const lang=q("#gLanguage").value;
-const style=q("#gStyle").value;
-const length=q("#gLength").value;
-const topic=q("#gTopic").value.trim()||"your topic";
+/* =========================================
+   WHATSAPP SHARE
+   ========================================= */
 
-let result="";
+function shareWhatsApp(){
 
-if(type==="Caption"){
-result=`${topic} 🚀\n\nDiscover something new, learn something useful and keep growing every day.\n\n#DigitalSkills #Learning #${platform.replace(/\W/g,"")}`;
-}
-else if(type==="Hashtag"){
-result=`#${topic.replace(/\s+/g,"")}\n#DigitalSkills #AI #ContentCreation #${platform.replace(/\W/g,"")} #OnlineLearning #AHEADVIA`;
-}
-else if(type==="Hook"){
-result=`STOP SCROLLING! 🔥\n\nHere's something you should know about ${topic}...`;
-}
-else if(type==="Title"){
-result=`${topic} — Simple Guide You Should Know`;
-}
-else if(type==="Post"){
-result=`🚀 ${topic}\n\nHere is a simple and useful post about ${topic}.\n\nSave this post and share it with someone who may find it useful.`;
-}
-else if(type==="Story"){
-result=`Story 1: ${topic} 👀\nStory 2: Here's the important part...\nStory 3: Keep watching for the next step.\nStory 4: Follow for more useful content.`;
-}
-else if(type==="Video Script"){
-result=`[HOOK]\nHave you ever wondered about ${topic}?\n\n[INTRO]\nToday we are going to learn the basics of ${topic}.\n\n[MAIN]\nExplain the key points clearly and give a practical example.\n\n[CTA]\nFollow for more digital tips!`;
-}
-else if(type==="Reel Script"){
-result=`🎬 REEL SCRIPT\n\n0-3s: ${topic}?\n3-8s: Show the main idea.\n8-15s: Explain the useful point.\n15-20s: Give a quick tip.\n20-25s: Follow for more!`;
-}
-else if(type==="Bio"){
-result=`🚀 Digital Creator | AI & Digital Skills\n💡 Learning • Creating • Sharing\n📚 ${topic}\n🌐 AHAD BHAI SKILL HUB`;
-}
-else if(type==="Description"){
-result=`Learn more about ${topic} in this helpful content.\n\nThis guide covers practical ideas, useful tips and simple steps.\n\n#DigitalSkills #Learning`;
-}
-else if(type==="CTA"){
-result=`👉 Follow now for more ${topic} tips.\n💬 Comment your question below.\n📌 Save this for later.\n📤 Share it with a friend.`;
-}
-else if(type==="Ad Copy"){
-result=`🔥 ${topic}\n\nLearn useful digital skills and discover practical resources.\n\n✨ Simple\n🚀 Useful\n💡 Beginner-friendly\n\n👉 Get started today.`;
-}
-else if(type==="Content Ideas"){
-result=`1. Beginner guide to ${topic}\n2. 5 mistakes people make with ${topic}\n3. Step-by-step ${topic} tutorial\n4. Tips and tricks for ${topic}\n5. Common questions about ${topic}\n6. Before vs after ${topic}`;
-}
-else if(type==="AI Image Prompt"){
-result=`Create a high-quality ${style.toLowerCase()} image about ${topic}, modern digital style, clean composition, professional lighting, detailed background, realistic details, social-media-ready, 4K quality, no watermark, no unnecessary text.`;
-}
-else if(type==="AI Video Prompt"){
-result=`Create a ${length.toLowerCase()} cinematic video about ${topic}. Style: ${style}. Smooth camera movement, natural lighting, detailed environment, realistic motion, professional composition, engaging opening, social-media-ready format.`;
-}
-else if(type==="Comment Reply"){
-result=`Thank you for your comment! ❤️\nYour feedback about ${topic} is appreciated. Stay connected for more useful content.`;
-}
-else if(type==="DM Reply"){
-result=`Hello! 👋 Thanks for reaching out about ${topic}.\n\nI'd be happy to help. Please share a little more detail about what you need.`;
-}
-else if(type==="Location"){
-result=`📍 Location ideas for ${topic}:\n1. Modern city area\n2. Clean office/studio\n3. Outdoor nature location\n4. Premium indoor setup\n5. Minimal creator studio`;
-}
-else if(type==="Thumbnail Text"){
-result=`${topic.toUpperCase()}\n\nTHE SIMPLE GUIDE\n\nSTART NOW 🚀`;
+  const message =
+    encodeURIComponent(
+      "Join AHEAD VIA SKILL HUB 🚀\n\n" +
+      referralUrl()
+    );
+
+
+  window.open(
+    "https://wa.me/?text=" +
+    message,
+
+    "_blank"
+  );
+
 }
 
-if(lang==="Bangla"){
-result+="\n\nভাষা: বাংলা";
-}
-if(lang==="Arabic"){
-result+="\n\nاللغة: العربية";
-}
-if(lang==="Hindi"){
-result+="\n\nभाषा: हिन्दी";
-}
-if(lang==="Urdu"){
-result+="\n\nزبان: اردو";
-}
 
-q("#gOutput").textContent=result;
-}
+/* =========================================
+   START REFERRAL
+   ========================================= */
 
-function copyOutput(){
-const text=q("#gOutput").textContent;
-navigator.clipboard.writeText(text)
-.then(()=>toast("Copied!"))
-.catch(()=>toast("Copy failed"));
-}
+setTimeout(
+  initReferral,
+  100
+);
 
-document.addEventListener("keydown",e=>{
-if(e.key==="Escape"){
-closeMenu();
-closeGenerator();
-}
-});
 </script>
 
-</body>
-</html>ও
+
+<!-- =========================
+     FINAL HELP CENTER BUTTON
+     ========================= -->
+
+<script>
+
+(function(){
+
+  const oldHelp =
+    document.querySelector(
+      ".float"
+    );
+
+
+  if(oldHelp){
+
+    oldHelp.innerHTML =
+      "🆘 <span>Help Center</span>";
+
+    oldHelp.setAttribute(
+      "title",
+      "Help Center"
+    );
+
+    oldHelp.onclick =
+      function(){
+
+        if(
+          typeof go === "function"
+        ){
+
+          go("contact");
+
+        }else{
+
+          document
+            .getElementById("contact")
+            ?.scrollIntoView({
+              behavior:"smooth"
+            });
+
+        }
+
+      };
+
+  }
+
+})();
+
+</script>
+
+
+<!-- =========================
+     PREMIUM MENU UPDATE
+     ========================= -->
+
+<script>
+
+(function(){
+
+  const drawer =
+    document.querySelector(
+      "#drawer"
+    );
+
+
+  if(!drawer) return;
+
+
+  /*
+    পুরোনো Menu-এর linkগুলোকে
+    নতুন সুন্দর Grid Menu-তে
+    সাজানো
+  */
+
+  const profile =
+    drawer.querySelector(
+      ".menuProfile"
+    );
+
+
+  if(!profile) return;
+
+
+  const links =
+    drawer.querySelectorAll(
+      ".mLink"
+    );
+
+
+  /*
+    আগে থেকেই নতুন Menu থাকলে
+    আবার তৈরি করবে না
+  */
+
+  if(
+    drawer.querySelector(
+      ".menuGrid"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  const grid =
+    document.createElement(
+      "div"
+    );
+
+
+  grid.className =
+    "menuGrid";
+
+
+  const menuItems = [
+
+    [
+      "🏠 Home",
+      "home"
+    ],
+
+    [
+      "📚 Tutorials",
+      "tutorial"
+    ],
+
+    [
+      "🎁 15 Days Offer",
+      "offer"
+    ],
+
+    [
+      "👥 Our Team",
+      "team"
+    ],
+
+    [
+      "👤 My Account",
+      "account"
+    ],
+
+    [
+      "🔗 Referral",
+      "referral"
+    ],
+
+    [
+      "ℹ️ About Me",
+      "about"
+    ],
+
+    [
+      "🆘 Help Center",
+      "contact"
+    ]
+
+  ];
+
+
+  menuItems.forEach(
+    item => {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      button.className =
+        "mLink";
+
+
+      button.innerHTML =
+        item[0] +
+        ' <span>›</span>';
+
+
+      button.onclick =
+        function(){
+
+          if(
+            typeof goM === "function"
+          ){
+
+            goM(
+              item[1]
+            );
+
+          }else{
+
+            drawer.classList.remove(
+              "open"
+            );
+
+            document
+              .getElementById(
+                item[1]
+              )
+              ?.scrollIntoView({
+                behavior:"smooth"
+              });
+
+          }
+
+        };
+
+
+      grid.appendChild(
+        button
+      );
+
+    }
+  );
+
+
+  /*
+    পুরোনো Menu link বাদ
+  */
+
+  links.forEach(
+    link =>
+      link.remove()
+  );
+
+
+  /*
+    Profile-এর নিচে নতুন Menu
+  */
+
+  profile.after(
+    grid
+  );
+
+})();
+
+</script>
