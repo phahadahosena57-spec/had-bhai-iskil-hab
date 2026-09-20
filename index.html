@@ -1,2283 +1,1346 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0878ff">
 <title>AHAD BHAI SKILL HUB</title>
-<meta name="description" content="AHAD BHAI SKILL HUB — digital skills, tools, AI tools, tutorials and online resources.">
 
 <style>
 :root{
---blue:#1769e8;
---blue2:#0b49b7;
---cyan:#19b8ff;
---bg:#f4f8ff;
---card:#fff;
---text:#10213f;
---muted:#63718b;
---line:#dfe9f7;
---shadow:0 14px 38px rgba(20,78,160,.12);
---radius:22px;
---nav:72px
+--p:#0878ff;--p2:#00a9ff;--bg:#f3f8ff;--card:#fff;
+--txt:#132238;--muted:#68788f;--line:#e3edf8;
+--shadow:0 12px 32px rgba(22,93,180,.10)
 }
-
-*{box-sizing:border-box;margin:0;padding:0}
-
-html{scroll-behavior:smooth}
-
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+html,body{min-height:100%}
 body{
-font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-background:linear-gradient(180deg,#eaf4ff 0,#f8fbff 38%,#eef6ff 100%);
-color:var(--text);
-padding-bottom:calc(var(--nav) + env(safe-area-inset-bottom));
-line-height:1.55
+font-family:Arial,Helvetica,sans-serif;
+background:radial-gradient(circle at 5% 0,#dff2ff 0,transparent 28%),
+linear-gradient(#fafdff,#edf6ff);
+color:var(--txt);padding-bottom:76px
 }
-
 body.dark{
---bg:#071326;
---card:#0d1c33;
---text:#f2f7ff;
---muted:#a9b9d1;
---line:#1d3556;
-background:
-radial-gradient(circle at 10% 0,#123d79 0,transparent 32%),
-linear-gradient(180deg,#061022,#091a30 55%,#061022)
+--bg:#071321;--card:#0d1d30;--txt:#eef6ff;--muted:#9cafc4;
+--line:#1c334b;--shadow:0 12px 32px rgba(0,0,0,.25);
+background:radial-gradient(circle at 5% 0,#083c70 0,transparent 28%),#071321
 }
+a{color:inherit;text-decoration:none}
+button,select{font:inherit}
+.wrap{width:min(1100px,92%);margin:auto}
 
-a{text-decoration:none;color:inherit}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:0}
-
-.wrap{
-width:min(1160px,92%);
-margin:auto
+header{
+position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
+backdrop-filter:blur(16px);border-bottom:1px solid var(--line)
 }
-
-.top{
-position:sticky;
-top:0;
-z-index:1000;
-background:rgba(255,255,255,.9);
-backdrop-filter:blur(16px);
-border-bottom:1px solid var(--line)
-}
-
-body.dark .top{
-background:rgba(7,19,38,.9)
-}
-
+.dark header{background:rgba(7,19,33,.92)}
 .head{
-height:70px;
-display:flex;
-align-items:center;
-gap:12px
+min-height:68px;display:flex;align-items:center;
+justify-content:space-between;gap:10px
 }
-
-.brand{
-display:flex;
-align-items:center;
-gap:10px;
-min-width:0
+.brand{display:flex;align-items:center;gap:9px}
+.brand img{width:42px;height:42px;border-radius:12px;object-fit:cover}
+.brand b{display:block;font-size:14px}
+.brand small{font-size:9px;color:var(--muted);font-weight:700}
+.headBtns{display:flex;gap:7px}
+.ib{
+width:40px;height:40px;border:1px solid var(--line);
+background:var(--card);color:var(--txt);border-radius:11px;cursor:pointer
 }
-
-.brand img{
-width:45px;
-height:45px;
-border-radius:14px;
-object-fit:cover;
-box-shadow:0 7px 18px rgba(23,105,232,.25)
-}
-
-.brand b{
-font-size:16px;
-white-space:nowrap
-}
-
-.head-actions{
-margin-left:auto;
-display:flex;
-gap:8px
-}
-
-.iconbtn{
-width:42px;
-height:42px;
-border-radius:13px;
-background:#eaf3ff;
-color:var(--blue);
-font-size:19px
-}
-
-.searchbar{
-padding:10px 0 14px
-}
-
-.searchbox{
-display:flex;
-align-items:center;
-gap:9px;
-background:var(--card);
-border:1px solid var(--line);
-border-radius:16px;
-padding:10px 13px;
-box-shadow:var(--shadow)
-}
-
-.searchbox input{
-width:100%;
-border:0;
-outline:0;
-background:transparent;
-color:var(--text)
-}
+.ib.menu{background:var(--p);color:#fff;border:0}
 
 .notice{
-background:linear-gradient(90deg,var(--blue2),var(--blue),#26a8ff);
-color:#fff
+background:linear-gradient(90deg,#075fe8,#00a8ff);color:#fff
+}
+.noticeIn{
+min-height:39px;display:flex;align-items:center;
+justify-content:center;font-size:11px;font-weight:800
 }
 
-.notice .wrap{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-padding:10px 0;
-font-size:13px
+.hero{padding:20px 0 8px}
+.heroBox{
+position:relative;overflow:hidden;color:#fff;border-radius:26px;
+padding:28px 21px;background:linear-gradient(135deg,#075fe8,#00a9ff);
+box-shadow:0 18px 42px #0878ff2b
 }
+.heroBox:after{
+content:"";position:absolute;width:220px;height:220px;
+border:1px solid #ffffff28;border-radius:50%;right:-90px;top:-90px
+}
+.heroIn{position:relative;z-index:1}
+.pill{
+display:inline-block;padding:7px 10px;border-radius:30px;
+background:#ffffff1c;border:1px solid #ffffff2a;font-size:10px;
+font-weight:900;margin-bottom:12px
+}
+.hero h1{font-size:29px;line-height:1.1;margin-bottom:10px}
+.hero p{font-size:12px;line-height:1.7;max-width:720px;opacity:.95}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}
+.btn,.btn2{
+border:0;border-radius:11px;padding:11px 14px;font-size:11px;
+font-weight:900;cursor:pointer;display:inline-block;text-align:center
+}
+.btn{background:#fff;color:#075fe8}
+.btn2{background:#ffffff18;color:#fff;border:1px solid #ffffff44}
 
-.close{
-background:rgba(255,255,255,.18);
-color:#fff;
-width:30px;
-height:30px;
-border-radius:9px
+.support{
+display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0
 }
+.sup{
+background:var(--card);border:1px solid var(--line);border-radius:16px;
+padding:13px 7px;text-align:center;box-shadow:var(--shadow)
+}
+.sup i{
+display:flex;width:38px;height:38px;align-items:center;
+justify-content:center;background:#e9f4ff;border-radius:12px;
+margin:auto auto 6px;font-style:normal;font-size:19px
+}
+.sup b{font-size:11px;display:block}
+.sup small{font-size:9px;color:var(--muted)}
 
-.hero{
-margin:22px auto 16px;
-border-radius:30px;
-padding:30px;
-min-height:270px;
-color:#fff;
-position:relative;
-overflow:hidden;
-background:linear-gradient(135deg,#0645b5,#1386ef 55%,#19c4ff);
-box-shadow:0 22px 60px rgba(13,94,205,.28)
+section{padding:22px 0 2px}
+.title{
+display:flex;justify-content:space-between;align-items:end;
+margin-bottom:12px;gap:10px
 }
+.title h2{font-size:20px}
+.title p{font-size:10px;color:var(--muted);margin-top:4px;line-height:1.5}
 
-.hero:before,
-.hero:after{
-content:"";
-position:absolute;
-border-radius:50%;
-background:rgba(255,255,255,.12)
+.offerGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{
+background:var(--card);border:1px solid var(--line);
+border-radius:19px;padding:17px;box-shadow:var(--shadow)
 }
+.offer.featured{border:2px solid #0878ff}
+.tag{
+display:inline-block;padding:6px 8px;border-radius:20px;
+background:#e9f4ff;color:#0768ef;font-size:9px;
+font-weight:900;margin-bottom:9px
+}
+.card h3{font-size:16px;margin-bottom:6px}
+.card p{font-size:11px;color:var(--muted);line-height:1.6}
+.list{list-style:none;margin:11px 0}
+.list li{font-size:10px;margin:7px 0}
+.list li:before{content:'✓';color:#18b96e;font-weight:900;margin-right:6px}
+.full{width:100%;background:linear-gradient(90deg,#0767ee,#00a5ff);color:#fff}
 
-.hero:before{
-width:300px;
-height:300px;
-right:-100px;
-top:-120px
+.skills{
+display:grid;grid-template-columns:repeat(4,1fr);gap:10px
 }
-
-.hero:after{
-width:220px;
-height:220px;
-left:-90px;
-bottom:-130px
+.skill{
+background:var(--card);border:1px solid var(--line);border-radius:16px;
+padding:14px;box-shadow:var(--shadow)
 }
-
-.hero>*{
-position:relative;
-z-index:1
+.skill i{
+display:flex;width:40px;height:40px;align-items:center;
+justify-content:center;background:#eaf4ff;border-radius:12px;
+font-style:normal;font-size:20px;margin-bottom:8px
 }
-
-.hero h1{
-font-size:clamp(28px,6vw,52px);
-line-height:1.08;
-margin-bottom:10px
-}
-
-.hero p{
-max-width:720px;
-font-size:16px;
-opacity:.95
-}
-
-.hero-video{
-margin-top:20px;
-border-radius:18px;
-background:rgba(0,0,0,.2);
-padding:10px
-}
-
-.hero-video iframe{
-width:100%;
-height:190px;
-border:0;
-border-radius:13px;
-background:#001a42
-}
-
-.section{
-padding:22px 0
-}
-
-.section-title{
-display:flex;
-justify-content:space-between;
-align-items:end;
-gap:15px;
-margin-bottom:14px
-}
-
-.section-title h2{
-font-size:25px
-}
-
-.section-title p{
-color:var(--muted);
-font-size:13px
-}
-
-.grid{
-display:grid;
-gap:14px
-}
-
-.services{
-grid-template-columns:repeat(4,1fr)
-}
+.skill h3{font-size:12px;margin-bottom:4px}
+.skill p{font-size:9px;color:var(--muted);line-height:1.5}
 
 .tools{
-grid-template-columns:repeat(4,1fr)
+display:grid;grid-template-columns:repeat(4,1fr);gap:10px
+}
+.tool{
+background:var(--card);border:1px solid var(--line);
+border-radius:16px;padding:14px;box-shadow:var(--shadow)
+}
+.toolIcon{
+width:42px;height:42px;border-radius:12px;background:#eaf4ff;
+display:flex;align-items:center;justify-content:center;font-size:21px;
+margin-bottom:9px
+}
+.tool h3{font-size:12px;margin-bottom:5px}
+.tool p{font-size:9px;color:var(--muted);line-height:1.5}
+.tool button{
+margin-top:10px;width:100%;border:0;border-radius:9px;
+padding:9px;background:linear-gradient(90deg,#0878ff,#00a5ff);
+color:#fff;font-size:9px;font-weight:900;cursor:pointer
 }
 
-.community{
-grid-template-columns:repeat(3,1fr)
+.tuts{
+display:grid;grid-template-columns:repeat(3,1fr);gap:12px
+}
+.tut{overflow:hidden;padding:0}
+.tut img{width:100%;height:145px;object-fit:cover;display:block}
+.tut .inside{padding:13px}
+.tut .tag{margin:0 0 5px}
+.learn{
+display:inline-block;margin-top:10px;padding:8px 10px;
+background:#eaf4ff;color:#0768ef;border-radius:9px;
+font-size:9px;font-weight:900
 }
 
 .team{
-grid-template-columns:repeat(3,1fr)
+display:grid;grid-template-columns:repeat(3,1fr);gap:13px
 }
-
-.tutorials{
-grid-template-columns:repeat(3,1fr)
+.member{
+background:var(--card);border:1px solid var(--line);border-radius:23px;
+padding:19px 14px;text-align:center;box-shadow:var(--shadow);
+transition:.2s
 }
-
-.card{
-background:var(--card);
-border:1px solid var(--line);
-border-radius:var(--radius);
-padding:18px;
-box-shadow:var(--shadow);
-transition:.25s
-}
-
-.card:hover{
-transform:translateY(-4px)
-}
-
-.service-icon,
-.tool-icon{
-width:48px;
-height:48px;
-border-radius:15px;
-display:grid;
-place-items:center;
-background:#eaf3ff;
-color:var(--blue);
-font-size:24px;
-margin-bottom:12px
-}
-
-.card h3{
-font-size:16px;
-margin-bottom:4px
-}
-
-.card p{
-color:var(--muted);
-font-size:13px
-}
-
-.btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:7px;
-background:var(--blue);
-color:#fff;
-border-radius:12px;
-padding:10px 14px;
-margin-top:13px;
-font-weight:700;
-font-size:13px
-}
-
-.btn.alt{
-background:#eaf3ff;
-color:var(--blue)
-}
-
-.btn.full{
-width:100%
-}
-
-.support{
-background:linear-gradient(135deg,#ffffff,#edf7ff)
-}
-
-body.dark .support{
-background:linear-gradient(135deg,#102540,#0d1b31)
-}
-
-.support-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px
-}
-
-.support a{
-padding:16px;
-border-radius:18px;
-background:var(--card);
-border:1px solid var(--line);
-display:flex;
-align-items:center;
-gap:10px;
-box-shadow:var(--shadow)
-}
-
-.support strong{
-font-size:14px
-}
-
-.support small{
-display:block;
-color:var(--muted)
-}
-
-.team-card{
-text-align:center;
-padding:20px
-}
-
-.team-card img{
-width:118px;
-height:118px;
-border-radius:50%;
-object-fit:cover;
-border:5px solid #eaf3ff;
-box-shadow:0 10px 25px rgba(23,105,232,.18);
-margin:auto auto 12px
-}
-
-.handle{
-display:inline-block;
-color:var(--blue);
-font-size:13px;
-margin-top:2px
-}
-
-.team-actions{
-display:flex;
-justify-content:center;
-gap:7px;
-flex-wrap:wrap
-}
-
-.offer{
-border-radius:30px;
-padding:28px;
-background:linear-gradient(135deg,#fff1c9,#fff,#e6f4ff);
-border:1px solid #ffe2a0;
-box-shadow:var(--shadow);
-text-align:center;
-position:relative;
-overflow:hidden
-}
-
-.offer .gift{
-font-size:54px;
-animation:bounce 1.6s infinite
-}
-
-.offer h2{
-font-size:30px;
-color:var(--blue2)
-}
-
-.offer-list{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:8px;
-margin:16px 0
-}
-
-.pill{
-padding:7px 11px;
-border-radius:99px;
-background:#eef6ff;
-color:var(--blue);
-font-size:12px;
-font-weight:700
-}
-
-@keyframes bounce{
-50%{
-transform:translateY(-8px) rotate(-5deg)
-}
-}
-
-.generator{
-background:linear-gradient(135deg,#061c42,#0a55bd);
-color:#fff;
-border-radius:28px;
-padding:22px;
-box-shadow:0 24px 55px rgba(0,55,145,.25)
-}
-
-.generator h2{
-font-size:27px
-}
-
-.formgrid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-top:15px
-}
-
-.field label{
-font-size:12px;
-opacity:.8;
-display:block;
-margin-bottom:5px
-}
-
-.field input,
-.field select,
-.field textarea{
-width:100%;
-border:1px solid rgba(255,255,255,.2);
-background:rgba(255,255,255,.1);
-color:#fff;
-border-radius:12px;
-padding:11px;
-outline:0
-}
-
-.field select option{
-color:#111
-}
-
-.field textarea{
-min-height:100px;
-resize:vertical
-}
-
-.result{
-margin-top:14px;
-background:#fff;
-color:#172642;
-border-radius:16px;
-padding:15px;
-display:none;
-white-space:pre-wrap
-}
-
-.result.show{
-display:block
-}
-
-.copy{
-background:#0b49b7;
-color:#fff;
-padding:9px 13px;
-border-radius:10px;
-margin-top:10px
-}
-
-.big-support{
-padding:30px;
-border-radius:28px;
-background:linear-gradient(135deg,#0b49b7,#16a9ff);
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px;
-box-shadow:0 22px 55px rgba(15,92,200,.25)
-}
-
-.big-support h2{
-font-size:28px
-}
-
-.tutorial-card{
-overflow:hidden;
-padding:0
-}
-
-.tutorial-thumb{
-height:155px;
-background:linear-gradient(135deg,#0a4dbb,#20baff);
-display:grid;
-place-items:center;
-color:#fff;
-font-size:44px
-}
-
-.tutorial-body{
-padding:17px
-}
-
-.filters{
-display:flex;
-gap:8px;
-overflow:auto;
-padding-bottom:5px
-}
-
-.filters button{
-white-space:nowrap;
-background:var(--card);
-border:1px solid var(--line);
-color:var(--text);
-padding:9px 12px;
-border-radius:11px
-}
-
-.filters button.active{
-background:var(--blue);
-color:#fff;
-border-color:var(--blue)
-}
-
-.account{
-display:grid;
-grid-template-columns:180px 1fr;
-gap:20px;
-align-items:start
-}
-
+.member:hover{transform:translateY(-3px)}
 .avatar{
-width:130px;
-height:130px;
-border-radius:50%;
-object-fit:cover;
-border:5px solid #e7f1ff
+width:112px;height:112px;padding:4px;border-radius:50%;margin:0 auto 11px;
+background:linear-gradient(135deg,#0878ff,#00c7ff)
+}
+.avatar img{
+width:100%;height:100%;object-fit:cover;border-radius:50%;
+border:3px solid var(--card);display:block
+}
+.member h3{font-size:14px;margin-bottom:5px}
+.role{color:#0878ff;font-size:10px;font-weight:900;margin-bottom:7px}
+.status{
+display:inline-block;background:#e9fff4;color:#119b5d;padding:5px 8px;
+border-radius:20px;font-size:8px;font-weight:900;margin-bottom:8px
+}
+.memberBtns{display:flex;gap:7px}
+.memberBtns a{
+flex:1;padding:9px 5px;border-radius:9px;background:#eaf4ff;
+color:#0768ef;font-size:9px;font-weight:900
+}
+.memberBtns a.main{
+background:linear-gradient(90deg,#0878ff,#00a5ff);color:#fff
 }
 
-.account input,
-.account select{
-width:100%;
-padding:11px;
-border:1px solid var(--line);
-border-radius:12px;
-background:var(--bg);
-color:var(--text);
-margin-bottom:9px
+.about,.account{
+background:var(--card);border:1px solid var(--line);
+border-radius:20px;padding:18px;box-shadow:var(--shadow)
+}
+.aboutTop,.user{
+display:flex;align-items:center;gap:12px;margin-bottom:12px
+}
+.aboutTop img,.user img{
+width:67px;height:67px;border-radius:50%;object-fit:cover;
+border:3px solid #0878ff
+}
+.about h3,.account h3{font-size:15px}
+.aboutTop span{color:#0878ff;font-size:9px;font-weight:900}
+.about p{font-size:11px;color:var(--muted);line-height:1.75}
+.uid{
+display:inline-block;margin-top:5px;background:#eaf4ff;color:#0768ef;
+padding:5px 8px;border-radius:7px;font-size:9px;font-weight:900
+}
+.accountGrid{
+display:grid;grid-template-columns:repeat(2,1fr);gap:8px
+}
+.info{background:var(--bg);padding:11px;border-radius:11px}
+.info small{display:block;color:var(--muted);font-size:8px}
+.info b{display:block;font-size:10px;margin-top:3px}
+
+.contact{
+background:linear-gradient(135deg,#075fe8,#00a8ff);color:#fff;
+border-radius:21px;padding:20px;box-shadow:0 18px 40px #0878ff2b
+}
+.contact h2{font-size:20px;margin-bottom:6px}
+.contact p{font-size:11px;line-height:1.6;opacity:.94}
+.contactBtns{
+display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:13px
+}
+.contactBtns a{
+background:#fff;color:#075fe8;text-align:center;padding:10px;
+border-radius:10px;font-size:10px;font-weight:900
 }
 
-.footer{
-margin-top:30px;
-background:#06142b;
-color:#dbe8ff;
-padding:32px 0
+.socialGrid{
+display:grid;grid-template-columns:repeat(4,1fr);gap:9px
 }
-
-.footer-grid{
-display:grid;
-grid-template-columns:2fr 1fr 1fr;
-gap:25px
+.socialBox{
+background:var(--card);border:1px solid var(--line);
+border-radius:15px;padding:13px;text-align:center;box-shadow:var(--shadow)
 }
+.socialBox b{display:block;font-size:10px;margin-top:6px}
+.socialBox small{display:block;color:var(--muted);font-size:8px;margin-top:3px}
+.socialBox span{font-size:22px}
 
-.footer a{
-color:#b9d5ff
+footer{
+margin-top:28px;background:#061b30;color:#fff;
+padding:28px 0 95px;text-align:center
+}
+footer img{
+width:58px;height:58px;border-radius:17px;object-fit:cover;margin-bottom:9px
+}
+footer h3{font-size:15px}
+footer p{font-size:9px;color:#a9bfd7;margin-top:5px}
+.owner{font-size:11px;font-weight:900;margin:14px 0 9px}
+.waFooter{
+display:inline-block;background:#18b96e;color:#fff;
+padding:10px 14px;border-radius:10px;font-size:10px;font-weight:900
+}
+.socials{
+display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:13px
+}
+.socials a{
+background:#ffffff12;padding:8px 9px;border-radius:8px;font-size:9px
 }
 
 .bottom{
-position:fixed;
-z-index:1100;
-bottom:0;
-left:0;
-right:0;
-background:rgba(255,255,255,.95);
-backdrop-filter:blur(16px);
-border-top:1px solid var(--line);
-height:calc(var(--nav) + env(safe-area-inset-bottom));
-padding-bottom:env(safe-area-inset-bottom);
-display:grid;
-grid-template-columns:repeat(5,1fr)
+position:fixed;z-index:40;left:0;right:0;bottom:0;
+background:rgba(255,255,255,.96);backdrop-filter:blur(15px);
+border-top:1px solid var(--line);display:grid;
+grid-template-columns:repeat(4,1fr);
+padding:6px max(8px,calc((100% - 700px)/2))
+}
+.dark .bottom{background:rgba(7,19,33,.96)}
+.nav{
+border:0;background:transparent;color:var(--muted);
+font-size:9px;font-weight:900;padding:4px;cursor:pointer
+}
+.nav b{display:block;font-size:18px;margin-bottom:2px}
+.nav.active{color:#0878ff}
+
+.float{
+position:fixed;z-index:39;right:16px;bottom:88px;width:49px;height:49px;
+border:0;border-radius:50%;
+background:linear-gradient(135deg,#0878ff,#00baff);color:#fff;
+font-size:21px;box-shadow:0 12px 27px #0878ff44;cursor:pointer
 }
 
-body.dark .bottom{
-background:rgba(7,19,38,.96)
+.overlay{
+display:none;position:fixed;inset:0;background:#0008;z-index:90
 }
-
-.bottom a{
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-gap:2px;
-color:var(--muted);
-font-size:10px;
-font-weight:700
-}
-
-.bottom a span{
-font-size:20px
-}
-
-.bottom a.active{
-color:var(--blue)
-}
-
-.help{
-position:fixed;
-right:18px;
-bottom:calc(var(--nav) + 18px);
-z-index:1090;
-width:56px;
-height:56px;
-border-radius:50%;
-background:var(--blue);
-color:#fff;
-box-shadow:0 15px 35px rgba(23,105,232,.35);
-font-size:25px
-}
-
+.overlay.show{display:block}
 .drawer{
-position:fixed;
-inset:0;
-z-index:2000;
-background:rgba(0,20,50,.5);
-display:none
+position:fixed;z-index:91;right:-340px;top:0;
+width:min(340px,90%);height:100%;background:var(--card);
+padding:18px;overflow:auto;transition:.28s;
+box-shadow:-15px 0 40px #0003
+}
+.drawer.open{right:0}
+.drawerHead{
+display:flex;align-items:center;justify-content:space-between;margin-bottom:14px
+}
+.close{
+border:0;background:#eaf4ff;color:#0768ef;
+width:38px;height:38px;border-radius:10px;cursor:pointer
+}
+.menuProfile{
+display:flex;gap:10px;align-items:center;background:#eaf4ff;
+padding:12px;border-radius:14px;margin-bottom:10px
+}
+.menuProfile img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.menuProfile b{display:block;font-size:12px}
+.menuProfile small{font-size:9px;color:#64748b}
+.mLink{
+display:flex;width:100%;justify-content:space-between;
+border:0;border-bottom:1px solid var(--line);background:transparent;
+color:var(--txt);padding:12px 5px;font-size:11px;font-weight:900;
+cursor:pointer;text-align:left
+}
+.select{padding:11px 5px;border-bottom:1px solid var(--line)}
+.select label{
+display:block;font-size:9px;color:var(--muted);margin-bottom:5px
+}
+.select select{
+width:100%;padding:9px;border:1px solid var(--line);
+border-radius:9px;background:var(--bg);color:var(--txt)
 }
 
-.drawer.open{
-display:block
+.modal{
+display:none;position:fixed;inset:0;z-index:110;
+background:#0008;align-items:center;justify-content:center;padding:15px
+}
+.modal.show{display:flex}
+.modalBox{
+width:min(620px,100%);max-height:90vh;overflow:auto;
+background:var(--card);border-radius:20px;padding:18px;
+box-shadow:0 25px 70px #0005
+}
+.modalHead{
+display:flex;align-items:center;justify-content:space-between;
+gap:10px;margin-bottom:14px
+}
+.modalHead h3{font-size:17px}
+.formGrid{
+display:grid;grid-template-columns:repeat(2,1fr);gap:9px
+}
+.field label{
+display:block;font-size:9px;font-weight:900;margin-bottom:5px
+}
+.field input,.field select,.field textarea{
+width:100%;border:1px solid var(--line);background:var(--bg);
+color:var(--txt);border-radius:10px;padding:10px;font-size:10px;outline:none
+}
+.field textarea{min-height:100px;resize:vertical}
+.fullField{grid-column:1/-1}
+.generateBtn{
+width:100%;border:0;border-radius:11px;padding:12px;
+background:linear-gradient(90deg,#0878ff,#00a5ff);
+color:#fff;font-size:11px;font-weight:900;cursor:pointer;margin-top:10px
+}
+.output{
+margin-top:12px;padding:13px;background:var(--bg);
+border:1px solid var(--line);border-radius:12px;
+font-size:11px;line-height:1.7;white-space:pre-wrap;min-height:80px
+}
+.copyBtn{
+margin-top:8px;border:0;background:#18b96e;color:#fff;
+padding:9px 12px;border-radius:9px;font-size:10px;font-weight:900;cursor:pointer
 }
 
-.drawer-panel{
-margin-left:auto;
-width:min(350px,88%);
-height:100%;
-background:var(--card);
-padding:20px;
-overflow:auto
+.toast{
+position:fixed;z-index:120;left:50%;bottom:88px;
+transform:translate(-50%,20px);background:#061b30;color:#fff;
+padding:10px 13px;border-radius:10px;font-size:10px;font-weight:900;
+opacity:0;pointer-events:none;transition:.2s
 }
+.toast.show{opacity:1;transform:translate(-50%,0)}
 
-.drawer-head{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:15px
+@media(max-width:850px){
+.skills,.tools,.socialGrid{grid-template-columns:repeat(2,1fr)}
+.team{grid-template-columns:repeat(3,1fr)}
+.team .member{width:100%}
 }
-
-.menu-link{
-display:block;
-padding:13px;
-border-radius:13px;
-margin:5px 0;
-background:var(--bg);
-color:var(--text);
-font-weight:700
-}
-
-.menu-link:hover{
-background:#e7f2ff;
-color:var(--blue)
-}
-
-.countrybox{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:9px
-}
-
-@media(max-width:900px){
-.services,.tools{
-grid-template-columns:repeat(3,1fr)
-}
-.community,.tutorials{
-grid-template-columns:repeat(2,1fr)
-}
-.support-grid{
-grid-template-columns:repeat(2,1fr)
-}
-.footer-grid{
-grid-template-columns:1fr 1fr
-}
-.account{
-grid-template-columns:1fr
-}
-}
-
-@media(max-width:650px){
-.head{
-height:62px
-}
-
-.brand img{
-width:40px;
-height:40px
-}
-
-.brand b{
-font-size:13px
-}
-
-.services,
-.tools,
-.community,
-.tutorials{
-grid-template-columns:1fr 1fr
-}
-
-.team{
-grid-template-columns:repeat(3,1fr);
-gap:7px
-}
-
-.team-card{
-padding:10px 5px
-}
-
-.team-card img{
-width:76px;
-height:76px
-}
-
-.team-card h3{
-font-size:11px
-}
-
-.team-card .handle{
-font-size:9px
-}
-
-.team-card .btn{
-font-size:9px;
-padding:7px 6px
-}
-
-.hero{
-padding:23px 18px;
-border-radius:24px
-}
-
-.hero-video iframe{
-height:155px
-}
-
-.formgrid{
-grid-template-columns:1fr
-}
-
-.big-support{
-display:block;
-text-align:center
-}
-
-.footer-grid{
-grid-template-columns:1fr
-}
-
-.section{
-padding:16px 0
-}
-
-.section-title h2{
-font-size:21px
-}
-
-.card{
-padding:14px
-}
-
-.service-icon,
-.tool-icon{
-width:42px;
-height:42px;
-font-size:20px
-}
-
-.help{
-right:12px
-}
-
-.countrybox{
-grid-template-columns:1fr
-}
-}
-
-@media(max-width:390px){
-.team-card img{
-width:67px;
-height:67px
-}
-
-.team-card h3{
-font-size:10px
-}
-
-.team-card .btn{
-padding:6px 4px
-}
-
-.services,
-.tools{
-grid-template-columns:1fr 1fr
-}
+@media(max-width:620px){
+.offerGrid,.tuts{grid-template-columns:1fr}
+.team{grid-template-columns:repeat(3,1fr);gap:6px}
+.member{padding:12px 5px;border-radius:17px}
+.avatar{width:78px;height:78px}
+.member h3{font-size:10px}
+.role{font-size:8px}
+.status{font-size:6px;padding:4px}
+.memberBtns{display:block}
+.memberBtns a{display:block;margin-top:5px;font-size:7px}
+.hero h1{font-size:25px}
+.support{grid-template-columns:repeat(3,1fr)}
+.brand b{font-size:12px}
+.tools{grid-template-columns:repeat(2,1fr)}
+.tool{padding:11px}
+.tool h3{font-size:10px}
+.socialGrid{grid-template-columns:repeat(2,1fr)}
+.formGrid{grid-template-columns:1fr}
+.fullField{grid-column:auto}
 }
 </style>
 </head>
 
 <body>
 
-<header class="top">
-
+<header>
 <div class="wrap head">
-
 <a class="brand" href="#home">
-<img src="https://i.ibb.co.com/xd1bjsh/1788349715746.png" alt="AHAD BHAI SKILL HUB logo">
+<img src="https://i.ibb.co.com/xd1bjsh/1788349715746.png">
+<span>
 <b>AHAD BHAI SKILL HUB</b>
+<small>Digital Skills • AI • Online Learning</small>
+</span>
 </a>
-
-<div class="head-actions">
-<button class="iconbtn" id="themeBtn">🌙</button>
-<button class="iconbtn" id="menuBtn">☰</button>
-</div>
-
-</div>
-
-<div class="wrap searchbar">
-<div class="searchbox">
-🔎
-<input id="search" placeholder="Search services, tools, tutorials...">
+<div class="headBtns">
+<button class="ib" id="themeBtn" onclick="toggleTheme()">🌙</button>
+<button class="ib menu" onclick="openMenu()">☰</button>
 </div>
 </div>
-
 </header>
 
-<div id="notice" class="notice">
-<div class="wrap">
-<span>📢 Welcome! Explore our services, tools, tutorials and 15-day free learning.</span>
-<button class="close" id="closeNotice">×</button>
+<div class="notice">
+<div class="wrap noticeIn">
+<span id="noticeText">📢 Welcome to AHAD BHAI SKILL HUB — Learn Digital Skills Free!</span>
 </div>
 </div>
 
-<main id="home" class="wrap">
+<main id="home">
 
 <section class="hero">
-
-<h1>Welcome to AHAD BHAI SKILL HUB 🌹</h1>
-
-<p>
-Learn digital skills, discover useful tools, create better content
-and explore practical online resources in one place.
+<div class="wrap">
+<div class="heroBox">
+<div class="heroIn">
+<span class="pill" id="heroPill">🚀 AHAD BHAI DIGITAL COMMUNITY</span>
+<h1 id="heroTitle">Learn Digital Skills.<br>Build Your Online Future.</h1>
+<p id="heroText">
+Learn website creation, AI tools, video creation, thumbnails,
+content creation, social media, online income skills and digital projects in one place.
 </p>
-
-<div class="hero-video">
-<iframe
-src="https://www.youtube.com/embed?listType=search&list=AHAD%20BHAI%20SKILL%20HUB"
-title="Welcome video search"
-allowfullscreen>
-</iframe>
+<div class="actions">
+<button class="btn" onclick="go('offer')">🎁 15 Days Free Learning</button>
+<button class="btn2" onclick="go('tutorial')">📚 View Tutorials</button>
 </div>
-
+</div>
+</div>
+</div>
 </section>
 
-<section class="section support">
-
-<div class="section-title">
-<div>
-<h2>🆘 Help & Support</h2>
-<p>Quick ways to reach the community.</p>
-</div>
-</div>
-
-<div class="support-grid">
-
-<a href="https://t.me/Aheadvia1298" target="_blank">
-<b>✈️</b>
-<div>
-<strong>Telegram</strong>
-<small>Contact</small>
-</div>
+<div class="wrap">
+<div class="support">
+<a class="sup" href="https://t.me/Aheadvia1298" target="_blank">
+<i>✈️</i><b>Telegram</b><small>Contact Me</small>
 </a>
-
-<a href="https://wa.me/8801400524877" target="_blank">
-<b>💬</b>
-<div>
-<strong>WhatsApp</strong>
-<small>Chat with us</small>
-</div>
+<a class="sup" href="https://t.me/Aheadviaiskill_hab" target="_blank">
+<i>👥</i><b>Group</b><small>Join Community</small>
 </a>
-
-<a href="mailto:msssaimaislam6@gmail.com">
-<b>✉️</b>
-<div>
-<strong>Email</strong>
-<small>Send message</small>
-</div>
+<a class="sup" href="https://wa.me/8801400524877" target="_blank">
+<i>💬</i><b>WhatsApp</b><small>Get Help</small>
 </a>
+</div>
+</div>
 
-<a href="#help" onclick="openHelp()">
-<b>🆘</b>
+<section id="offer">
+<div class="wrap">
+<div class="title">
 <div>
-<strong>Help Center</strong>
-<small>Get support</small>
+<h2 id="offerTitle">🎁 15 Days Free Learning</h2>
+<p id="offerDesc">সবকিছু শিখাবো মাত্র পনেরো দিনের জন্য — একদম ফ্রিতে।</p>
 </div>
-</a>
+</div>
 
+<div class="offerGrid">
+
+<article class="card offer featured">
+<span class="tag">🔥 FREE OFFER</span>
+<h3>15 Days Skill Training</h3>
+<p>Beginner থেকে practical digital skills শেখার free learning program.</p>
+<ul class="list">
+<li>Website Creation</li>
+<li>AI Tools</li>
+<li>Video Creation</li>
+<li>Content Creation</li>
+</ul>
+<a class="btn full" href="https://t.me/Aheadvia1298" target="_blank">Join Free Learning</a>
+</article>
+
+<article class="card offer">
+<span class="tag">🤖 AI</span>
+<h3>AI Tools Learning</h3>
+<p>Useful AI tools কীভাবে ব্যবহার করতে হয় এবং digital কাজ সহজ করতে হয়।</p>
+<ul class="list">
+<li>AI Content</li>
+<li>AI Image Ideas</li>
+<li>AI Productivity</li>
+<li>Smart Tools</li>
+</ul>
+<a class="btn full" href="#tutorial">See Tutorials</a>
+</article>
+
+<article class="card offer">
+<span class="tag">💻 DIGITAL</span>
+<h3>Build Digital Projects</h3>
+<p>Website, online projects এবং বিভিন্ন digital system তৈরি করার practical ধারণা।</p>
+<ul class="list">
+<li>Website Projects</li>
+<li>Free Tools</li>
+<li>Online Systems</li>
+<li>Project Ideas</li>
+</ul>
+<a class="btn full" href="#skills">Explore Skills</a>
+</article>
+
+</div>
 </div>
 </section>
 
-<section class="section" id="community">
-
-<div class="section-title">
+<section id="skills">
+<div class="wrap">
+<div class="title">
 <div>
-<h2>🌐 Our Communities</h2>
-<p>Join our channels and groups.</p>
+<h2>💡 What I Can Teach</h2>
+<p>Practical digital skills and useful online resources.</p>
 </div>
 </div>
 
-<div class="grid community" id="communityGrid"></div>
+<div class="skills">
 
+<div class="skill"><i>🌐</i><h3>Website Creation</h3><p>HTML, CSS, JavaScript and free website projects.</p></div>
+<div class="skill"><i>🤖</i><h3>AI Tools</h3><p>Useful AI tools and practical AI workflows.</p></div>
+<div class="skill"><i>🎬</i><h3>Video Creation</h3><p>Video ideas, scripts, editing and content planning.</p></div>
+<div class="skill"><i>🖼️</i><h3>Thumbnail Design</h3><p>Thumbnail concepts, text and design ideas.</p></div>
+<div class="skill"><i>✍️</i><h3>Content Creation</h3><p>Posts, captions, scripts, stories and reels.</p></div>
+<div class="skill"><i>📱</i><h3>Social Media</h3><p>Facebook, YouTube, TikTok, Instagram and Telegram.</p></div>
+<div class="skill"><i>💰</i><h3>Online Income Skills</h3><p>Digital skills, freelancing ideas and online resources.</p></div>
+<div class="skill"><i>🚀</i><h3>Digital Projects</h3><p>Build and improve practical online projects.</p></div>
+
+</div>
+</div>
 </section>
 
-<section class="section" id="team">
-
-<div class="section-title">
+<section id="tools">
+<div class="wrap">
+<div class="title">
 <div>
-<h2>👥 Our Team</h2>
-<p>Meet the people behind the hub.</p>
+<h2>🧰 Digital Tools & Generators</h2>
+<p>Create captions, scripts, hooks, prompts, bios and more.</p>
 </div>
 </div>
 
-<div class="grid team" id="teamGrid"></div>
+<div class="tools">
 
+<div class="tool"><div class="toolIcon">✍️</div><h3>Caption Generator</h3><p>Create social media captions.</p><button onclick="openGenerator('Caption')">Open</button></div>
+<div class="tool"><div class="toolIcon">#️⃣</div><h3>Hashtag Generator</h3><p>Generate useful hashtags.</p><button onclick="openGenerator('Hashtag')">Open</button></div>
+<div class="tool"><div class="toolIcon">🔥</div><h3>Hook Generator</h3><p>Create attention-grabbing hooks.</p><button onclick="openGenerator('Hook')">Open</button></div>
+<div class="tool"><div class="toolIcon">🎯</div><h3>Headline / Title</h3><p>Create strong titles.</p><button onclick="openGenerator('Title')">Open</button></div>
+<div class="tool"><div class="toolIcon">📝</div><h3>Post Generator</h3><p>Create ready-to-edit posts.</p><button onclick="openGenerator('Post')">Open</button></div>
+<div class="tool"><div class="toolIcon">📖</div><h3>Story Generator</h3><p>Create story content.</p><button onclick="openGenerator('Story')">Open</button></div>
+<div class="tool"><div class="toolIcon">🎬</div><h3>Video Script</h3><p>Create video scripts.</p><button onclick="openGenerator('Video Script')">Open</button></div>
+<div class="tool"><div class="toolIcon">🎞️</div><h3>Reel Script</h3><p>Create short-form scripts.</p><button onclick="openGenerator('Reel Script')">Open</button></div>
+<div class="tool"><div class="toolIcon">👤</div><h3>Bio Generator</h3><p>Create profile bios.</p><button onclick="openGenerator('Bio')">Open</button></div>
+<div class="tool"><div class="toolIcon">📄</div><h3>Description</h3><p>Create descriptions.</p><button onclick="openGenerator('Description')">Open</button></div>
+<div class="tool"><div class="toolIcon">📣</div><h3>CTA Generator</h3><p>Create calls to action.</p><button onclick="openGenerator('CTA')">Open</button></div>
+<div class="tool"><div class="toolIcon">📢</div><h3>Ad Copy</h3><p>Create promotional copy.</p><button onclick="openGenerator('Ad Copy')">Open</button></div>
+<div class="tool"><div class="toolIcon">💡</div><h3>Content Ideas</h3><p>Generate content ideas.</p><button onclick="openGenerator('Content Ideas')">Open</button></div>
+<div class="tool"><div class="toolIcon">🖼️</div><h3>AI Image Prompt</h3><p>Create prompts for AI image tools.</p><button onclick="openGenerator('AI Image Prompt')">Open</button></div>
+<div class="tool"><div class="toolIcon">🎥</div><h3>AI Video Prompt</h3><p>Create prompts for AI video tools.</p><button onclick="openGenerator('AI Video Prompt')">Open</button></div>
+<div class="tool"><div class="toolIcon">💬</div><h3>Comment Reply</h3><p>Create comment replies.</p><button onclick="openGenerator('Comment Reply')">Open</button></div>
+<div class="tool"><div class="toolIcon">📩</div><h3>DM Reply</h3><p>Create professional DM replies.</p><button onclick="openGenerator('DM Reply')">Open</button></div>
+<div class="tool"><div class="toolIcon">📍</div><h3>Location Ideas</h3><p>Generate location ideas.</p><button onclick="openGenerator('Location')">Open</button></div>
+<div class="tool"><div class="toolIcon">🖼️</div><h3>Thumbnail Text</h3><p>Create short thumbnail text.</p><button onclick="openGenerator('Thumbnail Text')">Open</button></div>
+
+</div>
+</div>
 </section>
 
-<section class="section" id="services">
-
-<div class="section-title">
-<div>
-<h2>🔥 Our Services</h2>
-<p>Choose a service and open its workspace.</p>
-</div>
-</div>
-
-<div class="grid services" id="serviceGrid"></div>
-
-</section>
-
-<section class="section" id="offer">
-
-<div class="offer">
-
-<div class="gift">🎁</div>
-
-<h2>15 Days Free Digital Skills Learning</h2>
-
-<p>
-Learn practical skills step by step — completely free for the 15-day learning program.
-</p>
-
-<div class="offer-list" id="offerList"></div>
-
-<a class="btn" href="#tutorials">Start Learning →</a>
-
-</div>
-
-</section>
-
-<section class="section" id="tools">
-
-<div class="section-title">
-<div>
-<h2>🛠️ Tools & Generators</h2>
-<p>Every tool has its own open/generate workspace.</p>
-</div>
-</div>
-
-<div class="grid tools" id="toolGrid"></div>
-
-</section>
-
-<section class="section">
-
-<div class="generator" id="generator">
-
-<h2>⚡ Generator Workspace</h2>
-
-<p>Choose a tool, language, style and topic.</p>
-
-<div class="formgrid">
-
-<div class="field">
-<label>Tool</label>
-<select id="gTool"></select>
-</div>
-
-<div class="field">
-<label>Language</label>
-
-<select id="gLang">
-<option>English</option>
-<option>Bangla</option>
-<option>Hindi</option>
-<option>Urdu</option>
-<option>Arabic</option>
-<option>Japanese</option>
-</select>
-
-</div>
-
-<div class="field">
-
-<label>Style</label>
-
-<select id="gStyle">
-<option>Professional</option>
-<option>Friendly</option>
-<option>Short & Punchy</option>
-<option>Creative</option>
-<option>Educational</option>
-<option>Promotional</option>
-</select>
-
-</div>
-
-<div class="field" style="grid-column:1/-1">
-
-<label>Your topic / prompt</label>
-
-<textarea
-id="gTopic"
-placeholder="Example: Facebook video about AI tools">
-</textarea>
-
-</div>
-
-</div>
-
-<button class="btn" id="generate">✨ Generate</button>
-
-<div class="result" id="result"></div>
-
-<button class="copy" id="copy" style="display:none">
-📋 Copy Result
-</button>
-
-</div>
-
-</section>
-
-<section class="section" id="ai-tools">
-
-<div class="section-title">
-<div>
-<h2>🤖 Existing AI Tools</h2>
-<p>Useful AI websites open in a new tab.</p>
-</div>
-</div>
-
-<div class="grid tools" id="aiGrid"></div>
-
-</section>
-
-<section class="section" id="tutorials">
-
-<div class="section-title">
+<section id="tutorial">
+<div class="wrap">
+<div class="title">
 <div>
 <h2>📚 Tutorials</h2>
-<p>Platform-by-platform learning resources.</p>
+<p>Platform-wise digital learning resources.</p>
 </div>
 </div>
 
-<div class="filters" id="filters"></div>
+<div class="tuts">
 
-<div class="grid tutorials" id="tutorialGrid" style="margin-top:12px"></div>
+<article class="card tut">
+<img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=900&q=80">
+<div class="inside">
+<span class="tag">FACEBOOK</span>
+<h3>Facebook Profile & Page Setup</h3>
+<p>Learn profile, page and content basics.</p>
+<a class="learn" href="https://www.youtube.com/results?search_query=Facebook+profile+page+setup+tutorial" target="_blank">Watch Videos</a>
+</div>
+</article>
 
+<article class="card tut">
+<img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?auto=format&fit=crop&w=900&q=80">
+<div class="inside">
+<span class="tag">YOUTUBE</span>
+<h3>YouTube Channel Setup</h3>
+<p>Create and configure a YouTube channel.</p>
+<a class="learn" href="https://www.youtube.com/results?search_query=YouTube+channel+setup+tutorial" target="_blank">Watch Videos</a>
+</div>
+</article>
+
+<article class="card tut">
+<img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?auto=format&fit=crop&w=900&q=80">
+<div class="inside">
+<span class="tag">INSTAGRAM</span>
+<h3>Instagram Setup & Content</h3>
+<p>Learn profile setup and content basics.</p>
+<a class="learn" href="https://www.youtube.com/results?search_query=Instagram+setup+tutorial" target="_blank">Watch Videos</a>
+</div>
+</article>
+
+<article class="card tut">
+<img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=900&q=80">
+<div class="inside">
+<span class="tag">TIKTOK</span>
+<h3>TikTok Setup & Videos</h3>
+<p>Learn TikTok account and video basics.</p>
+<a class="learn" href="https://www.youtube.com/results?search_query=TikTok+setup+tutorial" target="_blank">Watch Videos</a>
+</div>
+</article>
+
+<article class="card tut">
+<img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=900&q=80">
+<div class="inside">
+<span class="tag">TELEGRAM</span>
+<h3>Telegram Channel & Group</h3>
+<p>Learn basic channel and group management.</p>
+<a class="learn" href="https://www.youtube.com/results?search_query=Telegram+channel+group+tutorial" target="_blank">Watch Videos</a>
+</div>
+</article>
+
+<article class="card tut">
+<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80">
+<div class="inside">
+<span class="tag">WEBSITE</span>
+<h3>Free Website Creation</h3>
+<p>Learn basic website creation with free tools.</p>
+<a class="learn" href="https://www.youtube.com/results?search_query=GitHub+Pages+free+website+tutorial" target="_blank">Watch Videos</a>
+</div>
+</article>
+
+</div>
+</div>
 </section>
 
-<section class="section">
-
-<div class="big-support">
-
+<section id="team">
+<div class="wrap">
+<div class="title">
 <div>
-<h2>💙 Support & Contribution</h2>
-
-<p>
-Support the project and help us keep useful learning resources available.
-</p>
+<h2>👥 Our Team</h2>
+<p>Meet the people behind the skill hub.</p>
+</div>
 </div>
 
-<a
-class="btn"
-style="background:#fff;color:#0b49b7"
-href="https://wa.me/8801400524877"
-target="_blank">
-Contribute / Contact
+<div class="team">
+
+<article class="member">
+<div class="avatar">
+<img src="data:image/jpeg;base64,TEAM_PHOTO_ABDUL">
+</div>
+<h3>ABDUL AHAD</h3>
+<div class="role">Founder & Honorary</div>
+<span class="status">✓ Contact Completed</span>
+<div class="memberBtns">
+<a class="main" href="https://wa.me/8801400524877" target="_blank">WhatsApp</a>
+<a href="https://t.me/Aheadvia1298" target="_blank">Telegram</a>
+</div>
+</article>
+
+<article class="member">
+<div class="avatar">
+<img src="data:image/jpeg;base64,TEAM_PHOTO_SAMIA">
+</div>
+<h3>𝐌𝐈𝐒𝐒 𝐒𝐀𝐌𝐈𝐀 𝐈𝐒𝐋𝐀𝐌</h3>
+<div class="role">Admin</div>
+<span class="status">✓ Contact Completed</span>
+<div class="memberBtns">
+<a class="main" href="https://t.me/Msssiamaislam" target="_blank">Telegram</a>
+<a href="mailto:msssaimaislam6@gmail.com">Email</a>
+</div>
+</article>
+
+<article class="member">
+<div class="avatar">
+<img src="data:image/jpeg;base64,TEAM_PHOTO_JANNAT">
+</div>
+<h3>JANNAT AKHTER</h3>
+<div class="role">Admin</div>
+<span class="status">✓ Contact Completed</span>
+<div class="memberBtns">
+<a class="main" href="https://t.me/Jannat_AkhtarAdmin" target="_blank">Telegram</a>
+<a href="https://t.me/Jannat_AkhtarAdmin" target="_blank">Contact</a>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="wrap">
+<div class="title"><div><h2>👤 About Me</h2></div></div>
+<div class="about">
+<div class="aboutTop">
+<img src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg">
+<div>
+<h3>ABDUL AHAD</h3>
+<span>AHEAD VIA SKILL HUB</span>
+</div>
+</div>
+<p>
+Hi, I’m ABDUL AHAD. 👋 I work on different types of websites, digital projects,
+and online income systems. I also explore various income skills, free earning
+opportunities, investment-based work, AI tools, video creation, thumbnails,
+content creation, and many other digital topics. 🚀 Through AHEAD VIA SKILL HUB,
+I aim to bring useful information, tools, and resources together in one place.
+</p>
+</div>
+</div>
+</section>
+
+<section id="account">
+<div class="wrap">
+<div class="title"><div><h2>👤 My Account</h2></div></div>
+<div class="account">
+<div class="user">
+<img src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg">
+<div>
+<h3 id="accountName">ABDUL AHAD</h3>
+<span class="uid" id="userId">AV-000000</span>
+</div>
+</div>
+
+<div class="accountGrid">
+<div class="info"><small>User ID</small><b id="accountId">AV-000000</b></div>
+<div class="info"><small>Country</small><b id="accountCountry">Bangladesh</b></div>
+<div class="info"><small>Language</small><b id="accountLanguage">English</b></div>
+<div class="info"><small>Theme</small><b id="accountTheme">Light</b></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="wrap">
+<div class="contact">
+<h2>🆘 Need Help?</h2>
+<p>
+Need help with website, digital skills, AI tools, tutorials or community?
+Use any contact option below.
+</p>
+<div class="contactBtns">
+<a href="https://wa.me/8801400524877" target="_blank">💬 WhatsApp</a>
+<a href="https://t.me/Aheadvia1298" target="_blank">✈️ Telegram</a>
+<a href="mailto:msssaimaislam6@gmail.com">✉️ Email</a>
+<a href="tel:01335611366">📞 Call</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="social">
+<div class="wrap">
+<div class="title">
+<div>
+<h2>🌐 Social & Community</h2>
+<p>Connect through the official social links and communities.</p>
+</div>
+</div>
+
+<div class="socialGrid">
+
+<a class="socialBox" href="https://www.facebook.com/share/19YtirSEwS/" target="_blank">
+<span>📘</span><b>Facebook</b><small>Visit Facebook</small>
+</a>
+
+<a class="socialBox" href="https://www.youtube.com/@KittySnipsStories" target="_blank">
+<span>▶️</span><b>YouTube</b><small>Visit YouTube</small>
+</a>
+
+<a class="socialBox" href="https://x.com/Abdulaheadrllm" target="_blank">
+<span>𝕏</span><b>X / Twitter</b><small>Visit X</small>
+</a>
+
+<a class="socialBox" href="https://www.instagram.com/kittysnipsofficial" target="_blank">
+<span>📸</span><b>Instagram</b><small>Visit Instagram</small>
+</a>
+
+<a class="socialBox" href="https://t.me/Aheadvia1298gf" target="_blank">
+<span>📢</span><b>Telegram Channel 1</b><small>Join Channel</small>
+</a>
+
+<a class="socialBox" href="https://t.me/aheadskillhub120" target="_blank">
+<span>📢</span><b>Telegram Channel 2</b><small>Join Channel</small>
+</a>
+
+<a class="socialBox" href="https://t.me/Aheadviaiskill_hab" target="_blank">
+<span>👥</span><b>Telegram Group 1</b><small>Join Group</small>
+</a>
+
+<a class="socialBox" href="https://t.me/aheadskillhub12" target="_blank">
+<span>👥</span><b>Telegram Group 2</b><small>Join Group</small>
 </a>
 
 </div>
-
-</section>
-
-<section class="section" id="account">
-
-<div class="section-title">
-<div>
-<h2>👤 My Account</h2>
-<p>Your settings are saved on this device.</p>
 </div>
-</div>
-
-<div class="card account">
-
-<div>
-
-<img
-id="avatar"
-class="avatar"
-src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg"
-alt="Profile">
-
-<label class="btn alt" style="cursor:pointer">
-
-Change Photo
-
-<input
-id="photo"
-type="file"
-accept="image/*"
-hidden>
-
-</label>
-
-</div>
-
-<div>
-
-<input id="userName" placeholder="Your name">
-
-<input id="userId" readonly>
-
-<div class="countrybox">
-
-<select id="country"></select>
-
-<select id="language"></select>
-
-</div>
-
-<button class="btn" onclick="saveAccount()">
-💾 Save Account
-</button>
-
-<button class="btn alt" onclick="logout()">
-Logout
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section" id="about">
-
-<div class="card">
-
-<h2>About AHAD BHAI SKILL HUB</h2>
-
-<p style="margin-top:8px;color:var(--muted)">
-
-Hi, I’m ABDUL AHAD. 👋 I work on websites, digital projects,
-online income systems, AI tools, video creation, thumbnails,
-content creation and other digital topics.
-
-AHAD BHAI SKILL HUB brings useful information, tools and resources
-together in one place.
-
-</p>
-
-</div>
-
-</section>
-
-<section class="section" id="feedback">
-
-<div class="section-title">
-
-<div>
-<h2>💬 Sample Feedback</h2>
-<p>Demo testimonials — replace with real customer feedback later.</p>
-</div>
-
-</div>
-
-<div class="grid community">
-
-<div class="card">
-<b>“The resources are easy to follow.”</b>
-<p>— Sample User</p>
-</div>
-
-<div class="card">
-<b>“The tools section is very useful.”</b>
-<p>— Sample User</p>
-</div>
-
-<div class="card">
-<b>“I like the step-by-step tutorials.”</b>
-<p>— Sample User</p>
-</div>
-
-</div>
-
 </section>
 
 </main>
 
-<footer class="footer">
-
-<div class="wrap footer-grid">
-
-<div>
-
-<h2>AHAD BHAI SKILL HUB</h2>
-
-<p style="margin-top:8px;color:#9fb4d4">
-Website Owner: ABDUL AHAD
-</p>
-
-<p style="margin-top:5px">
-WhatsApp:
-<a href="https://wa.me/8801400524877" target="_blank">
-01400524877
+<footer>
+<div class="wrap">
+<img src="https://i.ibb.co.com/xd1bjsh/1788349715746.png">
+<h3>AHAD BHAI SKILL HUB</h3>
+<p>Digital Skills • AI • Online Learning • Digital Projects</p>
+<div class="owner">Website Owner: ABDUL AHAD</div>
+<a class="waFooter" href="https://wa.me/8801400524877" target="_blank">
+WhatsApp: 01400524877
 </a>
-</p>
 
+<div class="socials">
+<a href="https://t.me/Aheadvia1298" target="_blank">Telegram</a>
+<a href="https://t.me/Aheadvia1298gf" target="_blank">Channel</a>
+<a href="https://t.me/Aheadviaiskill_hab" target="_blank">Group</a>
+<a href="https://www.facebook.com/share/19YtirSEwS/" target="_blank">Facebook</a>
+<a href="https://www.youtube.com/@KittySnipsStories" target="_blank">YouTube</a>
+<a href="https://x.com/Abdulaheadrllm" target="_blank">X</a>
+<a href="https://www.instagram.com/kittysnipsofficial" target="_blank">Instagram</a>
 </div>
 
-<div>
-
-<h3>Social</h3>
-
-<p>
-<a href="https://www.facebook.com/share/19YtirSEwS/" target="_blank">
-Facebook
-</a>
-</p>
-
-<p>
-<a href="https://www.youtube.com/@KittySnipsStories" target="_blank">
-YouTube
-</a>
-</p>
-
-<p>
-<a href="https://www.instagram.com/kittysnipsofficial" target="_blank">
-Instagram
-</a>
-</p>
-
-<p>
-<a href="https://x.com/Abdulaheadrllm" target="_blank">
-X / Twitter
-</a>
-</p>
-
+<p style="margin-top:15px">© 2026 AHAD BHAI SKILL HUB. All rights reserved.</p>
 </div>
-
-<div>
-
-<h3>Communities</h3>
-
-<p>
-<a href="https://t.me/Aheadvia1298gf" target="_blank">
-Telegram Channel 1
-</a>
-</p>
-
-<p>
-<a href="https://t.me/aheadskillhub120" target="_blank">
-Telegram Channel 2
-</a>
-</p>
-
-<p>
-<a href="https://t.me/Aheadviaiskill_hab" target="_blank">
-Telegram Group 1
-</a>
-</p>
-
-<p>
-<a href="https://t.me/aheadskillhub12" target="_blank">
-Telegram Group 2
-</a>
-</p>
-
-</div>
-
-</div>
-
-<div class="wrap" style="margin-top:25px;color:#7891b5;font-size:12px">
-
-© <span id="year"></span>
-AHAD BHAI SKILL HUB.
-All rights reserved.
-
-</div>
-
 </footer>
 
-<button class="help" onclick="openHelp()" aria-label="Help">
-🆘
-</button>
-
 <nav class="bottom">
-
-<a href="#home" class="active">
-<span>🏠</span>
-Home
-</a>
-
-<a href="#services">
-<span>🔥</span>
-Services
-</a>
-
-<a href="#tools">
-<span>🛠️</span>
-Tools
-</a>
-
-<a href="#tutorials">
-<span>📚</span>
-Tutorials
-</a>
-
-<a href="#account">
-<span>👤</span>
-Account
-</a>
-
+<button class="nav active" onclick="go('home')"><b>🏠</b>Home</button>
+<button class="nav" onclick="go('tools')"><b>🧰</b>Tools</button>
+<button class="nav" onclick="go('tutorial')"><b>📚</b>Tutorials</button>
+<button class="nav" onclick="openMenu()"><b>☰</b>Menu</button>
 </nav>
 
-<div class="drawer" id="drawer">
+<button class="float" onclick="go('contact')" title="Help">🆘</button>
 
-<div class="drawer-panel">
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
-<div class="drawer-head">
+<aside class="drawer" id="drawer">
+<div class="drawerHead">
+<h2>⚙️ Menu</h2>
+<button class="close" onclick="closeMenu()">✕</button>
+</div>
 
-<h2>Menu</h2>
+<div class="menuProfile">
+<img src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg">
+<div>
+<b>ABDUL AHAD</b>
+<small>AHEAD VIA SKILL HUB</small>
+</div>
+</div>
 
-<button class="iconbtn" onclick="closeMenu()">
-×
-</button>
+<div class="select">
+<label id="countryLabel">🌍 Your Country</label>
+<select id="country" onchange="countryChange()">
+<option value="BD">🇧🇩 Bangladesh</option>
+<option value="SA">🇸🇦 Saudi Arabia</option>
+<option value="AE">🇦🇪 United Arab Emirates</option>
+<option value="QA">🇶🇦 Qatar</option>
+<option value="IN">🇮🇳 India</option>
+<option value="PK">🇵🇰 Pakistan</option>
+<option value="MY">🇲🇾 Malaysia</option>
+<option value="ID">🇮🇩 Indonesia</option>
+<option value="TR">🇹🇷 Türkiye</option>
+<option value="JP">🇯🇵 Japan</option>
+<option value="KR">🇰🇷 South Korea</option>
+<option value="CN">🇨🇳 China</option>
+<option value="TH">🇹🇭 Thailand</option>
+<option value="VN">🇻🇳 Vietnam</option>
+<option value="PH">🇵🇭 Philippines</option>
+<option value="FR">🇫🇷 France</option>
+<option value="DE">🇩🇪 Germany</option>
+<option value="IT">🇮🇹 Italy</option>
+<option value="ES">🇪🇸 Spain</option>
+<option value="PT">🇵🇹 Portugal</option>
+<option value="BR">🇧🇷 Brazil</option>
+<option value="US">🇺🇸 United States</option>
+<option value="CA">🇨🇦 Canada</option>
+<option value="GB">🇬🇧 United Kingdom</option>
+<option value="AU">🇦🇺 Australia</option>
+<option value="RU">🇷🇺 Russia</option>
+</select>
+</div>
+
+<div class="select">
+<label id="languageLabel">🌐 Your Language</label>
+<select id="language" onchange="languageChange()">
+<option>English</option>
+<option>Bangla</option>
+<option>Arabic</option>
+<option>Hindi</option>
+<option>Urdu</option>
+<option>Türkçe</option>
+<option>日本語</option>
+<option>한국어</option>
+<option>Chinese</option>
+<option>Thai</option>
+<option>Vietnamese</option>
+<option>Filipino</option>
+<option>German</option>
+<option>French</option>
+<option>Italian</option>
+<option>Spanish</option>
+<option>Portuguese</option>
+<option>Russian</option>
+</select>
+</div>
+
+<button class="mLink" onclick="go('home');closeMenu()">🏠 Home <span>›</span></button>
+<button class="mLink" onclick="go('offer');closeMenu()">🎁 15 Days Offer <span>›</span></button>
+<button class="mLink" onclick="go('tools');closeMenu()">🧰 Tools & Generators <span>›</span></button>
+<button class="mLink" onclick="go('tutorial');closeMenu()">📚 Tutorials <span>›</span></button>
+<button class="mLink" onclick="go('team');closeMenu()">👥 Our Team <span>›</span></button>
+<button class="mLink" onclick="go('account');closeMenu()">👤 My Account <span>›</span></button>
+<button class="mLink" onclick="go('about');closeMenu()">ℹ️ About <span>›</span></button>
+<button class="mLink" onclick="go('contact');closeMenu()">🆘 Help / Contact <span>›</span></button>
+<button class="mLink" onclick="go('social');closeMenu()">🌐 Social & Community <span>›</span></button>
+<button class="mLink" onclick="toggleTheme()">🌙 Dark / Light Mode <span>›</span></button>
+
+</aside>
+
+<div class="modal" id="generatorModal">
+<div class="modalBox">
+
+<div class="modalHead">
+<h3 id="generatorTitle">✨ Generator</h3>
+<button class="close" onclick="closeGenerator()">✕</button>
+</div>
+
+<div class="formGrid">
+
+<div class="field">
+<label>Platform</label>
+<select id="gPlatform">
+<option>Facebook</option>
+<option>YouTube</option>
+<option>TikTok</option>
+<option>Instagram</option>
+<option>Telegram</option>
+<option>Website</option>
+<option>WhatsApp</option>
+<option>X / Twitter</option>
+</select>
+</div>
+
+<div class="field">
+<label>Language</label>
+<select id="gLanguage">
+<option>English</option>
+<option>Bangla</option>
+<option>Arabic</option>
+<option>Hindi</option>
+<option>Urdu</option>
+</select>
+</div>
+
+<div class="field">
+<label>Style</label>
+<select id="gStyle">
+<option>Professional</option>
+<option>Friendly</option>
+<option>Viral</option>
+<option>Simple</option>
+<option>Premium</option>
+<option>Funny</option>
+</select>
+</div>
+
+<div class="field">
+<label>Length</label>
+<select id="gLength">
+<option>Short</option>
+<option>Medium</option>
+<option>Long</option>
+</select>
+</div>
+
+<div class="field fullField">
+<label>Topic / Prompt</label>
+<textarea id="gTopic" placeholder="Write your topic here..."></textarea>
+</div>
 
 </div>
 
-<a class="menu-link" href="#home" onclick="closeMenu()">
-🏠 Home
-</a>
+<button class="generateBtn" onclick="generateContent()">✨ Generate</button>
 
-<a class="menu-link" href="#services" onclick="closeMenu()">
-🔥 Services
-</a>
-
-<a class="menu-link" href="#tools" onclick="closeMenu()">
-🛠️ Tools
-</a>
-
-<a class="menu-link" href="#ai-tools" onclick="closeMenu()">
-🤖 AI Tools
-</a>
-
-<a class="menu-link" href="#tutorials" onclick="closeMenu()">
-📚 Tutorials
-</a>
-
-<a class="menu-link" href="#offer" onclick="closeMenu()">
-🎁 15 Days Offer
-</a>
-
-<a class="menu-link" href="#community" onclick="closeMenu()">
-🌐 Community
-</a>
-
-<a class="menu-link" href="#account" onclick="closeMenu()">
-👤 My Account
-</a>
-
-<a class="menu-link" href="#about" onclick="closeMenu()">
-ℹ️ About
-</a>
-
-<div class="card" style="margin-top:10px">
-
-<b>🌍 Country & Language</b>
-
-<div class="countrybox" style="margin-top:10px">
-
-<select id="countryMenu"></select>
-
-<select id="languageMenu"></select>
+<div class="output" id="gOutput">Your generated result will appear here.</div>
+<button class="copyBtn" onclick="copyOutput()">📋 Copy</button>
 
 </div>
-
 </div>
 
-<a class="menu-link" href="#feedback" onclick="closeMenu()">
-💬 Feedback
-</a>
-
-<a class="menu-link" href="#help" onclick="openHelp();closeMenu()">
-🆘 Help Center
-</a>
-
-</div>
-
-</div>
+<div class="toast" id="toast"></div>
 
 <script>
+const q=s=>document.querySelector(s);
 
-const IMG1='data:image/jpeg;base64,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[/9j]';
-
-const IMG2='data:image/jpeg;base64,' + '';
-const IMG3='data:image/jpeg;base64,' + '';
-
-const communities=[
-['✈️','Telegram Channel 1','https://t.me/Aheadvia1298gf'],
-['✈️','Telegram Channel 2','https://t.me/aheadskillhub120'],
-['👥','Telegram Group 1','https://t.me/Aheadviaiskill_hab'],
-['👥','Telegram Group 2','https://t.me/aheadskillhub12'],
-['💬','WhatsApp Community','https://wa.me/8801400524877'],
-['🌐','Telegram Community','https://t.me/Aheadvia1298']
-];
-
-const team=[
-['IMG1','ABDUL AHAD','@Aheadvia1298','https://t.me/Aheadvia1298'],
-['IMG2','𝐌𝐈𝐒𝐒 𝐒𝐀𝐌𝐈𝐀 𝐈𝐒𝐋𝐀𝐌','@Msssiamaislam','https://t.me/Msssiamaislam'],
-['IMG3','JANNAT AKHTER','@Jannat_AkhtarAdmin','https://t.me/Jannat_AkhtarAdmin']
-];
-
-const services=[
-['✍️','Caption Writing'],
-['#️⃣','Hashtag Generation'],
-['📍','Location Suggestion'],
-['🖼️','Image Creation'],
-['🎬','Video Creation'],
-['🎨','Thumbnail Design'],
-['📝','Content Writing'],
-['💡','Content Ideas'],
-['🎣','Viral Hook'],
-['🎬','Video Script'],
-['📱','Reels / Shorts Script'],
-['🏷️','Title Creation'],
-['📄','Description Writing'],
-['📢','Ad Copy'],
-['📣','Social Post'],
-['📖','Story Creation'],
-['👤','Bio Creation'],
-['🔔','CTA Creation'],
-['💬','Comment Reply'],
-['💌','DM Reply'],
-['🔍','SEO / Keywords'],
-['🌐','Website Creation'],
-['🤖','AI Tools Guidance'],
-['🎥','Video Editing Guidance'],
-['💻','Digital Project Support'],
-['💰','Online Income Skills'],
-['🆓','Free Earning Opportunities'],
-['📱','Social Media Setup']
-];
-
-const tools=[
-['✍️','Caption Generator','caption'],
-['#️⃣','Hashtag Generator','hashtag'],
-['🏷️','Title Generator','title'],
-['🎣','Hook Generator','hook'],
-['📝','Post Generator','post'],
-['📖','Story Generator','story'],
-['🎬','Video Script','script'],
-['📱','Reel / Shorts Script','reel'],
-['👤','Bio Generator','bio'],
-['📄','Description Generator','description'],
-['🔔','CTA Generator','cta'],
-['📢','Ad Copy Generator','ad'],
-['💡','Content Ideas','ideas'],
-['🖼️','AI Image Prompt','image'],
-['🎥','AI Video Prompt','video'],
-['🎨','Thumbnail Text','thumbnail'],
-['💬','Comment Reply','comment'],
-['💌','DM Reply','dm'],
-['🔍','Keyword Generator','keyword'],
-['📈','SEO Idea Generator','seo']
-];
-
-const ai=[
-['🤖','ChatGPT','https://chatgpt.com/'],
-['✨','Canva','https://www.canva.com/'],
-['🎨','Adobe Firefly','https://firefly.adobe.com/'],
-['🖼️','Leonardo AI','https://leonardo.ai/'],
-['🎬','CapCut','https://www.capcut.com/'],
-['🧠','Gemini','https://gemini.google.com/'],
-['🎙️','ElevenLabs','https://elevenlabs.io/'],
-['🪄','Microsoft Designer','https://designer.microsoft.com/']
-];
-
-const platforms=[
-'All',
-'Facebook',
-'YouTube',
-'TikTok',
-'Instagram',
-'Telegram',
-'WhatsApp',
-'X / Twitter',
-'Website'
-];
-
-const tutorialTopics=[
-'Account Creation',
-'Profile Setup',
-'Page / Channel Setup',
-'Post Creation',
-'Story Creation',
-'Video Upload',
-'Reels / Shorts',
-'Caption',
-'Hashtag',
-'Thumbnail',
-'Title',
-'Description',
-'Privacy & Security',
-'Content Ideas',
-'Basic Growth',
-'Settings'
-];
-
-const countries=[
-['Bangladesh','Bangla'],
-['India','Hindi'],
-['Pakistan','Urdu'],
-['Saudi Arabia','Arabic'],
-['United Arab Emirates','Arabic'],
-['Japan','Japanese'],
-['South Korea','Korean'],
-['China','Chinese'],
-['Malaysia','Malay'],
-['Indonesia','Indonesian'],
-['Turkey','Turkish'],
-['France','French'],
-['Germany','German'],
-['Spain','Spanish'],
-['Italy','Italian'],
-['United Kingdom','English'],
-['United States','English'],
-['Canada','English'],
-['Australia','English']
-];
-
-const langs=[
-'English',
-'Bangla',
-'Hindi',
-'Urdu',
-'Arabic',
-'Japanese',
-'Korean',
-'Chinese',
-'Malay',
-'Indonesian',
-'Turkish',
-'French',
-'German',
-'Spanish',
-'Italian'
-];
-
-function render(){
-
-document.getElementById('communityGrid').innerHTML=
-communities.map(x=>`
-<div class="card">
-<div class="service-icon">${x[0]}</div>
-<h3>${x[1]}</h3>
-<p>Official community link</p>
-<a class="btn" href="${x[2]}" target="_blank">
-Open / Join →
-</a>
-</div>
-`).join('');
-
-document.getElementById('teamGrid').innerHTML=
-team.map(x=>`
-<div class="card team-card">
-<img src="${x[0]}" alt="${x[1]}">
-<h3>${x[1]}</h3>
-<a class="handle" href="${x[3]}" target="_blank">
-${x[2]}
-</a>
-<div class="team-actions">
-<a class="btn" href="${x[3]}" target="_blank">
-Contact
-</a>
-</div>
-</div>
-`).join('');
-
-document.getElementById('serviceGrid').innerHTML=
-services.map(x=>`
-<div class="card">
-<div class="service-icon">${x[0]}</div>
-<h3>${x[1]}</h3>
-<p>Open this service workspace.</p>
-<button class="btn full" onclick="openService('${x[1]}')">
-Open →
-</button>
-</div>
-`).join('');
-
-document.getElementById('offerList').innerHTML=
-[
-'Facebook',
-'YouTube',
-'TikTok',
-'Instagram',
-'Telegram',
-'WhatsApp',
-'X / Twitter',
-'AI Tools',
-'Video',
-'Thumbnail',
-'Content',
-'Website'
-].map(x=>`
-<span class="pill">${x}</span>
-`).join('');
-
-document.getElementById('toolGrid').innerHTML=
-tools.map(x=>`
-<div class="card">
-<div class="tool-icon">${x[0]}</div>
-<h3>${x[1]}</h3>
-<p>Generate or open workspace.</p>
-<button class="btn full" onclick="selectTool('${x[2]}')">
-Open / Generate
-</button>
-</div>
-`).join('');
-
-document.getElementById('gTool').innerHTML=
-tools.map(x=>`
-<option value="${x[2]}">${x[1]}</option>
-`).join('');
-
-document.getElementById('aiGrid').innerHTML=
-ai.map(x=>`
-<div class="card">
-<div class="tool-icon">${x[0]}</div>
-<h3>${x[1]}</h3>
-<p>Open official website.</p>
-<a class="btn full" href="${x[2]}" target="_blank" rel="noopener">
-Open Tool ↗
-</a>
-</div>
-`).join('');
-
-document.getElementById('filters').innerHTML=
-platforms.map((p,i)=>`
-<button class="${i===0?'active':''}"
-onclick="filterTutorial('${p}',this)">
-${p}
-</button>
-`).join('');
-
-renderTutorials('All');
-fillSelects();
-loadAccount();
-
+function go(id){
+const el=document.getElementById(id);
+if(el)el.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-function renderTutorials(platform){
-
-const data=[];
-
-platforms
-.slice(1)
-.filter(p=>platform==='All'||p===platform)
-.forEach(p=>
-tutorialTopics.forEach(t=>
-data.push({p,t})
-)
-);
-
-document.getElementById('tutorialGrid').innerHTML=
-data.map(x=>`
-<div class="card tutorial-card">
-
-<div class="tutorial-thumb">
-▶️
-</div>
-
-<div class="tutorial-body">
-
-<h3>
-${x.p} — ${x.t}
-</h3>
-
-<p>
-Step-by-step tutorial resource.
-</p>
-
-<a
-class="btn"
-target="_blank"
-href="https://www.youtube.com/results?search_query=${encodeURIComponent('AHAD BHAI SKILL HUB '+x.p+' '+x.t)}">
-
-Watch Tutorial ↗
-
-</a>
-
-</div>
-
-</div>
-`).join('');
-
+function openMenu(){
+q("#drawer").classList.add("open");
+q("#overlay").classList.add("show");
 }
-
-function filterTutorial(p,b){
-
-document
-.querySelectorAll('#filters button')
-.forEach(x=>x.classList.remove('active'));
-
-b.classList.add('active');
-
-renderTutorials(p);
-
-}
-
-function selectTool(v){
-
-document.getElementById('gTool').value=v;
-
-document
-.getElementById('generator')
-.scrollIntoView({
-behavior:'smooth',
-block:'center'
-});
-
-document.getElementById('gTopic').focus();
-
-}
-
-function openService(name){
-
-document.getElementById('gTool').value=
-tools.find(x=>
-x[1].toLowerCase()
-.includes(name.toLowerCase().split(' ')[0])
-)?.[2]||'ideas';
-
-document.getElementById('gTopic').value=
-name+' for my social media content';
-
-document.getElementById('generator')
-.scrollIntoView({
-behavior:'smooth',
-block:'center'
-});
-
-}
-
-const templates={
-
-caption:(t,l,s)=>
-`Create a ${s.toLowerCase()} ${l} caption about: ${t}
-
-✨ Key message
-💡 Value for the audience
-📣 Clear call-to-action`,
-
-hashtag:(t)=>
-`#${t.replace(/[^a-z0-9]+/gi,'')||'content'}
-#DigitalSkills
-#ContentCreator
-#SocialMedia
-#AHADBHAISKILLHUB`,
-
-title:(t)=>
-`${t} — Simple, Useful & Practical Guide`,
-
-hook:(t)=>
-`Stop scrolling! Here is a simple way to learn ${t}.`,
-
-post:(t)=>
-`📌 ${t}
-
-Here are practical tips you can use today.
-Save this post and share it with someone who needs it.`,
-
-story:(t)=>
-`Story 1: ${t}
-Story 2: The problem
-Story 3: The simple solution
-Story 4: Try it today`,
-
-script:(t)=>
-`VIDEO SCRIPT
-
-Hook: ${t}
-
-Intro:
-Tell viewers what they will learn.
-
-Main:
-Explain 3 useful points clearly.
-
-CTA:
-Follow for more tutorials.`,
-
-reel:(t)=>
-`SHORTS / REEL SCRIPT
-
-0-3s:
-Strong hook about ${t}
-
-3-10s:
-Show the key step
-
-10-20s:
-Show the result
-
-Final:
-Follow / Save / Share`,
-
-bio:(t)=>
-`${t} | Digital Skills • AI Tools • Content Creation • Tutorials`,
-
-description:(t)=>
-`Learn about ${t} with simple, practical steps.
-Explore tools, tutorials and digital resources.`,
-
-cta:(t)=>
-`Ready to learn ${t}?
-Start now and save this resource.`,
-
-ad:(t)=>
-`Discover a simple way to improve your ${t}.
-Learn practical skills and explore useful digital tools today.`,
-
-ideas:(t)=>
-`1. Beginner guide to ${t}
-2. 3 mistakes to avoid
-3. Step-by-step tutorial
-4. Quick tips
-5. Before/after example`,
-
-image:(t)=>
-`AI IMAGE PROMPT:
-
-Create a professional digital-learning visual about ${t},
-clean blue and white interface,
-modern technology style,
-high detail,
-social-media friendly composition.`,
-
-video:(t)=>
-`AI VIDEO PROMPT:
-
-Create a short professional educational video about ${t},
-clean modern visuals,
-smooth transitions,
-clear text overlays,
-vertical 9:16 composition.`,
-
-thumbnail:(t)=>
-`THUMBNAIL TEXT:
-
-${t}
-
-BIG HOOK:
-EASY GUIDE
-
-Small text:
-Step by step`,
-
-comment:(t)=>
-`Thanks for your comment about ${t}!
-I appreciate it.
-Let me know if you need more details.`,
-
-dm:(t)=>
-`Hi!
-Thanks for reaching out about ${t}.
-Please tell me what you need help with and I’ll guide you.`,
-
-keyword:(t)=>
-`${t},
-${t} tutorial,
-${t} guide,
-${t} tips,
-${t} for beginners,
-digital skills`,
-
-seo:(t)=>
-`SEO CONTENT PLAN
-
-Primary topic:
-${t}
-
-Supporting terms:
-tutorial, guide, tips, beginner, how-to
-
-Suggested CTA:
-Learn more`
-
-};
-
-function generate(){
-
-const tool=
-document.getElementById('gTool').value;
-
-const t=
-document.getElementById('gTopic')
-.value.trim()||'digital skills';
-
-const l=
-document.getElementById('gLang').value;
-
-const s=
-document.getElementById('gStyle').value;
-
-let out=
-templates[tool]?
-templates[tool](t,l,s):
-`Create content about ${t}`;
-
-if(l==='Bangla')
-out='বাংলা ভার্সন:\n'+out;
-
-else if(l==='Hindi')
-out='हिंदी संस्करण:\n'+out;
-
-else if(l==='Urdu')
-out='اردو ورژن:\n'+out;
-
-else if(l==='Arabic')
-out='نسخة عربية:\n'+out;
-
-document.getElementById('result').textContent=out;
-
-document.getElementById('result')
-.classList.add('show');
-
-document.getElementById('copy')
-.style.display='inline-block';
-
-}
-
-document.getElementById('generate')
-.onclick=generate;
-
-document.getElementById('copy')
-.onclick=()=>{
-navigator.clipboard.writeText(
-document.getElementById('result').textContent
-);
-};
-
-document.getElementById('search')
-.addEventListener('input',e=>{
-
-const q=e.target.value.toLowerCase();
-
-document
-.querySelectorAll(
-'#serviceGrid .card,#toolGrid .card,#aiGrid .card,#tutorialGrid .card'
-)
-.forEach(c=>
-c.style.display=
-c.innerText.toLowerCase().includes(q)?
-'':
-'none'
-);
-
-});
-
-document.getElementById('menuBtn')
-.onclick=()=>{
-document.getElementById('drawer')
-.classList.add('open')
-};
-
-document.getElementById('drawer')
-.addEventListener('click',e=>{
-if(e.target.id==='drawer')closeMenu()
-});
-
 function closeMenu(){
-document.getElementById('drawer')
-.classList.remove('open')
+q("#drawer").classList.remove("open");
+q("#overlay").classList.remove("show");
 }
 
-document.getElementById('themeBtn')
-.onclick=()=>{
-
-document.body.classList.toggle('dark');
-
-localStorage.setItem(
-'ahad-theme',
-document.body.classList.contains('dark')?
-'dark':
-'light'
-);
-
-};
-
-if(localStorage.getItem('ahad-theme')==='dark')
-document.body.classList.add('dark');
-
-document.getElementById('closeNotice')
-.onclick=()=>{
-
-document.getElementById('notice')
-.style.display='none';
-
-localStorage.setItem(
-'noticeClosed',
-'1'
-);
-
-};
-
-if(localStorage.getItem('noticeClosed'))
-document.getElementById('notice')
-.style.display='none';
-
-function fillSelects(){
-
-const html=
-countries.map(x=>`
-<option
-value="${x[0]}"
-data-lang="${x[1]}">
-${x[0]}
-</option>
-`).join('');
-
-['country','countryMenu']
-.forEach(id=>
-document.getElementById(id).innerHTML=html
-);
-
-const lh=
-langs.map(x=>
-`<option>${x}</option>`
-).join('');
-
-['language','languageMenu']
-.forEach(id=>
-document.getElementById(id).innerHTML=lh
-);
-
-document.getElementById('country')
-.onchange=syncLang;
-
-document.getElementById('countryMenu')
-.onchange=()=>{
-document.getElementById('country').value=
-document.getElementById('countryMenu').value;
-syncLang();
-};
-
-document.getElementById('languageMenu')
-.onchange=()=>{
-document.getElementById('language').value=
-document.getElementById('languageMenu').value;
-};
-
-document.getElementById('language')
-.onchange=()=>{
-document.getElementById('languageMenu').value=
-document.getElementById('language').value;
-};
-
+function toast(msg){
+const t=q("#toast");
+t.textContent=msg;
+t.classList.add("show");
+clearTimeout(window.toastTimer);
+window.toastTimer=setTimeout(()=>t.classList.remove("show"),1800);
 }
 
-function syncLang(){
-
-const o=
-document.querySelector('#country option:checked');
-
-if(o){
-
-document.getElementById('language').value=
-o.dataset.lang;
-
-document.getElementById('languageMenu').value=
-o.dataset.lang;
-
+function toggleTheme(){
+document.body.classList.toggle("dark");
+const dark=document.body.classList.contains("dark");
+localStorage.setItem("avtheme",dark?"dark":"light");
+q("#themeBtn").textContent=dark?"☀️":"🌙";
+q("#accountTheme").textContent=dark?"Dark":"Light";
 }
 
+(function(){
+if(localStorage.getItem("avtheme")==="dark"){
+document.body.classList.add("dark");
+q("#themeBtn").textContent="☀️";
 }
+})();
 
-function loadAccount(){
-
-let id=
-localStorage.getItem('ahad-user-id');
-
+function makeUserId(){
+let id=localStorage.getItem("avuserid");
 if(!id){
-
-id=
-'AV-'+
-Math.random()
-.toString(36)
-.slice(2,8)
-.toUpperCase();
-
-localStorage.setItem(
-'ahad-user-id',
-id
-);
-
+id="AV-"+Math.random().toString(36).substring(2,8).toUpperCase();
+localStorage.setItem("avuserid",id);
 }
-
-document.getElementById('userId').value=id;
-
-document.getElementById('userName').value=
-localStorage.getItem('ahad-name')||
-'Guest User';
-
-document.getElementById('country').value=
-localStorage.getItem('ahad-country')||
-'Bangladesh';
-
-document.getElementById('language').value=
-localStorage.getItem('ahad-language')||
-'Bangla';
-
-document.getElementById('countryMenu').value=
-document.getElementById('country').value;
-
-document.getElementById('languageMenu').value=
-document.getElementById('language').value;
-
+q("#userId").textContent=id;
+q("#accountId").textContent=id;
 }
+makeUserId();
 
-function saveAccount(){
-
-localStorage.setItem(
-'ahad-name',
-document.getElementById('userName').value
-);
-
-localStorage.setItem(
-'ahad-country',
-document.getElementById('country').value
-);
-
-localStorage.setItem(
-'ahad-language',
-document.getElementById('language').value
-);
-
-alert('Account settings saved.');
-
-}
-
-function logout(){
-
-localStorage.removeItem('ahad-name');
-
-alert('Logged out on this device.');
-
-}
-
-document.getElementById('photo')
-.onchange=e=>{
-
-const f=e.target.files[0];
-
-if(f){
-
-const r=new FileReader();
-
-r.onload=()=>{
-
-document.getElementById('avatar')
-.src=r.result;
-
-localStorage.setItem(
-'ahad-photo',
-r.result
-);
-
+const countryLanguages={
+BD:"Bangla",SA:"Arabic",AE:"Arabic",QA:"Arabic",
+IN:"Hindi",PK:"Urdu",MY:"Bahasa Melayu",ID:"Bahasa Indonesia",
+TR:"Türkçe",JP:"日本語",KR:"한국어",CN:"Chinese",
+TH:"Thai",VN:"Vietnamese",PH:"Filipino",FR:"French",
+DE:"German",IT:"Italian",ES:"Spanish",PT:"Portuguese",
+BR:"Portuguese",US:"English",CA:"English",GB:"English",
+AU:"English",RU:"Russian"
 };
 
-r.readAsDataURL(f);
-
+const translations={
+English:{
+notice:"📢 Welcome to AHAD BHAI SKILL HUB — Learn Digital Skills Free!",
+country:"🌍 Your Country",language:"🌐 Your Language",
+heroPill:"🚀 AHAD BHAI DIGITAL COMMUNITY",
+heroTitle:"Learn Digital Skills.<br>Build Your Online Future.",
+heroText:"Learn website creation, AI tools, video creation, thumbnails, content creation, social media, online income skills and digital projects in one place.",
+offer:"🎁 15 Days Free Learning",offerDesc:"সবকিছু শিখাবো মাত্র পনেরো দিনের জন্য — একদম ফ্রিতে।",
+team:"👥 Our Team",about:"👤 About Me",account:"👤 My Account",
+help:"🆘 Need Help?"
+},
+Bangla:{
+notice:"📢 AHAD BHAI SKILL HUB-এ স্বাগতম — ডিজিটাল স্কিল শিখুন সম্পূর্ণ ফ্রিতে!",
+country:"🌍 আপনার দেশ",language:"🌐 আপনার ভাষা",
+heroPill:"🚀 AHAD BHAI ডিজিটাল কমিউনিটি",
+heroTitle:"ডিজিটাল স্কিল শিখুন।<br>আপনার অনলাইন ভবিষ্যৎ গড়ুন।",
+heroText:"ওয়েবসাইট তৈরি, AI টুলস, ভিডিও তৈরি, থাম্বনেইল, কনটেন্ট, সোশ্যাল মিডিয়া, অনলাইন ইনকাম স্কিল এবং ডিজিটাল প্রজেক্ট এক জায়গায় শিখুন।",
+offer:"🎁 ১৫ দিনের ফ্রি লার্নিং",offerDesc:"সবকিছু শিখাবো মাত্র পনেরো দিনের জন্য — একদম ফ্রিতে।",
+team:"👥 আমাদের টিম",about:"👤 আমার সম্পর্কে",account:"👤 আমার অ্যাকাউন্ট",
+help:"🆘 সাহায্য দরকার?"
+},
+Arabic:{
+notice:"📢 مرحباً بك في AHAD BHAI SKILL HUB — تعلم المهارات الرقمية مجاناً!",
+country:"🌍 بلدك",language:"🌐 لغتك",
+heroPill:"🚀 مجتمع AHAD BHAI الرقمي",
+heroTitle:"تعلم المهارات الرقمية.<br>ابنِ مستقبلك عبر الإنترنت.",
+heroText:"تعلم إنشاء المواقع وأدوات الذكاء الاصطناعي وصناعة الفيديو والصور المصغرة والمحتوى ووسائل التواصل والمهارات الرقمية في مكان واحد.",
+offer:"🎁 تعلم مجاني لمدة 15 يوماً",offerDesc:"سأعلمك كل ذلك لمدة خمسة عشر يوماً — مجاناً تماماً.",
+team:"👥 فريقنا",about:"👤 عني",account:"👤 حسابي",
+help:"🆘 تحتاج إلى مساعدة؟"
+},
+Hindi:{
+notice:"📢 AHAD BHAI SKILL HUB में आपका स्वागत है — डिजिटल स्किल्स मुफ्त सीखें!",
+country:"🌍 आपका देश",language:"🌐 आपकी भाषा",
+heroPill:"🚀 AHAD BHAI डिजिटल कम्युनिटी",
+heroTitle:"डिजिटल स्किल्स सीखें।<br>अपना ऑनलाइन भविष्य बनाएं।",
+heroText:"वेबसाइट, AI टूल्स, वीडियो, थंबनेल, कंटेंट और सोशल मीडिया की उपयोगी स्किल्स एक जगह सीखें।",
+offer:"🎁 15 दिन की मुफ्त लर्निंग",offerDesc:"पंद्रह दिनों तक सब कुछ बिल्कुल मुफ्त सीखें।",
+team:"👥 हमारी टीम",about:"👤 मेरे बारे में",account:"👤 मेरा अकाउंट",
+help:"🆘 मदद चाहिए?"
+},
+Urdu:{
+notice:"📢 AHAD BHAI SKILL HUB میں خوش آمدید — ڈیجیٹل اسکلز مفت سیکھیں!",
+country:"🌍 آپ کا ملک",language:"🌐 آپ کی زبان",
+heroPill:"🚀 AHAD BHAI ڈیجیٹل کمیونٹی",
+heroTitle:"ڈیجیٹل اسکلز سیکھیں۔<br>اپنا آن لائن مستقبل بنائیں۔",
+heroText:"ویب سائٹ، AI ٹولز، ویڈیو، تھمب نیل، مواد اور سوشل میڈیا کی مفید مہارتیں ایک جگہ سیکھیں۔",
+offer:"🎁 15 دن کی مفت لرننگ",offerDesc:"پندرہ دن تک سب کچھ بالکل مفت سیکھیں۔",
+team:"👥 ہماری ٹیم",about:"👤 میرے بارے میں",account:"👤 میرا اکاؤنٹ",
+help:"🆘 مدد چاہیے؟"
+},
+French:{
+notice:"📢 Bienvenue sur AHAD BHAI SKILL HUB — apprenez gratuitement les compétences numériques !",
+country:"🌍 Votre pays",language:"🌐 Votre langue",
+heroPill:"🚀 COMMUNAUTÉ NUMÉRIQUE AHAD BHAI",
+heroTitle:"Apprenez les compétences numériques.<br>Construisez votre avenir en ligne.",
+heroText:"Apprenez la création de sites, les outils IA, la vidéo, les miniatures, le contenu et les réseaux sociaux.",
+offer:"🎁 15 jours d'apprentissage gratuit",offerDesc:"Apprenez gratuitement pendant quinze jours.",
+team:"👥 Notre équipe",about:"👤 À propos de moi",account:"👤 Mon compte",
+help:"🆘 Besoin d'aide ?"
+},
+German:{
+notice:"📢 Willkommen bei AHAD BHAI SKILL HUB — digitale Fähigkeiten kostenlos lernen!",
+country:"🌍 Ihr Land",language:"🌐 Ihre Sprache",
+heroPill:"🚀 AHAD BHAI DIGITALE COMMUNITY",
+heroTitle:"Digitale Fähigkeiten lernen.<br>Ihre Online-Zukunft aufbauen.",
+heroText:"Lernen Sie Website-Erstellung, KI-Tools, Videos, Thumbnails, Inhalte und Social Media.",
+offer:"🎁 15 Tage kostenloses Lernen",offerDesc:"Fünfzehn Tage kostenlos lernen.",
+team:"👥 Unser Team",about:"👤 Über mich",account:"👤 Mein Konto",
+help:"🆘 Hilfe benötigt?"
+},
+Spanish:{
+notice:"📢 ¡Bienvenido a AHAD BHAI SKILL HUB — aprende habilidades digitales gratis!",
+country:"🌍 Tu país",language:"🌐 Tu idioma",
+heroPill:"🚀 COMUNIDAD DIGITAL AHAD BHAI",
+heroTitle:"Aprende habilidades digitales.<br>Construye tu futuro online.",
+heroText:"Aprende creación de sitios web, herramientas de IA, vídeo, miniaturas, contenido y redes sociales.",
+offer:"🎁 15 días de aprendizaje gratis",offerDesc:"Aprende gratis durante quince días.",
+team:"👥 Nuestro equipo",about:"👤 Sobre mí",account:"👤 Mi cuenta",
+help:"🆘 ¿Necesitas ayuda?"
 }
-
 };
 
-function openHelp(){
+const rtlLanguages=["Arabic","Urdu"];
 
-alert(
-'Help Center\n\n'+
-'WhatsApp: 01400524877\n'+
-'Telegram: @Aheadvia1298\n'+
-'Email: msssaimaislam6@gmail.com'
-);
+function applyLanguage(lang){
+if(!translations[lang])lang="English";
 
+const t=translations[lang];
+
+document.documentElement.lang=lang;
+document.documentElement.dir=rtlLanguages.includes(lang)?"rtl":"ltr";
+document.body.dir=document.documentElement.dir;
+
+q("#noticeText").textContent=t.notice;
+q("#countryLabel").textContent=t.country;
+q("#languageLabel").textContent=t.language;
+
+q("#heroPill").textContent=t.heroPill;
+q("#heroTitle").innerHTML=t.heroTitle;
+q("#heroText").textContent=t.heroText;
+
+q("#offerTitle").textContent=t.offer;
+q("#offerDesc").textContent=t.offerDesc;
+
+document.querySelector("#team h2").textContent=t.team;
+document.querySelector("#about h2").textContent=t.about;
+document.querySelector("#account h2").textContent=t.account;
+document.querySelector("#contact h2").textContent=t.help;
+
+localStorage.setItem("avlang",lang);
+q("#accountLanguage").textContent=lang;
 }
 
-const savedPhoto=
-localStorage.getItem('ahad-photo');
+function countryChange(){
+const c=q("#country").value;
+localStorage.setItem("avcountry",c);
 
-if(savedPhoto)
-document.getElementById('avatar')
-.src=savedPhoto;
+const lang=countryLanguages[c]||"English";
 
-document.getElementById('year')
-.textContent=new Date().getFullYear();
+if([...q("#language").options].some(o=>o.value===lang)){
+q("#language").value=lang;
+applyLanguage(lang);
+}else{
+q("#language").value="English";
+applyLanguage("English");
+}
 
-const bl=
-(navigator.language||'en').toLowerCase();
+q("#accountCountry").textContent=q("#country").selectedOptions[0].textContent;
+toast("Language changed");
+}
 
-const auto=
-bl.startsWith('bn')?'Bangla':
-bl.startsWith('hi')?'Hindi':
-bl.startsWith('ur')?'Urdu':
-bl.startsWith('ar')?'Arabic':
-bl.startsWith('ja')?'Japanese':
-bl.startsWith('ko')?'Korean':
-'English';
+function languageChange(){
+const lang=q("#language").value;
+applyLanguage(lang);
+toast("Language: "+lang);
+}
 
-render();
+(function(){
+const savedCountry=localStorage.getItem("avcountry")||"BD";
+const savedLanguage=localStorage.getItem("avlang")||"Bangla";
 
-document.getElementById('language').value=
-localStorage.getItem('ahad-language')||auto;
+q("#country").value=savedCountry;
+q("#language").value=savedLanguage;
 
-document.getElementById('languageMenu').value=
-document.getElementById('language').value;
+q("#accountCountry").textContent=q("#country").selectedOptions[0].textContent;
+applyLanguage(savedLanguage);
+})();
 
+let currentGenerator="Caption";
+
+function openGenerator(type){
+currentGenerator=type;
+q("#generatorTitle").textContent="✨ "+type+" Generator";
+q("#generatorModal").classList.add("show");
+q("#gTopic").value="";
+q("#gOutput").textContent="Your generated result will appear here.";
+}
+
+function closeGenerator(){
+q("#generatorModal").classList.remove("show");
+}
+
+function generateContent(){
+
+const type=currentGenerator;
+const platform=q("#gPlatform").value;
+const lang=q("#gLanguage").value;
+const style=q("#gStyle").value;
+const length=q("#gLength").value;
+const topic=q("#gTopic").value.trim()||"your topic";
+
+let result="";
+
+if(type==="Caption"){
+result=`${topic} 🚀\n\nDiscover something new, learn something useful and keep growing every day.\n\n#DigitalSkills #Learning #${platform.replace(/\W/g,"")}`;
+}
+else if(type==="Hashtag"){
+result=`#${topic.replace(/\s+/g,"")}\n#DigitalSkills #AI #ContentCreation #${platform.replace(/\W/g,"")} #OnlineLearning #AHEADVIA`;
+}
+else if(type==="Hook"){
+result=`STOP SCROLLING! 🔥\n\nHere's something you should know about ${topic}...`;
+}
+else if(type==="Title"){
+result=`${topic} — Simple Guide You Should Know`;
+}
+else if(type==="Post"){
+result=`🚀 ${topic}\n\nHere is a simple and useful post about ${topic}.\n\nSave this post and share it with someone who may find it useful.`;
+}
+else if(type==="Story"){
+result=`Story 1: ${topic} 👀\nStory 2: Here's the important part...\nStory 3: Keep watching for the next step.\nStory 4: Follow for more useful content.`;
+}
+else if(type==="Video Script"){
+result=`[HOOK]\nHave you ever wondered about ${topic}?\n\n[INTRO]\nToday we are going to learn the basics of ${topic}.\n\n[MAIN]\nExplain the key points clearly and give a practical example.\n\n[CTA]\nFollow for more digital tips!`;
+}
+else if(type==="Reel Script"){
+result=`🎬 REEL SCRIPT\n\n0-3s: ${topic}?\n3-8s: Show the main idea.\n8-15s: Explain the useful point.\n15-20s: Give a quick tip.\n20-25s: Follow for more!`;
+}
+else if(type==="Bio"){
+result=`🚀 Digital Creator | AI & Digital Skills\n💡 Learning • Creating • Sharing\n📚 ${topic}\n🌐 AHAD BHAI SKILL HUB`;
+}
+else if(type==="Description"){
+result=`Learn more about ${topic} in this helpful content.\n\nThis guide covers practical ideas, useful tips and simple steps.\n\n#DigitalSkills #Learning`;
+}
+else if(type==="CTA"){
+result=`👉 Follow now for more ${topic} tips.\n💬 Comment your question below.\n📌 Save this for later.\n📤 Share it with a friend.`;
+}
+else if(type==="Ad Copy"){
+result=`🔥 ${topic}\n\nLearn useful digital skills and discover practical resources.\n\n✨ Simple\n🚀 Useful\n💡 Beginner-friendly\n\n👉 Get started today.`;
+}
+else if(type==="Content Ideas"){
+result=`1. Beginner guide to ${topic}\n2. 5 mistakes people make with ${topic}\n3. Step-by-step ${topic} tutorial\n4. Tips and tricks for ${topic}\n5. Common questions about ${topic}\n6. Before vs after ${topic}`;
+}
+else if(type==="AI Image Prompt"){
+result=`Create a high-quality ${style.toLowerCase()} image about ${topic}, modern digital style, clean composition, professional lighting, detailed background, realistic details, social-media-ready, 4K quality, no watermark, no unnecessary text.`;
+}
+else if(type==="AI Video Prompt"){
+result=`Create a ${length.toLowerCase()} cinematic video about ${topic}. Style: ${style}. Smooth camera movement, natural lighting, detailed environment, realistic motion, professional composition, engaging opening, social-media-ready format.`;
+}
+else if(type==="Comment Reply"){
+result=`Thank you for your comment! ❤️\nYour feedback about ${topic} is appreciated. Stay connected for more useful content.`;
+}
+else if(type==="DM Reply"){
+result=`Hello! 👋 Thanks for reaching out about ${topic}.\n\nI'd be happy to help. Please share a little more detail about what you need.`;
+}
+else if(type==="Location"){
+result=`📍 Location ideas for ${topic}:\n1. Modern city area\n2. Clean office/studio\n3. Outdoor nature location\n4. Premium indoor setup\n5. Minimal creator studio`;
+}
+else if(type==="Thumbnail Text"){
+result=`${topic.toUpperCase()}\n\nTHE SIMPLE GUIDE\n\nSTART NOW 🚀`;
+}
+
+if(lang==="Bangla"){
+result+="\n\nভাষা: বাংলা";
+}
+if(lang==="Arabic"){
+result+="\n\nاللغة: العربية";
+}
+if(lang==="Hindi"){
+result+="\n\nभाषा: हिन्दी";
+}
+if(lang==="Urdu"){
+result+="\n\nزبان: اردو";
+}
+
+q("#gOutput").textContent=result;
+}
+
+function copyOutput(){
+const text=q("#gOutput").textContent;
+navigator.clipboard.writeText(text)
+.then(()=>toast("Copied!"))
+.catch(()=>toast("Copy failed"));
+}
+
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape"){
+closeMenu();
+closeGenerator();
+}
+});
 </script>
 
 </body>
-</html>
+</html>ও
