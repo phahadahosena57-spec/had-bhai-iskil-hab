@@ -3,98 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#050816">
-<meta name="description" content="AHEAD VIA SKILL HUB - Digital Skills, AI Tools and Resources">
-<title>AHEAD VIA SKILL HUB</title>
+<meta name="theme-color" content="#0866d9">
+<meta name="description" content="AHEAD VIA - Digital Skills, Tools, Services and Resources">
+<title>AHEAD VIA</title>
 
 <style>
-:root{
-  --bg:#050816;
-  --bg2:#081226;
-  --card:rgba(10,18,38,.78);
-  --card2:#0b1630;
-  --text:#f7fbff;
-  --muted:#9eabc2;
-  --primary:#39f5c7;
-  --primary2:#6d5cff;
-  --cyan:#24d9ff;
-  --pink:#ff4fd8;
-  --border:rgba(255,255,255,.10);
-  --shadow:0 25px 80px rgba(0,0,0,.38);
-  --radius:28px;
-}
-
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
 }
 
-html{
-  scroll-behavior:smooth;
+:root{
+  --blue:#0866d9;
+  --blue2:#0b78f2;
+  --dark:#0c1b2a;
+  --text:#17202b;
+  --muted:#697586;
+  --bg:#f4f8ff;
+  --card:#ffffff;
+  --line:#e5ebf3;
+  --green:#18b878;
+  --red:#ef4444;
+  --shadow:0 8px 25px rgba(22,58,100,.10);
 }
 
 body{
   font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
   color:var(--text);
-  min-height:100vh;
   overflow-x:hidden;
-  background:
-    radial-gradient(circle at 8% 8%,rgba(57,245,199,.16),transparent 25%),
-    radial-gradient(circle at 92% 10%,rgba(109,92,255,.22),transparent 27%),
-    radial-gradient(circle at 50% 65%,rgba(36,217,255,.08),transparent 30%),
-    linear-gradient(135deg,#030510 0%,#071126 48%,#050816 100%);
-  position:relative;
-}
-
-/* PREMIUM DIGITAL GRID */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-3;
-  opacity:.20;
-  background-image:
-    linear-gradient(rgba(57,245,199,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(57,245,199,.07) 1px,transparent 1px);
-  background-size:42px 42px;
-  mask-image:linear-gradient(to bottom,black,transparent 90%);
-}
-
-body::after{
-  content:"";
-  position:fixed;
-  width:500px;
-  height:500px;
-  right:-180px;
-  top:220px;
-  border-radius:50%;
-  pointer-events:none;
-  z-index:-2;
-  background:radial-gradient(circle,rgba(109,92,255,.18),transparent 68%);
-  filter:blur(20px);
-}
-
-body.light{
-  --bg:#eef6ff;
-  --bg2:#f8fbff;
-  --card:rgba(255,255,255,.82);
-  --card2:#ffffff;
-  --text:#101828;
-  --muted:#667085;
-  --border:rgba(16,24,40,.09);
-  --shadow:0 20px 60px rgba(12,31,52,.12);
-  background:
-    radial-gradient(circle at 8% 8%,rgba(57,245,199,.24),transparent 26%),
-    radial-gradient(circle at 92% 10%,rgba(109,92,255,.16),transparent 27%),
-    linear-gradient(135deg,#edfaff,#f5f2ff);
 }
 
 button,
-select,
 input,
-textarea{
+select{
   font:inherit;
 }
 
@@ -103,489 +46,654 @@ button{
 }
 
 a{
-  color:inherit;
   text-decoration:none;
+  color:inherit;
 }
 
-.container{
-  width:min(1160px,calc(100% - 28px));
+/* =========================
+   APP
+========================= */
+
+.app{
+  width:100%;
+  max-width:620px;
   margin:auto;
+  min-height:100vh;
+  background:#f5f8fd;
+  box-shadow:0 0 50px rgba(0,0,0,.08);
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
+
 .header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:rgba(4,8,22,.72);
-  backdrop-filter:blur(22px);
-  border-bottom:1px solid var(--border);
-}
-
-.light .header{
-  background:rgba(255,255,255,.78);
-}
-
-.header-inner{
-  min-height:82px;
+  background:#fff;
+  padding:16px 16px 14px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:13px;
-  min-width:0;
+  gap:11px;
 }
 
 .logo{
-  width:58px;
-  height:58px;
-  border-radius:18px;
+  width:48px;
+  height:48px;
   object-fit:cover;
-  border:1px solid rgba(57,245,199,.28);
-  box-shadow:
-    0 0 0 1px rgba(109,92,255,.15),
-    0 10px 30px rgba(0,0,0,.25);
+  border-radius:14px;
+  border:1px solid #e4e9f0;
 }
 
-.brand-title{
-  font-size:20px;
+.brand-text h1{
+  font-size:17px;
   font-weight:900;
-  letter-spacing:-.6px;
+  color:#111827;
 }
 
-.brand-sub{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:5px;
+.brand-text p{
+  font-size:10px;
+  color:#8993a1;
+  margin-top:4px;
 }
 
-.header-actions{
+.header-btns{
   display:flex;
-  gap:9px;
+  gap:7px;
 }
 
-.icon-btn{
-  width:50px;
-  height:50px;
-  border:1px solid var(--border);
-  border-radius:16px;
-  background:var(--card);
-  color:var(--text);
-  box-shadow:0 10px 30px rgba(0,0,0,.14);
-  font-size:21px;
-  transition:.2s;
+.header-btn{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:13px;
+  background:#f1f6fc;
+  font-size:20px;
 }
 
-.icon-btn:hover{
-  transform:translateY(-2px);
-  border-color:rgba(57,245,199,.45);
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+  padding:13px 14px 100px;
 }
 
-/* CONTROLS */
-.controls{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:20px;
+/* =========================
+   NOTICE
+========================= */
+
+.notice{
+  background:#fff;
+  border-radius:13px;
+  border:1px solid var(--line);
+  box-shadow:0 4px 12px rgba(0,0,0,.04);
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  height:43px;
+  margin-bottom:13px;
 }
 
-.control{
+.notice-label{
+  flex:none;
+  height:100%;
+  padding:0 15px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  background:var(--blue);
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+}
+
+.notice-text{
+  white-space:nowrap;
+  overflow:hidden;
+  padding-left:12px;
+  font-size:12px;
+  color:#596575;
+}
+
+.notice-text span{
+  display:inline-block;
+  animation:noticeMove 15s linear infinite;
+}
+
+@keyframes noticeMove{
+  from{
+    transform:translateX(100%);
+  }
+  to{
+    transform:translateX(-100%);
+  }
+}
+
+/* =========================
+   HERO SLIDER
+========================= */
+
+.slider{
+  position:relative;
   width:100%;
-  border:1px solid var(--border);
-  background:var(--card);
-  color:var(--text);
+  overflow:hidden;
   border-radius:17px;
-  padding:14px 16px;
-  outline:none;
-  backdrop-filter:blur(15px);
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  background:#0b66d4;
+  box-shadow:var(--shadow);
 }
 
-/* HERO */
-.hero{
+.slides{
+  display:flex;
+  transition:transform .45s ease;
+}
+
+.slide{
+  min-width:100%;
+  height:190px;
   position:relative;
   overflow:hidden;
-  margin-top:20px;
-  border-radius:36px;
-  padding:48px 38px;
+  padding:25px 22px;
+  color:#fff;
+}
+
+.slide:nth-child(1){
   background:
-    linear-gradient(135deg,rgba(10,22,48,.88),rgba(8,16,36,.70)),
-    radial-gradient(circle at 85% 5%,rgba(57,245,199,.25),transparent 28%);
-  border:1px solid rgba(57,245,199,.18);
-  box-shadow:
-    var(--shadow),
-    inset 0 1px 0 rgba(255,255,255,.07);
+    radial-gradient(circle at 90% 20%,rgba(255,255,255,.23),transparent 25%),
+    linear-gradient(135deg,#0757bd,#1688ef);
 }
 
-.light .hero{
+.slide:nth-child(2){
   background:
-    linear-gradient(135deg,rgba(255,255,255,.90),rgba(242,247,255,.82)),
-    radial-gradient(circle at 85% 5%,rgba(57,245,199,.30),transparent 28%);
+    radial-gradient(circle at 85% 15%,rgba(255,255,255,.24),transparent 27%),
+    linear-gradient(135deg,#7c2fd0,#e44f9b);
 }
 
-.hero::before{
-  content:"AI";
-  position:absolute;
-  right:35px;
-  top:5px;
-  font-size:170px;
-  font-weight:900;
-  color:rgba(57,245,199,.035);
-  pointer-events:none;
+.slide:nth-child(3){
+  background:
+    radial-gradient(circle at 90% 10%,rgba(255,255,255,.22),transparent 25%),
+    linear-gradient(135deg,#008b75,#19bd83);
 }
 
-.hero::after{
+.slide::after{
   content:"";
   position:absolute;
-  width:260px;
-  height:260px;
-  right:-90px;
-  bottom:-120px;
+  width:170px;
+  height:170px;
+  right:-50px;
+  bottom:-80px;
   border-radius:50%;
-  background:radial-gradient(circle,rgba(109,92,255,.25),transparent 68%);
-  filter:blur(8px);
+  background:rgba(255,255,255,.12);
 }
 
-.badge{
-  position:relative;
-  z-index:2;
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  padding:10px 15px;
-  border:1px solid rgba(57,245,199,.18);
-  border-radius:50px;
-  background:rgba(57,245,199,.08);
-  color:var(--primary);
+.slide small{
+  font-size:11px;
   font-weight:800;
-  font-size:13px;
+  opacity:.9;
+  letter-spacing:.5px;
 }
 
-.hero h1{
-  position:relative;
-  z-index:2;
-  margin-top:22px;
-  max-width:800px;
-  font-size:clamp(40px,7vw,76px);
-  line-height:.96;
-  letter-spacing:-4px;
+.slide h2{
+  font-size:26px;
+  line-height:1.1;
+  margin-top:9px;
+  max-width:330px;
 }
 
-.hero h1 span{
-  color:var(--primary);
-  text-shadow:0 0 35px rgba(57,245,199,.14);
+.slide p{
+  margin-top:9px;
+  font-size:12px;
+  line-height:1.5;
+  max-width:320px;
+  opacity:.92;
 }
 
-.hero p{
-  position:relative;
-  z-index:2;
-  max-width:760px;
-  color:var(--muted);
-  font-size:18px;
-  line-height:1.75;
-  margin-top:22px;
-}
-
-.hero-actions{
-  position:relative;
-  z-index:2;
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:28px;
-}
-
-.btn{
+.slide-btn{
+  margin-top:13px;
   border:0;
-  border-radius:16px;
-  padding:14px 19px;
+  border-radius:9px;
+  padding:9px 14px;
+  background:#fff;
+  color:#1163c4;
+  font-size:12px;
   font-weight:800;
-  transition:.2s;
 }
 
-.btn:hover{
-  transform:translateY(-3px);
+.slide-icon{
+  position:absolute;
+  right:22px;
+  top:46px;
+  font-size:75px;
+  opacity:.22;
 }
 
-.btn-primary{
-  color:#031711;
-  background:linear-gradient(135deg,var(--primary),#23dcb9);
-  box-shadow:0 12px 35px rgba(57,245,199,.18);
+.slider-dots{
+  position:absolute;
+  bottom:9px;
+  left:0;
+  right:0;
+  display:flex;
+  justify-content:center;
+  gap:6px;
 }
 
-.btn-secondary{
-  color:var(--text);
-  background:rgba(255,255,255,.055);
-  border:1px solid var(--border);
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:rgba(255,255,255,.55);
 }
 
-/* SECTION */
-section{
-  margin-top:58px;
-  scroll-margin-top:100px;
+.dot.active{
+  width:20px;
+  border-radius:10px;
+  background:#fff;
+}
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:13px;
+}
+
+.quick{
+  border:0;
+  background:var(--blue);
+  color:#fff;
+  border-radius:13px;
+  padding:13px 7px;
+  box-shadow:0 6px 15px rgba(8,102,217,.16);
+}
+
+.quick-icon{
+  font-size:24px;
+}
+
+.quick-title{
+  font-size:10px;
+  font-weight:800;
+  margin-top:6px;
+}
+
+.quick-sub{
+  font-size:8px;
+  opacity:.8;
+  margin-top:2px;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+  margin-top:25px;
 }
 
 .section-head{
-  margin-bottom:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:12px;
 }
 
 .section-head h2{
-  font-size:31px;
-  letter-spacing:-1px;
+  font-size:21px;
+  font-weight:900;
 }
 
 .section-head p{
+  font-size:11px;
   color:var(--muted);
-  margin-top:7px;
+  margin-top:4px;
 }
 
-/* TOOLS */
-.tools-grid{
+.see-all{
+  border:0;
+  background:transparent;
+  color:var(--blue);
+  font-size:11px;
+  font-weight:800;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.service-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
+  grid-template-columns:repeat(2,1fr);
+  gap:11px;
 }
 
-.tool-card{
-  min-height:175px;
-  padding:21px;
-  border:1px solid var(--border);
-  border-radius:24px;
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
-  box-shadow:0 12px 35px rgba(0,0,0,.16);
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  transition:.25s;
+.service{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 5px 15px rgba(20,50,90,.05);
   position:relative;
   overflow:hidden;
 }
 
-.tool-card::before{
+.service::before{
   content:"";
   position:absolute;
-  width:120px;
-  height:120px;
-  right:-60px;
-  top:-60px;
+  width:60px;
+  height:60px;
+  right:-20px;
+  top:-20px;
   border-radius:50%;
-  background:rgba(57,245,199,.08);
+  background:#eef6ff;
 }
 
-.light .tool-card{
-  background:rgba(255,255,255,.78);
-  box-shadow:0 12px 35px rgba(12,31,52,.08);
-}
-
-.tool-card:hover{
-  transform:translateY(-5px);
-  border-color:rgba(57,245,199,.28);
-  box-shadow:0 20px 50px rgba(0,0,0,.24);
-}
-
-.tool-icon{
-  width:50px;
-  height:50px;
+.service-icon{
+  width:45px;
+  height:45px;
+  border-radius:13px;
   display:grid;
   place-items:center;
-  border-radius:16px;
-  background:linear-gradient(145deg,rgba(57,245,199,.14),rgba(109,92,255,.10));
-  border:1px solid rgba(57,245,199,.10);
-  font-size:25px;
+  background:#edf6ff;
+  font-size:23px;
 }
 
-.tool-card h3{
-  position:relative;
-  z-index:1;
-  font-size:17px;
-  margin-top:14px;
+.service h3{
+  font-size:14px;
+  margin-top:12px;
 }
 
-.tool-card p{
+.service p{
   color:var(--muted);
-  font-size:12px;
+  font-size:10px;
   line-height:1.45;
   margin-top:5px;
 }
 
-.tool-open{
-  align-self:flex-start;
-  margin-top:15px;
-  padding:9px 13px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:rgba(255,255,255,.06);
-  color:var(--text);
-  font-weight:700;
+.service-btn{
+  width:100%;
+  margin-top:12px;
+  border:0;
+  border-radius:9px;
+  padding:9px;
+  background:#edf5ff;
+  color:var(--blue);
+  font-size:10px;
+  font-weight:800;
 }
 
-/* LEARN */
-.learn-list{
+/* =========================
+   OFFERS
+========================= */
+
+.offer-list{
   display:grid;
-  gap:13px;
+  grid-template-columns:repeat(2,1fr);
+  gap:11px;
 }
 
-.learn-card{
+.offer{
+  background:#fff;
+  border-radius:16px;
+  border:1px solid var(--line);
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(20,50,90,.05);
+}
+
+.offer-img{
+  height:125px;
+  display:grid;
+  place-items:center;
+  font-size:55px;
+}
+
+.offer:nth-child(1) .offer-img{
+  background:linear-gradient(135deg,#211050,#7441dd);
+}
+
+.offer:nth-child(2) .offer-img{
+  background:linear-gradient(135deg,#064b91,#1ca3e5);
+}
+
+.offer:nth-child(3) .offer-img{
+  background:linear-gradient(135deg,#0d704b,#2ad18b);
+}
+
+.offer:nth-child(4) .offer-img{
+  background:linear-gradient(135deg,#7b1e40,#ec5b82);
+}
+
+.offer-body{
+  padding:12px;
+}
+
+.offer-body h3{
+  font-size:13px;
+}
+
+.offer-body p{
+  font-size:10px;
+  color:var(--muted);
+  margin-top:4px;
+}
+
+.offer-btn{
+  width:100%;
+  border:0;
+  margin-top:10px;
+  border-radius:9px;
+  padding:9px;
+  background:var(--blue);
+  color:#fff;
+  font-size:10px;
+  font-weight:800;
+}
+
+/* =========================
+   TUTORIAL
+========================= */
+
+.tutorial-list{
+  display:grid;
+  gap:10px;
+}
+
+.tutorial{
   display:flex;
+  gap:12px;
   align-items:center;
-  gap:18px;
-  padding:18px;
-  border:1px solid var(--border);
-  border-radius:25px;
-  background:var(--card);
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  padding:13px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:15px;
 }
 
-.learn-number{
-  width:64px;
-  height:64px;
+.tutorial-icon{
+  width:48px;
+  height:48px;
   flex:none;
   display:grid;
   place-items:center;
-  border-radius:19px;
-  color:var(--primary);
-  background:rgba(57,245,199,.08);
-  border:1px solid rgba(57,245,199,.14);
-  font-weight:900;
+  border-radius:13px;
+  background:#eef6ff;
+  font-size:24px;
 }
 
-.learn-content{
+.tutorial-info{
   flex:1;
 }
 
-.learn-content h3{
-  font-size:18px;
+.tutorial-info h3{
+  font-size:13px;
 }
 
-.learn-content p{
+.tutorial-info p{
+  font-size:10px;
   color:var(--muted);
-  margin-top:6px;
-  line-height:1.5;
+  margin-top:4px;
 }
 
-.view-btn{
-  border:1px solid var(--border);
-  padding:11px 17px;
-  border-radius:14px;
-  background:rgba(255,255,255,.06);
-  color:var(--text);
-  font-weight:700;
+.tutorial-btn{
+  border:0;
+  border-radius:9px;
+  padding:8px 11px;
+  background:#edf5ff;
+  color:var(--blue);
+  font-size:10px;
+  font-weight:800;
 }
 
-/* TRENDING */
-.trend-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
+/* =========================
+   AI TOOLS
+========================= */
 
-.trend-card{
-  position:relative;
-  overflow:hidden;
-  padding:24px;
-  border:1px solid var(--border);
-  border-radius:24px;
-  background:var(--card);
-}
-
-.trend-card .emoji{
-  font-size:31px;
-}
-
-.trend-card h3{
-  margin-top:12px;
-}
-
-.trend-card p{
-  color:var(--muted);
-  line-height:1.55;
-  margin-top:7px;
-}
-
-/* COMMUNITY */
-.community-grid,
-.contact-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:13px;
-}
-
-.community-card,
-.contact-card{
+.ai-box{
+  background:linear-gradient(135deg,#101d35,#172f55);
+  color:#fff;
+  border-radius:18px;
   padding:20px;
-  text-align:center;
-  border:1px solid var(--border);
-  border-radius:22px;
-  background:var(--card);
-  box-shadow:0 10px 30px rgba(0,0,0,.10);
-}
-
-.community-card .big,
-.contact-card .big{
-  font-size:32px;
-}
-
-.community-card h3,
-.contact-card h3{
-  margin:10px 0 13px;
-}
-
-/* PROFILE */
-.profile{
-  display:grid;
-  grid-template-columns:180px 1fr;
-  gap:28px;
-  align-items:center;
-  padding:28px;
-  border:1px solid var(--border);
-  border-radius:30px;
-  background:var(--card);
   box-shadow:var(--shadow);
 }
 
-.profile img{
-  width:180px;
-  height:180px;
-  object-fit:cover;
-  border-radius:30px;
-  border:1px solid rgba(57,245,199,.18);
+.ai-box small{
+  color:#73f1d3;
+  font-weight:800;
 }
 
-.profile p{
-  color:var(--muted);
-  line-height:1.85;
-  margin-top:14px;
+.ai-box h2{
+  font-size:22px;
+  margin-top:7px;
 }
 
-/* FOOTER */
-footer{
-  margin-top:65px;
-  padding:38px 0 55px;
+.ai-box p{
+  font-size:11px;
+  line-height:1.6;
+  color:#c1ccda;
+  margin-top:7px;
+}
+
+.ai-buttons{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin-top:15px;
+}
+
+.ai-btn{
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:10px;
+  padding:10px;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  font-size:10px;
+  font-weight:700;
+}
+
+/* =========================
+   COMMUNITY
+========================= */
+
+.community{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
+
+.community-btn{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:14px;
+  padding:14px 7px;
   text-align:center;
-  color:var(--muted);
 }
 
-footer strong{
-  color:var(--text);
+.community-btn div{
+  font-size:24px;
 }
 
-/* MODAL */
-.modal{
+.community-btn span{
+  display:block;
+  font-size:10px;
+  font-weight:800;
+  margin-top:6px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+  text-align:center;
+  padding:25px 10px 15px;
+  color:#8792a1;
+  font-size:10px;
+  line-height:1.7;
+}
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottom-nav{
   position:fixed;
-  inset:0;
-  z-index:500;
-  display:none;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:620px;
+  height:70px;
+  background:rgba(255,255,255,.97);
+  border-top:1px solid var(--line);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  z-index:200;
+  box-shadow:0 -5px 25px rgba(20,50,90,.08);
+}
+
+.nav-item{
+  border:0;
+  background:transparent;
+  color:#8b95a3;
+  display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
-  padding:18px;
-  background:rgba(0,0,0,.76);
-  backdrop-filter:blur(12px);
+  gap:4px;
+  font-size:10px;
+  font-weight:700;
+}
+
+.nav-item .nav-icon{
+  font-size:21px;
+}
+
+.nav-item.active{
+  color:var(--blue);
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:500;
+  align-items:flex-end;
+  justify-content:center;
 }
 
 .modal.show{
@@ -593,223 +701,164 @@ footer strong{
 }
 
 .modal-box{
-  width:min(680px,100%);
-  max-height:90vh;
+  width:100%;
+  max-width:620px;
+  max-height:85vh;
   overflow:auto;
-  padding:24px;
-  border:1px solid var(--border);
-  border-radius:30px;
-  background:var(--card2);
-  color:var(--text);
-  box-shadow:0 35px 100px rgba(0,0,0,.55);
+  background:#fff;
+  border-radius:24px 24px 0 0;
+  padding:20px;
+  animation:up .25s ease;
+}
+
+@keyframes up{
+  from{
+    transform:translateY(100%);
+  }
+  to{
+    transform:translateY(0);
+  }
 }
 
 .modal-head{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:12px;
-  margin-bottom:18px;
+  margin-bottom:15px;
+}
+
+.modal-head h2{
+  font-size:20px;
 }
 
 .close{
-  width:44px;
-  height:44px;
-  border:1px solid var(--border);
-  border-radius:14px;
-  background:rgba(255,255,255,.06);
-  color:var(--text);
-  font-size:24px;
+  border:0;
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  background:#f1f4f8;
+  font-size:23px;
 }
 
-.field{
-  margin-top:14px;
-}
-
-.field label{
-  display:block;
+.modal-text{
   font-size:13px;
-  font-weight:800;
-  margin-bottom:7px;
-}
-
-.field input,
-.field textarea,
-.field select{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:13px;
-  background:rgba(255,255,255,.05);
-  color:var(--text);
-  outline:none;
-}
-
-.field select option{
-  background:#0b1630;
-  color:white;
-}
-
-.field textarea{
-  min-height:130px;
-  resize:vertical;
-}
-
-.modal-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:17px;
-}
-
-.result{
-  margin-top:18px;
-  padding:18px;
-  border:1px solid var(--border);
-  border-radius:20px;
-  background:rgba(255,255,255,.045);
+  color:#657181;
   line-height:1.7;
-  white-space:pre-wrap;
 }
 
-.generated-image{
-  display:none;
+.modal-btn{
   width:100%;
-  margin-top:18px;
-  border-radius:20px;
-  border:1px solid var(--border);
-}
-
-/* SEARCH */
-.search-results{
-  display:grid;
-  gap:10px;
+  border:0;
+  border-radius:11px;
+  padding:12px;
+  background:var(--blue);
+  color:#fff;
+  font-weight:800;
   margin-top:15px;
 }
 
-.search-item{
-  padding:14px;
-  border:1px solid var(--border);
-  border-radius:15px;
-  background:rgba(255,255,255,.04);
-  cursor:pointer;
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark{
+  --bg:#07111d;
+  --text:#f4f7fb;
+  --muted:#9caabd;
+  --card:#0d1b2c;
+  --line:#1b3046;
 }
 
-.search-item:hover{
-  border-color:rgba(57,245,199,.3);
+body.dark .app,
+body.dark .content{
+  background:#07111d;
 }
 
-/* MOBILE */
-@media(max-width:900px){
-  .tools-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .community-grid,
-  .contact-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .trend-grid{
-    grid-template-columns:1fr;
-  }
+body.dark .header,
+body.dark .bottom-nav,
+body.dark .service,
+body.dark .offer,
+body.dark .tutorial,
+body.dark .community-btn,
+body.dark .notice,
+body.dark .modal-box{
+  background:#0d1b2c;
 }
 
-@media(max-width:620px){
-  .container{
-    width:min(100% - 20px,1160px);
+body.dark .brand-text h1{
+  color:#fff;
+}
+
+body.dark .header-btn{
+  background:#17283b;
+  color:#fff;
+}
+
+body.dark .service::before{
+  background:#13283e;
+}
+
+body.dark .service-icon,
+body.dark .tutorial-icon,
+body.dark .service-btn,
+body.dark .tutorial-btn{
+  background:#142a42;
+}
+
+body.dark .service-btn,
+body.dark .tutorial-btn,
+body.dark .see-all{
+  color:#63b4ff;
+}
+
+body.dark .modal-text{
+  color:#aebacc;
+}
+
+body.dark .close{
+  background:#182b40;
+  color:#fff;
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media(min-width:700px){
+
+  body{
+    background:
+      radial-gradient(circle at 20% 10%,#dceeff,transparent 30%),
+      #edf3f9;
   }
 
-  .header-inner{
-    min-height:72px;
+  .app{
+    min-height:100vh;
   }
 
-  .logo{
-    width:50px;
-    height:50px;
-    border-radius:15px;
+  .content{
+    padding-left:20px;
+    padding-right:20px;
   }
 
-  .brand-title{
-    font-size:15px;
+  .slide{
+    height:220px;
   }
 
-  .brand-sub{
-    font-size:10px;
+  .service-grid{
+    grid-template-columns:repeat(3,1fr);
   }
 
-  .icon-btn{
-    width:44px;
-    height:44px;
+  .offer-list{
+    grid-template-columns:repeat(4,1fr);
   }
 
-  .controls{
-    grid-template-columns:1fr;
+  .offer-img{
+    height:130px;
   }
 
-  .hero{
-    padding:32px 22px;
-    border-radius:29px;
-  }
-
-  .hero h1{
-    font-size:43px;
-    letter-spacing:-2.5px;
-  }
-
-  .hero p{
-    font-size:15px;
-  }
-
-  .tools-grid{
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-  }
-
-  .tool-card{
-    min-height:160px;
-    padding:16px;
-    border-radius:20px;
-  }
-
-  .tool-card h3{
-    font-size:14px;
-  }
-
-  .tool-card p{
-    font-size:11px;
-  }
-
-  .community-grid,
-  .contact-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .profile{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
-
-  .profile img{
-    margin:auto;
-  }
-
-  .learn-card{
-    align-items:flex-start;
-    flex-wrap:wrap;
-  }
-
-  .learn-number{
-    width:52px;
-    height:52px;
-  }
-
-  .learn-content{
-    min-width:calc(100% - 70px);
-  }
-
-  .view-btn{
-    margin-left:70px;
+  .bottom-nav{
+    border-radius:18px 18px 0 0;
   }
 }
 </style>
@@ -817,650 +866,820 @@ footer strong{
 
 <body>
 
-<header class="header">
-  <div class="container header-inner">
+<div class="app">
 
-    <a class="brand" href="#home">
+  <!-- ================= HEADER ================= -->
+
+  <header class="header">
+
+    <a href="#home" class="brand">
+
       <img
         class="logo"
         src="https://i.ibb.co.com/xd1bjsh/1788349715746.png"
-        alt="AHEAD VIA logo"
-      >
+        alt="AHEAD VIA">
 
-      <div>
-        <div class="brand-title">AHEAD VIA SKILL HUB</div>
-        <div class="brand-sub" data-i18n="brandSub">
-          Digital Skills • Tools • Resources
-        </div>
+      <div class="brand-text">
+        <h1>AHEAD VIA</h1>
+        <p>SKILL HUB • DIGITAL SERVICES</p>
       </div>
+
     </a>
 
-    <div class="header-actions">
-      <button class="icon-btn" id="themeBtn" aria-label="Theme">☀️</button>
-      <button class="icon-btn" id="searchBtn" aria-label="Search">🔎</button>
-    </div>
+    <div class="header-btns">
 
-  </div>
-</header>
-
-<main class="container">
-
-  <!-- LANGUAGE / COUNTRY -->
-  <div class="controls">
-
-    <select id="languageSelect" class="control">
-      <option value="en">🇬🇧 English</option>
-      <option value="bn">🇧🇩 বাংলা</option>
-      <option value="hi">🇮🇳 हिन्दी</option>
-      <option value="ur">🇵🇰 اردو</option>
-      <option value="ar">🇸🇦 العربية</option>
-      <option value="tr">🇹🇷 Türkçe</option>
-      <option value="fr">🇫🇷 Français</option>
-      <option value="de">🇩🇪 Deutsch</option>
-      <option value="es">🇪🇸 Español</option>
-      <option value="pt">🇵🇹 Português</option>
-      <option value="it">🇮🇹 Italiano</option>
-      <option value="ru">🇷🇺 Русский</option>
-      <option value="zh">🇨🇳 中文</option>
-      <option value="ja">🇯🇵 日本語</option>
-      <option value="ko">🇰🇷 한국어</option>
-      <option value="id">🇮🇩 Bahasa Indonesia</option>
-      <option value="ms">🇲🇾 Bahasa Melayu</option>
-      <option value="th">🇹🇭 ไทย</option>
-      <option value="vi">🇻🇳 Tiếng Việt</option>
-      <option value="fa">🇮🇷 فارسی</option>
-      <option value="ne">🇳🇵 नेपाली</option>
-      <option value="si">🇱🇰 සිංහල</option>
-      <option value="ta">🇮🇳 தமிழ்</option>
-      <option value="te">🇮🇳 తెలుగు</option>
-      <option value="mr">🇮🇳 मराठी</option>
-      <option value="gu">🇮🇳 ગુજરાતી</option>
-      <option value="pa">🇮🇳 ਪੰਜਾਬੀ</option>
-      <option value="nl">🇳🇱 Nederlands</option>
-      <option value="pl">🇵🇱 Polski</option>
-      <option value="sv">🇸🇪 Svenska</option>
-    </select>
-
-    <select id="countrySelect" class="control">
-      <option value="international">🌍 International</option>
-      <option value="bd">🇧🇩 Bangladesh</option>
-      <option value="in">🇮🇳 India</option>
-      <option value="pk">🇵🇰 Pakistan</option>
-      <option value="np">🇳🇵 Nepal</option>
-      <option value="lk">🇱🇰 Sri Lanka</option>
-      <option value="mv">🇲🇻 Maldives</option>
-      <option value="bt">🇧🇹 Bhutan</option>
-      <option value="sa">🇸🇦 Saudi Arabia</option>
-      <option value="ae">🇦🇪 United Arab Emirates</option>
-      <option value="qa">🇶🇦 Qatar</option>
-      <option value="kw">🇰🇼 Kuwait</option>
-      <option value="om">🇴🇲 Oman</option>
-      <option value="bh">🇧🇭 Bahrain</option>
-      <option value="my">🇲🇾 Malaysia</option>
-      <option value="sg">🇸🇬 Singapore</option>
-      <option value="id">🇮🇩 Indonesia</option>
-      <option value="th">🇹🇭 Thailand</option>
-      <option value="vn">🇻🇳 Vietnam</option>
-      <option value="ph">🇵🇭 Philippines</option>
-      <option value="cn">🇨🇳 China</option>
-      <option value="jp">🇯🇵 Japan</option>
-      <option value="kr">🇰🇷 South Korea</option>
-      <option value="tr">🇹🇷 Türkiye</option>
-      <option value="uk">🇬🇧 United Kingdom</option>
-      <option value="us">🇺🇸 United States</option>
-      <option value="ca">🇨🇦 Canada</option>
-      <option value="au">🇦🇺 Australia</option>
-      <option value="nz">🇳🇿 New Zealand</option>
-      <option value="de">🇩🇪 Germany</option>
-      <option value="fr">🇫🇷 France</option>
-      <option value="it">🇮🇹 Italy</option>
-      <option value="es">🇪🇸 Spain</option>
-      <option value="pt">🇵🇹 Portugal</option>
-      <option value="nl">🇳🇱 Netherlands</option>
-      <option value="be">🇧🇪 Belgium</option>
-      <option value="ch">🇨🇭 Switzerland</option>
-      <option value="se">🇸🇪 Sweden</option>
-      <option value="no">🇳🇴 Norway</option>
-      <option value="dk">🇩🇰 Denmark</option>
-      <option value="fi">🇫🇮 Finland</option>
-      <option value="pl">🇵🇱 Poland</option>
-      <option value="ru">🇷🇺 Russia</option>
-      <option value="ua">🇺🇦 Ukraine</option>
-      <option value="br">🇧🇷 Brazil</option>
-      <option value="mx">🇲🇽 Mexico</option>
-      <option value="ar">🇦🇷 Argentina</option>
-      <option value="za">🇿🇦 South Africa</option>
-      <option value="ng">🇳🇬 Nigeria</option>
-      <option value="eg">🇪🇬 Egypt</option>
-      <option value="ma">🇲🇦 Morocco</option>
-      <option value="other">🌎 Other</option>
-    </select>
-
-  </div>
-
-  <!-- HOME -->
-  <section id="home" class="hero">
-
-    <span class="badge" data-i18n="welcome">
-      🚀 WELCOME TO AHEAD VIA
-    </span>
-
-    <h1>
-      <span data-i18n="hero1">Learn.</span>
-      <span data-i18n="hero2">Create.</span><br>
-      <span data-i18n="hero3">Grow Online.</span>
-    </h1>
-
-    <p data-i18n="heroText">
-      Learn digital skills, explore useful tools, create content,
-      discover AI resources and build your online skills in one place.
-    </p>
-
-    <div class="hero-actions">
-
-      <button class="btn btn-primary" onclick="scrollToSection('tools')">
-        🤖 <span data-i18n="exploreTools">Explore Tools</span>
+      <button
+        class="header-btn"
+        id="themeBtn"
+        onclick="toggleTheme()">
+        🌙
       </button>
 
-      <button class="btn btn-secondary" onclick="scrollToSection('learn')">
-        📚 <span data-i18n="startLearning">Start Learning</span>
+      <button
+        class="header-btn"
+        onclick="openSearch()">
+        🔎
       </button>
 
     </div>
 
-  </section>
+  </header>
 
-  <!-- TOOLS -->
-  <section id="tools">
 
-    <div class="section-head">
-      <h2>🤖 <span data-i18n="toolsTitle">All Tools</span></h2>
-      <p data-i18n="toolsSub">Useful tools in one place</p>
-    </div>
+  <main class="content" id="home">
 
-    <div class="tools-grid">
+    <!-- ================= NOTICE ================= -->
 
-      <div class="tool-card">
-        <div>
-          <div class="tool-icon">🖼️</div>
-          <h3 data-i18n="imageTool">AI Image Generator</h3>
-          <p data-i18n="imageDesc">Create images from text prompts.</p>
-        </div>
-        <button class="tool-open" onclick="openTool('image')">Open</button>
+    <div class="notice">
+
+      <div class="notice-label">
+        🔵 NOTICE
       </div>
 
-      <div class="tool-card">
-        <div>
-          <div class="tool-icon">🎬</div>
-          <h3 data-i18n="videoTool">Video Prompt Maker</h3>
-          <p data-i18n="videoDesc">Create prompts and ideas for AI video.</p>
-        </div>
-        <button class="tool-open" onclick="openTool('video')">Open</button>
-      </div>
-
-      <div class="tool-card">
-        <div>
-          <div class="tool-icon">🎨</div>
-          <h3 data-i18n="thumbTool">Thumbnail Maker</h3>
-          <p data-i18n="thumbDesc">Create strong thumbnail concepts.</p>
-        </div>
-        <button class="tool-open" onclick="openTool('thumbnail')">Open</button>
-      </div>
-
-      <div class="tool-card">
-        <div>
-          <div class="tool-icon">✍️</div>
-          <h3 data-i18n="captionTool">Caption Generator</h3>
-          <p data-i18n="captionDesc">Generate social media captions.</p>
-        </div>
-        <button class="tool-open" onclick="openTool('caption')">Open</button>
-      </div>
-
-      <div class="tool-card">
-        <div>
-          <div class="tool-icon">#️⃣</div>
-          <h3 data-i18n="hashtagTool">Hashtag Generator</h3>
-          <p data-i18n="hashtagDesc">Generate relevant hashtags.</p>
-        </div>
-        <button class="tool-open" onclick="openTool('hashtag')">Open</button>
-      </div>
-
-      <div class="tool-card">
-        <div>
-          <div class="tool-icon">💡</div>
-          <h3 data-i18n="ideaTool">Content Ideas</h3>
-          <p data-i18n="ideaDesc">Get ideas for posts and videos.</p>
-        </div>
-        <button class="tool-open" onclick="openTool('idea')">Open</button>
-      </div>
-
-      <div class="tool-card">
-        <div>
-          <div class="tool-icon">📝</div>
-          <h3 data-i18n="contentTool">Content Planner</h3>
-          <p data-i18n="contentDesc">Build a simple content plan.</p>
-        </div>
-        <button class="tool-open" onclick="openTool('content')">Open</button>
-      </div>
-
-      <div class="tool-card">
-        <div>
-          <div class="tool-icon">🔳</div>
-          <h3 data-i18n="qrTool">QR Code Generator</h3>
-          <p data-i18n="qrDesc">Turn a link or text into a QR code.</p>
-        </div>
-        <button class="tool-open" onclick="openTool('qr')">Open</button>
-      </div>
-
-      <div class="tool-card">
-        <div>
-          <div class="tool-icon">🧮</div>
-          <h3 data-i18n="calcTool">Calculator</h3>
-          <p data-i18n="calcDesc">Quick everyday calculations.</p>
-        </div>
-        <button class="tool-open" onclick="openTool('calc')">Open</button>
-      </div>
-
-      <div class="tool-card">
-        <div>
-          <div class="tool-icon">📊</div>
-          <h3 data-i18n="percentTool">Percentage Tool</h3>
-          <p data-i18n="percentDesc">Calculate percentages quickly.</p>
-        </div>
-        <button class="tool-open" onclick="openTool('percent')">Open</button>
-      </div>
-
-      <div class="tool-card">
-        <div>
-          <div class="tool-icon">📈</div>
-          <h3 data-i18n="profitTool">Profit Calculator</h3>
-          <p data-i18n="profitDesc">Calculate cost, price and profit.</p>
-        </div>
-        <button class="tool-open" onclick="openTool('profit')">Open</button>
-      </div>
-
-      <div class="tool-card">
-        <div>
-          <div class="tool-icon">📍</div>
-          <h3 data-i18n="locationTool">Location Ideas</h3>
-          <p data-i18n="locationDesc">Find content location ideas.</p>
-        </div>
-        <button class="tool-open" onclick="openTool('location')">Open</button>
+      <div class="notice-text">
+        <span>
+          Welcome to AHEAD VIA SKILL HUB — Learn, Create and Grow Online.
+        </span>
       </div>
 
     </div>
-  </section>
 
-  <!-- LEARN -->
-  <section id="learn">
 
-    <div class="section-head">
-      <h2>📚 <span data-i18n="learnTitle">Learn Digital Skills</span></h2>
-      <p data-i18n="learnSub">Step-by-step learning resources</p>
+    <!-- ================= SLIDER ================= -->
+
+    <section class="slider">
+
+      <div class="slides" id="slides">
+
+        <div class="slide">
+
+          <small>AHEAD VIA SKILL HUB</small>
+
+          <h2>
+            Learn Digital Skills
+          </h2>
+
+          <p>
+            Discover useful tools, tutorials and resources in one place.
+          </p>
+
+          <button
+            class="slide-btn"
+            onclick="scrollToId('services')">
+            Explore Now
+          </button>
+
+          <div class="slide-icon">🚀</div>
+
+        </div>
+
+
+        <div class="slide">
+
+          <small>AI TOOLS</small>
+
+          <h2>
+            Create With AI
+          </h2>
+
+          <p>
+            Explore AI-powered tools for images, videos, content and more.
+          </p>
+
+          <button
+            class="slide-btn"
+            onclick="scrollToId('ai')">
+            Explore AI
+          </button>
+
+          <div class="slide-icon">🤖</div>
+
+        </div>
+
+
+        <div class="slide">
+
+          <small>ONLINE SKILLS</small>
+
+          <h2>
+            Build Your Skills
+          </h2>
+
+          <p>
+            Learn practical digital skills and create better online content.
+          </p>
+
+          <button
+            class="slide-btn"
+            onclick="scrollToId('tutorial')">
+            Start Learning
+          </button>
+
+          <div class="slide-icon">📚</div>
+
+        </div>
+
+      </div>
+
+
+      <div class="slider-dots">
+
+        <span class="dot active" onclick="goSlide(0)"></span>
+        <span class="dot" onclick="goSlide(1)"></span>
+        <span class="dot" onclick="goSlide(2)"></span>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= QUICK ACTIONS ================= -->
+
+    <div class="quick-grid">
+
+      <button
+        class="quick"
+        onclick="openLink('https://t.me/Aheadvia1298')">
+
+        <div class="quick-icon">✈️</div>
+        <div class="quick-title">SUPPORT</div>
+        <div class="quick-sub">Telegram</div>
+
+      </button>
+
+
+      <button
+        class="quick"
+        onclick="openLink('https://t.me/Aheadviaiskill_hab')">
+
+        <div class="quick-icon">👥</div>
+        <div class="quick-title">GROUP</div>
+        <div class="quick-sub">Join Group</div>
+
+      </button>
+
+
+      <button
+        class="quick"
+        onclick="openLink('https://wa.me/8801400524877')">
+
+        <div class="quick-icon">💬</div>
+        <div class="quick-title">SUPPORT</div>
+        <div class="quick-sub">WhatsApp</div>
+
+      </button>
+
     </div>
 
-    <div class="learn-list">
 
-      <div class="learn-card">
-        <div class="learn-number">01</div>
-        <div class="learn-content">
-          <h3>🎬 <span data-i18n="lesson1">How to Create Videos</span></h3>
-          <p data-i18n="lesson1desc">Basic video creation workflow.</p>
+    <!-- ================= SERVICES ================= -->
+
+    <section class="section" id="services">
+
+      <div class="section-head">
+
+        <div>
+          <h2>🛠️ Services</h2>
+          <p>Useful digital services</p>
         </div>
-        <button class="view-btn" onclick="viewLesson(1)">View</button>
+
+        <button
+          class="see-all"
+          onclick="showMessage('More services will be added soon.')">
+          See All
+        </button>
+
       </div>
 
-      <div class="learn-card">
-        <div class="learn-number">02</div>
-        <div class="learn-content">
-          <h3>🖼️ <span data-i18n="lesson2">AI Image Creation</span></h3>
-          <p data-i18n="lesson2desc">Learn how to write better image prompts.</p>
+
+      <div class="service-grid">
+
+        <div class="service">
+
+          <div class="service-icon">🤖</div>
+
+          <h3>AI Tools</h3>
+
+          <p>
+            Useful AI tools for creators and digital work.
+          </p>
+
+          <button
+            class="service-btn"
+            onclick="scrollToId('ai')">
+            Open
+          </button>
+
         </div>
-        <button class="view-btn" onclick="viewLesson(2)">View</button>
-      </div>
 
-      <div class="learn-card">
-        <div class="learn-number">03</div>
-        <div class="learn-content">
-          <h3>🎨 <span data-i18n="lesson3">Thumbnail Design</span></h3>
-          <p data-i18n="lesson3desc">Learn the basics of attractive thumbnails.</p>
+
+        <div class="service">
+
+          <div class="service-icon">🎬</div>
+
+          <h3>Video Creation</h3>
+
+          <p>
+            Learn video ideas, prompts and creation techniques.
+          </p>
+
+          <button
+            class="service-btn"
+            onclick="scrollToId('tutorial')">
+            Learn
+          </button>
+
         </div>
-        <button class="view-btn" onclick="viewLesson(3)">View</button>
-      </div>
 
-      <div class="learn-card">
-        <div class="learn-number">04</div>
-        <div class="learn-content">
-          <h3>#️⃣ <span data-i18n="lesson4">Hashtag Strategy</span></h3>
-          <p data-i18n="lesson4desc">Learn how to choose relevant hashtags.</p>
+
+        <div class="service">
+
+          <div class="service-icon">🎨</div>
+
+          <h3>Thumbnail</h3>
+
+          <p>
+            Create better thumbnail concepts for your content.
+          </p>
+
+          <button
+            class="service-btn"
+            onclick="openTool('thumbnail')">
+            Open
+          </button>
+
         </div>
-        <button class="view-btn" onclick="viewLesson(4)">View</button>
-      </div>
 
-      <div class="learn-card">
-        <div class="learn-number">05</div>
-        <div class="learn-content">
-          <h3>📱 <span data-i18n="lesson5">Social Media Content</span></h3>
-          <p data-i18n="lesson5desc">Content ideas for social platforms.</p>
+
+        <div class="service">
+
+          <div class="service-icon">✍️</div>
+
+          <h3>Caption</h3>
+
+          <p>
+            Generate social media caption ideas quickly.
+          </p>
+
+          <button
+            class="service-btn"
+            onclick="openTool('caption')">
+            Open
+          </button>
+
         </div>
-        <button class="view-btn" onclick="viewLesson(5)">View</button>
-      </div>
 
-      <div class="learn-card">
-        <div class="learn-number">06</div>
-        <div class="learn-content">
-          <h3>📈 <span data-i18n="lesson6">Content Promotion</span></h3>
-          <p data-i18n="lesson6desc">Basic organic reach and audience building.</p>
+
+        <div class="service">
+
+          <div class="service-icon">#️⃣</div>
+
+          <h3>Hashtags</h3>
+
+          <p>
+            Create useful hashtag combinations for posts.
+          </p>
+
+          <button
+            class="service-btn"
+            onclick="openTool('hashtag')">
+            Open
+          </button>
+
         </div>
-        <button class="view-btn" onclick="viewLesson(6)">View</button>
-      </div>
 
-      <div class="learn-card">
-        <div class="learn-number">07</div>
-        <div class="learn-content">
-          <h3>🤖 <span data-i18n="lesson7">AI Tools for Creators</span></h3>
-          <p data-i18n="lesson7desc">Useful AI workflows for creators.</p>
+
+        <div class="service">
+
+          <div class="service-icon">🔳</div>
+
+          <h3>QR Generator</h3>
+
+          <p>
+            Turn links and text into QR codes.
+          </p>
+
+          <button
+            class="service-btn"
+            onclick="openTool('qr')">
+            Open
+          </button>
+
         </div>
-        <button class="view-btn" onclick="viewLesson(7)">View</button>
+
       </div>
 
-      <div class="learn-card">
-        <div class="learn-number">08</div>
-        <div class="learn-content">
-          <h3>💰 <span data-i18n="lesson8">Online Skill Building</span></h3>
-          <p data-i18n="lesson8desc">Build practical digital skills step by step.</p>
+    </section>
+
+
+    <!-- ================= OFFERS ================= -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+          <h2>🎁 Bonus Offers</h2>
+          <p>Latest AHEAD VIA resources</p>
         </div>
-        <button class="view-btn" onclick="viewLesson(8)">View</button>
+
+        <button
+          class="see-all"
+          onclick="showMessage('More offers will be added soon.')">
+          See All
+        </button>
+
       </div>
 
-    </div>
-  </section>
 
-  <!-- TRENDING -->
-  <section id="trending">
+      <div class="offer-list">
 
-    <div class="section-head">
-      <h2>🔥 <span data-i18n="trendTitle">Trending</span></h2>
-      <p data-i18n="trendSub">Popular digital topics</p>
-    </div>
+        <div class="offer">
 
-    <div class="trend-grid">
+          <div class="offer-img">
+            🎁
+          </div>
 
-      <div class="trend-card">
-        <div class="emoji">🤖</div>
-        <h3>AI Tools</h3>
-        <p data-i18n="trend1">Explore practical AI tools for digital work.</p>
+          <div class="offer-body">
+
+            <h3>Creator Starter</h3>
+
+            <p>
+              Useful resources for beginners.
+            </p>
+
+            <button
+              class="offer-btn"
+              onclick="showMessage('Creator Starter will be available soon.')">
+              View Offer
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="offer">
+
+          <div class="offer-img">
+            🤖
+          </div>
+
+          <div class="offer-body">
+
+            <h3>AI Resources</h3>
+
+            <p>
+              Discover useful AI resources.
+            </p>
+
+            <button
+              class="offer-btn"
+              onclick="scrollToId('ai')">
+              Explore
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="offer">
+
+          <div class="offer-img">
+            📚
+          </div>
+
+          <div class="offer-body">
+
+            <h3>Skill Learning</h3>
+
+            <p>
+              Practical digital learning resources.
+            </p>
+
+            <button
+              class="offer-btn"
+              onclick="scrollToId('tutorial')">
+              Learn
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="offer">
+
+          <div class="offer-img">
+            🚀
+          </div>
+
+          <div class="offer-body">
+
+            <h3>Online Growth</h3>
+
+            <p>
+              Tips for building online skills.
+            </p>
+
+            <button
+              class="offer-btn"
+              onclick="scrollToId('tutorial')">
+              Explore
+            </button>
+
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="trend-card">
-        <div class="emoji">🎬</div>
-        <h3>Short Video</h3>
-        <p data-i18n="trend2">Learn ideas for short-form video content.</p>
+    </section>
+
+
+    <!-- ================= TUTORIAL ================= -->
+
+    <section class="section" id="tutorial">
+
+      <div class="section-head">
+
+        <div>
+          <h2>📚 Tutorial</h2>
+          <p>Learn step by step</p>
+        </div>
+
+        <button
+          class="see-all"
+          onclick="showMessage('More tutorials will be added soon.')">
+          See All
+        </button>
+
       </div>
 
-      <div class="trend-card">
-        <div class="emoji">📱</div>
-        <h3>Social Content</h3>
-        <p data-i18n="trend3">Discover useful content creation strategies.</p>
+
+      <div class="tutorial-list">
+
+        <div class="tutorial">
+
+          <div class="tutorial-icon">
+            🎬
+          </div>
+
+          <div class="tutorial-info">
+
+            <h3>
+              How to Create Videos
+            </h3>
+
+            <p>
+              Basic video creation workflow.
+            </p>
+
+          </div>
+
+          <button
+            class="tutorial-btn"
+            onclick="openLesson('video')">
+            View
+          </button>
+
+        </div>
+
+
+        <div class="tutorial">
+
+          <div class="tutorial-icon">
+            🖼️
+          </div>
+
+          <div class="tutorial-info">
+
+            <h3>
+              AI Image Creation
+            </h3>
+
+            <p>
+              Learn how to create better AI prompts.
+            </p>
+
+          </div>
+
+          <button
+            class="tutorial-btn"
+            onclick="openLesson('image')">
+            View
+          </button>
+
+        </div>
+
+
+        <div class="tutorial">
+
+          <div class="tutorial-icon">
+            🎨
+          </div>
+
+          <div class="tutorial-info">
+
+            <h3>
+              Thumbnail Design
+            </h3>
+
+            <p>
+              Learn attractive thumbnail basics.
+            </p>
+
+          </div>
+
+          <button
+            class="tutorial-btn"
+            onclick="openLesson('thumbnail')">
+            View
+          </button>
+
+        </div>
+
+
+        <div class="tutorial">
+
+          <div class="tutorial-icon">
+            📱
+          </div>
+
+          <div class="tutorial-info">
+
+            <h3>
+              Social Media Content
+            </h3>
+
+            <p>
+              Build useful content ideas.
+            </p>
+
+          </div>
+
+          <button
+            class="tutorial-btn"
+            onclick="openLesson('social')">
+            View
+          </button>
+
+        </div>
+
       </div>
 
-    </div>
-  </section>
+    </section>
 
-  <!-- COMMUNITY -->
-  <section id="community">
 
-    <div class="section-head">
-      <h2>📢 <span data-i18n="communityTitle">Community</span></h2>
-      <p data-i18n="communitySub">Connect with AHEAD VIA</p>
-    </div>
+    <!-- ================= AI TOOLS ================= -->
 
-    <div class="community-grid">
+    <section class="section" id="ai">
 
-      <div class="community-card">
-        <div class="big">✈️</div>
-        <h3>Telegram</h3>
-        <button class="btn btn-primary"
-          onclick="openLink('https://t.me/Aheadvia1298')">Open</button>
-      </div>
+      <div class="ai-box">
 
-      <div class="community-card">
-        <div class="big">📢</div>
-        <h3>Telegram Channel</h3>
-        <button class="btn btn-primary"
-          onclick="openLink('https://t.me/Aheadvia1298gf')">Open</button>
-      </div>
+        <small>⚡ AHEAD VIA AI</small>
 
-      <div class="community-card">
-        <div class="big">👥</div>
-        <h3>Telegram Group</h3>
-        <button class="btn btn-primary"
-          onclick="openLink('https://t.me/Aheadviaiskill_hab')">Open</button>
-      </div>
+        <h2>
+          AI Tools For Creators
+        </h2>
 
-      <div class="community-card">
-        <div class="big">📢</div>
-        <h3>Second Channel</h3>
-        <button class="btn btn-primary"
-          onclick="openLink('https://t.me/aheadskillhub120')">Open</button>
-      </div>
-
-      <div class="community-card">
-        <div class="big">👥</div>
-        <h3>Second Group</h3>
-        <button class="btn btn-primary"
-          onclick="openLink('https://t.me/aheadskillhub12')">Open</button>
-      </div>
-
-      <div class="community-card">
-        <div class="big">▶️</div>
-        <h3>YouTube</h3>
-        <button class="btn btn-primary"
-          onclick="openLink('https://www.youtube.com/@KittySnipsStories')">Open</button>
-      </div>
-
-      <div class="community-card">
-        <div class="big">📘</div>
-        <h3>Facebook</h3>
-        <button class="btn btn-primary"
-          onclick="openLink('https://www.facebook.com/share/19YtirSEwS/')">Open</button>
-      </div>
-
-      <div class="community-card">
-        <div class="big">𝕏</div>
-        <h3>X / Twitter</h3>
-        <button class="btn btn-primary"
-          onclick="openLink('https://x.com/Abdulaheadrllm')">Open</button>
-      </div>
-
-      <div class="community-card">
-        <div class="big">📸</div>
-        <h3>Instagram</h3>
-        <button class="btn btn-primary"
-          onclick="openLink('https://www.instagram.com/kittysnipsofficial')">Open</button>
-      </div>
-
-      <div class="community-card">
-        <div class="big">🌐</div>
-        <h3>AHEAD VIA</h3>
-        <button class="btn btn-primary"
-          onclick="scrollToSection('home')">Home</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PROFILE -->
-  <section id="profile">
-
-    <div class="section-head">
-      <h2>👤 <span data-i18n="profileTitle">Profile</span></h2>
-    </div>
-
-    <div class="profile">
-
-      <img
-        src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg"
-        alt="ABDUL AHAD"
-      >
-
-      <div>
-
-        <h2>ABDUL AHAD</h2>
-
-        <p data-i18n="about">
-          Hi, I’m ABDUL AHAD. 👋 I work on different types of websites,
-          digital projects, and online income systems. I also explore
-          income skills, AI tools, video creation, thumbnails, content
-          creation and many other digital topics. 🚀 Through AHEAD VIA
-          SKILL HUB, I aim to bring useful information, tools and resources
-          together in one place.
+        <p>
+          Create images, captions, hashtags, thumbnails and content ideas
+          using simple tools.
         </p>
 
-        <div class="hero-actions">
 
-          <button class="btn btn-primary"
-            onclick="scrollToSection('tools')">
-            🤖 Explore Tools
+        <div class="ai-buttons">
+
+          <button
+            class="ai-btn"
+            onclick="openTool('image')">
+            🖼️ AI Image
           </button>
 
-          <button class="btn btn-secondary"
-            onclick="scrollToSection('community')">
-            📢 Community
+          <button
+            class="ai-btn"
+            onclick="openTool('caption')">
+            ✍️ Caption
+          </button>
+
+          <button
+            class="ai-btn"
+            onclick="openTool('hashtag')">
+            #️⃣ Hashtags
+          </button>
+
+          <button
+            class="ai-btn"
+            onclick="openTool('idea')">
+            💡 Content Ideas
           </button>
 
         </div>
 
       </div>
-    </div>
 
-  </section>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
 
-    <div class="section-head">
-      <h2>📞 <span data-i18n="contactTitle">Contact</span></h2>
+    <!-- ================= COMMUNITY ================= -->
 
-      <p data-i18n="contactSub">
-        Contact options are available through secure action buttons.
-      </p>
-    </div>
+    <section class="section">
 
-    <div class="contact-grid">
+      <div class="section-head">
 
-      <div class="contact-card">
-        <div class="big">💬</div>
-        <h3>WhatsApp</h3>
-        <button class="btn btn-primary"
-          onclick="openLink('https://wa.me/8801400524877')">
-          Open
-        </button>
+        <div>
+          <h2>📢 Community</h2>
+          <p>Connect with AHEAD VIA</p>
+        </div>
+
       </div>
 
-      <div class="contact-card">
-        <div class="big">📞</div>
-        <h3>Phone</h3>
-        <button class="btn btn-primary"
-          onclick="openLink('tel:01335611366')">
-          Call
-        </button>
-      </div>
 
-      <div class="contact-card">
-        <div class="big">✉️</div>
-        <h3>Email</h3>
-        <button class="btn btn-primary"
-          onclick="openLink('mailto:msssaimaislam6@gmail.com')">
-          Email
-        </button>
-      </div>
+      <div class="community">
 
-      <div class="contact-card">
-        <div class="big">✈️</div>
-        <h3>Telegram</h3>
-        <button class="btn btn-primary"
+        <button
+          class="community-btn"
           onclick="openLink('https://t.me/Aheadvia1298')">
-          Message
+
+          <div>✈️</div>
+          <span>Telegram</span>
+
         </button>
+
+
+        <button
+          class="community-btn"
+          onclick="openLink('https://t.me/Aheadviaiskill_hab')">
+
+          <div>👥</div>
+          <span>Group</span>
+
+        </button>
+
+
+        <button
+          class="community-btn"
+          onclick="openLink('https://www.youtube.com/@KittySnipsStories')">
+
+          <div>▶️</div>
+          <span>YouTube</span>
+
+        </button>
+
+
+        <button
+          class="community-btn"
+          onclick="openLink('https://www.facebook.com/share/19YtirSEwS/')">
+
+          <div>📘</div>
+          <span>Facebook</span>
+
+        </button>
+
+
+        <button
+          class="community-btn"
+          onclick="openLink('https://www.instagram.com/kittysnipsofficial')">
+
+          <div>📸</div>
+          <span>Instagram</span>
+
+        </button>
+
+
+        <button
+          class="community-btn"
+          onclick="openLink('https://x.com/Abdulaheadrllm')">
+
+          <div>𝕏</div>
+          <span>X / Twitter</span>
+
+        </button>
+
       </div>
 
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <strong>AHEAD VIA SKILL HUB</strong>
-    <br><br>
-    <span data-i18n="footer">
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+      <strong>AHEAD VIA SKILL HUB</strong>
+
+      <br>
+
       Learn • Create • Grow Online
-    </span>
-  </footer>
 
-</main>
+      <br><br>
+
+      © 2026 AHEAD VIA. All rights reserved.
+
+    </footer>
+
+  </main>
 
 
-<!-- TOOL MODAL -->
-<div class="modal" id="toolModal">
+  <!-- ================= BOTTOM NAV ================= -->
 
-  <div class="modal-box">
+  <nav class="bottom-nav">
 
-    <div class="modal-head">
-      <h2 id="toolModalTitle">Tool</h2>
-      <button class="close"
-        onclick="closeModal('toolModal')">×</button>
-    </div>
+    <button
+      class="nav-item active"
+      onclick="scrollToId('home')">
 
-    <div id="toolBody"></div>
+      <span class="nav-icon">🏠</span>
+      Home
 
-  </div>
+    </button>
+
+
+    <button
+      class="nav-item"
+      onclick="scrollToId('services')">
+
+      <span class="nav-icon">🛒</span>
+      Services
+
+    </button>
+
+
+    <button
+      class="nav-item"
+      onclick="scrollToId('tutorial')">
+
+      <span class="nav-icon">📚</span>
+      Tutorial
+
+    </button>
+
+
+    <button
+      class="nav-item"
+      onclick="showMessage('Account section will be connected in the next step.')">
+
+      <span class="nav-icon">👤</span>
+      Account
+
+    </button>
+
+  </nav>
 
 </div>
 
 
-<!-- LESSON MODAL -->
-<div class="modal" id="lessonModal">
+<!-- ================= GENERAL MODAL ================= -->
 
-  <div class="modal-box">
-
-    <div class="modal-head">
-      <h2 id="lessonTitle">Lesson</h2>
-
-      <button class="close"
-        onclick="closeModal('lessonModal')">×</button>
-    </div>
-
-    <div class="result" id="lessonContent"></div>
-
-  </div>
-
-</div>
-
-
-<!-- SEARCH MODAL -->
-<div class="modal" id="searchModal">
+<div class="modal" id="generalModal">
 
   <div class="modal-box">
 
     <div class="modal-head">
 
-      <h2>🔎 Search</h2>
+      <h2 id="modalTitle">
+        AHEAD VIA
+      </h2>
 
-      <button class="close"
-        onclick="closeModal('searchModal')">×</button>
-
-    </div>
-
-    <div class="field">
-
-      <input
-        id="searchInput"
-        type="search"
-        placeholder="Search tools, lessons, topics..."
-      >
+      <button
+        class="close"
+        onclick="closeModal()">
+        ×
+      </button>
 
     </div>
 
-    <div class="search-results" id="searchResults"></div>
+    <div
+      class="modal-text"
+      id="modalText">
+    </div>
+
+    <button
+      class="modal-btn"
+      onclick="closeModal()">
+      OK
+    </button>
 
   </div>
 
@@ -1469,306 +1688,13 @@ footer strong{
 
 <script>
 
-/* =========================================================
-   AHEAD VIA SKILL HUB
-   COMPLETE SINGLE FILE
-========================================================= */
+/* =========================================
+   BASIC FUNCTIONS
+========================================= */
 
-const state = {
+function scrollToId(id){
 
-  lang:
-    localStorage.getItem("ahead_lang") || "en",
-
-  country:
-    localStorage.getItem("ahead_country") || "international"
-
-};
-
-const $ = id => document.getElementById(id);
-
-
-/* =========================================================
-   TRANSLATIONS
-========================================================= */
-
-const translations = {
-
-en:{
-  brandSub:"Digital Skills • Tools • Resources",
-  welcome:"🚀 WELCOME TO AHEAD VIA",
-  hero1:"Learn.",
-  hero2:"Create.",
-  hero3:"Grow Online.",
-  heroText:"Learn digital skills, explore useful tools, create content, discover AI resources and build your online skills in one place.",
-  exploreTools:"Explore Tools",
-  startLearning:"Start Learning",
-  toolsTitle:"All Tools",
-  toolsSub:"Useful tools in one place",
-  imageTool:"AI Image Generator",
-  imageDesc:"Create images from text prompts.",
-  videoTool:"Video Prompt Maker",
-  videoDesc:"Create prompts and ideas for AI video.",
-  thumbTool:"Thumbnail Maker",
-  thumbDesc:"Create strong thumbnail concepts.",
-  captionTool:"Caption Generator",
-  captionDesc:"Generate social media captions.",
-  hashtagTool:"Hashtag Generator",
-  hashtagDesc:"Generate relevant hashtags.",
-  ideaTool:"Content Ideas",
-  ideaDesc:"Get ideas for posts and videos.",
-  contentTool:"Content Planner",
-  contentDesc:"Build a simple content plan.",
-  qrTool:"QR Code Generator",
-  qrDesc:"Turn a link or text into a QR code.",
-  calcTool:"Calculator",
-  calcDesc:"Quick everyday calculations.",
-  percentTool:"Percentage Tool",
-  percentDesc:"Calculate percentages quickly.",
-  profitTool:"Profit Calculator",
-  profitDesc:"Calculate cost, price and profit.",
-  locationTool:"Location Ideas",
-  locationDesc:"Find content location ideas.",
-  learnTitle:"Learn Digital Skills",
-  learnSub:"Step-by-step learning resources",
-  lesson1:"How to Create Videos",
-  lesson1desc:"Basic video creation workflow.",
-  lesson2:"AI Image Creation",
-  lesson2desc:"Learn how to write better image prompts.",
-  lesson3:"Thumbnail Design",
-  lesson3desc:"Learn the basics of attractive thumbnails.",
-  lesson4:"Hashtag Strategy",
-  lesson4desc:"Learn how to choose relevant hashtags.",
-  lesson5:"Social Media Content",
-  lesson5desc:"Content ideas for social platforms.",
-  lesson6:"Content Promotion",
-  lesson6desc:"Basic organic reach and audience building.",
-  lesson7:"AI Tools for Creators",
-  lesson7desc:"Useful AI workflows for creators.",
-  lesson8:"Online Skill Building",
-  lesson8desc:"Build practical digital skills step by step.",
-  trendTitle:"Trending",
-  trendSub:"Popular digital topics",
-  trend1:"Explore practical AI tools for digital work.",
-  trend2:"Learn ideas for short-form video content.",
-  trend3:"Discover useful content creation strategies.",
-  communityTitle:"Community",
-  communitySub:"Connect with AHEAD VIA",
-  profileTitle:"Profile",
-  about:"Hi, I’m ABDUL AHAD. 👋 I work on different types of websites, digital projects, and online income systems. I also explore different income skills, free earning opportunities, investment-based work, AI tools, video creation, thumbnails, content creation and many other digital topics. 🚀 Through AHEAD VIA SKILL HUB, I aim to bring useful information, tools, and resources together in one place.",
-  contactTitle:"Contact",
-  contactSub:"Contact options are available through secure action buttons.",
-  footer:"Learn • Create • Grow Online"
-},
-
-bn:{
-  brandSub:"ডিজিটাল স্কিল • টুলস • রিসোর্স",
-  welcome:"🚀 AHEAD VIA-তে স্বাগতম",
-  hero1:"শিখুন।",
-  hero2:"তৈরি করুন।",
-  hero3:"অনলাইনে এগিয়ে যান।",
-  heroText:"ডিজিটাল স্কিল শিখুন, প্রয়োজনীয় টুল ব্যবহার করুন, কনটেন্ট তৈরি করুন এবং AI রিসোর্স এক জায়গায় ব্যবহার করুন।",
-  exploreTools:"টুলস দেখুন",
-  startLearning:"শেখা শুরু করুন",
-  toolsTitle:"সব টুলস",
-  toolsSub:"প্রয়োজনীয় টুল এক জায়গায়",
-  imageTool:"AI Image Generator",
-  imageDesc:"Text prompt দিয়ে ছবি তৈরি করুন।",
-  videoTool:"Video Prompt Maker",
-  videoDesc:"AI video-এর জন্য prompt ও idea তৈরি করুন।",
-  thumbTool:"Thumbnail Maker",
-  thumbDesc:"আকর্ষণীয় thumbnail concept তৈরি করুন।",
-  captionTool:"Caption Generator",
-  captionDesc:"Social media caption তৈরি করুন।",
-  hashtagTool:"Hashtag Generator",
-  hashtagDesc:"Relevant hashtag তৈরি করুন।",
-  ideaTool:"Content Ideas",
-  ideaDesc:"Post ও video-এর জন্য idea পান।",
-  contentTool:"Content Planner",
-  contentDesc:"সহজ content plan তৈরি করুন।",
-  qrTool:"QR Code Generator",
-  qrDesc:"Link বা text থেকে QR code তৈরি করুন।",
-  calcTool:"Calculator",
-  calcDesc:"দ্রুত সাধারণ হিসাব করুন।",
-  percentTool:"Percentage Tool",
-  percentDesc:"সহজে percentage হিসাব করুন।",
-  profitTool:"Profit Calculator",
-  profitDesc:"Cost, price ও profit হিসাব করুন।",
-  locationTool:"Location Ideas",
-  locationDesc:"Content-এর জন্য location idea পান।",
-  learnTitle:"ডিজিটাল স্কিল শিখুন",
-  learnSub:"ধাপে ধাপে শেখার রিসোর্স",
-  lesson1:"কীভাবে Video তৈরি করবেন",
-  lesson1desc:"Video তৈরির basic workflow।",
-  lesson2:"AI দিয়ে ছবি তৈরি",
-  lesson2desc:"ভালো image prompt লেখার নিয়ম।",
-  lesson3:"Thumbnail Design",
-  lesson3desc:"আকর্ষণীয় thumbnail তৈরির basic নিয়ম।",
-  lesson4:"Hashtag Strategy",
-  lesson4desc:"সঠিক hashtag বাছাই করার নিয়ম।",
-  lesson5:"Social Media Content",
-  lesson5desc:"Social platform-এর জন্য content idea।",
-  lesson6:"Content Promotion",
-  lesson6desc:"Organic reach ও audience building-এর basic ধারণা।",
-  lesson7:"Creators-এর জন্য AI Tools",
-  lesson7desc:"Creatorদের জন্য useful AI workflow।",
-  lesson8:"Online Skill Building",
-  lesson8desc:"ধাপে ধাপে practical digital skill তৈরি করুন।",
-  trendTitle:"ট্রেন্ডিং",
-  trendSub:"জনপ্রিয় ডিজিটাল বিষয়",
-  trend1:"Digital কাজের জন্য practical AI tools দেখুন।",
-  trend2:"Short-form video content-এর idea শিখুন।",
-  trend3:"Content creation-এর useful strategy জানুন।",
-  communityTitle:"কমিউনিটি",
-  communitySub:"AHEAD VIA-এর সাথে যুক্ত থাকুন",
-  profileTitle:"প্রোফাইল",
-  about:"আমি ABDUL AHAD। 👋 আমি বিভিন্ন ধরনের ওয়েবসাইট, ডিজিটাল প্রজেক্ট ও অনলাইন ইনকাম সিস্টেম নিয়ে কাজ করি। পাশাপাশি বিভিন্ন ইনকাম স্কিল, ফ্রি ইনকামের সুযোগ, ইনভেস্টমেন্ট-ভিত্তিক কাজ, AI টুলস, ভিডিও তৈরি, থাম্বনেইল, কনটেন্ট তৈরি এবং আরও অনেক ডিজিটাল বিষয় নিয়ে কাজ করি। 🚀 AHEAD VIA SKILL HUB-এ এসব দরকারি তথ্য, টুলস ও রিসোর্স এক জায়গায় তুলে ধরার চেষ্টা করছি।",
-  contactTitle:"যোগাযোগ",
-  contactSub:"Contact details সরাসরি দেখানো হচ্ছে না; button ব্যবহার করে যোগাযোগ করুন।",
-  footer:"শিখুন • তৈরি করুন • অনলাইনে এগিয়ে যান"
-}
-
-};
-
-
-/* =========================================================
-   LANGUAGE
-========================================================= */
-
-function applyLanguage(){
-
-  const lang =
-    translations[state.lang]
-      ? state.lang
-      : "en";
-
-  const t =
-    translations[lang];
-
-  document.documentElement.lang = lang;
-
-  document
-    .querySelectorAll("[data-i18n]")
-    .forEach(el=>{
-
-      const key =
-        el.getAttribute("data-i18n");
-
-      if(t[key]){
-        el.textContent = t[key];
-      }
-
-    });
-
-  $("languageSelect").value = lang;
-
-  localStorage.setItem(
-    "ahead_lang",
-    lang
-  );
-
-}
-
-
-/* LANGUAGE CHANGE */
-
-$("languageSelect")
-.addEventListener("change",e=>{
-
-  state.lang =
-    e.target.value;
-
-  /*
-    English and Bangla have complete
-    built-in translations.
-    Other language selections remain
-    available for future content.
-  */
-
-  if(
-    state.lang !== "en" &&
-    state.lang !== "bn"
-  ){
-
-    alert(
-      "This language is available in the language list. Full interface translation can be added next."
-    );
-
-    state.lang="en";
-
-  }
-
-  applyLanguage();
-
-});
-
-
-/* =========================================================
-   COUNTRY
-========================================================= */
-
-$("countrySelect").value =
-  state.country;
-
-$("countrySelect")
-.addEventListener("change",e=>{
-
-  state.country =
-    e.target.value;
-
-  localStorage.setItem(
-    "ahead_country",
-    state.country
-  );
-
-});
-
-
-/* =========================================================
-   THEME
-========================================================= */
-
-if(
-  localStorage.getItem("ahead_theme")
-  === "light"
-){
-
-  document.body.classList.add("light");
-
-  $("themeBtn").textContent="🌙";
-
-}else{
-
-  $("themeBtn").textContent="☀️";
-
-}
-
-
-$("themeBtn")
-.addEventListener("click",()=>{
-
-  document.body.classList.toggle("light");
-
-  const light =
-    document.body.classList.contains("light");
-
-  $("themeBtn").textContent =
-    light ? "🌙" : "☀️";
-
-  localStorage.setItem(
-    "ahead_theme",
-    light ? "light" : "dark"
-  );
-
-});
-
-
-/* =========================================================
-   SCROLL
-========================================================= */
-
-function scrollToSection(id){
-
-  const el=$(id);
+  const el = document.getElementById(id);
 
   if(el){
 
@@ -1782,10 +1708,6 @@ function scrollToSection(id){
 }
 
 
-/* =========================================================
-   LINKS
-========================================================= */
-
 function openLink(url){
 
   window.open(
@@ -1797,917 +1719,285 @@ function openLink(url){
 }
 
 
-/* =========================================================
+/* =========================================
    MODAL
-========================================================= */
+========================================= */
 
-function openModal(id){
+function showMessage(message,title="AHEAD VIA"){
 
-  $(id).classList.add("show");
+  document.getElementById("modalTitle").textContent=title;
 
-}
+  document.getElementById("modalText").textContent=message;
 
-function closeModal(id){
-
-  $(id).classList.remove("show");
+  document.getElementById("generalModal").classList.add("show");
 
 }
 
 
-document
-.querySelectorAll(".modal")
-.forEach(modal=>{
+function closeModal(){
 
-  modal.addEventListener(
-    "click",
-    e=>{
+  document.getElementById("generalModal").classList.remove("show");
 
-      if(e.target===modal){
+}
 
-        modal.classList.remove("show");
 
-      }
+document.getElementById("generalModal").addEventListener("click",function(e){
 
-    }
-  );
+  if(e.target===this){
+    closeModal();
+  }
 
 });
 
 
-/* =========================================================
-   TOOL SYSTEM
-========================================================= */
+/* =========================================
+   THEME
+========================================= */
 
-function openTool(type){
+function toggleTheme(){
 
-  const titleMap={
+  document.body.classList.toggle("dark");
 
-    image:"🖼️ AI Image Generator",
-    video:"🎬 Video Prompt Maker",
-    thumbnail:"🎨 Thumbnail Maker",
-    caption:"✍️ Caption Generator",
-    hashtag:"#️⃣ Hashtag Generator",
-    idea:"💡 Content Ideas",
-    content:"📝 Content Planner",
-    qr:"🔳 QR Code Generator",
-    calc:"🧮 Calculator",
-    percent:"📊 Percentage Tool",
-    profit:"📈 Profit Calculator",
-    location:"📍 Location Ideas"
+  const dark=document.body.classList.contains("dark");
 
-  };
+  document.getElementById("themeBtn").textContent =
+    dark ? "☀️" : "🌙";
 
-  $("toolModalTitle").textContent =
-    titleMap[type] || "Tool";
+  localStorage.setItem(
+    "ahead_theme",
+    dark ? "dark" : "light"
+  );
 
-  let html="";
+}
 
 
-  /* IMAGE */
+if(localStorage.getItem("ahead_theme")==="dark"){
+
+  document.body.classList.add("dark");
+
+  document.getElementById("themeBtn").textContent="☀️";
+
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+function openSearch(){
+
+  showMessage(
+`You can use the Services, Tutorial and AI Tools sections to find available features.
+
+Search system will be connected in a later step.`,
+    "🔎 Search"
+  );
+
+}
+
+
+/* =========================================
+   SLIDER
+========================================= */
+
+let currentSlide=0;
+
+const slides=document.getElementById("slides");
+
+const dots=document.querySelectorAll(".dot");
+
+
+function goSlide(index){
+
+  currentSlide=index;
+
+  slides.style.transform=
+    `translateX(-${index*100}%)`;
+
+  dots.forEach((dot,i)=>{
+
+    dot.classList.toggle(
+      "active",
+      i===index
+    );
+
+  });
+
+}
+
+
+setInterval(()=>{
+
+  currentSlide++;
+
+  if(currentSlide>2){
+    currentSlide=0;
+  }
+
+  goSlide(currentSlide);
+
+},5000);
+
+
+/* =========================================
+   TUTORIAL
+========================================= */
+
+function openLesson(type){
+
+  let title="Tutorial";
+
+  let text="";
+
+
+  if(type==="video"){
+
+    title="🎬 How to Create Videos";
+
+    text=
+`1. Choose one clear topic.
+
+2. Create a strong hook.
+
+3. Prepare a simple script.
+
+4. Record clean audio and video.
+
+5. Add subtitles when useful.
+
+6. Edit unnecessary parts.
+
+7. Add music carefully.
+
+8. Create a good thumbnail.
+
+9. Review the video.
+
+10. Publish and improve from feedback.`;
+
+  }
+
 
   if(type==="image"){
 
-    html=`
+    title="🖼️ AI Image Creation";
 
-      <div class="field">
+    text=
+`A good AI image prompt can include:
 
-        <label>Image Prompt</label>
+• Main subject
+• Environment
+• Background
+• Lighting
+• Camera angle
+• Visual style
+• Quality/details
 
-        <textarea
-          id="imagePrompt"
-          placeholder="Example: futuristic AI city, neon lights, cinematic, ultra detailed"
-        ></textarea>
+Example:
 
-      </div>
-
-      <div class="field">
-
-        <label>Image Style</label>
-
-        <select id="imageStyle">
-
-          <option>Photorealistic</option>
-          <option>Cinematic</option>
-          <option>3D Render</option>
-          <option>Anime</option>
-          <option>Digital Art</option>
-          <option>Fantasy</option>
-          <option>Minimal</option>
-          <option>Cyberpunk</option>
-          <option>Luxury</option>
-
-        </select>
-
-      </div>
-
-      <div class="modal-actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="generateImage()">
-
-          🖼️ Generate Image
-
-        </button>
-
-      </div>
-
-      <img
-        id="generatedImage"
-        class="generated-image"
-        alt="Generated image"
-      >
-
-    `;
+A futuristic city at sunset, cinematic lighting,
+professional photography, highly detailed,
+wide-angle composition.`;
 
   }
 
 
-  /* VIDEO */
+  if(type==="thumbnail"){
 
-  else if(type==="video"){
+    title="🎨 Thumbnail Design";
 
-    html=`
+    text=
+`Good thumbnail basics:
 
-      <div class="field">
+• Keep one main subject.
+• Use large readable text.
+• Use strong contrast.
+• Avoid too much information.
+• Keep the design clean.
+• Make sure it looks good on mobile.
 
-        <label>Video Topic</label>
-
-        <input
-          id="videoTopic"
-          placeholder="Example: AI tools for beginners"
-        >
-
-      </div>
-
-      <div class="field">
-
-        <label>Language</label>
-
-        <select id="videoLang">
-
-          <option value="en">English</option>
-          <option value="bn">বাংলা</option>
-
-        </select>
-
-      </div>
-
-      <div class="modal-actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="generateVideoPrompt()">
-
-          🎬 Create Prompt
-
-        </button>
-
-      </div>
-
-      <div
-        class="result"
-        id="videoResult">
-        Your video prompt will appear here.
-      </div>
-
-    `;
+A thumbnail should communicate the main idea quickly.`;
 
   }
 
 
-  /* THUMBNAIL */
+  if(type==="social"){
 
-  else if(type==="thumbnail"){
+    title="📱 Social Media Content";
 
-    html=`
+    text=
+`A simple content structure:
 
-      <div class="field">
+1. Hook
+2. Main information
+3. Example
+4. Useful tip
+5. Call to action
 
-        <label>Video Topic</label>
+Try different formats such as:
 
-        <input
-          id="thumbTopic"
-          placeholder="Example: Make Money Online"
-        >
-
-      </div>
-
-      <div class="field">
-
-        <label>Language</label>
-
-        <select id="thumbLang">
-
-          <option value="en">English</option>
-          <option value="bn">বাংলা</option>
-
-        </select>
-
-      </div>
-
-      <div class="modal-actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="generateThumbnail()">
-
-          🎨 Create Thumbnail Idea
-
-        </button>
-
-      </div>
-
-      <div
-        class="result"
-        id="thumbResult">
-        Your thumbnail concept will appear here.
-      </div>
-
-    `;
+• Short videos
+• Educational posts
+• Tutorials
+• Tips
+• Questions
+• Behind-the-scenes content`;
 
   }
 
 
-  /* CAPTION */
-
-  else if(type==="caption"){
-
-    html=`
-
-      <div class="field">
-
-        <label>Topic</label>
-
-        <textarea
-          id="captionTopic"
-          placeholder="Write your topic..."
-        ></textarea>
-
-      </div>
-
-      <div class="field">
-
-        <label>Output Language</label>
-
-        <select id="captionLang">
-
-          <option value="en">English</option>
-          <option value="bn">বাংলা</option>
-
-        </select>
-
-      </div>
-
-      <div class="modal-actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="generateCaption()">
-
-          ✍️ Generate Caption
-
-        </button>
-
-      </div>
-
-      <div
-        class="result"
-        id="captionResult">
-        Your caption will appear here.
-      </div>
-
-    `;
-
-  }
-
-
-  /* HASHTAG */
-
-  else if(type==="hashtag"){
-
-    html=`
-
-      <div class="field">
-
-        <label>Topic</label>
-
-        <input
-          id="hashtagTopic"
-          placeholder="Example: AI, YouTube, Business"
-        >
-
-      </div>
-
-      <div class="modal-actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="generateHashtags()">
-
-          #️⃣ Generate Hashtags
-
-        </button>
-
-      </div>
-
-      <div
-        class="result"
-        id="hashtagResult">
-      </div>
-
-    `;
-
-  }
-
-
-  /* IDEAS */
-
-  else if(type==="idea"){
-
-    html=`
-
-      <div class="field">
-
-        <label>Content Category</label>
-
-        <input
-          id="ideaTopic"
-          placeholder="Example: Technology"
-        >
-
-      </div>
-
-      <div class="modal-actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="generateIdeas()">
-
-          💡 Generate Ideas
-
-        </button>
-
-      </div>
-
-      <div
-        class="result"
-        id="ideaResult">
-      </div>
-
-    `;
-
-  }
-
-
-  /* CONTENT */
-
-  else if(type==="content"){
-
-    html=`
-
-      <div class="field">
-
-        <label>Topic</label>
-
-        <input
-          id="contentTopic"
-          placeholder="Example: Digital Skills"
-        >
-
-      </div>
-
-      <div class="field">
-
-        <label>Language</label>
-
-        <select id="contentLang">
-
-          <option value="en">English</option>
-          <option value="bn">বাংলা</option>
-
-        </select>
-
-      </div>
-
-      <div class="modal-actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="generatePlan()">
-
-          📝 Create Plan
-
-        </button>
-
-      </div>
-
-      <div
-        class="result"
-        id="contentResult">
-      </div>
-
-    `;
-
-  }
-
-
-  /* QR */
-
-  else if(type==="qr"){
-
-    html=`
-
-      <div class="field">
-
-        <label>Link or Text</label>
-
-        <input
-          id="qrText"
-          placeholder="https://example.com"
-        >
-
-      </div>
-
-      <div class="modal-actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="generateQR()">
-
-          🔳 Generate QR
-
-        </button>
-
-      </div>
-
-      <div style="text-align:center;margin-top:18px">
-
-        <img
-          id="qrImage"
-          style="
-            max-width:260px;
-            width:100%;
-            border-radius:15px;
-            display:none;
-          "
-          alt="QR Code"
-        >
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* CALCULATOR */
-
-  else if(type==="calc"){
-
-    html=`
-
-      <div class="field">
-
-        <label>Expression</label>
-
-        <input
-          id="calcInput"
-          placeholder="Example: 25 * 4 + 10"
-        >
-
-      </div>
-
-      <div class="modal-actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="calculate()">
-
-          🧮 Calculate
-
-        </button>
-
-      </div>
-
-      <div
-        class="result"
-        id="calcResult">
-      </div>
-
-    `;
-
-  }
-
-
-  /* PERCENTAGE */
-
-  else if(type==="percent"){
-
-    html=`
-
-      <div class="field">
-
-        <label>Percentage (%)</label>
-
-        <input
-          id="percentValue"
-          type="number"
-          placeholder="20"
-        >
-
-      </div>
-
-      <div class="field">
-
-        <label>Number</label>
-
-        <input
-          id="percentNumber"
-          type="number"
-          placeholder="500"
-        >
-
-      </div>
-
-      <div class="modal-actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="calculatePercent()">
-
-          📊 Calculate
-
-        </button>
-
-      </div>
-
-      <div
-        class="result"
-        id="percentResult">
-      </div>
-
-    `;
-
-  }
-
-
-  /* PROFIT */
-
-  else if(type==="profit"){
-
-    html=`
-
-      <div class="field">
-
-        <label>Cost Price</label>
-
-        <input
-          id="costPrice"
-          type="number"
-        >
-
-      </div>
-
-      <div class="field">
-
-        <label>Selling Price</label>
-
-        <input
-          id="sellingPrice"
-          type="number"
-        >
-
-      </div>
-
-      <div class="modal-actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="calculateProfit()">
-
-          📈 Calculate Profit
-
-        </button>
-
-      </div>
-
-      <div
-        class="result"
-        id="profitResult">
-      </div>
-
-    `;
-
-  }
-
-
-  /* LOCATION */
-
-  else if(type==="location"){
-
-    html=`
-
-      <div class="field">
-
-        <label>Content Type</label>
-
-        <input
-          id="locationTopic"
-          placeholder="Example: Travel video"
-        >
-
-      </div>
-
-      <div class="modal-actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="generateLocations()">
-
-          📍 Generate Ideas
-
-        </button>
-
-      </div>
-
-      <div
-        class="result"
-        id="locationResult">
-      </div>
-
-    `;
-
-  }
-
-
-  $("toolBody").innerHTML=html;
-
-  openModal("toolModal");
+  showMessage(text,title);
 
 }
 
 
-/* =========================================================
-   IMAGE GENERATOR
-========================================================= */
+/* =========================================
+   TOOL SYSTEM
+========================================= */
 
-function generateImage(){
+function openTool(type){
 
-  const prompt =
-    $("imagePrompt").value.trim();
+  if(type==="thumbnail"){
 
-  const style =
-    $("imageStyle").value;
+    showMessage(
+`Thumbnail Idea:
 
-  const img =
-    $("generatedImage");
-
-  if(!prompt){
-
-    alert("Please enter an image prompt.");
-
-    return;
-
-  }
-
-  const finalPrompt =
-    `${prompt}, ${style} style, premium digital art, professional, highly detailed`;
-
-  const url =
-    "https://image.pollinations.ai/prompt/" +
-    encodeURIComponent(finalPrompt) +
-    "?width=768&height=768&nologo=true";
-
-  img.src=url;
-
-  img.style.display="block";
-
-  img.onload=()=>{
-
-    img.scrollIntoView({
-      behavior:"smooth",
-      block:"center"
-    });
-
-  };
-
-  img.onerror=()=>{
-
-    alert(
-      "The image service did not return an image right now. Please try again."
+• Large headline
+• One clear subject
+• High contrast
+• 3–6 words maximum
+• Clear design for mobile screens`,
+      "🎨 Thumbnail Maker"
     );
 
-  };
+    return;
 
-}
+  }
 
 
-/* =========================================================
-   VIDEO PROMPT
-========================================================= */
+  if(type==="caption"){
 
-function generateVideoPrompt(){
+    showMessage(
+`Caption Example:
 
-  const topic =
-    $("videoTopic").value.trim();
+✨ New digital skill today!
 
-  const lang =
-    $("videoLang").value;
+Learn something useful, create something valuable,
+and keep improving your online skills. 🚀
 
-  if(!topic){
-
-    alert("Please enter a video topic.");
+#AHEADVIA #DigitalSkills #OnlineSkills`,
+      "✍️ Caption Generator"
+    );
 
     return;
 
   }
 
-  if(lang==="bn"){
 
-    $("videoResult").textContent =
-`🎬 Video Prompt
+  if(type==="hashtag"){
 
-Topic: ${topic}
-
-🎯 Hook:
-প্রথম 2–3 সেকেন্ডে attention-grabbing hook ব্যবহার করুন।
-
-📝 Script:
-${topic} বিষয়টি সহজ ও সংক্ষিপ্তভাবে ব্যাখ্যা করুন।
-
-🎥 Visual:
-Clean visuals, smooth transitions এবং relevant footage ব্যবহার করুন।
-
-🔊 Audio:
-Clear voice-over এবং suitable background music ব্যবহার করুন।
-
-📱 Format:
-Vertical 9:16 short-form video.
-
-🚀 Ending:
-শেষে একটি simple call-to-action দিন।`;
-
-  }else{
-
-    $("videoResult").textContent =
-`🎬 Video Prompt
-
-Topic: ${topic}
-
-🎯 Hook:
-Start with a strong attention-grabbing hook in the first 2–3 seconds.
-
-📝 Script:
-Explain ${topic} clearly and concisely.
-
-🎥 Visual:
-Use clean visuals, smooth transitions and relevant footage.
-
-🔊 Audio:
-Use clear voice-over and suitable background music.
-
-📱 Format:
-Vertical 9:16 short-form video.
-
-🚀 Ending:
-Finish with a simple call-to-action.`;
-
-  }
-
-}
-
-
-/* =========================================================
-   THUMBNAIL
-========================================================= */
-
-function generateThumbnail(){
-
-  const topic =
-    $("thumbTopic").value.trim();
-
-  const lang =
-    $("thumbLang").value;
-
-  if(!topic){
-
-    alert("Please enter a topic.");
-
-    return;
-
-  }
-
-  if(lang==="bn"){
-
-    $("thumbResult").textContent =
-`🎨 Thumbnail Concept
-
-Topic: ${topic}
-
-• বড় ও সহজ headline
-• একটি main subject
-• High contrast background
-• Face/expression থাকলে clear রাখুন
-• 3–6 শব্দের মধ্যে text রাখুন
-• Mobile screen-এ thumbnail পরিষ্কার দেখা যায় কিনা পরীক্ষা করুন`;
-
-  }else{
-
-    $("thumbResult").textContent =
-`🎨 Thumbnail Concept
-
-Topic: ${topic}
-
-• Use a large, simple headline
-• Keep one clear main subject
-• Use a high-contrast background
-• Keep faces/expressions clear
-• Use 3–6 words maximum
-• Make sure it remains readable on mobile screens`;
-
-  }
-
-}
-
-
-/* =========================================================
-   CAPTION
-========================================================= */
-
-function generateCaption(){
-
-  const topic =
-    $("captionTopic").value.trim();
-
-  const lang =
-    $("captionLang").value;
-
-  if(!topic){
-
-    alert("Please enter a topic.");
-
-    return;
-
-  }
-
-  if(lang==="bn"){
-
-    $("captionResult").textContent =
-`✨ ${topic}
-
-আজকের পোস্টটি আপনার জন্য। 🚀
-
-দরকারি তথ্য, নতুন idea এবং practical tips একসাথে।
-
-আপনার মতামত comment-এ জানান। 👇
-
-#AHEADVIA #DigitalSkills #OnlineSkills`;
-
-  }else{
-
-    $("captionResult").textContent =
-`✨ ${topic}
-
-Useful information, fresh ideas and practical tips — all in one place. 🚀
-
-Share your thoughts in the comments. 👇
-
-#AHEADVIA #DigitalSkills #OnlineSkills`;
-
-  }
-
-}
-
-
-/* =========================================================
-   HASHTAGS
-========================================================= */
-
-function generateHashtags(){
-
-  const topic =
-    $("hashtagTopic").value.trim();
-
-  if(!topic){
-
-    alert("Please enter a topic.");
-
-    return;
-
-  }
-
-  const clean =
-    topic
-    .replace(/[^a-zA-Z0-9\u0980-\u09FF ]/g,"")
-    .trim()
-    .split(/\s+/)
-    .slice(0,5)
-    .join("");
-
-  $("hashtagResult").textContent =
-`#${clean}
-#AHEADVIA
+    showMessage(
+`#AHEADVIA
 #DigitalSkills
 #OnlineSkills
 #AITools
@@ -2715,874 +2005,79 @@ function generateHashtags(){
 #VideoCreation
 #SocialMedia
 #LearnOnline
-#CreatorTips`;
+#CreatorTips`,
+      "#️⃣ Hashtag Generator"
+    );
 
-}
+    return;
+
+  }
 
 
-/* =========================================================
-   CONTENT IDEAS
-========================================================= */
+  if(type==="idea"){
 
-function generateIdeas(){
-
-  const topic =
-    $("ideaTopic").value.trim()
-    || "Digital Skills";
-
-  $("ideaResult").textContent =
-`💡 ${topic} Content Ideas
+    showMessage(
+`💡 Content Ideas:
 
 1. Beginner Guide
 2. Top 5 Useful Tips
 3. Common Mistakes
 4. Step-by-Step Tutorial
-5. Tools You Should Know
+5. Useful Tools
 6. Before vs After
 7. Quick Tips
-8. Frequently Asked Questions
+8. FAQ
 9. Beginner Challenge
-10. Expert Tips`;
-
-
-}
-
-
-/* =========================================================
-   CONTENT PLAN
-========================================================= */
-
-function generatePlan(){
-
-  const topic =
-    $("contentTopic").value.trim();
-
-  const lang =
-    $("contentLang").value;
-
-  if(!topic){
-
-    alert("Please enter a topic.");
-
-    return;
-
-  }
-
-  if(lang==="bn"){
-
-    $("contentResult").textContent =
-`📝 7-Day Content Plan — ${topic}
-
-Day 1: Introduction
-Day 2: Beginner Tips
-Day 3: Common Mistakes
-Day 4: Tutorial
-Day 5: Useful Tools
-Day 6: FAQ
-Day 7: Summary + Call To Action`;
-
-  }else{
-
-    $("contentResult").textContent =
-`📝 7-Day Content Plan — ${topic}
-
-Day 1: Introduction
-Day 2: Beginner Tips
-Day 3: Common Mistakes
-Day 4: Tutorial
-Day 5: Useful Tools
-Day 6: FAQ
-Day 7: Summary + Call To Action`;
-
-  }
-
-}
-
-
-/* =========================================================
-   QR
-========================================================= */
-
-function generateQR(){
-
-  const text =
-    $("qrText").value.trim();
-
-  if(!text){
-
-    alert("Please enter a link or text.");
-
-    return;
-
-  }
-
-  const img =
-    $("qrImage");
-
-  img.src =
-    "https://api.qrserver.com/v1/create-qr-code/?size=500x500&data="
-    + encodeURIComponent(text);
-
-  img.style.display="inline-block";
-
-}
-
-
-/* =========================================================
-   CALCULATOR
-========================================================= */
-
-function calculate(){
-
-  const value =
-    $("calcInput").value.trim();
-
-  if(!value){
-
-    alert("Enter a calculation.");
-
-    return;
-
-  }
-
-  /*
-    Only basic mathematical characters
-    are allowed.
-  */
-
-  if(
-    !/^[0-9+\-*/().%\s]+$/.test(value)
-  ){
-
-    $("calcResult").textContent =
-      "Invalid calculation.";
-
-    return;
-
-  }
-
-  try{
-
-    const sanitized =
-      value.replace(
-        /(\d+(?:\.\d+)?)%/g,
-        "($1/100)"
-      );
-
-    /*
-      Basic calculator parser.
-      No external API required.
-    */
-
-    const tokens =
-      sanitized.match(
-        /(?:\d+(?:\.\d+)?)|[()+\-*/]/g
-      );
-
-    if(!tokens){
-
-      throw new Error();
-
-    }
-
-    let index=0;
-
-    function parseExpression(){
-
-      let result =
-        parseTerm();
-
-      while(
-        tokens[index]==="+" ||
-        tokens[index]==="-"
-      ){
-
-        const op =
-          tokens[index++];
-
-        const right =
-          parseTerm();
-
-        result =
-          op==="+" ?
-          result+right :
-          result-right;
-
-      }
-
-      return result;
-
-    }
-
-    function parseTerm(){
-
-      let result =
-        parseFactor();
-
-      while(
-        tokens[index]==="*" ||
-        tokens[index]==="/"
-      ){
-
-        const op =
-          tokens[index++];
-
-        const right =
-          parseFactor();
-
-        result =
-          op==="*" ?
-          result*right :
-          result/right;
-
-      }
-
-      return result;
-
-    }
-
-    function parseFactor(){
-
-      const token =
-        tokens[index++];
-
-      if(token==="("){
-
-        const result =
-          parseExpression();
-
-        if(tokens[index++]!==")"){
-          throw new Error();
-        }
-
-        return result;
-
-      }
-
-      if(token==="-"){
-        return -parseFactor();
-      }
-
-      const number =
-        Number(token);
-
-      if(Number.isNaN(number)){
-        throw new Error();
-      }
-
-      return number;
-
-    }
-
-    const result =
-      parseExpression();
-
-    if(index!==tokens.length){
-      throw new Error();
-    }
-
-    $("calcResult").textContent =
-      "Result: " + result;
-
-  }catch(error){
-
-    $("calcResult").textContent =
-      "Invalid calculation.";
-
-  }
-
-}
-
-
-/* =========================================================
-   PERCENTAGE
-========================================================= */
-
-function calculatePercent(){
-
-  const p =
-    parseFloat(
-      $("percentValue").value
+10. Expert Tips`,
+      "💡 Content Ideas"
     );
 
-  const n =
-    parseFloat(
-      $("percentNumber").value
+    return;
+
+  }
+
+
+  if(type==="qr"){
+
+    showMessage(
+`QR Code Generator will be connected in the next tools step.
+
+You will be able to enter a link and generate a QR code.`,
+      "🔳 QR Generator"
     );
 
-  if(
-    Number.isNaN(p) ||
-    Number.isNaN(n)
-  ){
-
-    alert("Enter both values.");
-
     return;
 
   }
 
-  const result =
-    (p*n)/100;
 
-  $("percentResult").textContent =
-    `${p}% of ${n} = ${result}`;
+  if(type==="image"){
 
-}
+    showMessage(
+`AI Image Generator will be connected in the next tools step.
 
-
-/* =========================================================
-   PROFIT
-========================================================= */
-
-function calculateProfit(){
-
-  const cost =
-    parseFloat(
-      $("costPrice").value
+You will be able to enter a prompt and generate an image.`,
+      "🖼️ AI Image Generator"
     );
 
-  const sell =
-    parseFloat(
-      $("sellingPrice").value
-    );
-
-  if(
-    Number.isNaN(cost) ||
-    Number.isNaN(sell)
-  ){
-
-    alert("Enter both prices.");
-
     return;
 
   }
 
-  const profit =
-    sell-cost;
-
-  const percentage =
-    cost ?
-    (profit/cost)*100 :
-    0;
-
-  $("profitResult").textContent =
-`Cost Price: ${cost}
-Selling Price: ${sell}
-Profit/Loss: ${profit}
-Percentage: ${percentage.toFixed(2)}%`;
-
 }
 
 
-/* =========================================================
-   LOCATION
-========================================================= */
+/* =========================================
+   PREVENT MODAL SCROLL ISSUES
+========================================= */
 
-function generateLocations(){
+document.addEventListener("keydown",function(e){
 
-  const topic =
-    $("locationTopic").value.trim()
-    || "Content";
-
-  $("locationResult").textContent =
-`📍 Location Ideas for ${topic}
-
-1. Clean indoor setup
-2. Outdoor natural background
-3. Café / workspace
-4. City street
-5. Rooftop
-6. Park
-7. Studio-style background
-8. Minimal wall background
-9. Desk setup
-10. Local landmark`;
-
-}
-
-
-/* =========================================================
-   LESSONS
-========================================================= */
-
-const lessons={
-
-1:{
-  en:{
-    title:"🎬 How to Create Videos",
-    text:`Video Creation Basic Steps:
-
-1. Choose one clear topic.
-2. Create a strong hook for the first 2–3 seconds.
-3. Prepare a simple script.
-4. Record clean audio.
-5. Add subtitles when useful.
-6. Create an attractive thumbnail.
-7. Review the video before publishing.
-8. Add a clear call-to-action.`
-  },
-
-  bn:{
-    title:"🎬 কীভাবে Video তৈরি করবেন",
-    text:`Video তৈরির Basic Steps:
-
-1. একটি clear topic নির্বাচন করুন।
-2. প্রথম 2–3 seconds-এ strong hook দিন।
-3. প্রয়োজন অনুযায়ী simple script তৈরি করুন।
-4. পরিষ্কার audio ব্যবহার করুন।
-5. প্রয়োজন হলে subtitle দিন।
-6. Attractive thumbnail তৈরি করুন।
-7. Publish করার আগে video check করুন।
-8. শেষে clear call-to-action দিন।`
+  if(e.key==="Escape"){
+    closeModal();
   }
-},
-
-2:{
-  en:{
-    title:"🖼️ AI Image Creation",
-    text:`AI Image Prompt Basics:
-
-1. Clearly describe the subject.
-2. Add environment and background.
-3. Mention the visual style.
-4. Add lighting information.
-5. Specify camera/composition when needed.
-6. Keep the prompt clear and specific.`
-  },
-
-  bn:{
-    title:"🖼️ AI দিয়ে ছবি তৈরি",
-    text:`AI Image Prompt-এর Basic নিয়ম:
-
-1. Subject পরিষ্কারভাবে লিখুন।
-2. Environment ও background লিখুন।
-3. Visual style উল্লেখ করুন।
-4. Lighting উল্লেখ করুন।
-5. প্রয়োজন হলে camera/composition লিখুন।
-6. Prompt পরিষ্কার ও নির্দিষ্ট রাখুন।`
-  }
-},
-
-3:{
-  en:{
-    title:"🎨 Thumbnail Design",
-    text:`Thumbnail Basics:
-
-1. Use one main subject.
-2. Keep the headline short.
-3. Use strong contrast.
-4. Avoid too much text.
-5. Make important elements large.
-6. Check how it looks on mobile.`
-  },
-
-  bn:{
-    title:"🎨 Thumbnail Design",
-    text:`Thumbnail তৈরির Basic নিয়ম:
-
-1. একটি main subject রাখুন।
-2. Headline ছোট রাখুন।
-3. Strong contrast ব্যবহার করুন।
-4. বেশি text ব্যবহার করবেন না।
-5. গুরুত্বপূর্ণ বিষয় বড় রাখুন।
-6. Mobile screen-এ দেখে পরীক্ষা করুন।`
-  }
-},
-
-4:{
-  en:{
-    title:"#️⃣ Hashtag Strategy",
-    text:`Hashtag Strategy:
-
-1. Use hashtags related to your topic.
-2. Mix broad and specific hashtags.
-3. Avoid irrelevant hashtags.
-4. Create a small reusable hashtag set.
-5. Test which topics perform better.`
-  },
-
-  bn:{
-    title:"#️⃣ Hashtag Strategy",
-    text:`Hashtag Strategy:
-
-1. Topic-এর সাথে সম্পর্কিত hashtag ব্যবহার করুন।
-2. Broad এবং specific hashtag মিশিয়ে ব্যবহার করুন।
-3. Irrelevant hashtag ব্যবহার করবেন না।
-4. Reusable hashtag list তৈরি করুন।
-5. কোন topic ভালো কাজ করে তা দেখুন।`
-  }
-},
-
-5:{
-  en:{
-    title:"📱 Social Media Content",
-    text:`Social Media Content:
-
-1. Know your audience.
-2. Choose a clear topic.
-3. Create useful or entertaining content.
-4. Use a strong opening.
-5. Keep the message simple.
-6. Encourage comments and discussion.`
-  },
-
-  bn:{
-    title:"📱 Social Media Content",
-    text:`Social Media Content:
-
-1. আপনার audience সম্পর্কে জানুন।
-2. একটি clear topic বেছে নিন।
-3. Useful বা entertaining content তৈরি করুন।
-4. Strong opening ব্যবহার করুন।
-5. Message সহজ রাখুন।
-6. Comment ও discussion-এর সুযোগ রাখুন।`
-  }
-},
-
-6:{
-  en:{
-    title:"📈 Content Promotion",
-    text:`Content Promotion Basics:
-
-1. Publish consistently.
-2. Use relevant titles and descriptions.
-3. Share content across suitable platforms.
-4. Reply to comments.
-5. Study your analytics.
-6. Improve future content based on results.`
-  },
-
-  bn:{
-    title:"📈 Content Promotion",
-    text:`Content Promotion-এর Basic নিয়ম:
-
-1. নিয়মিত content publish করুন।
-2. Relevant title ও description ব্যবহার করুন।
-3. উপযুক্ত platform-এ share করুন।
-4. Comment-এর reply দিন।
-5. Analytics দেখুন।
-6. Result অনুযায়ী পরের content উন্নত করুন।`
-  }
-},
-
-7:{
-  en:{
-    title:"🤖 AI Tools for Creators",
-    text:`AI Creator Workflow:
-
-1. Use AI for brainstorming.
-2. Generate draft scripts.
-3. Create image concepts.
-4. Improve captions.
-5. Organize content ideas.
-6. Always review AI output before publishing.`
-  },
-
-  bn:{
-    title:"🤖 Creators-এর জন্য AI Tools",
-    text:`AI Creator Workflow:
-
-1. Brainstorming-এর জন্য AI ব্যবহার করুন।
-2. Script-এর draft তৈরি করুন।
-3. Image concept তৈরি করুন।
-4. Caption উন্নত করুন।
-5. Content idea organize করুন।
-6. Publish করার আগে AI output অবশ্যই check করুন।`
-  }
-},
-
-8:{
-  en:{
-    title:"💰 Online Skill Building",
-    text:`Build Practical Digital Skills:
-
-1. Start with one skill.
-2. Practice regularly.
-3. Create small projects.
-4. Build a portfolio.
-5. Learn from mistakes.
-6. Gradually add new skills.`
-  },
-
-  bn:{
-    title:"💰 Online Skill Building",
-    text:`Practical Digital Skill তৈরি করুন:
-
-1. একটি skill দিয়ে শুরু করুন।
-2. নিয়মিত practice করুন।
-3. ছোট project তৈরি করুন।
-4. Portfolio তৈরি করুন।
-5. ভুল থেকে শিখুন।
-6. ধীরে ধীরে নতুন skill যোগ করুন।`
-  }
-}
-
-};
-
-
-/* =========================================================
-   VIEW LESSON
-========================================================= */
-
-function viewLesson(number){
-
-  const lesson =
-    lessons[number];
-
-  if(!lesson){
-
-    return;
-
-  }
-
-  const lang =
-    state.lang==="bn"
-    ? "bn"
-    : "en";
-
-  $("lessonTitle").textContent =
-    lesson[lang].title;
-
-  $("lessonContent").textContent =
-    lesson[lang].text;
-
-  openModal("lessonModal");
-
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-const searchItems=[
-
-  {
-    title:"AI Image Generator",
-    type:"image"
-  },
-
-  {
-    title:"Video Prompt Maker",
-    type:"video"
-  },
-
-  {
-    title:"Thumbnail Maker",
-    type:"thumbnail"
-  },
-
-  {
-    title:"Caption Generator",
-    type:"caption"
-  },
-
-  {
-    title:"Hashtag Generator",
-    type:"hashtag"
-  },
-
-  {
-    title:"Content Ideas",
-    type:"idea"
-  },
-
-  {
-    title:"Content Planner",
-    type:"content"
-  },
-
-  {
-    title:"QR Code Generator",
-    type:"qr"
-  },
-
-  {
-    title:"Calculator",
-    type:"calc"
-  },
-
-  {
-    title:"Percentage Tool",
-    type:"percent"
-  },
-
-  {
-    title:"Profit Calculator",
-    type:"profit"
-  },
-
-  {
-    title:"Location Ideas",
-    type:"location"
-  },
-
-  {
-    title:"How to Create Videos",
-    lesson:1
-  },
-
-  {
-    title:"AI Image Creation",
-    lesson:2
-  },
-
-  {
-    title:"Thumbnail Design",
-    lesson:3
-  },
-
-  {
-    title:"Hashtag Strategy",
-    lesson:4
-  },
-
-  {
-    title:"Social Media Content",
-    lesson:5
-  },
-
-  {
-    title:"Content Promotion",
-    lesson:6
-  },
-
-  {
-    title:"AI Tools for Creators",
-    lesson:7
-  },
-
-  {
-    title:"Online Skill Building",
-    lesson:8
-  }
-
-];
-
-
-function performSearch(){
-
-  const query =
-    $("searchInput")
-    .value
-    .trim()
-    .toLowerCase();
-
-  const box =
-    $("searchResults");
-
-  box.innerHTML="";
-
-  if(!query){
-
-    box.innerHTML =
-      `<div class="search-item">
-        Type something to search.
-      </div>`;
-
-    return;
-
-  }
-
-  const results =
-    searchItems.filter(item=>
-      item.title
-      .toLowerCase()
-      .includes(query)
-    );
-
-  if(!results.length){
-
-    box.innerHTML =
-      `<div class="search-item">
-        No results found.
-      </div>`;
-
-    return;
-
-  }
-
-  results.forEach(item=>{
-
-    const div =
-      document.createElement("div");
-
-    div.className="search-item";
-
-    div.textContent =
-      item.title;
-
-    div.onclick=()=>{
-
-      closeModal("searchModal");
-
-      if(item.type){
-
-        openTool(item.type);
-
-      }
-
-      if(item.lesson){
-
-        viewLesson(item.lesson);
-
-      }
-
-    };
-
-    box.appendChild(div);
-
-  });
-
-}
-
-
-$("searchBtn")
-.addEventListener("click",()=>{
-
-  openModal("searchModal");
-
-  setTimeout(()=>{
-    $("searchInput").focus();
-  },100);
 
 });
-
-
-$("searchInput")
-.addEventListener(
-  "input",
-  performSearch
-);
-
-
-/* =========================================================
-   KEYBOARD
-========================================================= */
-
-document.addEventListener(
-  "keydown",
-  e=>{
-
-    if(e.key==="Escape"){
-
-      document
-      .querySelectorAll(".modal")
-      .forEach(modal=>{
-        modal.classList.remove("show");
-      });
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   START
-========================================================= */
-
-applyLanguage();
 
 </script>
 
