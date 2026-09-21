@@ -1,829 +1,991 @@
-<script id="AHEAD-VIA-FINAL-FIX">
-(function () {
-  "use strict";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ahad Bhai Iskil Hab — AI, social media and online skills learning hub.">
+  <title>Ahad Bhai Iskil Hab | ABDUL AHEAD</title>
 
-  const $ = (s) => document.querySelector(s);
-
-  /* =========================================================
-     1. LANGUAGE
-     ========================================================= */
-
-  // নতুন ভিজিটে সাইট English থাকবে।
-  // পুরোনো ভার্সনের ভুল Bangla setting থাকলে একবার English করা হবে।
-  if (!localStorage.getItem("av_language_user_set")) {
-    localStorage.setItem("av_lang", "English");
-  }
-
-  window.countryChange = function () {
-    const country = $("#country")?.value || "Bangladesh";
-
-    const language =
-      country === "Bangladesh"
-        ? "Bangla"
-        : (
-            window.defaultLang &&
-            window.defaultLang[country]
-              ? window.defaultLang[country]
-              : "English"
-          );
-
-    if ($("#language")) {
-      $("#language").value = language;
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
-    localStorage.setItem("av_country", country);
-    localStorage.setItem("av_lang", language);
-    localStorage.setItem("av_language_user_set", "1");
-
-    if (typeof applyLang === "function") {
-      applyLang(language);
+    :root {
+      --bg: #f5f7fb;
+      --card: rgba(255,255,255,.92);
+      --text: #151827;
+      --muted: #687083;
+      --primary: #6c4df6;
+      --secondary: #00b894;
+      --border: #e6e8ef;
+      --shadow: 0 15px 45px rgba(30,35,70,.10);
     }
 
-    if (typeof syncAccount === "function") {
-      syncAccount();
+    body.dark {
+      --bg: #0b0d17;
+      --card: #141827;
+      --text: #f5f7ff;
+      --muted: #a8afc1;
+      --border: #272c3d;
+      --shadow: 0 15px 45px rgba(0,0,0,.35);
     }
 
-    if (typeof renderGenerators === "function") {
-      renderGenerators();
-    }
-  };
-
-
-  window.languageChange = function () {
-    const language = $("#language")?.value || "English";
-
-    localStorage.setItem("av_lang", language);
-    localStorage.setItem("av_language_user_set", "1");
-
-    if (typeof applyLang === "function") {
-      applyLang(language);
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: .3s;
     }
 
-    if (typeof syncAccount === "function") {
-      syncAccount();
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    if (typeof renderGenerators === "function") {
-      renderGenerators();
+    button,
+    select,
+    input {
+      font: inherit;
     }
-  };
 
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+    }
 
-  /* =========================================================
-     2. REFERRAL LINK
-     ========================================================= */
+    body.dark header {
+      background: rgba(11,13,23,.88);
+    }
 
-  function updateReferralLink() {
-    const input = $("#refLink");
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      min-height: 72px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
 
-    if (!input) return;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: auto;
+    }
 
-    let userId = "AHEADVIA";
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+    }
 
-    try {
-      if (typeof uid === "function") {
-        userId = uid();
-      } else {
-        userId =
-          localStorage.getItem("av_uid") ||
-          "AHEADVIA";
+    .brand-text strong {
+      display: block;
+      font-size: 16px;
+    }
+
+    .brand-text span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .controls {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+    }
+
+    select,
+    .small-btn {
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 8px 10px;
+      cursor: pointer;
+    }
+
+    .login-btn,
+    .primary-btn {
+      border: 0;
+      background: var(--primary);
+      color: white;
+      padding: 11px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .login-btn:hover,
+    .primary-btn:hover {
+      transform: translateY(-2px);
+      opacity: .9;
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      font-size: 27px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 20px 55px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-weight: 800;
+      letter-spacing: 2px;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.02;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 17px;
+      margin-bottom: 25px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .secondary-btn {
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      padding: 11px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .profile-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-card img {
+      width: 170px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid var(--primary);
+      margin-bottom: 18px;
+    }
+
+    .profile-card h2 {
+      margin-bottom: 6px;
+    }
+
+    .profile-card p {
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 65px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    .about-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    /* SEARCH */
+    .search-wrap {
+      max-width: 650px;
+      margin: 0 auto 30px;
+      position: relative;
+    }
+
+    .search {
+      width: 100%;
+      padding: 16px 20px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      outline: none;
+      background: var(--card);
+      color: var(--text);
+    }
+
+    /* LEARN */
+    .learn-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .learn-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 23px;
+      box-shadow: var(--shadow);
+      transition: .25s;
+    }
+
+    .learn-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .learn-icon {
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .learn-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .learn-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      min-height: 42px;
+    }
+
+    .learn-card a {
+      display: inline-block;
+      margin-top: 15px;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* SOCIAL */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .social-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .social-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary);
+    }
+
+    .social-card div {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: 25px;
+      padding: 35px;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 30px;
+      padding: 30px 20px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2000;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 430px;
+      background: var(--card);
+      color: var(--text);
+      border-radius: 25px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 25px 70px rgba(0,0,0,.3);
+    }
+
+    .close {
+      position: absolute;
+      right: 18px;
+      top: 14px;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    .modal-box h2 {
+      margin-bottom: 7px;
+    }
+
+    .modal-box p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 12px;
+      border-radius: 11px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      outline: none;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 13px;
+      border: 0;
+      border-radius: 11px;
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .google {
+      margin-top: 10px;
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .form-note {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 12px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 950px) {
+      nav {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
       }
-    } catch (e) {}
 
-    const referral =
-      location.origin +
-      location.pathname +
-      "?ref=" +
-      encodeURIComponent(userId);
+      nav.open {
+        display: flex;
+      }
 
-    if (input.tagName === "INPUT") {
-      input.value = referral;
-    } else {
-      input.textContent = referral;
+      .menu-btn {
+        display: block;
+      }
+
+      .controls select {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .learn-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
-    input.style.display = "block";
-    input.style.visibility = "visible";
-    input.style.opacity = "1";
-  }
+    @media (max-width: 600px) {
+      .brand-text {
+        display: none;
+      }
 
+      .nav {
+        padding: 9px 13px;
+      }
 
-  window.copyReferral = function () {
-    updateReferralLink();
+      .login-btn {
+        padding: 9px 11px;
+        font-size: 12px;
+      }
 
-    const input = $("#refLink");
+      .hero {
+        padding-top: 55px;
+      }
 
-    if (!input) return;
+      .hero h1 {
+        font-size: 42px;
+      }
 
-    const value =
-      input.value ||
-      input.textContent ||
-      "";
+      section {
+        padding: 50px 15px;
+      }
 
-    if (!value) return;
+      .learn-grid,
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
 
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(value)
-        .then(function () {
-          if (typeof toast === "function") {
-            toast("Referral link copied");
-          }
-        })
-        .catch(function () {
-          fallbackCopy(value);
-        });
-    } else {
-      fallbackCopy(value);
+      .profile-card img {
+        width: 145px;
+        height: 145px;
+      }
     }
-  };
+  </style>
+</head>
 
+<body>
 
-  function fallbackCopy(value) {
-    const textarea = document.createElement("textarea");
+  <!-- HEADER -->
+  <header>
+    <div class="nav">
 
-    textarea.value = value;
-    textarea.style.position = "fixed";
-    textarea.style.opacity = "0";
+      <a class="brand" href="#home">
+        <img src="logo.jpg" alt="Ahad Bhai Iskil Hab Logo" class="logo">
+        <div class="brand-text">
+          <strong>Ahad Bhai Iskil Hab</strong>
+          <span>ABDUL AHEAD • Learning Hub</span>
+        </div>
+      </a>
 
-    document.body.appendChild(textarea);
+      <button class="menu-btn" id="menuBtn">☰</button>
 
-    textarea.focus();
-    textarea.select();
+      <nav id="mainNav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#learn">Learn</a>
+        <a href="#social">Social</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-    try {
-      document.execCommand("copy");
-    } catch (e) {}
+      <div class="controls">
+        <select id="countrySelect">
+          <option>🇧🇩 Bangladesh</option>
+          <option>🇮🇳 India</option>
+          <option>🇺🇸 United States</option>
+          <option>🌎 International</option>
+        </select>
 
-    textarea.remove();
+        <select id="languageSelect">
+          <option value="en">English</option>
+          <option value="bn">বাংলা</option>
+        </select>
 
-    if (typeof toast === "function") {
-      toast("Referral link copied");
-    }
-  }
+        <button class="small-btn" id="themeBtn">🌙</button>
+        <button class="login-btn" id="authOpen">👤 Login / Register</button>
+      </div>
 
+    </div>
+  </header>
 
-  /* =========================================================
-     3. HELP BUTTON IMAGE
-     ========================================================= */
+  <!-- HERO -->
+  <main id="home">
+    <div class="hero">
 
-  function fixHelpButton() {
-    const button = document.querySelector(".float");
+      <div>
+        <div class="eyebrow" data-en="WELCOME TO MY LEARNING HUB"
+             data-bn="আমার লার্নিং হাবে স্বাগতম">
+          WELCOME TO MY LEARNING HUB
+        </div>
 
-    if (!button) return;
+        <h1>
+          Learn.<br>
+          Create.<br>
+          <span>Grow Online.</span>
+        </h1>
 
-    const headsetSVG =
-      "data:image/svg+xml;charset=UTF-8," +
-      encodeURIComponent(`
-        <svg xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 0 100 100">
+        <p data-en="I am ABDUL AHEAD. I teach practical online skills including AI video creation, thumbnails, hashtags, captions, Facebook, YouTube, video promotion and social media growth."
+           data-bn="আমি ABDUL AHEAD। আমি AI ভিডিও তৈরি, থাম্বনেইল, হ্যাশট্যাগ, ক্যাপশন, Facebook, YouTube, ভিডিও প্রমোশন এবং সোশ্যাল মিডিয়া গ্রোথের মতো অনলাইন স্কিল শেখাই।">
+          I am ABDUL AHEAD. I teach practical online skills including AI video creation,
+          thumbnails, hashtags, captions, Facebook, YouTube, video promotion and social media growth.
+        </p>
 
-          <circle
-            cx="50"
-            cy="50"
-            r="46"
-            fill="white"/>
+        <div class="hero-buttons">
+          <a class="primary-btn" href="#learn">🚀 Start Learning</a>
+          <button class="secondary-btn" id="heroRegister">✨ Create Free Account</button>
+          <a class="secondary-btn" href="#contact">📩 Contact Me</a>
+        </div>
+      </div>
 
-          <path
-            d="M24 51
-               C24 35 35 23 50 23
-               C65 23 76 35 76 51
-               V67
-               C76 72 72 76 67 76
-               H61
-               V48
-               H76
+      <div class="profile-card">
+        <img src="logo.jpg" alt="ABDUL AHEAD">
+        <h2>ABDUL AHEAD</h2>
+        <p>Online Skills Educator & Creator</p>
 
-               M24 48
-               H33
-               V76
-               H24
-               C19 76 15 72 15 67
-               V57
-               C15 52 19 48 24 48
+        <a class="primary-btn"
+           href="https://t.me/Aheadvia1298"
+           target="_blank">
+          💬 Contact on Telegram
+        </a>
+      </div>
 
-               M61 76
-               C61 83 56 87 49 87
-               H42"
-            fill="none"
-            stroke="#0878ff"
-            stroke-width="6"
-            stroke-linecap="round"
-            stroke-linejoin="round"/>
-        </svg>
-      `);
+    </div>
+  </main>
 
-    button.innerHTML = `
-      <img
-        src="${headsetSVG}"
-        alt="Help"
-        style="
-          width:28px;
-          height:28px;
-          display:block;
-          object-fit:contain;
-        "
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-title">
+      <h2>About Me</h2>
+      <p>Learn practical online skills in a simple way.</p>
+    </div>
+
+    <div class="about-box">
+      <p>
+        Welcome to <strong>Ahad Bhai Iskil Hab</strong>.
+        I am <strong>ABDUL AHEAD</strong>.
+        This learning hub is created to help people learn practical
+        AI, video creation, social media and online skills.
+        Learn step by step, create better content and grow online.
+      </p>
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+
+    <div class="section-title">
+      <h2>📚 Learn Online</h2>
+      <p>Choose a topic and start learning.</p>
+    </div>
+
+    <div class="search-wrap">
+      <input
+        class="search"
+        id="searchInput"
+        type="search"
+        placeholder="🔎 Search learning topics..."
+      >
+    </div>
+
+    <div class="learn-grid" id="learnGrid">
+
+      <article class="learn-card">
+        <div class="learn-icon">🤖</div>
+        <h3>AI Video Creation</h3>
+        <p>Learn how to create videos using modern AI tools.</p>
+        <a href="https://t.me/+VeysP6zpQI9kZTJl" target="_blank">Learn Now →</a>
+      </article>
+
+      <article class="learn-card">
+        <div class="learn-icon">🖼️</div>
+        <h3>Thumbnail Design</h3>
+        <p>Create attractive thumbnails for your videos.</p>
+        <a href="https://t.me/+VeysP6zpQI9kZTJl" target="_blank">Learn Now →</a>
+      </article>
+
+      <article class="learn-card">
+        <div class="learn-icon">📱</div>
+        <h3>Facebook</h3>
+        <p>Learn Facebook posting, uploading and content tips.</p>
+        <a href="https://t.me/+VeysP6zpQI9kZTJl" target="_blank">Learn Now →</a>
+      </article>
+
+      <article class="learn-card">
+        <div class="learn-icon">▶️</div>
+        <h3>YouTube</h3>
+        <p>Learn video uploading, titles and channel growth basics.</p>
+        <a href="https://t.me/+VeysP6zpQI9kZTJl" target="_blank">Learn Now →</a>
+      </article>
+
+      <article class="learn-card">
+        <div class="learn-icon">#️⃣</div>
+        <h3>Hashtags</h3>
+        <p>Learn how to use relevant hashtags for your content.</p>
+        <a href="https://t.me/+VeysP6zpQI9kZTJl" target="_blank">Learn Now →</a>
+      </article>
+
+      <article class="learn-card">
+        <div class="learn-icon">✍️</div>
+        <h3>Captions</h3>
+        <p>Learn how to write useful and engaging captions.</p>
+        <a href="https://t.me/+VeysP6zpQI9kZTJl" target="_blank">Learn Now →</a>
+      </article>
+
+      <article class="learn-card">
+        <div class="learn-icon">📍</div>
+        <h3>Location</h3>
+        <p>Understand location features for social media content.</p>
+        <a href="https://t.me/+VeysP6zpQI9kZTJl" target="_blank">Learn Now →</a>
+      </article>
+
+      <article class="learn-card">
+        <div class="learn-icon">🚀</div>
+        <h3>Video Promotion</h3>
+        <p>Learn practical methods for promoting your content.</p>
+        <a href="https://t.me/+VeysP6zpQI9kZTJl" target="_blank">Learn Now →</a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section id="social">
+    <div class="section-title">
+      <h2>🌐 Follow Me</h2>
+      <p>Connect with ABDUL AHEAD on social platforms.</p>
+    </div>
+
+    <div class="social-grid">
+
+      <a class="social-card" href="https://t.me/+VeysP6zpQI9kZTJl" target="_blank">
+        <div>📢</div>
+        Telegram Channel
+      </a>
+
+      <a class="social-card" href="https://t.me/+po7cNT2DyokwMzQ1" target="_blank">
+        <div>👥</div>
+        Telegram Group
+      </a>
+
+      <a class="social-card" href="https://www.facebook.com/share/199T5uSBXv/" target="_blank">
+        <div>📘</div>
+        Facebook
+      </a>
+
+      <a class="social-card" href="https://www.instagram.com/kittysnipsofficial?stkn=MW44cGFpYWNkc3F5bQ==" target="_blank">
+        <div>📸</div>
+        Instagram
+      </a>
+
+      <a class="social-card" href="https://www.youtube.com/@KittySnipsStories" target="_blank">
+        <div>▶️</div>
+        YouTube
+      </a>
+
+      <a class="social-card" href="https://x.com/Abdulaheadrllm" target="_blank">
+        <div>𝕏</div>
+        X / Twitter
+      </a>
+
+      <a class="social-card" href="https://www.tiktok.com/@abdulahead121" target="_blank">
+        <div>🎵</div>
+        TikTok
+      </a>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+
+    <div class="contact-box">
+      <h2>📩 Contact Me</h2>
+      <p>
+        Have a question or want to connect?
+        Choose your preferred platform.
+      </p>
+
+      <div class="contact-buttons">
+
+        <a class="primary-btn"
+           href="https://t.me/Aheadvia1298"
+           target="_blank">
+          💬 Telegram Message
+        </a>
+
+        <a class="secondary-btn"
+           href="https://wa.me/"
+           target="_blank">
+          📱 WhatsApp Message
+        </a>
+
+        <a class="secondary-btn"
+           href="https://www.facebook.com/share/199T5uSBXv/"
+           target="_blank">
+          📘 Facebook Message
+        </a>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Ahad Bhai Iskil Hab • ABDUL AHEAD</p>
+    <p>Learn • Create • Grow Online</p>
+  </footer>
+
+  <!-- AUTH MODAL -->
+  <div class="modal" id="authModal">
+
+    <div class="modal-box">
+
+      <button class="close" id="closeModal">×</button>
+
+      <h2 id="authTitle">Create Your Account</h2>
+      <p id="authDescription">
+        Join Ahad Bhai Iskil Hab and start learning.
+      </p>
+
+      <input
+        class="form-input"
+        id="username"
+        type="text"
+        placeholder="Username"
       >
 
-      <span
-        style="
-          font-size:9px;
-          font-weight:900;
-          line-height:1;
-        "
-      >Help</span>
-    `;
+      <input
+        class="form-input"
+        id="email"
+        type="email"
+        placeholder="Email address"
+      >
 
-    button.onclick = function () {
-      if (typeof go === "function") {
-        go("contact");
-      }
-    };
-  }
+      <input
+        class="form-input"
+        id="password"
+        type="password"
+        placeholder="Password"
+      >
 
+      <button class="form-submit" id="registerBtn">
+        Create Free Account
+      </button>
 
-  /* =========================================================
-     4. IMAGE PROMPT + CAPTION GENERATOR
-     ========================================================= */
+      <button class="form-submit google">
+        🔵 Continue with Google
+      </button>
 
-  let activeGenerator = "caption";
+      <div class="form-note">
+        Prototype mode — Supabase Auth will be connected in the final version.
+      </div>
 
-  const captionFields = [
-    "topic",
-    "platform",
-    "tone",
-    "length",
-    "emoji",
-    "audience",
-    "cta"
-  ];
+    </div>
+  </div>
 
+  <script>
+    /* MOBILE MENU */
+    const menuBtn = document.getElementById("menuBtn");
+    const mainNav = document.getElementById("mainNav");
 
-  const generatorFields = {
+    menuBtn.addEventListener("click", () => {
+      mainNav.classList.toggle("open");
+    });
 
-    topic: {
-      label: "Topic / Prompt",
-      type: "textarea",
-      placeholder: "Write your topic or prompt"
-    },
+    document.querySelectorAll("#mainNav a").forEach(link => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+      });
+    });
 
-    platform: {
-      label: "Platform",
-      type: "select",
-      options: [
-        "Facebook",
-        "Instagram",
-        "YouTube",
-        "TikTok",
-        "Telegram",
-        "WhatsApp",
-        "X",
-        "Website"
-      ]
-    },
+    /* DARK MODE */
+    const themeBtn = document.getElementById("themeBtn");
 
-    tone: {
-      label: "Tone",
-      type: "select",
-      options: [
-        "Professional",
-        "Friendly",
-        "Energetic",
-        "Educational",
-        "Simple",
-        "Funny"
-      ]
-    },
-
-    length: {
-      label: "Length",
-      type: "select",
-      options: [
-        "Short",
-        "Medium",
-        "Long"
-      ]
-    },
-
-    emoji: {
-      label: "Emoji",
-      type: "select",
-      options: [
-        "Yes",
-        "No"
-      ]
-    },
-
-    audience: {
-      label: "Audience",
-      type: "input",
-      placeholder: "Example: customer, student"
-    },
-
-    cta: {
-      label: "Call To Action",
-      type: "input",
-      placeholder: "Example: Start now"
-    }
-  };
-
-
-  function createGeneratorField(key, index) {
-
-    const field = generatorFields[key];
-
-    if (!field) return "";
-
-    const id = "gf" + index;
-
-    if (field.type === "select") {
-
-      return `
-        <label>
-          ${field.label}
-
-          <select id="${id}">
-            ${field.options
-              .map(option =>
-                `<option>${option}</option>`
-              )
-              .join("")}
-          </select>
-        </label>
-      `;
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+      themeBtn.textContent = "☀️";
     }
 
-    if (field.type === "textarea") {
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
 
-      return `
-        <label>
-          ${field.label}
-
-          <textarea
-            id="${id}"
-            placeholder="${field.placeholder}"
-          ></textarea>
-        </label>
-      `;
-    }
-
-    return `
-      <label>
-        ${field.label}
-
-        <input
-          id="${id}"
-          type="text"
-          placeholder="${field.placeholder}"
-        >
-      </label>
-    `;
-  }
-
-
-  const oldOpenGenerator = window.openGen;
-
-  window.openGen = function (id) {
-
-    activeGenerator = id;
-
-    /*
-      IMAGE PROMPT:
-      শুধু Prompt field
-    */
-
-    if (id === "imageprompt") {
-
-      const modal = $("#modal");
-      const form = $("#modal .form");
-
-      if (!modal || !form) return;
-
-      form.innerHTML = `
-        ${createGeneratorField("topic", 0)}
-
-        <button
-          type="button"
-          onclick="generateNow()"
-        >
-          ✨ Generate
-        </button>
-
-        <div
-          class="output"
-          id="gOutput"
-        ></div>
-
-        <div
-          class="modalActions"
-        >
-          <button
-            type="button"
-            onclick="copyOutput()"
-          >
-            Copy Output
-          </button>
-
-          <button
-            type="button"
-            onclick="generateNow()"
-          >
-            Regenerate
-          </button>
-        </div>
-      `;
-
-      const title = $("#modalTitle");
-
-      if (title) {
-        title.textContent = "Image Prompt Generator";
-      }
-
-      modal.classList.add("show");
-
-      setTimeout(function () {
-        $("#gf0")?.focus();
-      }, 50);
-
-      return;
-    }
-
-
-    /*
-      CAPTION:
-      Topic
-      Platform
-      Tone
-      Length
-      Emoji
-      Audience
-      CTA
-    */
-
-    if (id === "caption") {
-
-      const modal = $("#modal");
-      const form = $("#modal .form");
-
-      if (!modal || !form) return;
-
-      form.innerHTML =
-        captionFields
-          .map((field, index) =>
-            createGeneratorField(field, index)
-          )
-          .join("") +
-
-        `
-          <button
-            type="button"
-            onclick="generateNow()"
-          >
-            ✨ Generate
-          </button>
-
-          <div
-            class="output"
-            id="gOutput"
-          ></div>
-
-          <div
-            class="modalActions"
-          >
-            <button
-              type="button"
-              onclick="copyOutput()"
-            >
-              Copy Output
-            </button>
-
-            <button
-              type="button"
-              onclick="generateNow()"
-            >
-              Regenerate
-            </button>
-          </div>
-        `;
-
-      const title = $("#modalTitle");
-
-      if (title) {
-        title.textContent = "Caption Generator";
-      }
-
-      modal.classList.add("show");
-
-      setTimeout(function () {
-        $("#gf0")?.focus();
-      }, 50);
-
-      return;
-    }
-
-
-    /*
-      অন্যান্য সব generator আগের মতোই থাকবে।
-    */
-
-    if (typeof oldOpenGenerator === "function") {
-      oldOpenGenerator(id);
-    }
-  };
-
-
-  /* =========================================================
-     5. GENERATE
-     ========================================================= */
-
-  const oldGenerateNow = window.generateNow;
-
-  window.generateNow = function () {
-
-    /* IMAGE PROMPT */
-
-    if (activeGenerator === "imageprompt") {
-
-      const topic =
-        $("#gf0")?.value?.trim() ||
-        "";
-
-      const language =
-        localStorage.getItem("av_lang") ||
-        "English";
-
-      let result = "";
-
-      if (language === "Bangla") {
-
-        result =
-          topic +
-          " — detailed image prompt, " +
-          "high quality, realistic composition, " +
-          "cinematic lighting, professional photography, " +
-          "sharp details, realistic environment, " +
-          "premium visual quality.";
-
+      if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        themeBtn.textContent = "☀️";
       } else {
-
-        result =
-          topic +
-          " — detailed image prompt, " +
-          "high quality, realistic composition, " +
-          "cinematic lighting, professional photography, " +
-          "sharp details, realistic environment, " +
-          "premium visual quality.";
+        localStorage.setItem("theme", "light");
+        themeBtn.textContent = "🌙";
       }
+    });
 
-      const output = $("#gOutput");
+    /* AUTH MODAL */
+    const modal = document.getElementById("authModal");
+    const authOpen = document.getElementById("authOpen");
+    const heroRegister = document.getElementById("heroRegister");
+    const closeModal = document.getElementById("closeModal");
 
-      if (output) {
-        output.textContent = result;
-      }
-
-      return;
+    function openAuth() {
+      modal.classList.add("show");
     }
 
+    authOpen.addEventListener("click", openAuth);
+    heroRegister.addEventListener("click", openAuth);
 
-    /* CAPTION */
+    closeModal.addEventListener("click", () => {
+      modal.classList.remove("show");
+    });
 
-    if (activeGenerator === "caption") {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("show");
+      }
+    });
 
-      const topic =
-        $("#gf0")?.value?.trim() ||
-        "Digital content";
+    /* PROTOTYPE REGISTER */
+    document.getElementById("registerBtn").addEventListener("click", () => {
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
 
-      const platform =
-        $("#gf1")?.value ||
-        "Facebook";
-
-      const tone =
-        $("#gf2")?.value ||
-        "Professional";
-
-      const length =
-        $("#gf3")?.value ||
-        "Medium";
-
-      const emoji =
-        $("#gf4")?.value ||
-        "Yes";
-
-      const audience =
-        $("#gf5")?.value?.trim() ||
-        "Everyone";
-
-      const cta =
-        $("#gf6")?.value?.trim() ||
-        "Share your thoughts.";
-
-      const language =
-        localStorage.getItem("av_lang") ||
-        "English";
-
-      let result;
-
-      if (language === "Bangla") {
-
-        result =
-`✨ ${topic}
-
-প্ল্যাটফর্ম: ${platform}
-টোন: ${tone}
-দৈর্ঘ্য: ${length}
-অডিয়েন্স: ${audience}
-
-${cta}`;
-
-      } else {
-
-        result =
-`✨ ${topic}
-
-Platform: ${platform}
-Tone: ${tone}
-Length: ${length}
-Audience: ${audience}
-
-${cta}`;
+      if (!username || !email || !password) {
+        alert("Please complete all fields.");
+        return;
       }
 
-
-      if (emoji === "No") {
-        result = result
-          .replace(/[✨🔥🚀🎯💡📌]/g, "")
-          .trim();
-      }
-
-
-      const output = $("#gOutput");
-
-      if (output) {
-        output.textContent = result;
-      }
-
-
-      const oldActivity =
-        Number(
-          localStorage.getItem("av_activity") || 0
-        );
-
-      localStorage.setItem(
-        "av_activity",
-        String(oldActivity + 1)
+      alert(
+        "Prototype registration successful!\\n\\n" +
+        "In the final version, this account will be saved securely through Supabase."
       );
 
-      if (typeof syncAccount === "function") {
-        syncAccount();
-      }
+      modal.classList.remove("show");
+    });
 
-      return;
-    }
+    /* SEARCH */
+    const searchInput = document.getElementById("searchInput");
+    const cards = document.querySelectorAll(".learn-card");
 
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
 
-    /*
-      অন্য সব generator আগের generate system ব্যবহার করবে।
-    */
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
 
-    if (typeof oldGenerateNow === "function") {
-      return oldGenerateNow();
-    }
-  };
+        card.style.display = text.includes(query)
+          ? "block"
+          : "none";
+      });
+    });
 
+    /* LANGUAGE SWITCH */
+    const languageSelect = document.getElementById("languageSelect");
 
-  /* =========================================================
-     6. SMALL UI FIXES
-     ========================================================= */
+    languageSelect.addEventListener("change", () => {
+      const language = languageSelect.value;
 
-  const style = document.createElement("style");
+      document.querySelectorAll("[data-en]").forEach(element => {
+        element.textContent =
+          element.dataset[language];
+      });
+    });
 
-  style.textContent = `
+  </script>
 
-    .refLink {
-      display:flex !important;
-      align-items:center !important;
-      gap:7px !important;
-      width:100% !important;
-      visibility:visible !important;
-      opacity:1 !important;
-    }
-
-    .refLink input {
-      display:block !important;
-      visibility:visible !important;
-      opacity:1 !important;
-      flex:1 !important;
-      min-width:0 !important;
-      width:100% !important;
-      color:#0878ff !important;
-      background:#f0f6ff !important;
-      border:0 !important;
-      outline:none !important;
-      font-size:9px !important;
-      font-weight:800 !important;
-    }
-
-    .refLink button {
-      display:block !important;
-      background:#0878ff !important;
-      color:#fff !important;
-      border:0 !important;
-      border-radius:8px !important;
-      padding:8px 10px !important;
-      font-weight:900 !important;
-      cursor:pointer !important;
-    }
-
-    .float img {
-      width:28px !important;
-      height:28px !important;
-      display:block !important;
-      object-fit:contain !important;
-    }
-
-    .float span {
-      font-size:9px !important;
-      font-weight:900 !important;
-    }
-
-    .form label {
-      display:block !important;
-      margin:8px 0 !important;
-      font-size:10px !important;
-      font-weight:800 !important;
-    }
-
-    .form input,
-    .form textarea,
-    .form select {
-      width:100% !important;
-      margin-top:5px !important;
-      padding:10px !important;
-      border-radius:10px !important;
-      box-sizing:border-box !important;
-    }
-
-    .form textarea {
-      min-height:95px !important;
-      resize:vertical !important;
-    }
-
-    .output {
-      white-space:pre-wrap !important;
-      line-height:1.7 !important;
-      margin-top:10px !important;
-      padding:12px !important;
-      min-height:80px !important;
-    }
-
-  `;
-
-  document.head.appendChild(style);
-
-
-  /* =========================================================
-     7. RUN FIXES
-     ========================================================= */
-
-  function runAllFixes() {
-
-    fixHelpButton();
-    updateReferralLink();
-
-    /*
-      Team-এর বর্তমান 3-image system-কে স্পর্শ করছি না,
-      যাতে আগে ঠিক করা তিনটি আলাদা ছবি নষ্ট না হয়।
-    */
-
-    if (typeof syncAccount === "function") {
-      try {
-        syncAccount();
-      } catch (e) {}
-    }
-
-    updateReferralLink();
-    fixHelpButton();
-  }
-
-
-  document.addEventListener(
-    "DOMContentLoaded",
-    runAllFixes
-  );
-
-  setTimeout(
-    runAllFixes,
-    300
-  );
-
-  setTimeout(
-    runAllFixes,
-    1000
-  );
-
-  setTimeout(
-    runAllFixes,
-    2000
-  );
-
-})();
-</script>
+</body>
+</html>
