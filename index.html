@@ -2,1190 +2,3479 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="theme-color" content="#f5f7ff">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AHEAD VIA SKILL HUB</title>
 
+<meta name="description"
+content="AHEAD VIA SKILL HUB — Learn, Create, Earn & Grow">
+
 <style>
-:root{
-  --bg:#f4f7ff;--card:#fff;--text:#111827;--muted:#6b7280;
-  --primary:#2563eb;--primary2:#7c3aed;--line:#e5e7eb;
-  --success:#16a34a;--danger:#dc2626;--shadow:0 8px 28px #17255412;
+
+/* =====================================================
+   AHEAD VIA SKILL HUB
+   COMPACT DASHBOARD DESIGN
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
-*{box-sizing:border-box;margin:0;padding:0}
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-  font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);
-  min-height:100vh;padding-bottom:78px;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f6fa;
+    color:#182033;
+    font-size:12px;
+    line-height:1.4;
+    transition:.25s;
 }
-button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:0}
-a{text-decoration:none;color:inherit}
-.topbar{
-  height:62px;background:#fff;border-bottom:1px solid var(--line);
-  display:flex;align-items:center;padding:0 14px;gap:10px;
-  position:sticky;top:0;z-index:50;
+
+body.dark{
+    background:#080b12;
+    color:#edf2ff;
 }
-.topbar .close{font-size:25px;background:none;width:35px}
-.brand{display:flex;align-items:center;gap:9px;flex:1}
-.brand img{width:38px;height:38px;border-radius:12px;object-fit:cover}
-.brand strong{font-size:17px}
-.topbtn{background:#f3f4f6;border-radius:10px;width:38px;height:38px}
-.page{max-width:900px;margin:auto;padding:14px}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:56px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:7px 18px;
+
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid #e3e7ef;
+
+    z-index:1000;
+}
+
+.dark .header{
+    background:rgba(10,14,22,.94);
+    border-color:#222a38;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.brand img{
+    width:36px;
+    height:36px;
+    object-fit:contain;
+    border-radius:9px;
+}
+
+.brand-name{
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.3px;
+}
+
+.brand-sub{
+    display:block;
+    font-size:7px;
+    color:#778095;
+    letter-spacing:1px;
+    margin-top:1px;
+}
+
+.header-center{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.search-top{
+    width:210px;
+    height:32px;
+
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    padding:0 9px;
+
+    border:1px solid #dfe4ed;
+    border-radius:7px;
+
+    background:#f8f9fc;
+}
+
+.dark .search-top{
+    background:#111722;
+    border-color:#293243;
+}
+
+.search-top input{
+    width:100%;
+    border:0;
+    outline:0;
+    background:transparent;
+    font-size:10px;
+    color:inherit;
+}
+
+.header-btn{
+    width:32px;
+    height:32px;
+
+    border:1px solid #dfe4ed;
+    border-radius:7px;
+
+    background:#fff;
+    cursor:pointer;
+
+    font-size:13px;
+}
+
+.dark .header-btn{
+    background:#111722;
+    color:#fff;
+    border-color:#293243;
+}
+
+.menu-btn{
+    width:34px;
+    height:34px;
+
+    border:0;
+    border-radius:8px;
+
+    background:#5665ff;
+    color:#fff;
+
+    font-size:16px;
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar{
+    position:fixed;
+    top:56px;
+    left:0;
+    bottom:0;
+
+    width:205px;
+
+    padding:12px 9px;
+
+    background:#fff;
+    border-right:1px solid #e3e7ef;
+
+    overflow-y:auto;
+
+    z-index:900;
+}
+
+.dark .sidebar{
+    background:#0d121b;
+    border-color:#222a38;
+}
+
+.sidebar-title{
+    padding:5px 9px 8px;
+
+    font-size:8px;
+    font-weight:800;
+    color:#8992a5;
+
+    letter-spacing:1px;
+}
+
+.nav-item{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    width:100%;
+
+    padding:8px 9px;
+    margin-bottom:2px;
+
+    border-radius:7px;
+
+    font-size:10px;
+    font-weight:600;
+
+    color:#596276;
+
+    transition:.15s;
+}
+
+.dark .nav-item{
+    color:#aab3c5;
+}
+
+.nav-item:hover,
+.nav-item.active{
+    background:#eef0ff;
+    color:#5362ff;
+}
+
+.dark .nav-item:hover,
+.dark .nav-item.active{
+    background:#171e2c;
+    color:#8490ff;
+}
+
+.nav-icon{
+    width:18px;
+    text-align:center;
+    font-size:13px;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main{
+    margin-left:205px;
+    padding-top:56px;
+}
+
+.container{
+    width:min(1180px,94%);
+    margin:auto;
+}
+
+
+/* =====================================================
+   HERO / DASHBOARD
+===================================================== */
+
 .hero{
-  border-radius:25px;padding:24px;color:#fff;
-  background:linear-gradient(135deg,#101936,#293f91,#6638b8);
-  box-shadow:0 14px 40px #1e3a8a30;margin-bottom:15px;
+    padding:25px 0 12px;
 }
-.hero small{text-transform:uppercase;letter-spacing:2px;opacity:.75}
-.hero h1{font-size:29px;margin:7px 0}
-.hero p{opacity:.85;line-height:1.5}
-.userbar{
-  background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px;
-  display:flex;align-items:center;gap:12px;margin-bottom:15px;box-shadow:var(--shadow)
+
+.hero-panel{
+    min-height:190px;
+
+    position:relative;
+    overflow:hidden;
+
+    padding:26px;
+
+    border-radius:13px;
+
+    background:
+        radial-gradient(circle at 85% 20%,rgba(96,110,255,.38),transparent 30%),
+        linear-gradient(135deg,#121a32,#29366b);
+
+    color:#fff;
 }
-.avatar{width:46px;height:46px;border-radius:50%;object-fit:cover;background:#dbeafe}
-.userbar .info{flex:1}
-.userbar small{color:var(--muted)}
-.badge{background:#eef2ff;color:#4338ca;padding:7px 10px;border-radius:10px;font-size:12px}
-.notice{
-  background:#eef5ff;border:1px solid #dbeafe;border-radius:18px;
-  padding:14px;margin-bottom:18px;line-height:1.5
+
+.hero-panel:after{
+    content:"";
+    position:absolute;
+    width:230px;
+    height:230px;
+
+    right:-100px;
+    bottom:-130px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
 }
-.section-head{display:flex;justify-content:space-between;align-items:center;margin:22px 2px 11px}
-.section-head h2{font-size:19px}.section-head span{font-size:13px;color:var(--primary)}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+
+.hero-label{
+    font-size:8px;
+    letter-spacing:1.6px;
+    opacity:.7;
+    font-weight:700;
+}
+
+.hero h1{
+    font-size:28px;
+    line-height:1.05;
+    margin:7px 0;
+}
+
+.hero h1 span{
+    color:#aeb5ff;
+}
+
+.hero-text{
+    max-width:600px;
+    font-size:10px;
+    color:#d2d7ea;
+}
+
+.hero-actions{
+    display:flex;
+    gap:6px;
+    margin-top:14px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-height:30px;
+
+    padding:0 11px;
+
+    border-radius:6px;
+
+    border:0;
+
+    font-size:9px;
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.btn-primary{
+    background:#6573ff;
+    color:#fff;
+}
+
+.btn-light{
+    background:rgba(255,255,255,.12);
+    color:#fff;
+    border:1px solid rgba(255,255,255,.15);
+}
+
+
+/* =====================================================
+   NOTICE + LIVE
+===================================================== */
+
+.update-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:8px;
+
+    margin:12px 0;
+}
+
+.update-card{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    min-height:66px;
+
+    padding:10px;
+
+    border-radius:9px;
+
+    background:#fff;
+    border:1px solid #e2e6ee;
+}
+
+.dark .update-card{
+    background:#101620;
+    border-color:#232c3b;
+}
+
+.update-icon{
+    width:35px;
+    height:35px;
+
+    flex-shrink:0;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:8px;
+
+    background:#eef0ff;
+
+    font-size:15px;
+}
+
+.live-dot{
+    width:8px;
+    height:8px;
+
+    display:inline-block;
+
+    border-radius:50%;
+
+    background:#ff4e68;
+
+    margin-right:4px;
+}
+
+.update-title{
+    font-size:10px;
+    font-weight:800;
+}
+
+.update-text{
+    font-size:8px;
+    color:#7c8496;
+    margin-top:2px;
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section{
+    padding:18px 0;
+}
+
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+
+    margin-bottom:9px;
+}
+
+.section-label{
+    font-size:7px;
+    color:#8a93a6;
+    letter-spacing:1.2px;
+    font-weight:800;
+}
+
+.section-title{
+    font-size:17px;
+    font-weight:800;
+    margin-top:2px;
+}
+
+.section-description{
+    font-size:8px;
+    color:#7e8799;
+}
+
+
+/* =====================================================
+   DASHBOARD STATS
+===================================================== */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:7px;
+}
+
+.stat-card{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px;
+
+    background:#fff;
+    border:1px solid #e2e6ee;
+    border-radius:8px;
+}
+
+.dark .stat-card{
+    background:#101620;
+    border-color:#232c3b;
+}
+
+.stat-icon{
+    width:31px;
+    height:31px;
+
+    display:grid;
+    place-items:center;
+
+    background:#eef0ff;
+
+    border-radius:7px;
+
+    font-size:14px;
+}
+
+.stat-number{
+    font-size:15px;
+    font-weight:800;
+}
+
+.stat-name{
+    font-size:7px;
+    color:#7c8495;
+}
+
+
+/* =====================================================
+   CARD GRID
+===================================================== */
+
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:8px;
+}
+
+
+/* =====================================================
+   GENERAL CARD
+===================================================== */
+
 .card{
-  background:var(--card);border:1px solid var(--line);border-radius:18px;
-  padding:15px;box-shadow:var(--shadow)
+    padding:11px;
+
+    background:#fff;
+    border:1px solid #e2e6ee;
+    border-radius:9px;
+
+    transition:.18s;
 }
-.action{min-height:105px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
-.action .ico{
-  width:46px;height:46px;border-radius:14px;background:#eef2ff;
-  display:grid;place-items:center;font-size:23px
+
+.dark .card{
+    background:#101620;
+    border-color:#232c3b;
 }
-.action b{font-size:14px}
-.tool-card{position:relative}
-.tool-card .ico{font-size:23px;margin-bottom:8px}
-.tool-card h3{font-size:14px;margin-bottom:5px}
-.tool-card p{font-size:12px;color:var(--muted);line-height:1.4}
-.tool-card button{margin-top:10px;width:100%;padding:9px;border-radius:10px;background:#eff6ff;color:#1d4ed8}
-.bottom{
-  position:fixed;bottom:0;left:0;right:0;height:70px;background:#fff;
-  border-top:1px solid var(--line);display:flex;z-index:80;
-  box-shadow:0 -5px 20px #0000000b
+
+.card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 22px rgba(30,40,80,.08);
 }
-.bottom button{flex:1;background:#fff;color:#9ca3af;font-size:11px}
-.bottom button.active{color:var(--primary);font-weight:bold}
-.bottom span{display:block;font-size:21px;margin-bottom:3px}
-.menu{
-  position:fixed;right:10px;top:67px;width:275px;background:#fff;border:1px solid var(--line);
-  border-radius:18px;box-shadow:0 18px 50px #0003;z-index:100;padding:8px;
-  display:none;max-height:80vh;overflow:auto
+
+.card-image{
+    width:38px;
+    height:38px;
+
+    object-fit:contain;
+
+    display:block;
+
+    margin-bottom:7px;
+
+    border-radius:8px;
 }
-.menu.show{display:block}
-.menu button{
-  width:100%;padding:13px;text-align:left;background:#fff;border-radius:11px
+
+.card-icon{
+    width:38px;
+    height:38px;
+
+    display:grid;
+    place-items:center;
+
+    margin-bottom:7px;
+
+    border-radius:8px;
+
+    background:#eef0ff;
+
+    font-size:17px;
 }
-.menu button:hover{background:#f3f4f6}
-.menu .danger{color:var(--danger)}
-.drawer{
-  position:fixed;inset:0;background:#0007;z-index:150;display:none
+
+.dark .card-icon{
+    background:#1a2231;
 }
-.drawer.show{display:block}
-.drawer-box{
-  position:absolute;right:0;top:0;bottom:0;width:min(390px,92%);
-  background:#fff;padding:18px;overflow:auto
+
+.card h3{
+    font-size:10px;
+    margin-bottom:3px;
 }
-.drawer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.closebtn{background:#f3f4f6;border-radius:10px;width:38px;height:38px}
-.field{margin:10px 0}
-.field label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
-.field input,.field select,.field textarea{
-  width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;
-  outline:none;background:#fff
+
+.card p{
+    font-size:8px;
+    color:#7c8496;
+
+    min-height:22px;
+
+    margin-bottom:8px;
 }
-.field textarea{min-height:110px;resize:vertical}
-.primary{
-  background:linear-gradient(135deg,var(--primary),var(--primary2));
-  color:#fff;padding:12px 15px;border-radius:12px;font-weight:bold
+
+.card-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:5px 8px;
+
+    border:0;
+    border-radius:5px;
+
+    background:#5968ff;
+    color:#fff;
+
+    font-size:7px;
+    font-weight:800;
+
+    cursor:pointer;
 }
-.secondary{background:#eef2ff;color:#3730a3;padding:11px 14px;border-radius:12px}
-.copyrow{display:flex;gap:8px}.copyrow input{flex:1}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.generator-search{
+    width:100%;
+    max-width:400px;
+
+    height:34px;
+
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    padding:0 9px;
+
+    background:#fff;
+    border:1px solid #dfe4ed;
+
+    border-radius:7px;
+
+    margin-bottom:9px;
+}
+
+.dark .generator-search{
+    background:#101620;
+    border-color:#293243;
+}
+
+.generator-search input{
+    width:100%;
+
+    border:0;
+    outline:0;
+
+    background:transparent;
+
+    color:inherit;
+
+    font-size:9px;
+}
+
+
+/* =====================================================
+   CATEGORY BAR
+===================================================== */
+
+.category-bar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:5px;
+
+    margin-bottom:9px;
+}
+
+.category{
+    padding:5px 8px;
+
+    border:1px solid #dfe4ed;
+
+    background:#fff;
+
+    border-radius:5px;
+
+    font-size:7px;
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.dark .category{
+    background:#101620;
+    color:#b8c0d0;
+    border-color:#293243;
+}
+
+.category.active{
+    background:#5968ff;
+    border-color:#5968ff;
+    color:#fff;
+}
+
+
+/* =====================================================
+   SOCIAL
+===================================================== */
+
+.social-card{
+    text-align:center;
+}
+
+.social-card .card-image{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
+/* =====================================================
+   TEAM
+===================================================== */
+
+.team-photo{
+    width:52px;
+    height:52px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    margin-bottom:7px;
+
+    border:2px solid #eef0ff;
+}
+
+.team-role{
+    font-size:8px;
+    color:#6570ff;
+    font-weight:700;
+}
+
+
+/* =====================================================
+   COUNTRY / LANGUAGE
+===================================================== */
+
+.language-panel{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+
+    padding:13px;
+
+    background:#fff;
+
+    border:1px solid #e2e6ee;
+
+    border-radius:9px;
+}
+
+.dark .language-panel{
+    background:#101620;
+    border-color:#232c3b;
+}
+
+.select-box label{
+    display:block;
+
+    font-size:8px;
+    font-weight:700;
+
+    margin-bottom:4px;
+}
+
+.select-box select{
+    width:100%;
+
+    height:32px;
+
+    border:1px solid #dfe4ed;
+
+    background:#f8f9fc;
+
+    border-radius:6px;
+
+    padding:0 8px;
+
+    font-size:9px;
+
+    color:#333;
+}
+
+.dark .select-box select{
+    background:#171e29;
+    color:#fff;
+    border-color:#293243;
+}
+
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about-box{
+    padding:18px;
+
+    border-radius:10px;
+
+    background:#111827;
+    color:#fff;
+}
+
+.about-box h2{
+    font-size:17px;
+    margin-bottom:5px;
+}
+
+.about-box p{
+    max-width:700px;
+
+    font-size:9px;
+
+    color:#c3c9d8;
+}
+
+.about-tag{
+    display:inline-block;
+
+    margin-top:9px;
+
+    font-size:7px;
+
+    letter-spacing:1px;
+
+    color:#9fa8ff;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+    margin-top:10px;
+
+    padding:25px 0 80px;
+
+    text-align:center;
+
+    border-top:1px solid #e2e6ee;
+}
+
+.dark .footer{
+    border-color:#232c3b;
+}
+
+.footer-title{
+    font-size:10px;
+    font-weight:800;
+}
+
+.footer-text{
+    font-size:7px;
+    color:#7e8799;
+    margin-top:3px;
+}
+
+
+/* =====================================================
+   FIXED HELP
+===================================================== */
+
+.help-button{
+    position:fixed;
+
+    right:14px;
+    bottom:14px;
+
+    z-index:1500;
+
+    display:flex;
+    align-items:center;
+    gap:5px;
+
+    padding:5px 9px 5px 5px;
+
+    border:0;
+
+    border-radius:25px;
+
+    background:#5968ff;
+
+    color:#fff;
+
+    box-shadow:0 7px 25px rgba(45,55,160,.28);
+
+    cursor:pointer;
+}
+
+.help-button img{
+    width:28px;
+    height:28px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    background:#fff;
+}
+
+.help-button span{
+    font-size:8px;
+    font-weight:800;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
 .modal{
-  position:fixed;inset:0;background:#0008;z-index:200;display:none;
-  align-items:flex-end;justify-content:center
+    position:fixed;
+
+    inset:0;
+
+    z-index:3000;
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    padding:15px;
+
+    background:rgba(0,0,0,.55);
 }
-.modal.show{display:flex}
-.modalbox{
-  background:#fff;width:min(650px,100%);max-height:90vh;overflow:auto;
-  border-radius:25px 25px 0 0;padding:20px
+
+.modal.show{
+    display:flex;
 }
-.modalhead{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.result{
-  background:#f8fafc;border:1px solid var(--line);border-radius:14px;
-  padding:14px;white-space:pre-wrap;line-height:1.6;margin-top:12px;min-height:100px
+
+.modal-box{
+    position:relative;
+
+    width:min(400px,100%);
+
+    padding:20px;
+
+    background:#fff;
+
+    border-radius:12px;
+
+    text-align:center;
 }
-.toast{
-  position:fixed;left:50%;bottom:88px;transform:translateX(-50%);
-  background:#111827;color:#fff;padding:11px 17px;border-radius:12px;
-  z-index:300;display:none
+
+.dark .modal-box{
+    background:#101620;
+    color:#fff;
 }
-.verify{
-  min-height:100vh;background:linear-gradient(145deg,#eef4ff,#f8f5ff);
-  padding:20px;display:flex;align-items:center;justify-content:center
+
+.modal-close{
+    position:absolute;
+
+    right:10px;
+    top:8px;
+
+    border:0;
+    background:none;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    color:inherit;
 }
-.verify-box{
-  width:min(500px,100%);background:#fff;border-radius:28px;padding:25px;
-  box-shadow:0 20px 70px #1e3a8a18
+
+.modal-image{
+    width:55px;
+    height:55px;
+
+    object-fit:contain;
+
+    margin-bottom:7px;
 }
-.verify-logo{width:80px;height:80px;border-radius:23px;object-fit:cover;display:block;margin:0 auto 12px}
-.verify-box h1{text-align:center;font-size:25px}
-.verify-box>p{text-align:center;color:var(--muted);line-height:1.5;margin:8px 0 20px}
-.join{
-  display:flex;align-items:center;gap:12px;border:1px solid var(--line);
-  padding:13px;border-radius:15px;margin:9px 0;background:#fff
+
+.modal-box h3{
+    font-size:15px;
 }
-.join .jicon{font-size:23px}.join .jt{flex:1}.join small{color:var(--muted);display:block}
-.join button{background:#eaf2ff;color:#1d4ed8;padding:8px 12px;border-radius:9px;font-weight:bold}
-.verifybtn{width:100%;margin-top:14px;padding:14px;border-radius:14px;background:#9ca3af;color:#fff;font-weight:bold}
-.verifybtn.ready{background:linear-gradient(135deg,#2563eb,#7c3aed)}
-.hidden{display:none!important}
-.team img{width:62px;height:62px;border-radius:50%;object-fit:cover;background:#e0e7ff}
-.team{text-align:center}
-.team h3{font-size:14px;margin-top:8px}.team p{font-size:12px;color:var(--muted)}
-.social{display:flex;gap:8px;flex-wrap:wrap}
-.social a{padding:10px 12px;background:#f3f4f6;border-radius:11px;font-size:13px}
-.search{
-  width:100%;padding:13px;border:1px solid var(--line);border-radius:14px;margin-bottom:12px
+
+.modal-box p{
+    font-size:9px;
+    color:#7e8799;
+
+    margin:5px 0 12px;
 }
-@media(min-width:700px){
-  .grid{grid-template-columns:repeat(3,1fr)}
-  .action{min-height:125px}
+
+.modal-links{
+    display:grid;
+    gap:6px;
 }
+
+.modal-links a{
+    padding:8px;
+
+    border-radius:6px;
+
+    background:#5968ff;
+    color:#fff;
+
+    font-size:9px;
+    font-weight:700;
+}
+
+
+/* =====================================================
+   MOBILE SIDEBAR
+===================================================== */
+
+.mobile-menu{
+    display:none;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media(max-width:1000px){
+
+    .sidebar{
+        width:175px;
+    }
+
+    .main{
+        margin-left:175px;
+    }
+
+    .card-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+    }
+
+    .search-top{
+        width:150px;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:700px){
+
+    body{
+        font-size:11px;
+    }
+
+    .header{
+        height:52px;
+        padding:6px 10px;
+    }
+
+    .brand img{
+        width:31px;
+        height:31px;
+    }
+
+    .brand-name{
+        font-size:10px;
+    }
+
+    .brand-sub{
+        font-size:6px;
+    }
+
+    .header-center{
+        display:none;
+    }
+
+    .sidebar{
+        left:-230px;
+
+        width:220px;
+
+        transition:.25s;
+
+        box-shadow:8px 0 30px rgba(0,0,0,.1);
+    }
+
+    .sidebar.open{
+        left:0;
+    }
+
+    .main{
+        margin-left:0;
+        padding-top:52px;
+    }
+
+    .container{
+        width:calc(100% - 20px);
+    }
+
+    .hero{
+        padding:13px 0 8px;
+    }
+
+    .hero-panel{
+        min-height:170px;
+        padding:20px;
+    }
+
+    .hero h1{
+        font-size:24px;
+    }
+
+    .hero-text{
+        font-size:9px;
+    }
+
+    .update-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .card-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:6px;
+    }
+
+    .card{
+        padding:9px;
+        border-radius:8px;
+    }
+
+    .card-image,
+    .card-icon{
+        width:32px;
+        height:32px;
+        font-size:14px;
+    }
+
+    .card h3{
+        font-size:9px;
+    }
+
+    .card p{
+        font-size:7px;
+        min-height:20px;
+    }
+
+    .card-button{
+        font-size:6.5px;
+        padding:5px 7px;
+    }
+
+    .section{
+        padding:13px 0;
+    }
+
+    .section-title{
+        font-size:15px;
+    }
+
+    .language-panel{
+        grid-template-columns:1fr;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL PHONE
+===================================================== */
+
+@media(max-width:360px){
+
+    .card-grid{
+        gap:5px;
+    }
+
+    .card{
+        padding:8px;
+    }
+
+    .card h3{
+        font-size:8px;
+    }
+
+    .card p{
+        font-size:6.5px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- ================= VERIFICATION ================= -->
-<section id="verifyScreen" class="verify">
-  <div class="verify-box">
-    <img class="verify-logo" src="https://i.ibb.co.com/xd1bjsh/1788349715746.png">
-    <h1>AHEAD VIA SKILL HUB 🚀</h1>
-    <p>Join our Telegram communities first, then continue to the website.</p>
 
-    <div id="joinList"></div>
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-    <button id="verifyBtn" class="verifybtn" onclick="verifyJoin()">
-      🔒 VERIFY & CONTINUE
-    </button>
+<header class="header">
 
-    <p id="verifyStatus" style="font-size:12px;margin-top:10px"></p>
-  </div>
-</section>
+    <a href="#home" class="brand">
 
-<!-- ================= APP ================= -->
-<div id="app" class="hidden">
+        <img
+            src="assets/logo.png"
+            alt="AHEAD VIA SKILL HUB"
+            onerror="this.style.display='none';"
+        >
 
-<header class="topbar">
-  <button class="close" onclick="goHome()">✕</button>
+        <div>
+            <div class="brand-name">
+                AHEAD VIA SKILL HUB
+            </div>
 
-  <div class="brand">
-    <img src="https://i.ibb.co.com/xd1bjsh/1788349715746.png">
-    <strong>AHEAD VIA SKILL HUB 🚀</strong>
-  </div>
+            <span class="brand-sub">
+                LEARN • CREATE • EARN • GROW
+            </span>
+        </div>
 
-  <button class="topbtn" onclick="toggleMenu()">⌄</button>
-  <button class="topbtn" onclick="openSettings()">⋮</button>
+    </a>
+
+
+    <div class="header-center">
+
+        <div class="search-top">
+
+            🔎
+
+            <input
+                id="globalSearch"
+                type="search"
+                placeholder="Search..."
+            >
+
+        </div>
+
+    </div>
+
+
+    <div style="display:flex;gap:5px;align-items:center;">
+
+        <button
+            class="header-btn"
+            id="themeButton"
+            title="Dark Mode"
+        >
+            ☾
+        </button>
+
+        <button
+            class="menu-btn"
+            id="mobileMenuButton"
+        >
+            ☰
+        </button>
+
+    </div>
+
 </header>
 
-<!-- TOP MENU -->
-<div id="menu" class="menu">
-  <button onclick="goHome();closeMenu()">🏠 Home</button>
-  <button onclick="showTools();closeMenu()">🤖 AI Tools</button>
-  <button onclick="showTools();closeMenu()">⚡ All Generators</button>
-  <button onclick="showLearning();closeMenu()">📚 Skills</button>
-  <button onclick="showLearning();closeMenu()">🎓 Tutorials</button>
-  <button onclick="showOffers();closeMenu()">🎁 Offers</button>
-  <button onclick="showTelegram();closeMenu()">📢 Telegram</button>
-  <button onclick="showTeam();closeMenu()">👥 Community</button>
-  <button onclick="showAccount();closeMenu()">👤 Profile</button>
-  <button onclick="showAccount();closeMenu()">🆔 My ID</button>
-  <button onclick="showReferral();closeMenu()">🔗 Referral</button>
-  <button onclick="showReferral();closeMenu()">📊 Referral History</button>
-  <button onclick="showContact();closeMenu()">📞 Contact</button>
-  <button onclick="showAbout();closeMenu()">ℹ️ About</button>
-  <button onclick="openSettings();closeMenu()">⚙️ Settings</button>
-  <button onclick="openSettings();closeMenu()">🌍 Country & Language</button>
-  <button onclick="toggleDark();closeMenu()">🌙 Dark Mode</button>
-  <button onclick="showContact();closeMenu()">❓ Help</button>
-  <button class="danger" onclick="logout()">🚪 Logout</button>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-title">
+        MAIN MENU
+    </div>
+
+
+    <a href="#home" class="nav-item active">
+        <span class="nav-icon">🏠</span>
+        <span>Dashboard</span>
+    </a>
+
+
+    <a href="#notice" class="nav-item">
+        <span class="nav-icon">📢</span>
+        <span>Notice & Updates</span>
+    </a>
+
+
+    <a href="#tools" class="nav-item">
+        <span class="nav-icon">🤖</span>
+        <span>AI Tools</span>
+    </a>
+
+
+    <a href="#generators" class="nav-item">
+        <span class="nav-icon">⚡</span>
+        <span>AI Generators</span>
+    </a>
+
+
+    <a href="#skills" class="nav-item">
+        <span class="nav-icon">📚</span>
+        <span>Skill Academy</span>
+    </a>
+
+
+    <a href="#templates" class="nav-item">
+        <span class="nav-icon">🎨</span>
+        <span>Templates</span>
+    </a>
+
+
+    <a href="#social" class="nav-item">
+        <span class="nav-icon">🌐</span>
+        <span>Social Media</span>
+    </a>
+
+
+    <a href="#country" class="nav-item">
+        <span class="nav-icon">🌍</span>
+        <span>Country & Language</span>
+    </a>
+
+
+    <a href="#workspace" class="nav-item">
+        <span class="nav-icon">🗂️</span>
+        <span>My Workspace</span>
+    </a>
+
+
+    <a href="#team" class="nav-item">
+        <span class="nav-icon">👥</span>
+        <span>Team</span>
+    </a>
+
+
+    <a href="#contact" class="nav-item">
+        <span class="nav-icon">📞</span>
+        <span>Contact</span>
+    </a>
+
+
+    <a href="#about" class="nav-item">
+        <span class="nav-icon">ℹ️</span>
+        <span>About</span>
+    </a>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+<div class="container" id="home">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-panel">
+
+        <div class="hero-label">
+            WELCOME TO
+        </div>
+
+        <h1>
+            AHEAD VIA
+            <span>SKILL HUB</span>
+        </h1>
+
+        <p class="hero-text">
+            Learn AI tools, create content, build your creator
+            skills and grow across social media — all in one place.
+        </p>
+
+
+        <div class="hero-actions">
+
+            <a
+                href="#generators"
+                class="btn btn-primary"
+            >
+                ⚡ EXPLORE GENERATORS
+            </a>
+
+            <a
+                href="#skills"
+                class="btn btn-light"
+            >
+                📚 LEARN SKILLS
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     NOTICE + LIVE UPDATE
+===================================================== -->
+
+<section id="notice">
+
+<div class="update-grid">
+
+    <div class="update-card">
+
+        <div class="update-icon">
+            📢
+        </div>
+
+        <div>
+
+            <div class="update-title">
+                Notice
+            </div>
+
+            <div class="update-text">
+                Welcome to AHEAD VIA SKILL HUB Official Website.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="update-card">
+
+        <div class="update-icon">
+            🔴
+        </div>
+
+        <div>
+
+            <div class="update-title">
+                <span class="live-dot"></span>
+                Live Update
+            </div>
+
+            <div class="update-text">
+                Platform is being updated with new tools.
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
-<main id="content" class="page"></main>
+</section>
 
-<!-- BOTTOM NAV -->
-<nav class="bottom">
-  <button id="navHome" class="active" onclick="goHome()"><span>⌂</span>Home</button>
-  <button id="navTools" onclick="showTools()"><span>🤖</span>Tools</button>
-  <button id="navOffers" onclick="showOffers()"><span>🎁</span>Offers</button>
-  <button id="navRef" onclick="showReferral()"><span>👥</span>Referral</button>
-  <button id="navSupport" onclick="showContact()"><span>💬</span>Support</button>
-</nav>
 
-<!-- SETTINGS DRAWER -->
-<div id="drawer" class="drawer" onclick="if(event.target===this)closeDrawer()">
-  <div class="drawer-box">
-    <div class="drawer-head">
-      <h2>⚙️ Settings</h2>
-      <button class="closebtn" onclick="closeDrawer()">✕</button>
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="section">
+
+<div class="section-head">
+
+    <div>
+        <div class="section-label">
+            PLATFORM
+        </div>
+
+        <div class="section-title">
+            Quick Overview
+        </div>
     </div>
 
-    <div class="field">
-      <label>Country</label>
-      <select id="country" onchange="countryChanged()"></select>
+</div>
+
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+
+        <div class="stat-icon">🤖</div>
+
+        <div>
+            <div class="stat-number">50+</div>
+            <div class="stat-name">AI TOOLS</div>
+        </div>
+
     </div>
 
-    <div class="field">
-      <label>Language</label>
-      <select id="language" onchange="changeLanguage()"></select>
+
+    <div class="stat-card">
+
+        <div class="stat-icon">⚡</div>
+
+        <div>
+            <div class="stat-number">260+</div>
+            <div class="stat-name">GENERATORS</div>
+        </div>
+
     </div>
 
-    <button class="secondary" style="width:100%;margin-top:8px" onclick="toggleDark()">
-      🌙 Toggle Dark Mode
+
+    <div class="stat-card">
+
+        <div class="stat-icon">📚</div>
+
+        <div>
+            <div class="stat-number">50+</div>
+            <div class="stat-name">SKILLS</div>
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">🌐</div>
+
+        <div>
+            <div class="stat-number">10+</div>
+            <div class="stat-name">PLATFORMS</div>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     AI TOOLS
+===================================================== -->
+
+<section class="section" id="tools">
+
+<div class="section-head">
+
+    <div>
+        <div class="section-label">
+            AI COLLECTION
+        </div>
+
+        <div class="section-title">
+            🤖 AI Tools
+        </div>
+
+        <div class="section-description">
+            Tools and platforms for creators.
+        </div>
+    </div>
+
+</div>
+
+
+<div class="card-grid">
+
+
+    <!-- CHATGPT -->
+
+    <div class="card searchable">
+
+        <img
+            class="card-image"
+            src="https://cdn.simpleicons.org/openai"
+            alt="ChatGPT"
+        >
+
+        <h3>ChatGPT</h3>
+
+        <p>
+            AI assistant, writing and ideas.
+        </p>
+
+        <a
+            class="card-button"
+            href="https://chatgpt.com/"
+            target="_blank"
+        >
+            OPEN TOOL
+        </a>
+
+    </div>
+
+
+    <!-- GEMINI -->
+
+    <div class="card searchable">
+
+        <img
+            class="card-image"
+            src="https://cdn.simpleicons.org/googlegemini"
+            alt="Gemini"
+        >
+
+        <h3>Gemini</h3>
+
+        <p>
+            AI assistant and content creation.
+        </p>
+
+        <a
+            class="card-button"
+            href="https://gemini.google.com/"
+            target="_blank"
+        >
+            OPEN TOOL
+        </a>
+
+    </div>
+
+
+    <!-- CANVA -->
+
+    <div class="card searchable">
+
+        <img
+            class="card-image"
+            src="https://cdn.simpleicons.org/canva"
+            alt="Canva"
+        >
+
+        <h3>Canva</h3>
+
+        <p>
+            Graphics, posters and designs.
+        </p>
+
+        <a
+            class="card-button"
+            href="https://www.canva.com/"
+            target="_blank"
+        >
+            OPEN TOOL
+        </a>
+
+    </div>
+
+
+    <!-- CAPCUT -->
+
+    <div class="card searchable">
+
+        <img
+            class="card-image"
+            src="https://cdn.simpleicons.org/capcut"
+            alt="CapCut"
+        >
+
+        <h3>CapCut</h3>
+
+        <p>
+            Video editing and creator tools.
+        </p>
+
+        <a
+            class="card-button"
+            href="https://www.capcut.com/"
+            target="_blank"
+        >
+            OPEN TOOL
+        </a>
+
+    </div>
+
+
+    <!-- RUNWAY -->
+
+    <div class="card searchable">
+
+        <div class="card-icon">🎬</div>
+
+        <h3>Runway</h3>
+
+        <p>
+            AI video creation platform.
+        </p>
+
+        <a
+            class="card-button"
+            href="https://runwayml.com/"
+            target="_blank"
+        >
+            OPEN TOOL
+        </a>
+
+    </div>
+
+
+    <!-- ELEVENLABS -->
+
+    <div class="card searchable">
+
+        <div class="card-icon">🎙️</div>
+
+        <h3>ElevenLabs</h3>
+
+        <p>
+            AI voice and audio creation.
+        </p>
+
+        <a
+            class="card-button"
+            href="https://elevenlabs.io/"
+            target="_blank"
+        >
+            OPEN TOOL
+        </a>
+
+    </div>
+
+
+    <!-- HEYGEN -->
+
+    <div class="card searchable">
+
+        <div class="card-icon">👤</div>
+
+        <h3>HeyGen</h3>
+
+        <p>
+            AI avatar and video creation.
+        </p>
+
+        <a
+            class="card-button"
+            href="https://www.heygen.com/"
+            target="_blank"
+        >
+            OPEN TOOL
+        </a>
+
+    </div>
+
+
+    <!-- ADOBE -->
+
+    <div class="card searchable">
+
+        <div class="card-icon">🎨</div>
+
+        <h3>Adobe Firefly</h3>
+
+        <p>
+            AI image and creative tools.
+        </p>
+
+        <a
+            class="card-button"
+            href="https://firefly.adobe.com/"
+            target="_blank"
+        >
+            OPEN TOOL
+        </a>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     GENERATORS
+===================================================== -->
+
+<section class="section" id="generators">
+
+<div class="section-head">
+
+    <div>
+
+        <div class="section-label">
+            CREATE
+        </div>
+
+        <div class="section-title">
+            ⚡ AI Generators
+        </div>
+
+        <div class="section-description">
+            Generate ideas, prompts and creator content.
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="generator-search">
+
+    🔎
+
+    <input
+        id="generatorSearch"
+        type="search"
+        placeholder="Search generators..."
+    >
+
+</div>
+
+
+<div class="category-bar">
+
+    <button class="category active" data-category="all">
+        ALL
     </button>
 
-    <hr style="border:0;border-top:1px solid var(--line);margin:20px 0">
-
-    <h3>Account</h3>
-    <div class="field">
-      <label>Username</label>
-      <input id="usernameInput" placeholder="Your username">
-    </div>
-    <button class="primary" style="width:100%" onclick="saveProfile()">Save Account</button>
-  </div>
-</div>
-
-<!-- TOOL MODAL -->
-<div id="toolModal" class="modal" onclick="if(event.target===this)closeTool()">
-  <div class="modalbox">
-    <div class="modalhead">
-      <div>
-        <h2 id="toolTitle">Generator</h2>
-        <small id="toolCategory" style="color:var(--muted)"></small>
-      </div>
-      <button class="closebtn" onclick="closeTool()">✕</button>
-    </div>
-
-    <div class="field">
-      <label>Topic / Subject</label>
-      <input id="toolTopic" placeholder="Example: AI video creation">
-    </div>
-
-    <div class="field">
-      <label>Audience</label>
-      <input id="toolAudience" placeholder="Example: Social media creators">
-    </div>
-
-    <div class="field">
-      <label>Tone</label>
-      <select id="toolTone">
-        <option>Professional</option>
-        <option>Friendly</option>
-        <option>Creative</option>
-        <option>Funny</option>
-        <option>Powerful</option>
-        <option>Short & Simple</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label>Extra instruction</label>
-      <textarea id="toolExtra" placeholder="Optional instruction..."></textarea>
-    </div>
-
-    <button class="primary" style="width:100%" onclick="runGenerator()">
-      ⚡ GENERATE
+    <button class="category" data-category="text">
+        TEXT
     </button>
 
-    <div id="toolResult" class="result">Your generated result will appear here.</div>
+    <button class="category" data-category="image">
+        IMAGE
+    </button>
 
-    <div style="display:flex;gap:8px;margin-top:10px">
-      <button class="secondary" onclick="copyResult()" style="flex:1">📋 Copy</button>
-      <button class="secondary" onclick="clearResult()" style="flex:1">🗑 Clear</button>
+    <button class="category" data-category="video">
+        VIDEO
+    </button>
+
+    <button class="category" data-category="social">
+        SOCIAL
+    </button>
+
+    <button class="category" data-category="growth">
+        GROWTH
+    </button>
+
+</div>
+
+
+<div class="card-grid" id="generatorGrid">
+
+
+    <div class="card generator" data-category="video">
+
+        <div class="card-icon">🎬</div>
+
+        <h3>Video Generator</h3>
+
+        <p>Create video ideas and prompts.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
     </div>
-  </div>
+
+
+    <div class="card generator" data-category="image">
+
+        <div class="card-icon">🖼️</div>
+
+        <h3>Image Generator</h3>
+
+        <p>Create image prompts and concepts.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="text">
+
+        <div class="card-icon">📖</div>
+
+        <h3>Story Generator</h3>
+
+        <p>Create stories for your content.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="text">
+
+        <div class="card-icon">✍️</div>
+
+        <h3>Script Generator</h3>
+
+        <p>Create video scripts.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="social">
+
+        <div class="card-icon">📝</div>
+
+        <h3>Caption Generator</h3>
+
+        <p>Create captions for social media.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="social">
+
+        <div class="card-icon">#️⃣</div>
+
+        <h3>Hashtag Generator</h3>
+
+        <p>Generate relevant hashtags.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="social">
+
+        <div class="card-icon">🔥</div>
+
+        <h3>Hook Generator</h3>
+
+        <p>Create strong content hooks.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="social">
+
+        <div class="card-icon">🎯</div>
+
+        <h3>Title Generator</h3>
+
+        <p>Create titles for videos.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="social">
+
+        <div class="card-icon">📄</div>
+
+        <h3>Description Generator</h3>
+
+        <p>Create video descriptions.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="image">
+
+        <div class="card-icon">📸</div>
+
+        <h3>Thumbnail Generator</h3>
+
+        <p>Create thumbnail concepts.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="text">
+
+        <div class="card-icon">💡</div>
+
+        <h3>Content Idea Generator</h3>
+
+        <p>Generate new content ideas.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="text">
+
+        <div class="card-icon">🤖</div>
+
+        <h3>AI Prompt Generator</h3>
+
+        <p>Create useful AI prompts.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="video">
+
+        <div class="card-icon">🎞️</div>
+
+        <h3>Reels Generator</h3>
+
+        <p>Create short-form video ideas.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="video">
+
+        <div class="card-icon">▶️</div>
+
+        <h3>YouTube Shorts</h3>
+
+        <p>Create Shorts content ideas.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="social">
+
+        <div class="card-icon">📘</div>
+
+        <h3>Facebook Post</h3>
+
+        <p>Create Facebook post content.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="growth">
+
+        <div class="card-icon">📈</div>
+
+        <h3>Content Strategy</h3>
+
+        <p>Create a content strategy.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="growth">
+
+        <div class="card-icon">📅</div>
+
+        <h3>Content Calendar</h3>
+
+        <p>Create a posting calendar.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card generator" data-category="growth">
+
+        <div class="card-icon">🔎</div>
+
+        <h3>Keyword Generator</h3>
+
+        <p>Generate content keywords.</p>
+
+        <button class="card-button generator-open">
+            OPEN
+        </button>
+
+    </div>
+
 </div>
 
-<div id="toast" class="toast"></div>
+</section>
+
+
+
+<!-- =====================================================
+     SKILL ACADEMY
+===================================================== -->
+
+<section class="section" id="skills">
+
+<div class="section-head">
+
+    <div>
+
+        <div class="section-label">
+            LEARN
+        </div>
+
+        <div class="section-title">
+            📚 Skill Academy
+        </div>
+
+        <div class="section-description">
+            Learn creator skills step by step.
+        </div>
+
+    </div>
 
 </div>
+
+
+<div class="card-grid">
+
+
+    <div class="card">
+
+        <div class="card-icon">🎥</div>
+
+        <h3>AI Video Creation</h3>
+
+        <p>Learn AI video workflows.</p>
+
+        <button class="card-button skill-open">
+            LEARN
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">🖼️</div>
+
+        <h3>AI Image Creation</h3>
+
+        <p>Learn AI image creation.</p>
+
+        <button class="card-button skill-open">
+            LEARN
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">📘</div>
+
+        <h3>Facebook Page</h3>
+
+        <p>Learn page setup.</p>
+
+        <button class="card-button skill-open">
+            LEARN
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">🎞️</div>
+
+        <h3>Facebook Reels</h3>
+
+        <p>Learn Reels workflow.</p>
+
+        <button class="card-button skill-open">
+            LEARN
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">▶️</div>
+
+        <h3>YouTube Shorts</h3>
+
+        <p>Learn Shorts creation.</p>
+
+        <button class="card-button skill-open">
+            LEARN
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">🎵</div>
+
+        <h3>TikTok Content</h3>
+
+        <p>Learn short-form content.</p>
+
+        <button class="card-button skill-open">
+            LEARN
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">📸</div>
+
+        <h3>Instagram Reels</h3>
+
+        <p>Learn Instagram Reels.</p>
+
+        <button class="card-button skill-open">
+            LEARN
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">#️⃣</div>
+
+        <h3>Hashtag Strategy</h3>
+
+        <p>Learn hashtag planning.</p>
+
+        <button class="card-button skill-open">
+            LEARN
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TEMPLATES
+===================================================== -->
+
+<section class="section" id="templates">
+
+<div class="section-head">
+
+    <div>
+
+        <div class="section-label">
+            READY TO USE
+        </div>
+
+        <div class="section-title">
+            🎨 Templates
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="card-grid">
+
+
+    <div class="card">
+
+        <div class="card-icon">🎬</div>
+
+        <h3>Reels Template</h3>
+
+        <p>Short video structure.</p>
+
+        <button class="card-button">
+            USE
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">▶️</div>
+
+        <h3>YouTube Template</h3>
+
+        <p>YouTube content structure.</p>
+
+        <button class="card-button">
+            USE
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">📱</div>
+
+        <h3>Social Post</h3>
+
+        <p>Social media template.</p>
+
+        <button class="card-button">
+            USE
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">🖼️</div>
+
+        <h3>Poster</h3>
+
+        <p>Poster design structure.</p>
+
+        <button class="card-button">
+            USE
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SOCIAL MEDIA
+===================================================== -->
+
+<section class="section" id="social">
+
+<div class="section-head">
+
+    <div>
+
+        <div class="section-label">
+            SOCIAL HUB
+        </div>
+
+        <div class="section-title">
+            🌐 Social Media
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="card-grid">
+
+
+    <a
+        class="card social-card"
+        href="https://www.youtube.com/@KittySnipsStories"
+        target="_blank"
+    >
+
+        <img
+            class="card-image"
+            src="https://cdn.simpleicons.org/youtube"
+            alt="YouTube"
+        >
+
+        <h3>YouTube</h3>
+
+        <p>Videos & Shorts.</p>
+
+        <span class="card-button">
+            OPEN
+        </span>
+
+    </a>
+
+
+    <div class="card social-card">
+
+        <img
+            class="card-image"
+            src="https://cdn.simpleicons.org/facebook"
+            alt="Facebook"
+        >
+
+        <h3>Facebook</h3>
+
+        <p>Pages & Reels.</p>
+
+        <span class="card-button">
+            OPEN
+        </span>
+
+    </div>
+
+
+    <div class="card social-card">
+
+        <img
+            class="card-image"
+            src="https://cdn.simpleicons.org/tiktok"
+            alt="TikTok"
+        >
+
+        <h3>TikTok</h3>
+
+        <p>Short videos.</p>
+
+        <span class="card-button">
+            OPEN
+        </span>
+
+    </div>
+
+
+    <div class="card social-card">
+
+        <img
+            class="card-image"
+            src="https://cdn.simpleicons.org/instagram"
+            alt="Instagram"
+        >
+
+        <h3>Instagram</h3>
+
+        <p>Reels & posts.</p>
+
+        <span class="card-button">
+            OPEN
+        </span>
+
+    </div>
+
+
+    <div class="card social-card">
+
+        <img
+            class="card-image"
+            src="https://cdn.simpleicons.org/telegram"
+            alt="Telegram"
+        >
+
+        <h3>Telegram</h3>
+
+        <p>Community & channel.</p>
+
+        <a
+            class="card-button"
+            href="https://t.me/Aheadvia1298"
+            target="_blank"
+        >
+            OPEN
+        </a>
+
+    </div>
+
+
+    <div class="card social-card">
+
+        <img
+            class="card-image"
+            src="https://cdn.simpleicons.org/whatsapp"
+            alt="WhatsApp"
+        >
+
+        <h3>WhatsApp</h3>
+
+        <p>Contact & community.</p>
+
+        <span class="card-button">
+            OPEN
+        </span>
+
+    </div>
+
+
+    <div class="card social-card">
+
+        <img
+            class="card-image"
+            src="https://cdn.simpleicons.org/x"
+            alt="X"
+        >
+
+        <h3>X / Twitter</h3>
+
+        <p>Social content.</p>
+
+        <span class="card-button">
+            OPEN
+        </span>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COUNTRY & LANGUAGE
+===================================================== -->
+
+<section class="section" id="country">
+
+<div class="section-head">
+
+    <div>
+
+        <div class="section-label">
+            PERSONALIZATION
+        </div>
+
+        <div class="section-title">
+            🌍 Country & Language
+        </div>
+
+        <div class="section-description">
+            Choose your country and preferred language.
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="language-panel">
+
+    <div class="select-box">
+
+        <label>
+            COUNTRY
+        </label>
+
+        <select id="countrySelect">
+
+            <option value="BD">
+                🇧🇩 Bangladesh
+            </option>
+
+            <option value="US">
+                🇺🇸 United States
+            </option>
+
+            <option value="SA">
+                🇸🇦 Saudi Arabia
+            </option>
+
+            <option value="PK">
+                🇵🇰 Pakistan
+            </option>
+
+            <option value="TH">
+                🇹🇭 Thailand
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="select-box">
+
+        <label>
+            LANGUAGE
+        </label>
+
+        <select id="languageSelect">
+
+            <option value="en">
+                English
+            </option>
+
+            <option value="bn">
+                বাংলা
+            </option>
+
+            <option value="ar">
+                العربية
+            </option>
+
+            <option value="ur">
+                اردو
+            </option>
+
+            <option value="th">
+                ไทย
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MY WORKSPACE
+===================================================== -->
+
+<section class="section" id="workspace">
+
+<div class="section-head">
+
+    <div>
+
+        <div class="section-label">
+            YOUR SPACE
+        </div>
+
+        <div class="section-title">
+            🗂️ My Workspace
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="card-grid">
+
+
+    <div class="card">
+
+        <div class="card-icon">⭐</div>
+
+        <h3>Favorites</h3>
+
+        <p>Your saved tools and generators.</p>
+
+        <button class="card-button">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">💾</div>
+
+        <h3>Saved Content</h3>
+
+        <p>Your saved creator content.</p>
+
+        <button class="card-button">
+            OPEN
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">👤</div>
+
+        <h3>My Profile</h3>
+
+        <p>Profile and creator information.</p>
+
+        <button class="card-button">
+            PROFILE
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">🔐</div>
+
+        <h3>Login / Signup</h3>
+
+        <p>Account access.</p>
+
+        <button class="card-button">
+            LOGIN
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TEAM
+===================================================== -->
+
+<section class="section" id="team">
+
+<div class="section-head">
+
+    <div>
+
+        <div class="section-label">
+            OUR PEOPLE
+        </div>
+
+        <div class="section-title">
+            👥 Team
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="card-grid">
+
+
+    <div class="card">
+
+        <img
+            class="team-photo"
+            src="assets/team1.jpg"
+            alt="Abdul Ahad"
+            onerror="this.style.display='none';"
+        >
+
+        <h3>
+            ABDUL AHAD
+        </h3>
+
+        <div class="team-role">
+            Founder & Owner
+        </div>
+
+        <p>
+            AHEAD VIA SKILL HUB
+        </p>
+
+        <button class="card-button">
+            PROFILE
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <img
+            class="team-photo"
+            src="assets/team2.jpg"
+            alt="Miss Samia Islam"
+            onerror="this.style.display='none';"
+        >
+
+        <h3>
+            MISS SAMIA ISLAM
+        </h3>
+
+        <div class="team-role">
+            Founder & Admin
+        </div>
+
+        <p>
+            AHEAD VIA SKILL HUB
+        </p>
+
+        <button class="card-button">
+            PROFILE
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <img
+            class="team-photo"
+            src="assets/team3.jpg"
+            alt="Jannat Akhter"
+            onerror="this.style.display='none';"
+        >
+
+        <h3>
+            JANNAT AKHTER
+        </h3>
+
+        <div class="team-role">
+            Admin
+        </div>
+
+        <p>
+            AHEAD VIA SKILL HUB
+        </p>
+
+        <button class="card-button">
+            PROFILE
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section class="section" id="contact">
+
+<div class="section-head">
+
+    <div>
+
+        <div class="section-label">
+            GET IN TOUCH
+        </div>
+
+        <div class="section-title">
+            📞 Contact
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="card-grid">
+
+
+    <div class="card">
+
+        <div class="card-icon">💬</div>
+
+        <h3>WhatsApp</h3>
+
+        <p>Contact AHEAD VIA.</p>
+
+        <a
+            href="https://wa.me/"
+            target="_blank"
+            class="card-button"
+        >
+            CONTACT
+        </a>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">✈️</div>
+
+        <h3>Telegram</h3>
+
+        <p>@Aheadvia1298</p>
+
+        <a
+            href="https://t.me/Aheadvia1298"
+            target="_blank"
+            class="card-button"
+        >
+            CONTACT
+        </a>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">📞</div>
+
+        <h3>Phone</h3>
+
+        <p>Direct contact.</p>
+
+        <button class="card-button">
+            CALL
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">✉️</div>
+
+        <h3>Email</h3>
+
+        <p>Send a message.</p>
+
+        <button class="card-button">
+            EMAIL
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="section" id="about">
+
+<div class="about-box">
+
+    <h2>
+        AHEAD VIA SKILL HUB
+    </h2>
+
+    <p>
+        A creator-focused learning platform for AI tools,
+        content creation, video creation, image creation,
+        social media workflows and digital skills.
+    </p>
+
+    <span class="about-tag">
+        LEARN • CREATE • EARN • GROW
+    </span>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-title">
+        AHEAD VIA SKILL HUB
+    </div>
+
+    <div class="footer-text">
+        LEARN • CREATE • EARN • GROW
+    </div>
+
+    <div class="footer-text">
+        © 2026 AHEAD VIA SKILL HUB. All Rights Reserved.
+    </div>
+
+</footer>
+
+
+</div>
+</main>
+
+
+
+<!-- =====================================================
+     FIXED HELP BUTTON
+===================================================== -->
+
+<button
+    class="help-button"
+    id="helpButton"
+>
+
+    <img
+        src="assets/help.png"
+        alt="Help"
+        onerror="this.style.display='none';"
+    >
+
+    <span>
+        HELP
+    </span>
+
+</button>
+
+
+
+<!-- =====================================================
+     HELP MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="helpModal"
+>
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            id="closeHelp"
+        >
+            ×
+        </button>
+
+
+        <img
+            class="modal-image"
+            src="assets/help.png"
+            alt="Help"
+        >
+
+
+        <h3>
+            Need Help?
+        </h3>
+
+
+        <p>
+            Contact AHEAD VIA SKILL HUB.
+        </p>
+
+
+        <div class="modal-links">
+
+            <a
+                href="https://t.me/Aheadvia1298"
+                target="_blank"
+            >
+                ✈️ Telegram
+            </a>
+
+
+            <a
+                href="https://wa.me/"
+                target="_blank"
+            >
+                💬 WhatsApp
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     GENERATOR MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="generatorModal"
+>
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            id="closeGenerator"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-image">
+            ⚡
+        </div>
+
+
+        <h3 id="generatorModalTitle">
+            AI Generator
+        </h3>
+
+
+        <p>
+            This generator interface is ready to connect
+            with an AI API or external generator service.
+        </p>
+
+
+        <button
+            class="btn btn-primary"
+            onclick="closeGeneratorModal()"
+        >
+            CLOSE
+        </button>
+
+    </div>
+
+</div>
+
+
 
 <script>
-/* =========================================================
-   AHEAD VIA SKILL HUB
-   SINGLE FILE APP
-========================================================= */
 
-/* ---------- TELEGRAM LINKS ---------- */
+/* =====================================================
+   THEME
+===================================================== */
 
-const TELEGRAM_LINKS = [
-  {
-    type:"Channel",
-    name:"AHEAD VIA Channel 1",
-    url:"https://t.me/Aheadvia1298gf"
-  },
-  {
-    type:"Channel",
-    name:"AHEAD VIA Channel 2",
-    url:"https://t.me/aheadskillhub120"
-  },
-  {
-    type:"Group",
-    name:"AHEAD VIA Group 1",
-    url:"https://t.me/Aheadviaiskill_hab"
-  },
-  {
-    type:"Group",
-    name:"AHEAD VIA Group 2",
-    url:"https://t.me/aheadskillhub12"
-  }
-];
+const themeButton =
+document.getElementById("themeButton");
 
-/* ---------- SOCIAL LINKS ---------- */
+const savedTheme =
+localStorage.getItem("aheadTheme");
 
-const LINKS={
-  personalTelegram:"https://t.me/Aheadvia1298",
-  whatsapp:"https://wa.me/8801400524877",
-  call:"tel:01335611366",
-  email:"mailto:msssaimaislam6@gmail.com",
-  facebook:"https://www.facebook.com/share/19YtirSEwS/",
-  youtube:"https://www.youtube.com/@KittySnipsStories",
-  instagram:"https://www.instagram.com/kittysnipsofficial",
-  x:"https://x.com/Abdulaheadrllm"
-};
+if(savedTheme === "dark"){
 
-/* ---------- COUNTRIES / LANGUAGES ---------- */
+    document.body.classList.add("dark");
 
-const COUNTRY_LANG={
-  "Bangladesh":["English","বাংলা"],
-  "India":["English","Hindi"],
-  "Pakistan":["English","Urdu"],
-  "Saudi Arabia":["English","Arabic"],
-  "United Arab Emirates":["English","Arabic"],
-  "Indonesia":["English","Indonesian"],
-  "Malaysia":["English","Malay"],
-  "Turkey":["English","Turkish"],
-  "Germany":["English","German"],
-  "France":["English","French"],
-  "Spain":["English","Spanish"],
-  "Italy":["English","Italian"],
-  "Japan":["English","Japanese"],
-  "South Korea":["English","Korean"],
-  "China":["English","Chinese"],
-  "United Kingdom":["English"],
-  "United States":["English"],
-  "Canada":["English","French"],
-  "Australia":["English"],
-  "Brazil":["English","Portuguese"],
-  "Portugal":["English","Portuguese"],
-  "Russia":["English","Russian"],
-  "Thailand":["English","Thai"],
-  "Vietnam":["English","Vietnamese"],
-  "Philippines":["English","Filipino"],
-  "Singapore":["English","Malay"],
-  "Nepal":["English","Nepali"],
-  "Sri Lanka":["English","Sinhala"],
-  "Qatar":["English","Arabic"],
-  "Kuwait":["English","Arabic"],
-  "Oman":["English","Arabic"],
-  "Bahrain":["English","Arabic"],
-  "Egypt":["English","Arabic"],
-  "South Africa":["English"],
-  "Nigeria":["English"],
-  "Kenya":["English","Swahili"]
-};
+    themeButton.textContent="☀";
 
-/* ---------- 250 GENERATORS ---------- */
+}
 
-const categories={
-"✍️ Writing & Content":[
-"Caption","Story","Blog Outline","Article","Post","Description","Bio",
-"Quote","Slogan","Hook","Script","Content Idea","Thread","Announcement",
-"Community Post","Product Description","Review","Comment","Reply","Call To Action"
-],
-"📱 Social Media":[
-"Facebook Post","Facebook Bio","Facebook Reel Caption","Instagram Caption",
-"Instagram Bio","Instagram Reel Caption","TikTok Caption","TikTok Bio",
-"YouTube Community Post","Social Media Calendar","Creator Bio","Profile Intro",
-"Social Media Hook","Engagement Post","Poll Idea"
-],
-"▶️ YouTube":[
-"YouTube Title","YouTube Description","YouTube Tags","YouTube Shorts Idea",
-"YouTube Hook","YouTube Script","YouTube CTA","YouTube Channel Bio",
-"Video Chapter","Thumbnail Text","Video Idea","Video Intro","Video Outro",
-"Video Series Idea","YouTube SEO"
-],
-"📢 Telegram":[
-"Telegram Channel Post","Telegram Group Post","Telegram Caption",
-"Telegram Announcement","Telegram Welcome","Telegram Rules",
-"Telegram Channel Bio","Telegram Promotion","Telegram Poll",
-"Telegram CTA","Telegram Content Idea","Telegram Ad Copy"
-],
-"🎬 Video & Reels":[
-"Reel Idea","Shorts Idea","Video Script","Video Hook","Video Storyboard",
-"Video Scene","Video Voiceover","Video CTA","Video Title","Video Description",
-"Video Transition Idea","Video Editing Plan","Faceless Video Idea",
-"Viral Video Idea","Video Series"
-],
-"🖼️ Image & Prompt":[
-"Image Prompt","Poster Prompt","Banner Prompt","Thumbnail Prompt",
-"Logo Prompt","Profile Picture Prompt","Product Photo Prompt",
-"Social Media Design Prompt","Cinematic Prompt","Realistic Photo Prompt",
-"3D Design Prompt","Anime Prompt","Background Prompt","Ad Creative Prompt",
-"Infographic Prompt"
-],
-"🤖 AI Prompt":[
-"AI Writing Prompt","AI Research Prompt","AI Marketing Prompt","AI Business Prompt",
-"AI Coding Prompt","AI Education Prompt","AI Video Prompt","AI Image Prompt",
-"AI Productivity Prompt","AI Assistant Prompt","AI SEO Prompt","AI Content Prompt"
-],
-"📣 Marketing & Ads":[
-"Ad Headline","Ad Copy","Facebook Ad","Instagram Ad","YouTube Ad",
-"Telegram Ad","Product Ad","Sales Copy","Marketing Hook","Marketing Plan",
-"Campaign Idea","Promotion Idea","Offer Copy","Landing Page Copy",
-"Lead Magnet Idea"
-],
-"#️⃣ SEO & Hashtag":[
-"Hashtag Set","Trending Hashtag Idea","SEO Title","SEO Description",
-"Keyword Ideas","Long Tail Keywords","SEO Blog Outline","SEO Hook",
-"SEO CTA","Search Intent","Meta Description","Tag Ideas"
-],
-"💼 Business":[
-"Business Idea","Business Name","Brand Name","Business Bio","Business Plan",
-"Marketing Plan","Customer Persona","Product Idea","Service Idea",
-"Sales Strategy","Growth Idea","Business Post","Business Offer",
-"Startup Idea","Digital Product Idea"
-],
-"💰 Earning & Skills":[
-"Online Skill Idea","Freelance Service","Digital Earning Idea","Creator Income Idea",
-"Skill Learning Plan","Side Hustle Idea","Online Business Idea","Service Package",
-"Freelance Bio","Portfolio Intro","Client Pitch","Gig Description"
-],
-"🌐 Website & HTML":[
-"Website Idea","Landing Page Idea","HTML Section","Website Hero Text",
-"Website About Text","FAQ Generator","Website CTA","Contact Page Copy",
-"Portfolio Section","Pricing Section","Feature Section","Website Notice"
-],
-"💻 Coding & Developer":[
-"Code Explanation","Function Idea","Variable Name","API Description",
-"Bug Checklist","Project Idea","README Outline","Commit Message",
-"Documentation","JSON Example Idea","Database Field Idea","UI Component Idea"
-],
-"🎓 Education":[
-"Study Plan","Lesson Plan","Quiz Questions","MCQ Ideas","Exam Revision",
-"Flashcard Ideas","Learning Roadmap","Course Outline","Tutorial Outline",
-"Student Bio","Educational Post","Teacher Announcement"
-],
-"✈️ Travel & Planning":[
-"Travel Plan","Trip Itinerary","Packing List","Travel Caption",
-"Travel Post","Destination Idea","Budget Plan","Daily Schedule",
-"Event Plan","Project Plan","Task List","Weekly Plan"
-],
-"🛍️ Product & E-commerce":[
-"Product Name","Product Title","Product Description","Product Benefits",
-"Product Features","Product Review","Store Bio","Shop Announcement",
-"Discount Copy","Product Caption","Product Ad","Customer Message"
-]
-};
 
-/* Make sure there are 250+ usable entries */
-let generators=[];
-let id=1;
+themeButton.addEventListener("click",function(){
 
-Object.keys(categories).forEach(category=>{
-  categories[category].forEach(name=>{
-    generators.push({
-      id:id++,
-      category,
-      name
+    document.body.classList.toggle("dark");
+
+    const isDark =
+    document.body.classList.contains("dark");
+
+    localStorage.setItem(
+        "aheadTheme",
+        isDark ? "dark" : "light"
+    );
+
+    themeButton.textContent =
+    isDark ? "☀" : "☾";
+
+});
+
+
+
+/* =====================================================
+   MOBILE SIDEBAR
+===================================================== */
+
+const sidebar =
+document.getElementById("sidebar");
+
+const mobileMenuButton =
+document.getElementById("mobileMenuButton");
+
+mobileMenuButton.addEventListener("click",function(){
+
+    sidebar.classList.toggle("open");
+
+});
+
+
+document.querySelectorAll(".nav-item").forEach(function(item){
+
+    item.addEventListener("click",function(){
+
+        if(window.innerWidth <= 700){
+
+            sidebar.classList.remove("open");
+
+        }
+
     });
-  });
+
 });
 
-/* add additional variants until 250 */
-const variants=[
-"Professional","Creative","Short","Viral","Premium","Beginner","Advanced",
-"Engaging","Simple","Powerful","Modern","Unique","Smart","Fast","Pro"
-];
 
-let base=[...generators];
 
-while(generators.length<250){
-  const b=base[(generators.length-base.length)%base.length];
-  const v=variants[(generators.length)%variants.length];
-  generators.push({
-    id:id++,
-    category:b.category,
-    name:v+" "+b.name
-  });
-}
+/* =====================================================
+   GENERATOR SEARCH
+===================================================== */
 
-/* ---------- APP STATE ---------- */
+const generatorSearch =
+document.getElementById("generatorSearch");
 
-let currentTool=null;
-let currentPage="home";
+const generators =
+document.querySelectorAll(".generator");
 
-const $=id=>document.getElementById(id);
+generatorSearch.addEventListener("input",function(){
 
-function save(key,value){
-  localStorage.setItem("avsh_"+key,JSON.stringify(value));
-}
-function load(key,def=null){
-  try{
-    const v=localStorage.getItem("avsh_"+key);
-    return v===null?def:JSON.parse(v);
-  }catch(e){return def}
-}
+    const value =
+    this.value.toLowerCase().trim();
 
-/* ---------- VERIFICATION ---------- */
+    generators.forEach(function(card){
 
-function buildJoinScreen(){
-  $("joinList").innerHTML=TELEGRAM_LINKS.map((x,i)=>`
-    <div class="join">
-      <div class="jicon">${x.type==="Channel"?"📢":"👥"}</div>
-      <div class="jt">
-        <b>${x.name}</b>
-        <small>${x.type}</small>
-      </div>
-      <button onclick="joinClicked(${i})">JOIN</button>
-    </div>
-  `).join("");
-}
+        const text =
+        card.textContent.toLowerCase();
 
-function joinClicked(i){
-  const joined=load("joined",[]);
-  if(!joined.includes(i))joined.push(i);
-  save("joined",joined);
-  window.open(TELEGRAM_LINKS[i].url,"_blank");
+        card.style.display =
+        text.includes(value)
+        ? ""
+        : "none";
 
-  if(joined.length===4){
-    $("verifyBtn").classList.add("ready");
-    $("verifyStatus").style.color="#16a34a";
-    $("verifyStatus").textContent="✅ All four Join buttons completed. You can continue.";
-  }
-}
+    });
 
-function verifyJoin(){
-  const joined=load("joined",[]);
-  if(joined.length<4){
-    $("verifyStatus").style.color="#dc2626";
-    $("verifyStatus").textContent=
-      "⚠️ Please open all 4 Telegram links first.";
-    return;
-  }
-
-  save("verified",true);
-  openApp();
-}
-
-function openApp(){
-  $("verifyScreen").classList.add("hidden");
-  $("app").classList.remove("hidden");
-  initSettings();
-  goHome();
-}
-
-/* ---------- MENU ---------- */
-
-function toggleMenu(){
-  $("menu").classList.toggle("show");
-}
-function closeMenu(){
-  $("menu").classList.remove("show");
-}
-document.addEventListener("click",e=>{
-  if(!e.target.closest(".topbtn") && !e.target.closest("#menu")){
-    closeMenu();
-  }
 });
 
-/* ---------- NAV ---------- */
 
-function setNav(active){
-  ["navHome","navTools","navOffers","navRef","navSupport"]
-  .forEach(x=>$(x).classList.remove("active"));
-  if(active)$(active).classList.add("active");
+
+/* =====================================================
+   CATEGORY FILTER
+===================================================== */
+
+const categoryButtons =
+document.querySelectorAll(".category");
+
+categoryButtons.forEach(function(button){
+
+    button.addEventListener("click",function(){
+
+        categoryButtons.forEach(function(btn){
+
+            btn.classList.remove("active");
+
+        });
+
+        this.classList.add("active");
+
+        const category =
+        this.dataset.category;
+
+        generators.forEach(function(card){
+
+            if(category === "all"){
+
+                card.style.display="";
+
+            }else{
+
+                card.style.display =
+                card.dataset.category === category
+                ? ""
+                : "none";
+
+            }
+
+        });
+
+    });
+
+});
+
+
+
+/* =====================================================
+   GENERATOR MODAL
+===================================================== */
+
+const generatorModal =
+document.getElementById("generatorModal");
+
+const generatorModalTitle =
+document.getElementById("generatorModalTitle");
+
+const closeGenerator =
+document.getElementById("closeGenerator");
+
+
+document.querySelectorAll(".generator-open")
+.forEach(function(button){
+
+    button.addEventListener("click",function(){
+
+        const card =
+        this.closest(".generator");
+
+        const title =
+        card.querySelector("h3").textContent;
+
+        generatorModalTitle.textContent =
+        title;
+
+        generatorModal.classList.add("show");
+
+    });
+
+});
+
+
+function closeGeneratorModal(){
+
+    generatorModal.classList.remove("show");
+
 }
 
-function goHome(){
-  currentPage="home";
-  setNav("navHome");
-  renderHome();
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function renderHome(){
-  const username=load("username","Guest User");
-  const uid=load("uid","AV-"+Math.floor(100000+Math.random()*899999));
-  save("uid",uid);
-
-  $("content").innerHTML=`
-    <div class="userbar">
-      <img class="avatar" src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg">
-      <div class="info">
-        <b>Welcome, ${escapeHtml(username)} 👋</b>
-        <small>ID: ${uid}</small>
-      </div>
-      <span class="badge">VERIFIED</span>
-    </div>
-
-    <section class="hero">
-      <small>AHEAD VIA</small>
-      <h1>SKILL HUB 🚀</h1>
-      <p>AI tools, generators, digital skills, tutorials, resources and creator tools in one place.</p>
-    </section>
-
-    <div class="notice">
-      📢 <b>Notice:</b> Explore the tools, learn new digital skills and stay connected with AHEAD VIA.
-    </div>
-
-    <div class="section-head">
-      <h2>Quick Actions</h2>
-      <span>${generators.length}+ Tools</span>
-    </div>
-
-    <div class="grid">
-      ${action("🤖","AI Tools","showTools()")}
-      ${action("⚡","Generators","showTools()")}
-      ${action("📚","Skills","showLearning()")}
-      ${action("🎁","Offers","showOffers()")}
-      ${action("📢","Telegram","showTelegram()")}
-      ${action("👥","Referral","showReferral()")}
-      ${action("👤","Profile","showAccount()")}
-      ${action("💬","Support","showContact()")}
-    </div>
-
-    <div class="section-head">
-      <h2>🔥 Featured Tools</h2>
-      <span onclick="showTools()">View all</span>
-    </div>
-
-    <div class="grid">
-      ${generators.slice(0,6).map(toolCard).join("")}
-    </div>
-
-    <div class="section-head">
-      <h2>👥 Our Team</h2>
-    </div>
-
-    <div class="grid3">
-      ${teamCard("👨‍💻","ABDUL AHAD","Founder & Owner")}
-      ${teamCard("👩‍💻","𝐌𝐈𝐒𝐒 𝐒𝐀𝐌𝐈𝐀 𝐈𝐒𝐋𝐀𝐌","Founder & Admin")}
-      ${teamCard("👩‍💼","JANNAT AKHTER","Admin")}
-    </div>
-  `;
-}
-
-function action(icon,title,fn){
-  return `<button class="card action" onclick="${fn}">
-    <div class="ico">${icon}</div><b>${title}</b>
-  </button>`;
-}
-
-function teamCard(icon,name,role){
-  return `<div class="card team">
-    <div style="font-size:40px">${icon}</div>
-    <h3>${name}</h3>
-    <p>${role}</p>
-  </div>`;
-}
-
-/* ---------- TOOLS ---------- */
-
-function showTools(){
-  currentPage="tools";
-  setNav("navTools");
-
-  $("content").innerHTML=`
-    <div class="section-head">
-      <h2>🤖 AI & Generators</h2>
-      <span>${generators.length}+ tools</span>
-    </div>
-
-    <input id="toolSearch" class="search"
-      placeholder="🔎 Search generators..."
-      oninput="filterTools()">
-
-    <div id="toolGrid" class="grid">
-      ${generators.map(toolCard).join("")}
-    </div>
-  `;
-}
-
-function toolCard(t){
-  return `<div class="card tool-card" data-name="${escapeHtml((t.name+" "+t.category).toLowerCase())}">
-    <div class="ico">⚡</div>
-    <h3>${escapeHtml(t.name)}</h3>
-    <p>${escapeHtml(t.category)}</p>
-    <button onclick="openTool(${t.id})">Open Generator</button>
-  </div>`;
-}
-
-function filterTools(){
-  const q=$("toolSearch").value.toLowerCase();
-  document.querySelectorAll(".tool-card").forEach(c=>{
-    c.style.display=c.dataset.name.includes(q)?"block":"none";
-  });
-}
-
-function openTool(id){
-  currentTool=generators.find(x=>x.id===id);
-  if(!currentTool)return;
-
-  $("toolTitle").textContent=currentTool.name;
-  $("toolCategory").textContent=currentTool.category;
-  $("toolTopic").value="";
-  $("toolAudience").value="";
-  $("toolExtra").value="";
-  $("toolResult").textContent="Your generated result will appear here.";
-  $("toolModal").classList.add("show");
-}
-
-function closeTool(){
-  $("toolModal").classList.remove("show");
-  currentTool=null;
-}
-
-function runGenerator(){
-  if(!currentTool)return;
-
-  const topic=$("toolTopic").value.trim()||"your chosen topic";
-  const audience=$("toolAudience").value.trim()||"your target audience";
-  const tone=$("toolTone").value;
-  const extra=$("toolExtra").value.trim();
-
-  let result="";
-
-  if(currentTool.name.toLowerCase().includes("image prompt") ||
-     currentTool.name.toLowerCase().includes("poster prompt") ||
-     currentTool.name.toLowerCase().includes("thumbnail prompt") ||
-     currentTool.name.toLowerCase().includes("logo prompt") ||
-     currentTool.name.toLowerCase().includes("banner prompt") ||
-     currentTool.name.toLowerCase().includes("design prompt") ||
-     currentTool.name.toLowerCase().includes("cinematic prompt") ||
-     currentTool.name.toLowerCase().includes("realistic photo prompt") ||
-     currentTool.name.toLowerCase().includes("3d design prompt") ||
-     currentTool.name.toLowerCase().includes("anime prompt") ||
-     currentTool.name.toLowerCase().includes("background prompt") ||
-     currentTool.name.toLowerCase().includes("ad creative prompt") ||
-     currentTool.name.toLowerCase().includes("infographic prompt")){
-    result=`Create a high-quality ${currentTool.name.replace(/Prompt/i,"").trim()} about "${topic}". 
-Target audience: ${audience}.
-Style: ${tone}.
-Composition: professional, clean, detailed, visually attractive, strong focal point, balanced lighting, high detail, suitable for social media.
-${extra?`Additional instruction: ${extra}`:"Use a polished modern design with readable visual hierarchy."}`;
-  }else if(currentTool.name.toLowerCase().includes("hashtag")){
-    result=`#${slug(topic)} #AHEADVIA #SkillHub #DigitalSkills #ContentCreator #AItools #CreatorTips #OnlineSkills #${slug(audience)}`;
-  }else if(currentTool.name.toLowerCase().includes("title") ||
-          currentTool.name.toLowerCase().includes("headline") ||
-          currentTool.name.toLowerCase().includes("hook")){
-    result=`${topic}: The Simple Guide Everyone Should Know\n\n${topic} Made Easy: Start Here\n\n7 Powerful Ideas About ${topic}\n\nStop Scrolling — Learn ${topic} Today`;
-  }else if(currentTool.name.toLowerCase().includes("bio")){
-    result=`${topic} | ${audience}\n🚀 Digital creator & learner\n💡 Sharing useful ideas, tools & resources\n✨ ${tone} content\n🔗 AHEAD VIA SKILL HUB`;
-  }else{
-    result=`${currentTool.name} — Generated Draft\n\nTopic: ${topic}\nAudience: ${audience}\nTone: ${tone}\n\nHere is a practical ${currentTool.name.toLowerCase()} for "${topic}". Create clear, useful and engaging content that gives the audience immediate value. Start with a strong opening, explain the main idea simply, add useful examples, and finish with a clear call to action.\n\nCTA: Follow AHEAD VIA SKILL HUB for more useful tools and digital resources.\n${extra?`\nExtra instruction: ${extra}`:""}`;
-  }
-
-  $("toolResult").textContent=result;
-}
-
-function copyResult(){
-  const text=$("toolResult").textContent;
-  navigator.clipboard?.writeText(text).then(
-    ()=>toast("✅ Copied"),
-    ()=>toast("Copy failed")
-  );
-}
-
-function clearResult(){
-  $("toolResult").textContent="";
-}
-
-/* ---------- LEARNING ---------- */
-
-function showLearning(){
-  currentPage="learning";
-  $("content").innerHTML=`
-    <div class="section-head"><h2>📚 Skills & Tutorials</h2></div>
-
-    <div class="grid">
-      ${[
-        ["🎬","How to Make a Video"],
-        ["✂️","Video Editing"],
-        ["▶️","YouTube Shorts"],
-        ["📱","Facebook Reels"],
-        ["🎵","TikTok Setup"],
-        ["📸","Instagram Reels"],
-        ["📢","Create Telegram Channel"],
-        ["👥","Create Telegram Group"],
-        ["📣","Content Promotion"],
-        ["#️⃣","Hashtag Basics"],
-        ["🚀","Social Media Growth"],
-        ["🤖","AI Tools Guide"]
-      ].map(x=>`
-        <button class="card action" onclick="tutorial('${x[1]}')">
-          <div class="ico">${x[0]}</div><b>${x[1]}</b>
-        </button>
-      `).join("")}
-    </div>
-  `;
-}
-
-function tutorial(title){
-  $("content").innerHTML=`
-    <button class="secondary" onclick="showLearning()">← Back</button>
-    <div class="card" style="margin-top:12px">
-      <h2>📚 ${title}</h2>
-      <p style="margin-top:10px;line-height:1.7;color:var(--muted)">
-        This tutorial section can contain step-by-step instructions, images,
-        links and resources for <b>${title}</b>.
-      </p>
-      <div class="notice" style="margin-top:15px">
-        💡 Follow each step carefully and use the related AHEAD VIA tools when needed.
-      </div>
-    </div>
-  `;
-}
-
-/* ---------- OFFERS ---------- */
-
-function showOffers(){
-  setNav("navOffers");
-  $("content").innerHTML=`
-    <div class="section-head"><h2>🎁 Offers</h2></div>
-
-    <div class="card">
-      <h2>🔥 Featured Offer</h2>
-      <p style="color:var(--muted);margin-top:8px">
-        Check the latest AHEAD VIA updates, creator resources and special opportunities.
-      </p>
-      <button class="primary" style="margin-top:14px" onclick="showTelegram()">
-        📢 View Updates
-      </button>
-    </div>
-
-    <div class="grid" style="margin-top:12px">
-      <div class="card"><h3>⭐ Featured</h3><p style="color:var(--muted);margin-top:7px">Selected AHEAD VIA resources.</p></div>
-      <div class="card"><h3>🔥 Latest</h3><p style="color:var(--muted);margin-top:7px">Latest tools and updates.</p></div>
-    </div>
-  `;
-}
-
-/* ---------- TELEGRAM ---------- */
-
-function showTelegram(){
-  $("content").innerHTML=`
-    <div class="section-head"><h2>📢 Telegram</h2></div>
-
-    <div class="card">
-      <h3>👤 Personal Telegram</h3>
-      <a class="primary" style="display:inline-block;margin-top:10px" href="${LINKS.personalTelegram}" target="_blank">
-        @Aheadvia1298
-      </a>
-    </div>
-
-    <div class="section-head"><h2>📢 Channels</h2></div>
-    <div class="grid">
-      ${TELEGRAM_LINKS.filter(x=>x.type==="Channel").map(x=>`
-        <a class="card action" href="${x.url}" target="_blank">
-          <div class="ico">📢</div><b>${x.name}</b>
-        </a>
-      `).join("")}
-    </div>
-
-    <div class="section-head"><h2>👥 Groups</h2></div>
-    <div class="grid">
-      ${TELEGRAM_LINKS.filter(x=>x.type==="Group").map(x=>`
-        <a class="card action" href="${x.url}" target="_blank">
-          <div class="ico">👥</div><b>${x.name}</b>
-        </a>
-      `).join("")}
-    </div>
-  `;
-}
-
-/* ---------- REFERRAL ---------- */
-
-function showReferral(){
-  setNav("navRef");
-  const uid=load("uid","AV-100001");
-  const referral=location.href.split("#")[0]+"?ref="+uid;
-
-  $("content").innerHTML=`
-    <div class="section-head"><h2>👥 Referral</h2></div>
-
-    <div class="card">
-      <h3>🆔 Your User ID</h3>
-      <p style="font-size:25px;font-weight:bold;margin-top:8px">${uid}</p>
-
-      <h3 style="margin-top:20px">🔗 Your Referral Link</h3>
-      <div class="copyrow" style="margin-top:8px">
-        <input id="refInput" value="${referral}" readonly>
-        <button class="secondary" onclick="copyReferral()">Copy</button>
-      </div>
-
-      <button class="primary" style="width:100%;margin-top:14px" onclick="shareReferral()">
-        📤 Invite Friends
-      </button>
-    </div>
-
-    <div class="grid" style="margin-top:12px">
-      <div class="card"><h3>👥 Referrals</h3><p style="font-size:25px;margin-top:6px">0</p></div>
-      <div class="card"><h3>🎁 Bonus</h3><p style="font-size:25px;margin-top:6px">0</p></div>
-    </div>
-  `;
-}
-
-function copyReferral(){
-  navigator.clipboard.writeText($("refInput").value).then(()=>toast("✅ Referral link copied"));
-}
-
-function shareReferral(){
-  const url=$("refInput").value;
-  const text="Join AHEAD VIA SKILL HUB 🚀";
-  if(navigator.share){
-    navigator.share({title:"AHEAD VIA SKILL HUB",text,url});
-  }else{
-    navigator.clipboard.writeText(url);
-    toast("✅ Link copied");
-  }
-}
-
-/* ---------- ACCOUNT ---------- */
-
-function showAccount(){
-  $("content").innerHTML=`
-    <div class="section-head"><h2>👤 My Account</h2></div>
-
-    <div class="card" style="text-align:center">
-      <img class="avatar" style="width:85px;height:85px"
-       src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg">
-      <h2 style="margin-top:10px">${escapeHtml(load("username","Guest User"))}</h2>
-      <p style="color:var(--muted)">ID: ${load("uid","AV-100001")}</p>
-      <span class="badge" style="display:inline-block;margin-top:10px">VERIFIED</span>
-    </div>
-
-    <div class="grid" style="margin-top:12px">
-      ${action("⚙️","Settings","openSettings()")}
-      ${action("🔗","Referral","showReferral()")}
-      ${action("📢","Telegram","showTelegram()")}
-      ${action("💬","Support","showContact()")}
-    </div>
-  `;
-}
-
-/* ---------- TEAM ---------- */
-
-function showTeam(){
-  $("content").innerHTML=`
-    <div class="section-head"><h2>👥 AHEAD VIA Team</h2></div>
-    <div class="grid">
-      ${teamCard("👨‍💻","ABDUL AHAD","Founder & Owner")}
-      ${teamCard("👩‍💻","𝐌𝐈𝐒𝐒 𝐒𝐀𝐌𝐈𝐀 𝐈𝐒𝐋𝐀𝐌","Founder & Admin")}
-      ${teamCard("👩‍💼","JANNAT AKHTER","Admin")}
-    </div>
-  `;
-}
-
-/* ---------- CONTACT ---------- */
-
-function showContact(){
-  setNav("navSupport");
-  $("content").innerHTML=`
-    <div class="section-head"><h2>💬 Support & Contact</h2></div>
-
-    <div class="grid">
-      <a class="card action" href="${LINKS.personalTelegram}" target="_blank">
-        <div class="ico">✈️</div><b>Personal Telegram</b>
-      </a>
-      <a class="card action" href="${LINKS.whatsapp}" target="_blank">
-        <div class="ico">💬</div><b>WhatsApp</b>
-      </a>
-      <a class="card action" href="${LINKS.call}">
-        <div class="ico">📞</div><b>Call</b>
-      </a>
-      <a class="card action" href="${LINKS.email}">
-        <div class="ico">📧</div><b>Email</b>
-      </a>
-    </div>
-
-    <div class="section-head"><h2>🌐 Social Media</h2></div>
-    <div class="card social">
-      <a href="${LINKS.facebook}" target="_blank">Facebook</a>
-      <a href="${LINKS.youtube}" target="_blank">YouTube</a>
-      <a href="${LINKS.instagram}" target="_blank">Instagram</a>
-      <a href="${LINKS.x}" target="_blank">X</a>
-    </div>
-  `;
-}
-
-/* ---------- ABOUT ---------- */
-
-function showAbout(){
-  $("content").innerHTML=`
-    <div class="section-head"><h2>ℹ️ About AHEAD VIA</h2></div>
-
-    <div class="card">
-      <h2>ABDUL AHAD 👋</h2>
-      <p style="line-height:1.8;color:var(--muted);margin-top:12px">
-        I work on different types of websites, digital projects, and online income systems.
-        I also explore income skills, free earning opportunities, investment-based work,
-        AI tools, video creation, thumbnails, content creation and many other digital topics.
-      </p>
-
-      <p style="line-height:1.8;color:var(--muted);margin-top:12px">
-        Through AHEAD VIA SKILL HUB, useful information, tools and resources are brought
-        together in one place. 🚀
-      </p>
-    </div>
-  `;
-}
-
-/* ---------- SETTINGS ---------- */
-
-function initSettings(){
-  const countries=Object.keys(COUNTRY_LANG);
-  $("country").innerHTML=countries.map(c=>`<option>${c}</option>`).join("");
-  $("country").value=load("country","Bangladesh");
-  countryChanged(false);
-
-  $("usernameInput").value=load("username","Guest User");
-
-  if(load("dark",false))document.body.classList.add("dark");
-}
-
-function countryChanged(saveIt=true){
-  const c=$("country").value;
-  const langs=COUNTRY_LANG[c]||["English"];
-
-  $("language").innerHTML=langs.map(l=>`<option>${l}</option>`).join("");
-  $("language").value=load("language",langs[0]);
-
-  if(!langs.includes($("language").value)){
-    $("language").value=langs[0];
-  }
-
-  if(saveIt)save("country",c);
-}
-
-function changeLanguage(){
-  save("language",$("language").value);
-  toast("🌍 Language saved: "+$("language").value);
-
-  /*
-    English + Bangla UI dictionary can be expanded here.
-    Generator content remains user-generated/local template content.
-  */
-  if($("language").value==="বাংলা"){
-    document.documentElement.lang="bn";
-  }else{
-    document.documentElement.lang="en";
-  }
-}
-
-function openSettings(){
-  $("drawer").classList.add("show");
-  initSettings();
-}
-function closeDrawer(){
-  $("drawer").classList.remove("show");
-}
-
-function saveProfile(){
-  const name=$("usernameInput").value.trim()||"Guest User";
-  save("username",name);
-  toast("✅ Account saved");
-  closeDrawer();
-  goHome();
-}
-
-function toggleDark(){
-  document.body.classList.toggle("dark");
-  save("dark",document.body.classList.contains("dark"));
-  toast(document.body.classList.contains("dark")?"🌙 Dark mode ON":"☀️ Light mode ON");
-}
-
-/* ---------- LOGOUT ---------- */
-
-function logout(){
-  if(confirm("Logout from this local session?")){
-    localStorage.removeItem("avsh_verified");
-    localStorage.removeItem("avsh_joined");
-    $("app").classList.add("hidden");
-    $("verifyScreen").classList.remove("hidden");
-    buildJoinScreen();
-  }
-}
-
-/* ---------- HELPERS ---------- */
-
-function slug(s){
-  return s.toLowerCase().replace(/[^a-z0-9]+/g,"").slice(0,18)||"topic";
-}
-
-function escapeHtml(s){
-  return String(s).replace(/[&<>"']/g,m=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
-  }[m]));
-}
-
-function toast(msg){
-  $("toast").textContent=msg;
-  $("toast").style.display="block";
-  clearTimeout(window.toastTimer);
-  window.toastTimer=setTimeout(()=>$("toast").style.display="none",1800);
-}
-
-/* ---------- START ---------- */
-
-buildJoinScreen();
-
-if(load("verified",false)){
-  openApp();
-}else{
-  $("verifyScreen").classList.remove("hidden");
-  $("app").classList.add("hidden");
-}
-
-/* ---------- DARK THEME ---------- */
-
-const darkStyle=document.createElement("style");
-darkStyle.textContent=`
-body.dark{
-  --bg:#0b1020;--card:#111827;--text:#f9fafb;--muted:#9ca3af;
-  --line:#263244;--shadow:0 8px 28px #0005;
-}
-body.dark .topbar,
-body.dark .bottom,
-body.dark .bottom button,
-body.dark .menu,
-body.dark .menu button,
-body.dark .drawer-box,
-body.dark .modalbox,
-body.dark .join,
-body.dark .verify-box,
-body.dark input,
-body.dark select,
-body.dark textarea{
-  background:#111827;color:#f9fafb;border-color:#263244;
-}
-body.dark .menu button:hover{background:#1f2937}
-body.dark .notice{background:#172554;border-color:#1e3a8a}
-`;
-document.head.appendChild(darkStyle);
+
+closeGenerator.addEventListener("click",function(){
+
+    closeGeneratorModal();
+
+});
+
+
+
+/* =====================================================
+   HELP
+===================================================== */
+
+const helpButton =
+document.getElementById("helpButton");
+
+const helpModal =
+document.getElementById("helpModal");
+
+const closeHelp =
+document.getElementById("closeHelp");
+
+
+helpButton.addEventListener("click",function(){
+
+    helpModal.classList.add("show");
+
+});
+
+
+closeHelp.addEventListener("click",function(){
+
+    helpModal.classList.remove("show");
+
+});
+
+
+
+/* =====================================================
+   CLOSE MODALS OUTSIDE
+===================================================== */
+
+document.querySelectorAll(".modal")
+.forEach(function(modal){
+
+    modal.addEventListener("click",function(e){
+
+        if(e.target === modal){
+
+            modal.classList.remove("show");
+
+        }
+
+    });
+
+});
+
+
+
+/* =====================================================
+   COUNTRY → LANGUAGE
+===================================================== */
+
+const countrySelect =
+document.getElementById("countrySelect");
+
+const languageSelect =
+document.getElementById("languageSelect");
+
+
+countrySelect.addEventListener("change",function(){
+
+    const country =
+    this.value;
+
+    const languageMap = {
+
+        BD:"bn",
+        US:"en",
+        SA:"ar",
+        PK:"ur",
+        TH:"th"
+
+    };
+
+    languageSelect.value =
+    languageMap[country] || "en";
+
+});
+
+
+/* =====================================================
+   GLOBAL SEARCH
+===================================================== */
+
+const globalSearch =
+document.getElementById("globalSearch");
+
+globalSearch.addEventListener("keydown",function(e){
+
+    if(e.key !== "Enter") return;
+
+    const query =
+    this.value.toLowerCase().trim();
+
+    if(!query) return;
+
+    const allCards =
+    document.querySelectorAll(".card");
+
+    let found = false;
+
+    allCards.forEach(function(card){
+
+        const text =
+        card.textContent.toLowerCase();
+
+        if(!found && text.includes(query)){
+
+            card.scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
+
+            found = true;
+
+        }
+
+    });
+
+});
 
 </script>
+
 </body>
 </html>
