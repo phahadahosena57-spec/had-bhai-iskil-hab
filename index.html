@@ -3,2289 +3,800 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AHEAD VIA SKILL HUB</title>
-<meta name="description"
-content="AHEAD VIA SKILL HUB — Learn AI, Create Content, Build Skills and Grow.">
 
 <style>
-:root{
-  --bg:#f7f9fc;
-  --card:#ffffff;
-  --soft:#f0f3f8;
-  --text:#101828;
-  --muted:#667085;
-  --border:#e4e7ec;
-  --primary:#635bff;
-  --primary2:#7c3aed;
-  --dark:#07111f;
-  --dark2:#0d1b2a;
-  --shadow:0 12px 35px rgba(16,24,40,.08);
-  --radius:18px;
-}
-
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
 }
 
 body{
-  font-family:Inter,Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  font-size:14px;
-  line-height:1.55;
+    background:#f4f6fb;
+    color:#151515;
+    padding-bottom:80px;
 }
 
-a{
-  text-decoration:none;
-  color:inherit;
+header{
+    background:linear-gradient(135deg,#111827,#4f46e5);
+    color:white;
+    padding:18px 15px 22px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 3px 15px rgba(0,0,0,.15);
 }
 
-button{
-  font:inherit;
-  border:0;
-  cursor:pointer;
+.top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand img{
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    object-fit:cover;
+    background:white;
+}
+
+.brand h1{
+    font-size:18px;
+}
+
+.brand span{
+    display:block;
+    font-size:11px;
+    opacity:.8;
+    margin-top:3px;
+}
+
+.profile-btn{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:2px solid white;
+    overflow:hidden;
+}
+
+.profile-btn img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.search{
+    margin-top:18px;
+    background:white;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    padding:0 13px;
+}
+
+.search input{
+    width:100%;
+    border:0;
+    outline:0;
+    padding:13px 8px;
+    font-size:14px;
 }
 
 .container{
-  width:min(1160px,calc(100% - 30px));
-  margin:auto;
+    max-width:1100px;
+    margin:auto;
+    padding:18px 14px;
 }
-
-/* ================= HEADER ================= */
-
-header{
-  position:sticky;
-  top:0;
-  z-index:999;
-  background:rgba(255,255,255,.92);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-}
-
-.nav{
-  min-height:68px;
-  display:flex;
-  align-items:center;
-  gap:20px;
-}
-
-.logo-area{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:900;
-  white-space:nowrap;
-}
-
-.logo-area img{
-  width:40px;
-  height:40px;
-  border-radius:11px;
-  object-fit:cover;
-  background:#eee;
-}
-
-.logo-text{
-  font-size:13px;
-}
-
-.logo-text small{
-  display:block;
-  color:var(--muted);
-  font-size:8px;
-  letter-spacing:1.2px;
-}
-
-.nav-links{
-  display:flex;
-  gap:18px;
-  margin-left:auto;
-}
-
-.nav-links a{
-  font-size:12px;
-  font-weight:700;
-  color:#475467;
-}
-
-.nav-links a:hover{
-  color:var(--primary);
-}
-
-.nav-buttons{
-  display:flex;
-  gap:7px;
-}
-
-.btn{
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  gap:6px;
-  padding:10px 15px;
-  border-radius:10px;
-  font-size:12px;
-  font-weight:800;
-  transition:.2s;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-}
-
-.btn-primary{
-  background:linear-gradient(135deg,var(--primary),var(--primary2));
-  color:white;
-  box-shadow:0 8px 20px rgba(99,91,255,.22);
-}
-
-.btn-soft{
-  background:var(--soft);
-  color:var(--text);
-}
-
-.mobile-menu{
-  display:none;
-  background:var(--soft);
-  padding:9px 11px;
-  border-radius:10px;
-}
-
-/* ================= HERO ================= */
 
 .hero{
-  padding:75px 0 60px;
-  background:
-    radial-gradient(circle at 80% 15%,rgba(124,58,237,.15),transparent 35%),
-    radial-gradient(circle at 15% 20%,rgba(99,91,255,.12),transparent 30%),
-    var(--bg);
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:white;
+    border-radius:18px;
+    padding:25px 20px;
+    margin-bottom:20px;
+    box-shadow:0 8px 25px rgba(79,70,229,.25);
 }
 
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:45px;
-  align-items:center;
-}
-
-.badge{
-  display:inline-flex;
-  padding:6px 11px;
-  border-radius:999px;
-  background:#eeecff;
-  color:#5748d9;
-  font-size:10px;
-  font-weight:900;
-}
-
-.hero h1{
-  font-size:clamp(38px,5vw,62px);
-  line-height:1.03;
-  letter-spacing:-2px;
-  margin:16px 0;
-}
-
-.hero h1 span{
-  background:linear-gradient(90deg,var(--primary),var(--primary2));
-  -webkit-background-clip:text;
-  color:transparent;
+.hero h2{
+    font-size:25px;
+    margin-bottom:8px;
 }
 
 .hero p{
-  color:var(--muted);
-  font-size:15px;
-  max-width:650px;
+    font-size:14px;
+    line-height:1.6;
+    opacity:.9;
 }
 
-.hero-buttons{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:25px;
+.hero button{
+    margin-top:16px;
+    border:0;
+    background:white;
+    color:#4f46e5;
+    padding:11px 17px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.stats-mini{
-  display:flex;
-  gap:25px;
-  margin-top:28px;
-  flex-wrap:wrap;
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:25px 0 13px;
 }
 
-.stats-mini strong{
-  display:block;
-  font-size:20px;
+.section-title h2{
+    font-size:19px;
 }
 
-.stats-mini span{
-  font-size:10px;
-  color:var(--muted);
+.section-title a{
+    font-size:12px;
+    color:#4f46e5;
+    text-decoration:none;
 }
 
-/* AI PREVIEW */
-
-.ai-preview{
-  background:var(--dark);
-  border:1px solid #20354e;
-  color:white;
-  border-radius:25px;
-  padding:20px;
-  box-shadow:0 25px 60px rgba(7,17,31,.25);
-}
-
-.preview-top{
-  display:flex;
-  justify-content:space-between;
-  font-size:11px;
-  color:#aebed0;
-}
-
-.ready{
-  color:#67e8a5;
-}
-
-.prompt-box{
-  margin:20px 0;
-  background:#101d2e;
-  border:1px solid #263a52;
-  border-radius:14px;
-  padding:16px;
-  color:#d9e3ef;
-  font-size:12px;
-}
-
-.generate-btn{
-  width:100%;
-  padding:12px;
-  background:linear-gradient(135deg,#7c3aed,#635bff);
-  color:white;
-  border-radius:11px;
-  font-weight:900;
-}
-
-.preview-results{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin-top:10px;
-}
-
-.preview-results div{
-  background:#101d2e;
-  border:1px solid #263a52;
-  border-radius:10px;
-  text-align:center;
-  padding:10px;
-  font-size:10px;
-}
-
-/* ================= TRUST ================= */
-
-.trust{
-  background:var(--card);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-}
-
-.trust-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-}
-
-.trust-item{
-  text-align:center;
-  padding:18px 10px;
-}
-
-.trust-item strong{
-  display:block;
-  font-size:17px;
-}
-
-.trust-item span{
-  color:var(--muted);
-  font-size:10px;
-}
-
-/* ================= SECTION ================= */
-
-section{
-  padding:65px 0;
-}
-
-.section-head{
-  max-width:700px;
-  text-align:center;
-  margin:0 auto 30px;
-}
-
-.section-label{
-  color:var(--primary);
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase;
-}
-
-.section-head h2{
-  font-size:30px;
-  margin:7px 0;
-  letter-spacing:-1px;
-}
-
-.section-head p{
-  color:var(--muted);
-  font-size:13px;
-}
-
-/* ================= HOW IT WORKS ================= */
-
-.steps{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-
-.step{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:18px;
-  box-shadow:var(--shadow);
-}
-
-.number{
-  width:30px;
-  height:30px;
-  display:grid;
-  place-items:center;
-  border-radius:9px;
-  background:#eeecff;
-  color:#5748d9;
-  font-size:11px;
-  font-weight:900;
-}
-
-.step h3{
-  font-size:14px;
-  margin:13px 0 5px;
-}
-
-.step p{
-  font-size:11px;
-  color:var(--muted);
-}
-
-/* ================= DARK AI STUDIO ================= */
-
-.dark-section{
-  background:var(--dark);
-  color:white;
-}
-
-.dark-section .section-head p{
-  color:#9fb0c4;
-}
-
-.studio{
-  display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  gap:18px;
-}
-
-.studio-card{
-  background:var(--dark2);
-  border:1px solid #24384f;
-  border-radius:20px;
-  padding:22px;
-}
-
-.studio-card h3{
-  font-size:18px;
-  margin-bottom:8px;
-}
-
-.studio-card p{
-  color:#9fb0c4;
-  font-size:12px;
-}
-
-.studio-input{
-  margin-top:15px;
-  background:#081421;
-  border:1px solid #263a52;
-  border-radius:13px;
-  padding:16px;
-  color:#c9d5e2;
-  min-height:100px;
-  font-size:12px;
-}
-
-.studio-types{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin-top:15px;
-}
-
-.studio-types div{
-  padding:13px 8px;
-  text-align:center;
-  border:1px solid #263a52;
-  border-radius:10px;
-  font-size:10px;
-  color:#c9d5e2;
-}
-
-/* ================= CARDS ================= */
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
 }
 
 .card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:16px;
-  box-shadow:var(--shadow);
-  transition:.2s;
+    background:white;
+    border-radius:15px;
+    padding:16px;
+    box-shadow:0 3px 14px rgba(0,0,0,.06);
+    border:1px solid #eee;
+    transition:.2s;
 }
 
-.card:hover{
-  transform:translateY(-4px);
+.card:active{
+    transform:scale(.98);
 }
 
-.card-icon{
-  width:42px;
-  height:42px;
-  display:grid;
-  place-items:center;
-  border-radius:12px;
-  background:var(--soft);
-  font-size:21px;
-  margin-bottom:12px;
+.icon{
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    background:#eef2ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:23px;
+    margin-bottom:11px;
 }
 
 .card h3{
-  font-size:13px;
-  margin-bottom:5px;
+    font-size:14px;
+    margin-bottom:6px;
 }
 
 .card p{
-  color:var(--muted);
-  font-size:10px;
-  margin-bottom:13px;
-}
-
-.card .btn{
-  width:100%;
-  padding:8px;
-  font-size:10px;
-}
-
-.tool-logo{
-  width:42px;
-  height:42px;
-  object-fit:contain;
-  padding:7px;
-  border-radius:10px;
-  background:#f5f7fa;
-  margin-bottom:12px;
-}
-
-/* ================= FEATURES ================= */
-
-.feature-area{
-  background:var(--soft);
-}
-
-.features{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
-
-.feature{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:22px;
-}
-
-.feature-icon{
-  font-size:24px;
-}
-
-.feature h3{
-  font-size:14px;
-  margin:8px 0;
-}
-
-.feature p{
-  font-size:11px;
-  color:var(--muted);
-}
-
-/* ================= PRICING ================= */
-
-.pricing{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
-
-.price-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:23px;
-  position:relative;
-}
-
-.price-card.popular{
-  border:2px solid var(--primary);
-}
-
-.popular-label{
-  position:absolute;
-  top:14px;
-  right:14px;
-  background:#eeecff;
-  color:#5748d9;
-  font-size:9px;
-  font-weight:900;
-  padding:5px 8px;
-  border-radius:999px;
-}
-
-.price-card h3{
-  font-size:15px;
-}
-
-.price{
-  font-size:30px;
-  font-weight:900;
-  margin:10px 0;
-}
-
-.price small{
-  color:var(--muted);
-  font-size:10px;
-}
-
-.price-card ul{
-  padding-left:17px;
-  color:var(--muted);
-  font-size:11px;
-  line-height:2;
-  margin-bottom:15px;
-}
-
-.price-card .btn{
-  width:100%;
-}
-
-/* ================= TEAM ================= */
-
-.team-card{
-  text-align:center;
-}
-
-.team-card img{
-  width:85px;
-  height:85px;
-  object-fit:cover;
-  border-radius:50%;
-  margin-bottom:10px;
-  background:var(--soft);
-}
-
-.role{
-  color:var(--primary);
-  font-size:10px;
-  font-weight:800;
-}
-
-/* ================= FAQ ================= */
-
-.faq{
-  max-width:850px;
-  margin:auto;
-}
-
-.faq details{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:13px;
-  padding:14px 16px;
-  margin-bottom:8px;
-}
-
-.faq summary{
-  cursor:pointer;
-  font-size:12px;
-  font-weight:800;
-}
-
-.faq p{
-  color:var(--muted);
-  font-size:11px;
-  margin-top:10px;
-}
-
-/* ================= CTA ================= */
-
-.cta{
-  background:linear-gradient(135deg,#635bff,#7c3aed);
-  color:white;
-  border-radius:25px;
-  padding:45px 25px;
-  text-align:center;
-}
-
-.cta h2{
-  font-size:32px;
-  margin-bottom:8px;
-}
-
-.cta p{
-  opacity:.88;
-  font-size:12px;
-  margin-bottom:15px;
-}
-
-.cta .btn{
-  background:white;
-  color:#5146c9;
-  margin:5px;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-  background:#06101c;
-  color:#aebed0;
-  padding:45px 0 25px;
-}
-
-.footer-grid{
-  display:grid;
-  grid-template-columns:1.5fr 1fr 1fr 1fr;
-  gap:30px;
-}
-
-.footer-brand{
-  color:white;
-  font-weight:900;
-  font-size:17px;
-}
-
-.footer h4{
-  color:white;
-  font-size:11px;
-  margin-bottom:12px;
-}
-
-.footer a{
-  display:block;
-  color:#9fb0c4;
-  font-size:10px;
-  margin:8px 0;
-}
-
-.copyright{
-  border-top:1px solid #1c3045;
-  margin-top:30px;
-  padding-top:18px;
-  font-size:9px;
-  display:flex;
-  justify-content:space-between;
-}
-
-/* ================= HELP ================= */
-
-.help-button{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  z-index:1100;
-  width:58px;
-  height:58px;
-  border-radius:50%;
-  background:linear-gradient(135deg,var(--primary),var(--primary2));
-  color:white;
-  box-shadow:0 12px 28px rgba(99,91,255,.35);
-  border:3px solid white;
-  overflow:hidden;
-}
-
-.help-button img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* ================= MODAL ================= */
-
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:1200;
-  background:rgba(2,8,18,.68);
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.modal.active{
-  display:flex;
-}
-
-.modal-box{
-  width:min(520px,100%);
-  background:var(--card);
-  border-radius:20px;
-  padding:22px;
-  position:relative;
-}
-
-.close{
-  position:absolute;
-  right:14px;
-  top:12px;
-  width:30px;
-  height:30px;
-  border-radius:50%;
-  background:var(--soft);
-}
-
-.modal-box h3{
-  margin-bottom:8px;
-}
-
-.modal-box p{
-  color:var(--muted);
-  font-size:12px;
-  margin-bottom:15px;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:950px){
-
-  .nav-links{
-    display:none;
-  }
-
-  .mobile-menu{
-    display:block;
-  }
-
-  .hero-grid,
-  .studio{
-    grid-template-columns:1fr;
-  }
-
-  .cards{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .steps{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .footer-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-
-@media(max-width:600px){
-
-  body{
-    font-size:13px;
-  }
-
-  .container{
-    width:calc(100% - 20px);
-  }
-
-  .nav{
-    min-height:60px;
-  }
-
-  .logo-area img{
-    width:34px;
-    height:34px;
-  }
-
-  .logo-text{
     font-size:11px;
-  }
+    color:#777;
+    line-height:1.5;
+}
 
-  .logo-text small{
-    font-size:7px;
-  }
+.tool-btn{
+    margin-top:10px;
+    width:100%;
+    border:0;
+    background:#4f46e5;
+    color:white;
+    padding:9px;
+    border-radius:8px;
+    font-size:12px;
+    font-weight:bold;
+}
 
-  .nav-buttons .btn-soft{
-    display:none;
-  }
+.list-card{
+    background:white;
+    border-radius:14px;
+    padding:13px;
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
 
-  .hero{
-    padding:45px 0;
-  }
+.list-icon{
+    width:48px;
+    height:48px;
+    background:#eef2ff;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    flex-shrink:0;
+}
 
-  .hero h1{
-    font-size:38px;
-  }
+.list-info{
+    flex:1;
+}
 
-  .hero p{
-    font-size:13px;
-  }
+.list-info h3{
+    font-size:14px;
+    margin-bottom:4px;
+}
 
-  section{
-    padding:48px 0;
-  }
-
-  .section-head h2{
-    font-size:25px;
-  }
-
-  .trust-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .cards{
-    grid-template-columns:repeat(2,1fr);
-    gap:9px;
-  }
-
-  .card{
-    padding:12px;
-  }
-
-  .card-icon,
-  .tool-logo{
-    width:36px;
-    height:36px;
-    font-size:17px;
-  }
-
-  .card h3{
+.list-info p{
+    color:#777;
     font-size:11px;
-  }
+}
 
-  .card p{
-    font-size:9px;
-  }
+.open-btn{
+    background:#4f46e5;
+    color:white;
+    border:0;
+    border-radius:8px;
+    padding:8px 11px;
+    font-size:11px;
+}
 
-  .card .btn{
-    font-size:9px;
-  }
+.community{
+    background:white;
+    border-radius:16px;
+    padding:18px;
+    margin-top:12px;
+    box-shadow:0 3px 14px rgba(0,0,0,.06);
+}
 
-  .steps,
-  .features,
-  .pricing{
-    grid-template-columns:1fr;
-  }
+.community a{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 0;
+    border-bottom:1px solid #eee;
+    color:#222;
+    text-decoration:none;
+}
 
-  .studio-types{
-    grid-template-columns:repeat(2,1fr);
-  }
+.community a:last-child{
+    border-bottom:0;
+}
 
-  .footer-grid{
-    grid-template-columns:1fr 1fr;
-  }
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:68px;
+    background:white;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    box-shadow:0 -3px 18px rgba(0,0,0,.12);
+    z-index:200;
+}
 
-  .copyright{
+.nav-item{
+    text-decoration:none;
+    color:#777;
+    text-align:center;
+    font-size:10px;
+    cursor:pointer;
+}
+
+.nav-item .nav-icon{
     display:block;
-  }
+    font-size:20px;
+    margin-bottom:3px;
+}
 
-  .copyright span{
+.nav-item.active{
+    color:#4f46e5;
+    font-weight:bold;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
     display:block;
-    margin-bottom:5px;
-  }
+}
 
-  .cta h2{
-    font-size:25px;
-  }
+.profile-box{
+    background:white;
+    border-radius:18px;
+    padding:22px;
+    text-align:center;
+    box-shadow:0 4px 18px rgba(0,0,0,.07);
+}
 
-  .help-button{
-    width:52px;
-    height:52px;
-    right:12px;
-    bottom:12px;
-  }
+.profile-box img{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #4f46e5;
+}
+
+.profile-box h2{
+    margin-top:10px;
+    font-size:20px;
+}
+
+.profile-box p{
+    margin-top:8px;
+    color:#666;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:8px;
+    background:#eef2ff;
+    color:#4f46e5;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:11px;
+}
+
+@media(min-width:700px){
+    .grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .bottom-nav{
+        width:600px;
+        left:50%;
+        transform:translateX(-50%);
+        border-radius:18px 18px 0 0;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
 <header>
-<div class="container nav">
+    <div class="top">
 
-<a href="#home" class="logo-area">
+        <div class="brand">
+            <img src="https://i.ibb.co.com/xd1bjsh/1788349715746.png">
+            <div>
+                <h1>AHEAD VIA</h1>
+                <span>SKILL HUB</span>
+            </div>
+        </div>
 
-<img src="assets/logo.png"
-alt="AHEAD VIA SKILL HUB Logo"
-onerror="this.style.display='none'">
+        <div class="profile-btn">
+            <img src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg">
+        </div>
 
-<div class="logo-text">
-AHEAD VIA SKILL HUB
-<small>LEARN • CREATE • EARN • GROW</small>
-</div>
+    </div>
 
-</a>
-
-<nav class="nav-links">
-
-<a href="#home">Home</a>
-<a href="#studio">AI Studio</a>
-<a href="#tools">AI Tools</a>
-<a href="#generators">Generators</a>
-<a href="#skills">Skills</a>
-<a href="#pricing">Plans</a>
-
-</nav>
-
-<div class="nav-buttons">
-
-<button class="btn btn-soft" onclick="toggleDark()">🌙</button>
-
-<a href="#studio" class="btn btn-primary">
-Get Started
-</a>
-
-</div>
-
-<button class="mobile-menu"
-onclick="showModal('Menu','Use the sections below to explore AHEAD VIA SKILL HUB.')">
-☰
-</button>
-
-</div>
+    <div class="search">
+        🔎
+        <input type="text" id="searchInput"
+        placeholder="Search tools, apps, tutorials...">
+    </div>
 </header>
 
 
-<!-- ================= HERO ================= -->
+<main class="container">
 
-<main id="home">
+<!-- HOME -->
 
-<section class="hero">
+<section id="home" class="page active">
 
-<div class="container hero-grid">
+    <div class="hero">
+        <h2>Welcome to AHEAD VIA 🚀</h2>
+        <p>
+            Learn skills, discover useful tools and grow your
+            digital journey with AHEAD VIA Skill Hub.
+        </p>
 
-<div>
-
-<span class="badge">
-AI + CREATOR LEARNING PLATFORM
-</span>
-
-<h1>
-Learn AI.<br>
-<span>Create Anything.</span><br>
-Grow Everywhere.
-</h1>
-
-<p>
-A professional creator hub for learning AI tools,
-generating content, creating videos and images,
-improving social media content and building digital skills.
-</p>
-
-<div class="hero-buttons">
-
-<a href="#studio" class="btn btn-primary">
-✨ Open AI Studio
-</a>
-
-<a href="#skills" class="btn btn-soft">
-📚 Explore Skills
-</a>
-
-</div>
-
-<div class="stats-mini">
-
-<div>
-<strong>100+</strong>
-<span>Creator Resources</span>
-</div>
-
-<div>
-<strong>50+</strong>
-<span>AI Workflows</span>
-</div>
-
-<div>
-<strong>24/7</strong>
-<span>Learn & Create</span>
-</div>
-
-</div>
-
-</div>
+        <button onclick="showPage('tools')">
+            🚀 Explore Tools
+        </button>
+    </div>
 
 
-<div class="ai-preview">
+    <div class="section-title">
+        <h2>🔥 Trending Tools</h2>
+        <a href="#" onclick="showPage('trending')">View All</a>
+    </div>
 
-<div class="preview-top">
+    <div class="grid">
 
-<strong>✦ AHEAD AI STUDIO</strong>
+        <div class="card">
+            <div class="icon">✍️</div>
+            <h3>Caption Generator</h3>
+            <p>Create captions for social media.</p>
+            <button class="tool-btn">Open Tool</button>
+        </div>
 
-<span class="ready">
-● READY
-</span>
+        <div class="card">
+            <div class="icon">#️⃣</div>
+            <h3>Hashtag Generator</h3>
+            <p>Generate useful hashtags.</p>
+            <button class="tool-btn">Open Tool</button>
+        </div>
 
-</div>
+        <div class="card">
+            <div class="icon">💡</div>
+            <h3>Content Ideas</h3>
+            <p>Get new content ideas.</p>
+            <button class="tool-btn">Open Tool</button>
+        </div>
 
-<div class="prompt-box">
+        <div class="card">
+            <div class="icon">🏷️</div>
+            <h3>Title Generator</h3>
+            <p>Create attractive video titles.</p>
+            <button class="tool-btn">Open Tool</button>
+        </div>
 
-Tell us what you want to create...
+    </div>
 
-<br><br>
 
-<strong>
-“Create a professional Facebook Reel about AI learning.”
-</strong>
+    <div class="section-title">
+        <h2>🆕 Latest Updates</h2>
+    </div>
 
-</div>
+    <div class="list-card">
+        <div class="list-icon">🤖</div>
+        <div class="list-info">
+            <h3>New AI Tools</h3>
+            <p>Discover useful AI tools.</p>
+        </div>
+        <button class="open-btn">Open</button>
+    </div>
 
-<button class="generate-btn"
-onclick="showModal('AI Studio','The interface is ready for an AI API connection. After connecting an AI provider, this can become a live generator.')">
-
-✨ Generate
-
-</button>
-
-<div class="preview-results">
-
-<div>✍️<br>Text</div>
-<div>🎨<br>Design</div>
-<div>🎬<br>Video</div>
-
-</div>
-
-</div>
-
-</div>
+    <div class="list-card">
+        <div class="list-icon">🎬</div>
+        <div class="list-info">
+            <h3>Video Creation</h3>
+            <p>Tools for creating amazing videos.</p>
+        </div>
+        <button class="open-btn">Open</button>
+    </div>
 
 </section>
 
 
-<!-- ================= TRUST ================= -->
+<!-- TOOLS -->
 
-<div class="trust">
+<section id="tools" class="page">
 
-<div class="container trust-grid">
+    <div class="section-title">
+        <h2>🤖 All Tools</h2>
+    </div>
 
-<div class="trust-item">
-<strong>🤖 AI Tools</strong>
-<span>Powerful creator tools</span>
-</div>
+    <div class="grid">
 
-<div class="trust-item">
-<strong>✨ Generators</strong>
-<span>Create content faster</span>
-</div>
+        <div class="card">
+            <div class="icon">✍️</div>
+            <h3>Caption Generator</h3>
+            <p>Facebook, Instagram, TikTok & YouTube captions.</p>
+            <button class="tool-btn">Open</button>
+        </div>
 
-<div class="trust-item">
-<strong>📚 Skills</strong>
-<span>Learn practical skills</span>
-</div>
+        <div class="card">
+            <div class="icon">#️⃣</div>
+            <h3>Hashtag Generator</h3>
+            <p>Generate hashtags based on your topic.</p>
+            <button class="tool-btn">Open</button>
+        </div>
 
-<div class="trust-item">
-<strong>🌍 Global</strong>
-<span>Create for worldwide audiences</span>
-</div>
+        <div class="card">
+            <div class="icon">💡</div>
+            <h3>Content Ideas</h3>
+            <p>Find fresh content ideas.</p>
+            <button class="tool-btn">Open</button>
+        </div>
 
-</div>
+        <div class="card">
+            <div class="icon">🏷️</div>
+            <h3>Title Generator</h3>
+            <p>Create powerful titles.</p>
+            <button class="tool-btn">Open</button>
+        </div>
 
-</div>
+        <div class="card">
+            <div class="icon">🖼️</div>
+            <h3>Thumbnail Maker</h3>
+            <p>Create YouTube thumbnails.</p>
+            <button class="tool-btn">Open</button>
+        </div>
 
+        <div class="card">
+            <div class="icon">🎨</div>
+            <h3>Background Maker</h3>
+            <p>Create beautiful backgrounds.</p>
+            <button class="tool-btn">Open</button>
+        </div>
 
-<!-- ================= HOW IT WORKS ================= -->
+        <div class="card">
+            <div class="icon">🤖</div>
+            <h3>AI Prompt Generator</h3>
+            <p>Generate useful AI prompts.</p>
+            <button class="tool-btn">Open</button>
+        </div>
 
-<section>
+        <div class="card">
+            <div class="icon">✈️</div>
+            <h3>Telegram Tools</h3>
+            <p>Useful Telegram resources.</p>
+            <button class="tool-btn">Open</button>
+        </div>
 
-<div class="container">
-
-<div class="section-head">
-
-<span class="section-label">
-Simple Workflow
-</span>
-
-<h2>
-How AHEAD VIA Works
-</h2>
-
-<p>
-Learn the skill, choose the right tool,
-create your content and publish it with confidence.
-</p>
-
-</div>
-
-
-<div class="steps">
-
-<div class="step">
-<div class="number">01</div>
-<h3>Choose a Skill</h3>
-<p>
-Pick Facebook, YouTube, AI video,
-design or another creator skill.
-</p>
-</div>
-
-
-<div class="step">
-<div class="number">02</div>
-<h3>Choose a Tool</h3>
-<p>
-Explore AI tools and choose the
-workflow for your project.
-</p>
-</div>
-
-
-<div class="step">
-<div class="number">03</div>
-<h3>Create</h3>
-<p>
-Use generators, prompts,
-templates and guided workflows.
-</p>
-</div>
-
-
-<div class="step">
-<div class="number">04</div>
-<h3>Publish & Grow</h3>
-<p>
-Optimize captions, hashtags,
-titles and publishing strategy.
-</p>
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- ================= AI STUDIO ================= -->
+<!-- LEARN -->
 
-<section class="dark-section" id="studio">
+<section id="learn" class="page">
 
-<div class="container">
+    <div class="section-title">
+        <h2>📚 Learn</h2>
+    </div>
 
-<div class="section-head">
+    <div class="list-card">
+        <div class="list-icon">🎬</div>
+        <div class="list-info">
+            <h3>How to Make a Video</h3>
+            <p>Learn the basics of video creation.</p>
+        </div>
+        <button class="open-btn">Read</button>
+    </div>
 
-<span class="section-label">
-AI Workspace
-</span>
+    <div class="list-card">
+        <div class="list-icon">✂️</div>
+        <div class="list-info">
+            <h3>Video Editing</h3>
+            <p>Learn professional editing basics.</p>
+        </div>
+        <button class="open-btn">Read</button>
+    </div>
 
-<h2>
-One Studio. Many Creation Paths.
-</h2>
+    <div class="list-card">
+        <div class="list-icon">📱</div>
+        <div class="list-info">
+            <h3>Facebook Reels</h3>
+            <p>Learn how to grow with Reels.</p>
+        </div>
+        <button class="open-btn">Read</button>
+    </div>
 
-<p>
-Start with an idea and turn it into text,
-visuals, video, voice or social content.
-</p>
+    <div class="list-card">
+        <div class="list-icon">▶️</div>
+        <div class="list-info">
+            <h3>YouTube Shorts</h3>
+            <p>Learn YouTube Shorts growth.</p>
+        </div>
+        <button class="open-btn">Read</button>
+    </div>
 
-</div>
-
-
-<div class="studio">
-
-<div class="studio-card">
-
-<h3>
-What do you want to create?
-</h3>
-
-<p>
-Write your idea in normal language.
-</p>
-
-<div class="studio-input">
-
-Example:
-
-<br><br>
-
-“Make a 30-second YouTube Short script
-about 5 useful AI tools for beginners.”
-
-</div>
-
-<br>
-
-<button class="generate-btn"
-onclick="showModal('Generate Project','A real AI generator requires an API/backend connection. The interface is prepared for that connection.')">
-
-Generate Project
-
-</button>
-
-</div>
-
-
-<div class="studio-card">
-
-<h3>
-Choose your creation type
-</h3>
-
-<div class="studio-types">
-
-<div>✍️<br>Writing</div>
-<div>🎨<br>Image</div>
-<div>🎬<br>Video</div>
-<div>🎙️<br>Voice</div>
-<div>📱<br>Social</div>
-<div>🚀<br>Marketing</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+    <div class="list-card">
+        <div class="list-icon">📸</div>
+        <div class="list-info">
+            <h3>Instagram Reels</h3>
+            <p>Learn Instagram content growth.</p>
+        </div>
+        <button class="open-btn">Read</button>
+    </div>
 
 </section>
 
 
-<!-- ================= AI TOOLS ================= -->
-
-<section id="tools">
-
-<div class="container">
-
-<div class="section-head">
-
-<span class="section-label">
-Explore
-</span>
-
-<h2>
-AI Tools
-</h2>
-
-<p>
-Popular platforms for writing, design,
-video, voice and creator workflows.
-</p>
-
-</div>
-
-
-<div class="cards">
-
-
-<div class="card">
-
-<img class="tool-logo"
-src="https://cdn.simpleicons.org/openai"
-alt="ChatGPT">
-
-<h3>ChatGPT</h3>
-
-<p>
-AI writing, ideas and assistance.
-</p>
-
-<a class="btn btn-soft"
-href="https://chatgpt.com/"
-target="_blank">
-Open Tool ↗
-</a>
-
-</div>
-
-
-<div class="card">
-
-<img class="tool-logo"
-src="https://cdn.simpleicons.org/googlegemini"
-alt="Gemini">
-
-<h3>Google Gemini</h3>
-
-<p>
-AI research and creative workflows.
-</p>
-
-<a class="btn btn-soft"
-href="https://gemini.google.com/"
-target="_blank">
-Open Tool ↗
-</a>
-
-</div>
-
-
-<div class="card">
-
-<img class="tool-logo"
-src="https://cdn.simpleicons.org/canva"
-alt="Canva">
-
-<h3>Canva</h3>
-
-<p>
-Design posts, banners and graphics.
-</p>
-
-<a class="btn btn-soft"
-href="https://www.canva.com/"
-target="_blank">
-Open Tool ↗
-</a>
-
-</div>
-
-
-<div class="card">
-
-<img class="tool-logo"
-src="https://cdn.simpleicons.org/capcut"
-alt="CapCut">
-
-<h3>CapCut</h3>
-
-<p>
-Edit Shorts, Reels and videos.
-</p>
-
-<a class="btn btn-soft"
-href="https://www.capcut.com/"
-target="_blank">
-Open Tool ↗
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="card-icon">🎬</div>
-
-<h3>Runway</h3>
-
-<p>
-AI video creation workflows.
-</p>
-
-<a class="btn btn-soft"
-href="https://runwayml.com/"
-target="_blank">
-Open Tool ↗
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="card-icon">🎙️</div>
-
-<h3>ElevenLabs</h3>
-
-<p>
-AI voice and audio creation.
-</p>
-
-<a class="btn btn-soft"
-href="https://elevenlabs.io/"
-target="_blank">
-Open Tool ↗
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="card-icon">🧑‍💻</div>
-
-<h3>HeyGen</h3>
-
-<p>
-AI avatar and video workflows.
-</p>
-
-<a class="btn btn-soft"
-href="https://www.heygen.com/"
-target="_blank">
-Open Tool ↗
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="card-icon">🔥</div>
-
-<h3>Adobe Firefly</h3>
-
-<p>
-Generative creative design.
-</p>
-
-<a class="btn btn-soft"
-href="https://firefly.adobe.com/"
-target="_blank">
-Open Tool ↗
-</a>
-
-</div>
-
-
-</div>
-
-</div>
+<!-- TRENDING -->
+
+<section id="trending" class="page">
+
+    <div class="section-title">
+        <h2>🔥 Trending</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="icon">🚀</div>
+            <h3>Popular Creator Tools</h3>
+            <p>Useful tools for creators.</p>
+            <button class="tool-btn">Explore</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">🆕</div>
+            <h3>New Tools</h3>
+            <p>Recently added tools.</p>
+            <button class="tool-btn">Explore</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">⭐</div>
+            <h3>Featured Tools</h3>
+            <p>Selected tools from AHEAD VIA.</p>
+            <button class="tool-btn">Explore</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📢</div>
+            <h3>Latest Updates</h3>
+            <p>Stay connected with AHEAD VIA.</p>
+            <button class="tool-btn">View</button>
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- ================= GENERATORS ================= -->
+<!-- COMMUNITY -->
 
-<section style="background:var(--soft)" id="generators">
+<section id="community" class="page">
 
-<div class="container">
+    <div class="section-title">
+        <h2>📢 Community</h2>
+    </div>
 
-<div class="section-head">
+    <div class="community">
 
-<span class="section-label">
-Create Faster
-</span>
+        <a href="https://t.me/Aheadvia1298gf" target="_blank">
+            <span>📢 AHEAD VIA Channel</span>
+            <span>➜</span>
+        </a>
 
-<h2>
-AI Generators
-</h2>
+        <a href="https://t.me/Aheadviaiskill_hab" target="_blank">
+            <span>📢 AHEAD VIA Skill Hub</span>
+            <span>➜</span>
+        </a>
 
-<p>
-Choose a workflow and open the generator interface.
-</p>
+        <a href="https://t.me/aheadskillhub120" target="_blank">
+            <span>👥 AHEAD VIA Group</span>
+            <span>➜</span>
+        </a>
 
-</div>
+        <a href="https://t.me/aheadskillhub12" target="_blank">
+            <span>👥 Community Group</span>
+            <span>➜</span>
+        </a>
 
+        <a href="https://www.youtube.com/@KittySnipsStories"
+           target="_blank">
+            <span>▶️ YouTube</span>
+            <span>➜</span>
+        </a>
 
-<div class="cards">
+        <a href="https://www.facebook.com/share/19YtirSEwS/"
+           target="_blank">
+            <span>📘 Facebook</span>
+            <span>➜</span>
+        </a>
 
-
-<div class="card">
-<div class="card-icon">✍️</div>
-<h3>Caption Generator</h3>
-<p>Create social captions.</p>
-<button class="btn btn-primary"
-onclick="showModal('Caption Generator','Your caption generator interface can be connected to an AI API here.')">
-Open Generator
-</button>
-</div>
-
-
-<div class="card">
-<div class="card-icon">#️⃣</div>
-<h3>Hashtag Generator</h3>
-<p>Generate hashtag ideas.</p>
-<button class="btn btn-primary"
-onclick="showModal('Hashtag Generator','Your hashtag generator interface can be connected here.')">
-Open Generator
-</button>
-</div>
-
-
-<div class="card">
-<div class="card-icon">🎬</div>
-<h3>Video Prompt Generator</h3>
-<p>Create detailed video prompts.</p>
-<button class="btn btn-primary"
-onclick="showModal('Video Prompt Generator','Your video prompt generator interface is ready for AI connection.')">
-Open Generator
-</button>
-</div>
-
-
-<div class="card">
-<div class="card-icon">🖼️</div>
-<h3>Image Prompt Generator</h3>
-<p>Create visual prompts.</p>
-<button class="btn btn-primary"
-onclick="showModal('Image Prompt Generator','Your image prompt generator can be connected to an AI model.')">
-Open Generator
-</button>
-</div>
-
-
-<div class="card">
-<div class="card-icon">📖</div>
-<h3>Story Generator</h3>
-<p>Turn ideas into stories.</p>
-<button class="btn btn-primary"
-onclick="showModal('Story Generator','Story generation interface ready.')">
-Open Generator
-</button>
-</div>
-
-
-<div class="card">
-<div class="card-icon">📝</div>
-<h3>Script Generator</h3>
-<p>Create Shorts and Reel scripts.</p>
-<button class="btn btn-primary"
-onclick="showModal('Script Generator','Script generation interface ready.')">
-Open Generator
-</button>
-</div>
-
-
-<div class="card">
-<div class="card-icon">▶️</div>
-<h3>YouTube Title</h3>
-<p>Create stronger titles.</p>
-<button class="btn btn-primary"
-onclick="showModal('YouTube Title Generator','YouTube title generation interface ready.')">
-Open Generator
-</button>
-</div>
-
-
-<div class="card">
-<div class="card-icon">🎨</div>
-<h3>Thumbnail Ideas</h3>
-<p>Create thumbnail concepts.</p>
-<button class="btn btn-primary"
-onclick="showModal('Thumbnail Generator','Thumbnail generator interface ready.')">
-Open Generator
-</button>
-</div>
-
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- ================= SKILLS ================= -->
+<!-- PROFILE -->
 
-<section id="skills">
+<section id="profile" class="page">
 
-<div class="container">
+    <div class="profile-box">
 
-<div class="section-head">
+        <img src="https://i.ibb.co.com/mrY7gSbv/IMG-20260826-201650-466.jpg">
 
-<span class="section-label">
-Skill Academy
-</span>
+        <h2>ABDUL AHAD 🥰✅</h2>
 
-<h2>
-Learn Skills, Not Just Tools
-</h2>
+        <span class="badge">AHEAD VIA SKILL HUB</span>
 
-<p>
-Step-by-step creator skills for social media and AI workflows.
-</p>
+        <p>
+            AI Tools, Video Creation, Video Thumbnail,
+            Websites, Content Creation and Digital Skills.
+            Learn useful skills and discover powerful tools
+            with AHEAD VIA.
+        </p>
 
-</div>
-
-
-<div class="cards">
-
-
-<div class="card">
-<div class="card-icon">📘</div>
-<h3>Facebook Reels</h3>
-<p>Create, upload and optimize Reels.</p>
-<button class="btn btn-soft"
-onclick="showModal('Facebook Reels Skill','Learn the workflow from idea to publishing.')">
-Learn Skill
-</button>
-</div>
-
-
-<div class="card">
-<div class="card-icon">▶️</div>
-<h3>YouTube Shorts</h3>
-<p>Titles, descriptions and Shorts.</p>
-<button class="btn btn-soft"
-onclick="showModal('YouTube Shorts Skill','Learn the Shorts workflow.')">
-Learn Skill
-</button>
-</div>
-
-
-<div class="card">
-<div class="card-icon">🎨</div>
-<h3>AI Image Creation</h3>
-<p>Prompts and visual consistency.</p>
-<button class="btn btn-soft"
-onclick="showModal('AI Image Skill','Learn practical image-generation workflows.')">
-Learn Skill
-</button>
-</div>
-
-
-<div class="card">
-<div class="card-icon">🎬</div>
-<h3>AI Video Creation</h3>
-<p>Stories, scenes and prompts.</p>
-<button class="btn btn-soft"
-onclick="showModal('AI Video Skill','Learn practical AI video workflows.')">
-Learn Skill
-</button>
-</div>
-
-
-<div class="card">
-<div class="card-icon">#️⃣</div>
-<h3>Hashtag Strategy</h3>
-<p>Build useful hashtag sets.</p>
-<button class="btn btn-soft"
-onclick="showModal('Hashtag Skill','Learn how to structure hashtag sets.')">
-Learn Skill
-</button>
-</div>
-
-
-<div class="card">
-<div class="card-icon">🚀</div>
-<h3>Content Growth</h3>
-<p>Ideas, consistency and publishing.</p>
-<button class="btn btn-soft"
-onclick="showModal('Growth Skill','Learn a practical content workflow.')">
-Learn Skill
-</button>
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= FEATURES ================= -->
-
-<section class="feature-area">
-
-<div class="container">
-
-<div class="section-head">
-
-<span class="section-label">
-Why AHEAD
-</span>
-
-<h2>
-Everything in One Creator Hub
-</h2>
-
-<p>
-Learn → Create → Edit → Publish → Grow.
-</p>
-
-</div>
-
-
-<div class="features">
-
-<div class="feature">
-<div class="feature-icon">⚡</div>
-<h3>Fast Workflow</h3>
-<p>
-Find the right tool or generator quickly.
-</p>
-</div>
-
-
-<div class="feature">
-<div class="feature-icon">🌍</div>
-<h3>Global Content</h3>
-<p>
-Create for different countries and languages.
-</p>
-</div>
-
-
-<div class="feature">
-<div class="feature-icon">📱</div>
-<h3>Mobile First</h3>
-<p>
-Designed for phones and desktop.
-</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= PRICING ================= -->
-
-<section id="pricing">
-
-<div class="container">
-
-<div class="section-head">
-
-<span class="section-label">
-Creator Plans
-</span>
-
-<h2>
-Choose Your Creator Path
-</h2>
-
-<p>
-Sample membership interface for the future platform.
-</p>
-
-</div>
-
-
-<div class="pricing">
-
-
-<div class="price-card">
-
-<h3>Starter</h3>
-
-<div class="price">
-Free
-<small>/ forever</small>
-</div>
-
-<ul>
-<li>Basic AI learning</li>
-<li>Selected tools</li>
-<li>Starter generators</li>
-<li>Community resources</li>
-</ul>
-
-<a href="#studio" class="btn btn-soft">
-Start Free
-</a>
-
-</div>
-
-
-<div class="price-card popular">
-
-<span class="popular-label">
-POPULAR
-</span>
-
-<h3>Creator</h3>
-
-<div class="price">
-$9
-<small>/ month</small>
-</div>
-
-<ul>
-<li>More generators</li>
-<li>Advanced workflows</li>
-<li>Templates & prompts</li>
-<li>Creator resources</li>
-</ul>
-
-<a href="#studio" class="btn btn-primary">
-Choose Creator
-</a>
-
-</div>
-
-
-<div class="price-card">
-
-<h3>Pro</h3>
-
-<div class="price">
-$19
-<small>/ month</small>
-</div>
-
-<ul>
-<li>Full creator workspace</li>
-<li>Premium workflows</li>
-<li>Advanced tools</li>
-<li>Priority resources</li>
-</ul>
-
-<a href="#studio" class="btn btn-soft">
-Choose Pro
-</a>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= TEAM ================= -->
-
-<section id="team">
-
-<div class="container">
-
-<div class="section-head">
-
-<span class="section-label">
-Our Team
-</span>
-
-<h2>
-Meet the AHEAD VIA Team
-</h2>
-
-<p>
-Your three original team photos are reserved here.
-</p>
-
-</div>
-
-
-<div class="cards">
-
-
-<div class="card team-card">
-
-<img src="assets/team1.jpg"
-alt="Abdul Ahad">
-
-<h3>
-Abdul Ahad
-</h3>
-
-<div class="role">
-Founder & Owner
-</div>
-
-<p>
-Leading AHEAD VIA SKILL HUB.
-</p>
-
-</div>
-
-
-<div class="card team-card">
-
-<img src="assets/team2.jpg"
-alt="Miss Saima Islam">
-
-<h3>
-Miss Saima Islam
-</h3>
-
-<div class="role">
-Website Admin
-</div>
-
-<p>
-Supporting website administration.
-</p>
-
-</div>
-
-
-<div class="card team-card">
-
-<img src="assets/team3.jpg"
-alt="Jannat Akhter">
-
-<h3>
-Jannat Akhter
-</h3>
-
-<div class="role">
-Admin
-</div>
-
-<p>
-Supporting the platform community.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= FAQ ================= -->
-
-<section>
-
-<div class="container">
-
-<div class="section-head">
-
-<span class="section-label">
-FAQ
-</span>
-
-<h2>
-Frequently Asked Questions
-</h2>
-
-</div>
-
-
-<div class="faq">
-
-
-<details>
-<summary>
-What is AHEAD VIA SKILL HUB?
-</summary>
-
-<p>
-A creator learning platform for AI tools,
-content generation, social media skills and practical workflows.
-</p>
-
-</details>
-
-
-<details>
-<summary>
-Are the AI generators real?
-</summary>
-
-<p>
-The website interface is prepared for AI generation.
-A real AI generator requires an API or backend connection.
-</p>
-
-</details>
-
-
-<details>
-<summary>
-Can I learn Facebook and YouTube?
-</summary>
-
-<p>
-Yes. The Skill Academy is designed for Facebook,
-Reels, YouTube Shorts and other creator workflows.
-</p>
-
-</details>
-
-
-<details>
-<summary>
-Will the website work on mobile?
-</summary>
-
-<p>
-Yes. The layout is responsive and optimized for mobile screens.
-</p>
-
-</details>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= CTA ================= -->
-
-<section>
-
-<div class="container">
-
-<div class="cta">
-
-<h2>
-Ready to Create Something?
-</h2>
-
-<p>
-Start learning, explore AI tools and build your next piece of content.
-</p>
-
-<a href="#studio" class="btn">
-Open AI Studio
-</a>
-
-<a href="#generators" class="btn">
-Explore Generators
-</a>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 </main>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- BOTTOM NAVIGATION -->
 
-<footer id="contact">
+<nav class="bottom-nav">
 
-<div class="container">
+    <div class="nav-item active" onclick="showPage('home',this)">
+        <span class="nav-icon">🏠</span>
+        Home
+    </div>
 
-<div class="footer-grid">
+    <div class="nav-item" onclick="showPage('tools',this)">
+        <span class="nav-icon">🤖</span>
+        Tools
+    </div>
 
+    <div class="nav-item" onclick="showPage('learn',this)">
+        <span class="nav-icon">📚</span>
+        Learn
+    </div>
 
-<div>
+    <div class="nav-item" onclick="showPage('trending',this)">
+        <span class="nav-icon">🔥</span>
+        Trending
+    </div>
 
-<div class="footer-brand">
-AHEAD VIA SKILL HUB
-</div>
+    <div class="nav-item" onclick="showPage('community',this)">
+        <span class="nav-icon">📢</span>
+        Community
+    </div>
 
-<p style="font-size:10px;max-width:280px;margin-top:10px">
+    <div class="nav-item" onclick="showPage('profile',this)">
+        <span class="nav-icon">👤</span>
+        Profile
+    </div>
 
-LEARN • CREATE • EARN • GROW
-
-<br><br>
-
-AI learning, creator tools,
-generators and practical social media skills.
-
-</p>
-
-</div>
-
-
-<div>
-
-<h4>
-Platform
-</h4>
-
-<a href="#studio">
-AI Studio
-</a>
-
-<a href="#tools">
-AI Tools
-</a>
-
-<a href="#generators">
-AI Generators
-</a>
-
-<a href="#skills">
-Skill Academy
-</a>
-
-</div>
-
-
-<div>
-
-<h4>
-Social
-</h4>
-
-<a href="https://www.youtube.com/@KittySnipsStories"
-target="_blank">
-YouTube
-</a>
-
-<a href="https://www.facebook.com/"
-target="_blank">
-Facebook
-</a>
-
-<a href="https://www.instagram.com/"
-target="_blank">
-Instagram
-</a>
-
-<a href="https://t.me/Aheadvia1298"
-target="_blank">
-Telegram
-</a>
-
-</div>
-
-
-<div>
-
-<h4>
-Company
-</h4>
-
-<a href="#team">
-Our Team
-</a>
-
-<a href="#contact">
-Contact
-</a>
-
-<a href="#"
-onclick="showModal('About AHEAD VIA','AHEAD VIA SKILL HUB is a creator-focused learning and AI tools platform.')">
-About
-</a>
-
-<a href="#"
-onclick="showModal('Help Center','Use the Help button to request assistance.')">
-Help
-</a>
-
-</div>
-
-
-</div>
-
-
-<div class="copyright">
-
-<span>
-© 2026 AHEAD VIA SKILL HUB. All rights reserved.
-</span>
-
-<span>
-LEARN • CREATE • EARN • GROW
-</span>
-
-</div>
-
-</div>
-
-</footer>
-
-
-<!-- ================= HELP BUTTON ================= -->
-
-<button class="help-button"
-onclick="showModal(
-'AHEAD VIA Help',
-'Tell us what you need help with. Your Help Center can be connected to WhatsApp or Messenger.'
-)">
-
-<img src="assets/help.png"
-alt="Help"
-onerror="this.style.display='none';this.parentElement.innerHTML='?'">
-
-</button>
-
-
-<!-- ================= MODAL ================= -->
-
-<div class="modal" id="modal">
-
-<div class="modal-box">
-
-<button class="close"
-onclick="closeModal()">
-×
-</button>
-
-<h3 id="modalTitle">
-AHEAD VIA
-</h3>
-
-<p id="modalText">
-Welcome.
-</p>
-
-<a class="btn btn-primary"
-href="#contact"
-onclick="closeModal()">
-Contact Support
-</a>
-
-</div>
-
-</div>
+</nav>
 
 
 <script>
 
-/* MODAL */
+function showPage(pageId, element){
 
-function showModal(title,text){
+    document.querySelectorAll(".page")
+        .forEach(page => page.classList.remove("active"));
 
-document.getElementById("modalTitle").textContent=title;
+    const page = document.getElementById(pageId);
 
-document.getElementById("modalText").textContent=text;
+    if(page){
+        page.classList.add("active");
+    }
 
-document.getElementById("modal").classList.add("active");
+    document.querySelectorAll(".nav-item")
+        .forEach(item => item.classList.remove("active"));
 
-}
+    if(element){
+        element.classList.add("active");
+    }
 
-function closeModal(){
-
-document.getElementById("modal").classList.remove("active");
-
-}
-
-
-/* DARK MODE */
-
-function toggleDark(){
-
-document.body.classList.toggle("dark-mode");
-
-if(document.body.classList.contains("dark-mode")){
-
-document.documentElement.style.setProperty("--bg","#07111f");
-document.documentElement.style.setProperty("--card","#0d1b2a");
-document.documentElement.style.setProperty("--soft","#122236");
-document.documentElement.style.setProperty("--text","#f4f7fb");
-document.documentElement.style.setProperty("--muted","#9fb0c4");
-document.documentElement.style.setProperty("--border","#24384f");
-
-}else{
-
-location.reload();
-
-}
-
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 }
 
 
-/* CLOSE MODAL */
+/* SEARCH */
 
-window.addEventListener("click",function(e){
+const searchInput = document.getElementById("searchInput");
 
-if(e.target.id==="modal"){
+searchInput.addEventListener("input", function(){
 
-closeModal();
+    const keyword = this.value.toLowerCase().trim();
 
-}
+    document.querySelectorAll(".card, .list-card")
+    .forEach(card => {
+
+        const text = card.innerText.toLowerCase();
+
+        if(text.includes(keyword)){
+            card.style.display = "";
+        }else{
+            card.style.display = "none";
+        }
+
+    });
 
 });
 
